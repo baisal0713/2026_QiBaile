@@ -1,0 +1,80 @@
+---
+Implement only what is specified in this document. If the component already
+exists, evaluate the diff and update or add the new features. If something
+is unclear, ask me clarifying questions explicitly before implementing.
+---
+
+This is a continuous binding controller that compacts corridor walls based on
+the player's proximity to the corridor exit. Uses the ProximitySensor and
+follows the same architecture as ColumnControllerV2 + ColumnProfile
+(ScriptableObject profile for tuning, MonoBehaviour for scene references and
+runtime logic).
+
+========== PROFILE (ScriptableObject) — CompactingCorridorProfile ==========
+
+  Input — Proximity
+  - maxDistance        : float   — proximity is normalized against this value
+
+  Wall Compaction — Bound Interaction
+  - compactionCurve   : AnimationCurve — proximity to compaction (X 0=far 1=close, Y 0=rest 1=full)
+  - maxCompaction     : float   — maximum inward offset from the wall rest position (units)
+  - attackSpeed       : float   — how fast walls close when proximity increases (units/sec, 0 = instant)
+  - releaseSpeed      : float   — how fast walls return to rest when proximity decreases (units/sec, 0 = instant)
+
+  Wall Texture Scroll — Bound Interaction
+  - scrollCurve       : AnimationCurve — proximity to scroll speed (X 0=far 1=close, Y 0..1)
+  - maxScrollSpeed    : float   — texture offset Y speed at full proximity (units/sec)
+
+  Post-Processing — Bound Interaction
+  - vignetteCurve     : AnimationCurve — proximity to vignette (X 0=far 1=close, Y 0..1)
+  - maxVignetteIntensity : float — vignette intensity at full proximity (0..1)
+  - desaturationCurve : AnimationCurve — proximity to desaturation (X 0=far 1=close, Y 0..1)
+  - maxDesaturation   : float   — color saturation reduction at full proximity (0..1, where 1 = fully desaturated)
+
+========== CONTROLLER (MonoBehaviour) — CompactingCorridorController ========
+
+  Scene References
+  - sensor            : ProximitySensor  — placed at or near the corridor exit
+  - wallA             : Transform
+  - wallB             : Transform
+  - wallMaterial      : Material  — shared material for both walls (texture scroll applied directly)
+  - volume            : Volume    — post-processing volume (URP/HDRP) with Vignette and Color Adjustments overrides
+
+  Config
+  - compactionAxis    : Vector3  — local-space direction each wall moves inward (e.g. 0,0,1 for Z)
+                         wallA moves along +axis, wallB moves along -axis
+
+  Profile
+  - profile           : CompactingCorridorProfile
+
+  Runtime behavior (Update)
+  1. Read nearest signal from sensor, compute normalized proximity (same as ColumnControllerV2)
+
+  2. Wall compaction:
+     a. Evaluate compactionCurve to get compaction factor 0..1
+     b. Lerp from 0 to maxCompaction to get offset
+     c. Smooth with attack/release (MoveTowards, same pattern as ColumnControllerV2)
+     d. Apply: wallA.localPosition = restA + axis.normalized * offset
+               wallB.localPosition = restB - axis.normalized * offset
+
+  3. Wall texture scroll:
+     a. Evaluate scrollCurve with proximity to get speed factor 0..1
+     b. Multiply by maxScrollSpeed to get current scroll speed
+     c. Accumulate texture offset Y over time: offset += scrollSpeed * deltaTime
+     d. Apply _MainTex offset to wallMaterial (Y component only)
+
+  4. Post-processing:
+     a. Evaluate vignetteCurve with proximity, lerp 0 to maxVignetteIntensity
+     b. Evaluate desaturationCurve with proximity, lerp 0 to -maxDesaturation
+        (applied as Color Adjustments saturation, negative = desaturated)
+     c. Apply both values to the Volume overrides
+
+  On Start
+  - Cache each wall's initial local position as its rest position
+  - Cache initial _MainTex offset from wallMaterial
+  - Get Vignette and ColorAdjustments overrides from volume.profile
+
+  On sensor losing all detections
+  - Walls smoothly return to rest (releaseSpeed handles this naturally)
+  - Scroll speed falls to 0 (no abrupt stop — speed is continuously mapped)
+  - Vignette and desaturation return to 0 (continuously mapped)

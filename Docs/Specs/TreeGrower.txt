@@ -1,0 +1,17 @@
+---
+Implement only what is specified in this document. If the component already
+exists, evaluate the diff and update or add the new features. If something
+is unclear, ask me clarifying questions explicitly before implementing.
+---
+
+This is a script that will make a tree grow on command (public method). The growing feedback is composed of the following elements: 
+
+- Scale of tree grows uniformly over grow time
+
+- I have 2 materials on the tree with two shaders 
+-> bark material with Idyllic Fantasy Nature/ Surface shader -> variable Base Map Scale -> goes from 0 to 5
+
+-> leaves shader -> Idyllic Fantasy Nature/ Vegetation -> Blend Height -> goes from .1 to .75
+
+from same shader alpha cutoff from 1 to .2
+

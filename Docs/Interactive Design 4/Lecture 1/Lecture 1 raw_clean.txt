@@ -1,0 +1,247 @@
+## A Framework for Thinking About Interaction: Grammar, Vocabulary, and Syntax
+
+There are three things that I'll use recurrently to talk about interaction: grammar, vocabulary, and syntax.
+
+[A student confirms they haven't had much theoretical grounding in analyzing interactive works in previous courses.]
+
+I don't mean in terms of analyzing interactive works — seeing what the vocabulary is, what the different elements are, how they compose together. This course won't be primarily theory, I'll try to reduce that part, but we need some tools to be able to analyze and talk about projects.
+
+I'd like to give you this small framework for thinking, because this is something I've structured on my own over the years. In other types of art — cinema, and so on — there's a solid theoretical corpus with tools for analyzing, composing, decomposing. In interactive art it's still a bit of a grey area that's being structured, but I like to think in these terms, always staying between two poles: the pole of meaning — why we're making something, the experiences we want to evoke, the sense we want to put into the project — and then the implementation, the technical side in Unity.
+
+By "grammars" I mean these macro and mini rules that organize the interaction. This actually comes from a book called *Advanced Game Design*. Many references come from game design, even though we won't be working strictly with videogames as a format. But people who've worked in game design have explored these things much more deeply than probably in other areas. In this book, the author was the first to introduce systems theory into game design. He used an acronym — Parts, Rules, Loops, and H. I changed it a bit because I liked —
+
+Well, anyway, what's the idea? In a system — and an interactive work is always a system — it's composed of parts, meaning objects that can be different elements. Last year we used the avatar that can grab and interact, throw objects, and so on, but they can also be variables, the data from which these objects and subsequent systems are made. Then there are the actions — and actually I had inverted this part, but actions are important. We saw last semester that they are methods, operations, often operations on the variables that compose an object. So how this object should change: enclosed in these rules and actions that we exercise when we want to change color, shape, move it, and so on — many things simultaneously.
+
+If we put them in sequence, or even in a more systemic way — defining interaction rules between these various objects that have different actions — loops are created. And loops are, among other things...
+
+> **[Digression]** Actually, let me show you a video that always inspires me, one that recalls an ecological, ecosystemic perspective. Because unlike a linear story — we arrive at the end, finished — if we reach a certain degree of complexity, where we have multiple objects with different behaviors that start to interact, the interactions often become circular. The system almost takes on a life of its own. Today and next lecture I'll bring you this perspective, which I think is the most important one, even if a bit more complex — this idea of your world, your work, having its own life independent of our actions. That's a very interesting idea to me.
+
+And then there are what the book calls "host" — or in more technical terms, emergent properties. When we set up objects that have rules or actions and that start to interact in a circular way, what emerges is something that is, as you've surely heard the famous phrase, more than the sum of its parts. Something emerges that perhaps we hadn't expected, or when our subject — whoever participates in this system — enters the picture, new and interesting things can be created.
+
+I'll use these dimensions both when we talk in Unity — an action will be a method or a module, a component; a loop will be when there are three components interacting with each other, and so on — as a way to read interaction at a high level and then also read the implementation.
+
+---
+
+## Vocabulary: What We Can Do in a Digital World
+
+Vocabulary — many of these things we've already seen last semester, but now we'll see them in a more organized way. They are practically the things we can do in a digital world. It's obviously not an exhaustive list, but many of the things we can do that aren't strictly tied to Unity. You could take another engine, another software, Max/MSP or other things, and you'd still have objects you can instantiate, destroy, enable, disable, reset, move, scale, and so on.
+
+You'll always have an environment that has lights or atmospheric effects — maybe not a skybox, but particles or post-processing and so on. These are the objects but also the things we'll be able to do with these objects. We'll always have some form of interface. The interface can be 2D with buttons, but it can also be a keyboard, a musical instrument — there's a way through which we interact.
+
+> **[Digression]** There are many projects — actually the majority of installation projects in interaction design — that use interfaces in non-typical ways. I remember two artists from a few years ago who came here to Italy from the States and had made a huge exhibition with pots, porchetta cookers, things like that, which produced sounds, produced images, changed the lights in the room. A very interesting thing. So many of these projects have an Arduino component, various electronic parts, but the beauty of using an engine or virtual environment is that many things can be simulated. We don't need to physically engineer a space or a complex interaction because we need one input point, then we can simulate a data stream or something in the engine — and nowadays with very low cost — and then we'll have an effect.
+
+Then there's player movement — we talked about that last semester with the character controller diagram and so on. Physics — we touched on that with various forces, rigid bodies, and so on. Maybe we didn't talk much about constraints or joints, which are ways to connect objects that are physics-enabled. We talked about agents — NPCs that can move in different ways — but we didn't talk about how NPCs can recognize each other. Today I'll show you one way, and then they can act in different ways with each other, which is also the idea of this living world.
+
+Narration — various things can certainly be done. Installation would be connecting the digital world with the physical world or organizing it that way.
+
+So I'm giving you an overview. Each project will use some of these objects, these elements, and will be implemented in a certain way.
+
+---
+
+## Syntax: Implementation Architecture
+
+Another important part — beyond the general rules of grammar and the vocabulary of what elements the interaction will be composed of — is the implementation, the syntax of how these elements actually get sequenced, implemented, how they run in the engine. I'll give you a small notion of architecture or composition.
+
+Beyond what we saw last semester — trigger, event, action — which past a certain level doesn't scale very well because it's linear. Even if you try to add more interactions, after a while it becomes unpleasant and uncomfortable when you have 20 actions in one event. So to make things that scale — scalability is an important term — things are usually separated into data (the variables that compose things, which can live on the action or on the object, but I'll show you a way to separate them), a simulation model (where the actions actually are, what happens with our elements — they move, they respond, and so on), and then the presentation (the visual and audio feedback). We separate these levels simply to keep the project more organized, but also to allow us, for example, to work more easily with AI. When we tell it "help me make a second action for this interaction," it will probably understand there's a structure and won't do things randomly. Well, almost always — sometimes it does things randomly.
+
+This will be the other thing I'll show you a bit, because even though we won't deal with code that much, it's sometimes important to be able to read it and understand: this action corresponds to this method inside this script. That's always useful because sometimes we need to understand what's happening.
+
+> **[Digression]** Since we have GitHub Enterprise that NABA gives us — this Enterprise package that includes Copilot, an AI from GitHub, even if it's the lowest tier — I think for our purposes it'll work fine. I'll show you a bit how to use it. Have you heard the term "vibe coding"? No? Vibe coding is when you say something like "I want this project where there's rain, day and night, and there are wolves in the forest — make it." And maybe the AI will make a lot of it, because nowadays the agents are so agile and improving every month. I'd tested one of these agents a few weeks ago — I gave it a mega task that wasn't crucial, told it "do this thing," and the agent worked for about 40 minutes and then wrote billions of lines of code. I was curious to see if it would do it, and it more or less worked. It wasn't ideal. But it was to say that AI can now do big things on its own. We won't use it that way though. So that's why it's important to understand what the elements are, or rather, to start from what exactly we're doing — are we working more with loops? Do we have more sequential actions? What are they composed of? Do we have UI? And in the implementation structure, where are the various things? So when we go to ask the AI, we can do it step by step — small components. Make this module, make an action, and so on. I'll show you a possible workflow for doing this.
+
+---
+
+## Course Structure and Approach
+
+To summarize: we'll work on projects or systems that compose multiple interactions, we'll try to understand how they're composed based on these three levels, and then we'll try to start working on your ideas — or at least pull out ideas from you as soon as possible, so I can also exchange, do this osmosis thing. I see that some people are interested in certain directions. I can try to bring you examples of that type of implementation and so on.
+
+My desire is to show you a system in class, and then ideally you'd be able to do some exercises on that system at home, week by week. So you try to see: does this approach work for me, does it not, maybe I get two or three new ideas on how to use these things — or we just move on to the next one. It's also a way to understand what you can actually do, rather than just seeing other projects, because trying it is always much better for generating ideas and impressions.
+
+[The instructor asks for questions. No questions from students.]
+
+---
+
+## Project Setup: Git and Unity
+
+[Logistics: The instructor walks students through setting up their semester projects — creating a GitHub repository under the NABA Creative Tech organization with a naming convention (PM4-2026-YourName), cloning it via GitHub Desktop, and creating a new Unity project inside the cloned folder using the Universal 3D template with the same name. The .gitignore file needs to be moved to sit at the same level as the Assets folder. There is a brief aside about classroom computers not having the latest Unity version installed, and a note that the VR template won't be used — students who want VR can import those packages manually later.]
+
+[Logistics: The instructor notes that the classroom computers still don't have the newest Unity versions installed and says he'll keep writing to get that resolved.]
+
+---
+
+## Package Installation
+
+[Logistics: Students install the following packages via Window > Package Manager from the Unity Registry: 3D Character and Animation, 3D World Building, Tutorial Framework, and Authoring Tools. Additionally, from Blackboard they install DOTween and a cellular automata demo package. The instructor explains that DOTween Pro is being shared with permission from its creator Daniele Giardini for educational purposes — the base DOTween library is free, but the Pro version has inspector-based tweening components that are useful for the course. Students also install TextMeshPro (Window > TextMeshPro > Import TMP Essential Resources) to avoid empty UI text issues.]
+
+[Break: 5 minutes]
+
+---
+
+## The Living World: Cellular Automata and Emergent Behavior
+
+The first thing I'd like to show you today is this concept of the living world. It's an idea that's always been very interesting to me, and it's also a bit in contrast to many installations. Most of the things I've seen comprise interactions, but they're often single, a bit isolated.
+
+> **[Digression]** I probably come at this from the world of videogames, where interaction and action are extremely important and often extremely abundant. I evaluate projects with that lens. But one of the most important things for me is a world that is certainly responsive, but not only responsive — also alive.
+
+This idea goes back to the concept of cellular automata. Has anyone heard of this? Artificial life. These come from the 1950s, more from the mathematical field. But at a certain point Conway made this example of the Game of Life.
+
+[The instructor shares a link to an interactive Game of Life simulation and asks students to play with it for a minute, clicking to add cells and observing what happens, trying to figure out how it works without reading any explanation.]
+
+[Students experiment with the simulation. One student suggests it involves combinations and probability.]
+
+OK, that's a good starting point. So what do we see? We definitely have these little squares — these cells. They're called cellular automata because they're little things, in this case squares, cells that will do something automatically.
+
+[A student observes that a single cell doesn't survive on its own. Another notices that certain configurations become stable. The instructor builds on these observations.]
+
+Exactly. When they're in groups of four in a square formation, they become stable. You've managed to find configurations that stay still. And then there are some configurations that repeat infinitely, that keep going.
+
+So here are the rules: if there are one or two, they disappear. If there are three in a row — this way or that way — they repeat, they keep going or just rotating. If there are four, they become stable. In diagonal they don't survive. And if we take one of these configurations — like where there are three or four — and add another, they replicate in the direction where there are more of them.
+
+So they actually have four or five simple rules that then, when we put them on a grid and launch the simulation, can create infinite, complex forms. This concept of cellular automata is also used to create, for example, in graphic art — these fractal-like forms that can be 2D or 3D, based on forms that repeat precisely because they're based on the shapes that emerge from simple interactions. That's also the definition of complexity: properties that emerge from simple entities interacting with simple rules, but at a large scale. Something interesting and unexpected emerges.
+
+> **[Digression]** This idea started, as I was saying, from mathematics — Stephen Wolfram — and with artificial life: how can we abstract and create a very simple representation of a living system? That was the answer: cells with three or four interaction rules that create small ecosystems. In many variations we can add or change the rules — remember this, because we're about to get into this in Unity with exactly this idea of interaction rules. There's also a project I always cite — let me find it...
+
+This concept, brought into 3D space, becomes interesting because the idea would be the same: 2D or 3D, we have cells. In 2D space they'd be little squares; in 3D space, what would they be? There's a term — voxels. This comes up a lot when you use patterns. Minecraft, for example — it's based on cubes, but technically these cubes are voxels. You create a voxel map, and so the grid becomes 3D, based on voxels, and these very interesting forms can emerge, all based on how we define the starting interaction rules. Up here they show you the math — small formulas determining the rules. We don't care about the mathematical part. I'll show you instead what we'll do in Unity. And some people have used the same principle but with shaders — VFX and so on — to create even more interesting visualizations.
+
+---
+
+## Cellular Automata Demo in Unity
+
+[Logistics: The instructor distributes a cellular automata Unity package for students to import. There's a brief pause to fix a missing folder in the package, then students import it and open the scene from the Plugins > Cellular Automata folder.]
+
+[Logistics: The instructor reminds students to set Edit > Project Settings > Player > Active Input Handling to "Both" if they get input errors, as newer Unity versions disable the old input system by default. This requires a project restart.]
+
+This is a simulation similar to Game of Life, but instead of working in 2D it works in 3D, inside a cube. We can click somewhere on screen and see these cells appear. Now, the interesting thing in Unity is that we have the opportunity to play a lot with the properties of these cells.
+
+In the Voxel Renderer — which is what makes these cells appear as cubes, as boxes — we can make them bigger so we can see them better. You can also hold the mouse button down — it's a kind of painter, we can paint them in.
+
+The really important things for me are two. In the scene folder you'll see these assets — little blue cubes with a red thing. These are a type of asset in Unity called Scriptable Objects. You can think of them simply as data objects that contain variables, which are then used in the scene by managers or controllers to consume and do something with these data.
+
+How does it work? Right now I've set up this simulation with three types of cells. In Conway's Game of Life we have one type; here we have three. Each cell has a color, a birth count (so when we click, many more can be born per click), a survival range (minimum and maximum for when time advances), and most importantly a recovery and decay rate. Each cell has a life cycle — a lifetime determined by these two variables. By playing with these variables, we determine what happens to each individual cell.
+
+But the most interesting part for me are the interaction rules, stored in another data object called Grid Config. Here we can determine two or more types of cells and then have different interactions between them. If we open the Grid Config elements, we see they're paired — these objects — and underneath we have the type of interaction: predatory (if one is next to the other, one eats the other), symbiotic (they multiply), or competitive (they can't coexist next to each other). Then there's a strength value — how dominant or prioritized this interaction type is relative to others.
+
+By changing the strength of these relationships — since every click creates all three types of objects — and based on how prioritized the relationship is and the lifetime variables of the cells, one or another cell type will be predominant. We can also manage to achieve an equilibrium, like in the Game of Life.
+
+I'm giving you this as an example of how these principles can be transported into Unity and into 3D space. But apart from the visual aspect, this isn't yet very interactive — we can't be inside the world and do things with these cells. That would be the next step. But I'll leave you a few minutes if you want to try changing some of the rules, see if something interesting happens, if you can reach equilibrium — sometimes I've managed to have at least two cell types where neither is predominant, but it's a bit difficult.
+
+[Students experiment with the simulation parameters.]
+
+Now, this is admittedly a bit of a toy and also a bit of a black box for us — I don't want to get into this precise implementation with the Voxel Grid and so on. But I think it's more useful than just jumping into what we'll do next, because here you can see what emerges at a very large scale, with hundreds and thousands of cells in the grid.
+
+---
+
+## From Grid to Free Agents: Building a Living Ecosystem
+
+A limitation of these cellular automata is that they're confined to a grid, whether 2D or 3D voxel. That's why they're useful for simulation, visualization, shaders, and effects, but not very useful if we actually want to create a world. So we bring the same principles onto agents that are free — they can move, fly, do other things, always identify each other and interact with some kind of rules.
+
+In this case, the red ones are the predators, the blue ones are the herbivores, and the green ones are plants. We can create a small ecosystem that can be more or less in equilibrium. Next time we can add replication and so on, like in the original example.
+
+In this case it's not an ecosystem that tends toward equilibrium — perhaps only some plants remain in the end. But I'm showing it to you first in an abstract way, and next time we'll see how the same principles can be applied to create something concrete. For example, you worked with the idea of plants — imagine if you had different plants that, based on proximity to other plants or to the player, change their behavior, or other objects in the scene. Same principles, same implementation, same components that I'm about to show you — they can be used for many, many things.
+
+> **[Digression]** There's something called the Lotka-Volterra equation, which defines the flow of interaction between predators and prey in ecological systems. They're basically like waves that follow each other: more predators means prey diminishes, then when prey diminishes the predators start to suffer and decrease, then the prey proliferates — these waves following each other. That's what you notice in natural systems, and not only at the level of organisms and cells. We probably won't create real ecosystems, but the interesting thing is that brought to a slightly larger scale and simulated in Unity, we could notice similar dynamics.
+
+[Logistics: The instructor notes the class is running over time and proposes continuing for about 15 more minutes.]
+
+---
+
+## Building the System in Unity: Step by Step
+
+### Step 1: The Cell and Its Life Cycle
+
+The first thing we need is to give form to our organisms, our cells. I'll use a simple shape for now — a sphere. I'll create an object called Cell, assign it a material just to differentiate it when we create more types. Let's make it emissive.
+
+What's the first thing these organisms need? A life cycle. This life cycle will be composed of two components in Unity. There's a component that defines the life cycle — find the component called Cell Life Cycle and add it to the object we just created. Then this life cycle component will require Cell Data.
+
+We're separating things — as I said, we have these three layers of implementation: data, simulation, and presentation for the graphic part. So we start thinking in terms of separating the simulation logic, which lives in a component in the scene, from the data that defines how long something survives, its decay rate, and so on, which can live in an asset.
+
+This asset is created with right-click > Create > Data > Cell Data. This is what's called a Scriptable Object — a type of asset that simply contains variables that can be shared across multiple scenes and by multiple objects. It's the template idea. So this Cell Data will have speed, starting energy, energy decay, and so on.
+
+We assign this Cell Data to the life cycle component and launch the scene. The main thing about this life cycle logic is simply that the entity has an energy level and a decay rate. Every second, its energy diminishes by the decay rate, and when energy runs out, the object is destroyed. This gives us the possibility to also nourish or increase this energy — for example by consuming other cells or doing other things. For now we're just visualizing the life cycle.
+
+### Step 2: Movement
+
+The second thing is to make them move. We'll add a Cell Motor component — following modular design logic where ideally each behavior, each action, has its own module. The Cell Motor will move the cell in some way, and we could also change it later. For example, if in the future — even with the help of AI — you want to alter these things, the structure can stay the same but we change the type of movement contained inside.
+
+In this case it's a random flight-like movement: every so often it changes with some angle variation. If we set the wander drift to 2, it'll change direction too subtly — 20 is a better value. This script also has a bounds function: simply, when the cell is too far from the center (in this case vector 0,0,0), it turns back. Very simple. Give it a bigger bounds radius — maybe 20 or 50.
+
+The Cell Motor also needs the Cell Data because it contains the movement speed. So assign the Cell Data there too.
+
+### Step 3: Sensing
+
+We have a life cycle and movement, but if we add more of these cells, they don't have a way to recognize each other yet. So to arrive at rule-based interaction, the first — almost the main thing — is that they can recognize each other.
+
+We already saw this last semester with trigger zones — if the player enters a zone, something happens, which is the most basic way to create interactions in videogames and any project. What's different now? Same concept — trigger zone, enter an area, get some effect — but this year we add something called a Signal. In the code you'll find it in the Sensor scripts.
+
+We'll have a Trigger Sensor that carries a Signal. The Signal simply contains some data, some information about the object that's been identified. So if I have a range of sensors around me, I'll see seven students at a certain distance with a certain t-shirt color. The Signal — what gets returned when I identify someone — includes whatever information is necessary for the interaction. It's quite moldable. In this example, since we're not doing much, the Signal includes just two variables: the object itself and the distance. Because we'll probably want to act on the closest object. Later, when we create other interactions based on sensing, we can add other variables — a color, some type of object category, and so on. But the mechanism is always the same.
+
+How do we implement it? Inside the cell, let's start separating things. We could keep everything on the same object, but it becomes a mess. So create a child object called Cell Sensor. On this Cell Sensor, create a Sphere Collider (any collider shape works, but sphere is most convenient), make it a trigger, and then add the Trigger Sensor component. Make the collider a bit bigger — give it a radius of 5.
+
+Then we just need to duplicate a few cells to see what happens.
+
+**Important**: Remember that for trigger-based detection, at least one of the objects must have a Rigidbody — even if the Rigidbody isn't actually used for physics. That's just how Unity works, it's a strange limitation. So add a Rigidbody to the cells and make it kinematic, since we're not working with forces right now. This Rigidbody has no other purpose than facilitating identification.
+
+Also, create a new Layer called "Cell" and assign all these cells to it, so they're grouped and won't get confused with other objects in the scene.
+
+Now if we launch the scene and pause while the cells are still near each other, opening the Sensor component of any cell, we'll see that the list is populated — it contains the other cells with their respective distances. This means our organisms can now recognize each other. That's a good foundation.
+
+### Step 4: The Consume Action
+
+We have a life cycle, but we don't just want these organisms to die — they could interact to survive, especially if we're making a small ecosystem. So another thing we can add is a Consume action — some cells will consume others to receive energy.
+
+Create another child object called Cell Consume (or similar). This works similarly to the sensor — instead of just identifying an object, it has another area with another collider. Add a Sphere Collider, make it a trigger, but with a smaller radius — if the sensor was 5, leave this one at 2. Then add the Cell Consume component. Some organisms won't use it, but it's good to have it.
+
+### Making Prefabs
+
+Now is the right moment to make this cell a Prefab. When working with different types, we'll use prefabs heavily. Take the cell, drag it from the scene into a project folder — it becomes a blue cube icon. From now on, remember to edit the prefab if you need changes to apply to all instances.
+
+### Step 5: Creating Cell Types with Data and Behavior Rules
+
+So far we have one general cell that moves around but doesn't do much. But as we said in the earlier example, these cells will interact based on rules. How do we make these rules? They're another Scriptable Object — another data object.
+
+Right-click > Create > Data > Cell Behavior. In the list, we'll add rules. Each rule pairs a cell type with an action. Through these rules, we can say: this cell, relative to another cell, must execute this action. The available actions are: attract, repel, consume, flock (interesting — we'll see that next time), or ignore.
+
+**Creating the Flora type**: Take the original cell, rename it to Flora. For the Cell Data, the flora will move very slowly (speed 0.5), the decay rate will be lower (they decay more slowly). Save it as a Prefab Variant by dragging it from the scene to the project folder — since a prefab already exists, Unity asks whether to make a new original or a variant. Choose variant. This way, if you change the base cell prefab, all variants inherit those changes.
+
+**Creating the Herbivore type**: Same process. Drag in the base cell prefab, create a new Cell Data for Herbivore (maybe faster movement, higher decay rate since it's not a plant), assign it, and save as another Prefab Variant.
+
+Now we have Flora and Fauna — two prefabs, two data objects.
+
+**Tip on prefab workflow**: When creating a new variant, start from the base cell. First rename it, then configure its properties (which in this case just means assigning the right data object), and only then create the prefab variant. To change a material for just one type, open that specific prefab variant and assign the material there — not in the scene instance — so it applies to all copies.
+
+Anything you want to change for all types, do it on the base cell prefab — for example, I forgot to assign the Layer and the Rigidbody. I can add those on the base, and returning to the scene, all variants will have those changes. Very convenient.
+
+### Step 6: The Cell Agent (The Brain)
+
+The last component to add is the Cell Agent — it's the brain that decides what to do when another object is identified, and actually executes the action.
+
+Add Cell Agent directly to the base cell prefab so all variants inherit it. Drag in the references: the Motor, the Life Cycle, the Sensor, and the Consume zone — the four components we've added. On the base, don't assign specific data or behavior — that stays generic. Then on each variant (Flora, Herbivore), assign the specific Cell Data and Cell Behavior for that type.
+
+**Setting up Flora behavior rules**: Flora + Flora = Attract (like algae in the ocean, they can cluster a bit). Flora + Herbivore = Repel (they try to escape).
+
+**Setting up Herbivore behavior rules**: Herbivore + Herbivore = Attract (they can group together). Herbivore + Flora = Consume (they seek out plants and eat them).
+
+Now duplicate several Flora and several Herbivore instances into the scene, and launch the simulation. You should see the interaction between them.
+
+---
+
+## The Power of Data-Driven Design
+
+The interesting thing about this setup is that once you understand the steps to add a new type — and there are only three or four steps — it's very simple to add a new type with different behaviors, or to change the behaviors of existing cells.
+
+Let's say we want to invert the relationship. We can go to Flora Behavior and change Herbivore from Repel to Consume. And in Herbivore Behavior, change Flora from Consume to Repel. With a simple change in the data object, the plants now chase and eat the herbivores, while the herbivores try to escape — but they're faster, so it gets interesting.
+
+This is the point. Right now it looks a bit abstract because we're talking about spheres, but we'll see that the same structure, the same configuration with rules in data and various components — movement, consume, attract, and so on — can be applied to any object: plants, humanoids, animals, abstract things. It's about extending a few things or making small changes, and with a system like this we can focus on the design and see what emerges.
+
+---
+
+## Homework and Next Steps
+
+If you've fallen behind — sorry, I went a bit fast and kept you longer than planned — try to redo these things at home. Add another cell type, or at least finish the last steps. There's an additional step in the tutorial about flocking — a kind of murmuration behavior — and then next time we'll try to bring this logic into an actual project where we also have an avatar and can interact directly. These objects won't just interact with each other, but we'll be able to interact with them too.
+
+If you can, reflect in the meantime — if you have ideas, next time we'll work in that direction. I'll bring a nicer example.
+
+[No questions from students.]
+
+[Logistics: The instructor reminds everyone to commit and push their Unity project to Git before leaving. "Save your scenes, close the project, go to Git, write 'PM4 Lecture 1,' commit and then push." Next time will also cover using AI to start editing, adding other actions, and adapting the system to different contexts.]
+
+[A student asks about something — the instructor says to send a reminder on Discord so he doesn't forget.]

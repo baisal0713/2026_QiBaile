@@ -1,0 +1,79 @@
+INTERACTION DESIGN 4 — LECTURE 2 CRITIQUE
+==========================================
+
+WHAT WORKED WELL
+----------------
+
+The six-step staircase structure was excellent. Each step added exactly one concept, each step produced a visible result, and students always had a working scene before the next layer arrived. This is a massive improvement over the density problem in Lecture 1 — you found the right granularity here.
+
+The artist references at the opening (Allora's plant-touch installations, the fish aquarium, light-sensitive butterflies) did exactly what they should: they gave students an aesthetic and conceptual destination before the technical journey began. The line "the interesting thing is that in all these projects, the entities have their own life" is a perfect bridge sentence from art to architecture.
+
+The single-responsibility principle was explained not as abstract software engineering dogma but as a practical design stance — "if you want to swap a timer for an energy system, you can do it without rewriting the spawner." That's the right frame for this audience. It landed.
+
+The crash from exponential spawning was a great unplanned teaching moment. It made ecosystem balance a felt problem, not an abstract one. Students will remember that crash when you introduce predator-prey balancing in Lecture 3.
+
+The AI tools introduction was handled with real care — acknowledging the ethical grey area, validating students who refuse to use them, then reframing Copilot as a study tool rather than a code generator. That's a mature, respectful approach.
+
+The energy-as-intermediate-variable concept is the intellectual heart of this lecture, and you sold it well. The dinosaur/ice-age example made the design space click: "if there's a temperature change, energy starts decaying much faster." One sentence, enormous implication.
+
+
+WHAT COULD IMPROVE
+-------------------
+
+### 1. The Copilot setup ate significant class time
+
+Between the GitHub Enterprise login, Visual Studio extension installation, testing whether it sees the project context, and troubleshooting individual setups, the AI tools section consumed what appears to be 20-30 minutes of a session that also needed to cover six build steps. The setup itself isn't teaching — it's logistics.
+
+**Suggestion:** Send setup instructions as a pre-class task: "Before next lecture, follow these steps to enable Copilot in Visual Studio. If you hit problems, screenshot the error and bring it to class." You can then do a quick 5-minute "does everyone have it working?" check at the start, troubleshoot the few who don't, and save 15-20 minutes for actual teaching. The contextual explanation of *why* IDE-integrated AI matters (project awareness) can stay — that's conceptual, not logistical.
+
+### 2. Package installation and namespace errors slowed the class
+
+Multiple students needed help with importing the LudoCore scripts and adding the `using LudoCore` directive. This is a friction point that has nothing to do with the concepts you're teaching — it's infrastructure overhead.
+
+**Suggestion:** Two options. (a) Pre-configure the namespace imports in the affected scripts before distributing the package, so students don't encounter the errors at all. (b) If you want students to understand namespaces, dedicate 3 minutes to explicitly explaining why the error happens and how to fix it *before* they encounter it, rather than troubleshooting one by one after. Option (a) is better — save the namespace lesson for when it's conceptually relevant, not when it's blocking their progress.
+
+### 3. The transition from "timer-based" to "energy-based" lifecycle needs a stronger bridge
+
+Steps 1-3 (timer, scale animation, spawner) are clear and well-paced. Then Step 4 introduces the energy-based life cycle, which is conceptually the biggest leap in the lecture. But the transition is somewhat abrupt: "for a better life cycle, we need the notion of energy, and therefore the notion of state."
+
+Students just built something that works. Now you're telling them to build it differently. The *why* needs more emphasis before the *how*.
+
+**Suggestion:** Before introducing the energy system, run a quick thought experiment with the class: "OK, we have a timer. The crystal lives for 5 seconds, always. But what if we wanted one crystal to live longer because it's near other crystals? Or shorter because the environment is hostile? Can the timer do that?" Let them feel the limitation. Then: "That's why we need an intermediate variable — energy. It still decays over time, but now other things can add or remove energy." The conceptual gap closes when students understand *what problem energy solves* before they see the implementation.
+
+### 4. The lecture is almost entirely in Italian, but technical terms stay in English
+
+This is not a problem per se — it's natural for a bilingual technical context. But it creates a specific challenge: students hear "life cycle," "spawner," "decay rate," "ScriptableObject," "NavMesh," "prefab override" as English terms embedded in Italian explanations. For students whose English is weaker, the cognitive load of switching languages mid-sentence while also learning new concepts is significant.
+
+**Suggestion:** When introducing a new English technical term for the first time, briefly gloss it in Italian. Not every time — just the first encounter. "Il decay rate — cioe la velocita con cui l'energia decresce." This costs 3 seconds per term and helps the students who are quietly struggling with the bilingual load.
+
+### 5. The NavMesh section was procedural rather than conceptual
+
+The NavMesh setup (bake surface, add agent, add motor, add wander) was presented as a recipe: add these three components, set this radius, make sure the object is on the surface. It works, but students don't know *why* NavMesh exists or what problem it solves differently from the random flight movement in Lecture 1.
+
+**Suggestion:** One sentence of framing before the recipe: "Last time our cells flew freely in 3D space with random direction changes. That works for abstract simulations, but in a world with terrain and obstacles, we need pathfinding — the ability to navigate *around* things. That's what NavMesh does: it pre-calculates where agents can walk, so they never get stuck inside a wall." Now the recipe has a reason.
+
+### 6. The self-replication step (Step 5) needed a guardrail warning *before* the crash
+
+The exponential growth crash was a great teaching moment, but it happened because the instruction was "try setting the spawner to 3 or 5" without a warning about what exponential growth means in practice. Some students may have lost unsaved work.
+
+**Suggestion:** Before students set the spawn count above 1, say explicitly: "This is recursive — each one creates more, and each of those creates more. If you set the count to 5, after three generations you have 125 objects. After five generations, over 3000. So start with 2, save your scene first, and keep your finger near the stop button." This preserves the lesson (exponential growth is dangerous and is exactly why ecosystems need balance) while protecting students' work.
+
+### 7. The ecosystem chain (Step 6) was rushed at the end
+
+The three-creature cascade is the culmination of the entire lecture, but it arrived in the last stretch when energy was low. The explanation of how Flora, Fauna, and the replicating crystal connect through death events was compressed. For students who were still catching up on Step 4 or 5, this step may have felt out of reach.
+
+**Suggestion:** Consider ending the in-class work at Step 5 (self-replication) and making Step 6 (the ecosystem chain) the core homework exercise. You'd demonstrate it briefly — "here's what it looks like when three creatures are chained" — and then give clear written instructions for students to build it at home. This way the homework is concrete and directly extends what they built in class, rather than being a separate task.
+
+### 8. Homework framing could be more scaffolded
+
+"Build the full three-creature cascade and try transplanting it into a more authored environment" is two tasks of very different difficulty. The cascade is procedural (follow the pattern). The visual transplant (plants, flowers, animals instead of cubes) requires asset sourcing, material work, and possibly model importing — skills that haven't been covered.
+
+**Suggestion:** Split the homework into required and stretch goals. Required: "Build the three-creature cascade with distinct colors and shapes (cubes, spheres, cylinders are fine)." Stretch: "Replace the primitives with assets from the Unity Asset Store or your own models. Try to make it feel like a real environment." This way everyone has an achievable target, and ambitious students have room to push further.
+
+
+OVERALL ARC ASSESSMENT
+-----------------------
+
+Lecture 2 was a significant step up from Lecture 1 in terms of pacing and structure. The staircase approach is the right model for this course — keep using it. The main risk is logistical overhead (tool setup, package imports, namespace fixes) eating into the conceptual and creative time that makes this course distinctive.
+
+The strongest version of this lecture would front-load all logistics to pre-class preparation, open with the artist references (keep those — they're essential), and then spend the full session on the six steps with more breathing room at Steps 4 and 6, which carry the heaviest conceptual weight. The energy-as-intermediate-variable idea deserves a full 10-minute discussion, not a quick transition — it's the idea that makes everything else in the course possible.

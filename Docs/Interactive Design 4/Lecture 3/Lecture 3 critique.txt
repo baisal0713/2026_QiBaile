@@ -1,0 +1,85 @@
+INTERACTION DESIGN 4 — LECTURE 3 CRITIQUE
+==========================================
+
+WHAT WORKED WELL
+----------------
+
+The Flora 1 rebuild at the top of the session was a smart move. By reconstructing the entity from scratch rather than picking up a saved scene, you gave students a second pass through the core workflow — create object, assign material, add Life Cycle, wire events, save as prefab. This is genuine spaced repetition, and the fact that you narrated it faster than the first time signals to students that they should be internalizing the pattern, not just following steps. Good instinct.
+
+The contrast between two replication strategies is the strongest conceptual contribution of this lecture. Death-triggered spawning versus energy-threshold spawning is not just a Unity trick — it's a design decision with emergent consequences. You made this tangible: students could see that one produces exponential waves while the other produces gradual proliferation. The moment where you said "stiamo invertendo la logica" is exactly the kind of reframing that builds design thinking.
+
+The "glue" metaphor for controllers was well-chosen and well-timed. Naming the pattern — "this thing is not a reusable module, it's the specific wiring for this specific organism" — gives students a mental category they'll need for every project going forward. The distinction between generic modules (spawner, scale, life cycle) and organism-specific orchestration (FloraController, FaunaController) is a genuinely important software design idea, and you taught it through doing rather than lecturing about it.
+
+The AI demo was appropriately modest. Adding a rotation to an existing script, showing the accept/reject flow, demonstrating Ctrl-Z and checkpoint restore — this is the right scope for a first real use. You resisted the temptation to generate something impressive and instead showed something boring and safe. That's exactly right for building trust in the workflow before students start relying on it.
+
+
+WHAT COULD IMPROVE
+-------------------
+
+### 1. You made the exact same structural mistake for the third time in a row
+
+Lectures 1, 2, and 3 all follow the same pattern: careful, well-paced content in the first half, then a rush to cram the most important new material into the last stretch. In Lecture 1 it was the Agent brain and behavior rules. In Lecture 2 it was the three-creature ecosystem chain. In Lecture 3 it's the Fauna Controller, the priority queue concept, the Predator entity, sensor/tag wiring, and the final ecosystem assembly — all compressed into the last 30 minutes, punctuated by a crash and a bug.
+
+The priority queue is arguably the most important new concept in this lecture. It's the first time students see decision-making logic — an organism that evaluates its situation and chooses an action. This deserved 20 minutes of careful explanation and student experimentation. Instead it got a rushed walkthrough while you were simultaneously debugging, crashing Unity, and exporting packages.
+
+**Suggestion:** You need to stop treating the end of the session as overflow space. Plan the session so that the hardest, newest concept lands in the middle — when energy is highest and there's still time to recover. The flora rebuild and energy provider are review-plus-extension; they belong in the first hour. The priority queue and three-organism ecosystem belong in the second hour, with a full work period after. If something has to be cut for time, cut the review — don't cut the new content.
+
+### 2. The ProBuilder detour cost 10+ minutes and taught nothing that mattered today
+
+A student asked about pivot placement for scaling direction. Fair question. You then spent over 10 minutes installing ProBuilder, struggling with its changed UI, demonstrating face selection and pivot relocation, attempting to transfer components between objects, breaking the setup, and ultimately abandoning it with "scusate, dobbiamo rifarlo." You even said beforehand "non vorrei perdermi con queste cose" — and then immediately got lost in exactly those things.
+
+The students learned that ProBuilder exists and that its UI is frustrating. That's not worth 10 minutes in a session that was already going to run out of time for the fauna and predator.
+
+**Suggestion:** When a student asks a tangential question, give a 30-second answer and a pointer: "Great question. The fix is to move the pivot to the bottom face using ProBuilder — I'll drop a link to the workflow in the chat. For now, the scaling direction doesn't affect the logic, so let's keep moving." You can record a 3-minute ProBuilder tutorial and share it asynchronously. Protect class time for the concepts that need live explanation.
+
+### 3. The replication bug should not have been discovered live
+
+You introduced the fauna with a replication system that immediately failed, then said "ieri con altre classi abbiamo fatto la stessa cosa e non c'era questo problema." This means you changed something between yesterday and today without testing it. The result: fauna self-replication was skipped entirely, and the ecosystem demo ran without a key behavior.
+
+This is the third session. Students are watching you model professional practice. Shipping untested changes and discovering breakage live is a pattern you're explicitly telling them to avoid (your Git advice at the end of this very lecture: "salvare, fare la modifica, testarla").
+
+**Suggestion:** Before every lecture, run the complete demo scene end-to-end with the exact package you're distributing to students. Every time. No exceptions. If you changed a script since the last test, test again. This takes 5 minutes and prevents the kind of credibility erosion that happens when students see the instructor's own code break.
+
+### 4. Unity crashed from uncapped spawning — again
+
+This happened in Lecture 2. It was noted in the Lecture 2 critique. The suggestion was to warn students about exponential growth and add guardrails. In Lecture 3, the same crash happened to you — the instructor — because you still hadn't capped the spawn count or added a scene-wide entity limit. You lost several minutes killing the process and restarting.
+
+Students will not add safety measures to systems when they've never seen you add them either. And "this is what happens when you spawn too much" stops being a teaching moment the second time — it becomes a preparation failure.
+
+**Suggestion:** Add a max-entities check to the spawner or a global entity counter that stops spawning above a threshold. Show students the implementation. This is itself a teaching moment about system design: "Every system that creates things needs a way to stop creating things." Build it once, use it in every demo going forward. Problem solved permanently.
+
+### 5. The AI introduction was partially redundant with Lecture 2
+
+In Lecture 2, you set up VS Code with Copilot and explained why in-editor AI is better than external chat. In Lecture 3, you again asked students if they use AI, again explained the advantage of project-aware AI, again checked VS Code setup in Unity preferences, and again demonstrated the basic workflow. Some of this repetition is warranted — reinforcement is good. But the "do you use AI tools?" conversation and the VS Code preference check are pure logistics that should have been resolved last week.
+
+**Suggestion:** Open with "Last week we set up Copilot. Everyone working? Good." If someone isn't, help them individually while others work on the flora rebuild. Then go straight to the demo. The philosophical framing about project-aware AI was delivered well in Lecture 2 — you don't need to re-deliver it.
+
+### 6. Homework is still not concrete enough
+
+"Studiare il sistema, rivedere i componenti e cambiare il bilanciamento" is the third consecutive vague homework assignment. In Lecture 1 it was "try to redo these things at home." In Lecture 2 it was "build the cascade and try transplanting it." Now it's "change the balancing." Students who are still catching up on the basics have no clear target, and ambitious students have no defined stretch goal.
+
+**Suggestion:** Be specific. Required: "Adjust the spawn rates and energy values so that all three organism types survive for at least 60 seconds without any going extinct or overwhelming the scene. Screenshot your parameter values and the running scene." Stretch: "Add a fourth organism type with its own controller — maybe a scavenger that eats dead organisms, or a plant that only grows near water. Use AI to generate the controller script." Concrete targets with observable success criteria.
+
+### 7. The stream recording failed and there's no backup plan
+
+Audio without video for a Unity lecture is essentially useless — students need to see the screen. You noticed this at the end and said you'd record a tutorial at home. That's a reasonable recovery, but the failure itself is preventable and this is the kind of thing that hurts the students who couldn't attend or who need to review.
+
+**Suggestion:** Do a 10-second recording check at the start of every session: start the stream/recording, verify both audio and video are capturing, then begin. If you use OBS, the preview window shows you immediately whether the screen source is active. Make this part of your opening ritual, like checking the projector.
+
+### 8. You told students to use Git for safety but didn't demonstrate it
+
+The Git advice at the end was sound: save before AI modifications, commit at small steps, revert if things break. But you delivered it as a verbal recommendation in the last 5 minutes, not as a demonstrated practice. Students watched you crash Unity, lose state, and restart from scratch — and then heard you say "use Git so this doesn't happen to you."
+
+**Suggestion:** Next lecture, do it live. Before making a change, say "Let me commit this working state first" and run `git add` / `git commit` in the terminal. Then make the change. If it breaks, show the revert. One live demonstration is worth ten verbal recommendations. It also takes under 60 seconds.
+
+
+OVERALL ARC ASSESSMENT
+-----------------------
+
+The conceptual content of this lecture is strong. The energy-as-mediator idea, the two replication strategies, the controller-as-glue pattern, the priority queue for fauna decision-making, and the three-organism ecosystem are all valuable and well-sequenced. If you wrote this lecture as a syllabus entry, it would look excellent.
+
+The problem is execution and time management. The pattern across three lectures is now unmistakable: you consistently underestimate how long the early material will take (review, setup, tangents, troubleshooting) and consistently sacrifice the newest, most important content at the end. The priority queue — the single most transferable concept in this lecture — was buried under a crash, a bug, and a hurried export-and-go.
+
+The other recurring issue is preparation. Untested code changes, uncapped spawners, broken stream recording — these are small failures individually, but they accumulate into a pattern that undermines the professionalism you're trying to model. You're asking students to test before committing, save before experimenting, and build safety limits into their systems. They need to see you doing the same.
+
+The strongest version of this lecture would cut the ProBuilder detour entirely, compress the AI re-introduction to 2 minutes, land the flora rebuild and energy provider in the first 50 minutes, then give the full second half to the priority queue, the three-organism assembly, and — critically — a supervised work period where students actually build and balance the ecosystem themselves in class, with you circulating. The export-and-try-at-home approach is a fallback, not a plan.

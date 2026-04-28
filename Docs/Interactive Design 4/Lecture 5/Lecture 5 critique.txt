@@ -1,0 +1,87 @@
+INTERACTION DESIGN 4 — LECTURE 5 CRITIQUE
+==========================================
+
+WHAT WORKED WELL
+----------------
+
+The interaction atom is the best piece of theory you've introduced all semester, and the delivery matched the ambition. The tripartite model — input, transformation, output — is genuinely powerful not because it's novel (you correctly traced it to 1950s cybernetics) but because you made it operational. You didn't just present a framework and move on. You immediately used it to categorize what students had already built, then used it to design something new. The 2x2 matrix (discrete/continuous crossed with bound/unbound) gave students four named categories — one-shot, switch, binding, conditional — and those names will do real cognitive work going forward. When a student is designing an interaction and can say "this is a conditional trigger, not a binding," they can think about it more clearly. That's a durable contribution.
+
+The Backrooms as an emotional container was a genuinely smart pedagogical move. You didn't just pick a cool aesthetic — you gave students an evaluative criterion. "Does this interaction add to the feeling of liminality, or is it irrelevant?" means every design decision has a test. When you layered the audio pitch ramp with the ambient lighting fade and the emissive ceiling materials, each with different delays and curves, the combined effect genuinely evoked something uncanny. And you named that explicitly: "questo spazio sta iniziando ad assumere una dimensione più tematica." The fact that students could feel the difference between the raw trigger and the shaped, delayed, layered version is the lesson. No amount of theory could have taught that as effectively.
+
+The procedural room generator was the right tool at the right time. You identified that level design was a bottleneck — students would spend entire sessions placing walls instead of designing interactions — and you built a custom tool to remove that friction. The scriptable-object-based tile set is also quietly teaching the same data/logic separation pattern that Game Dev 2 is making explicit. Students may not realize they're learning architecture, but they are.
+
+The curve discussion was the intellectual core that previous lectures were missing. "La relazione lineare non è molto interessante" is a design principle, not a technical instruction. The idea that the shape of how a value arrives at its destination carries aesthetic and emotional weight — that's interaction design thinking, not Unity button-clicking. And you demonstrated it concretely: same 2-second pitch ramp, but with different easing curves producing different felt experiences. This is the kind of thing students will remember when they've forgotten every API call.
+
+The spec-driven workflow continues to mature. The separation of brainstorming from implementation ("non facciamoli nella stessa chat") is a genuine professional insight. You're not just teaching students to use AI — you're teaching them to think before they use AI, which is the harder and more valuable lesson.
+
+
+WHAT COULD IMPROVE
+-------------------
+
+### 1. The audio effects survey was a catalog, not a lesson
+
+You spent time walking through Doppler, Low Pass Filter, High Pass Filter, Reverb, Chorus, and Distortion — listing what they do, adjusting a few sliders, and saying "sappiate che esistono." That's a reference manual, not teaching. Students now know these effects exist the same way they know a Wikipedia article exists: theoretically, without understanding.
+
+The problem is that this section violated your own principle from 20 minutes earlier. You just taught students that transformation is the interesting part — that the curve, the mapping, the shaping of values is what makes interaction design expressive. Then you showed them six audio effects by adjusting parameters with no transformation, no curve, no mapping to any input. You demonstrated them statically. The Low Pass Filter sweeping from 10 to 22000 Hz is dramatic, but it was you moving a slider in the inspector, not an interaction.
+
+**Suggestion:** Cut the survey entirely. Pick one effect — the Low Pass Filter is the most expressive — and build an interaction with it. Map the filter cutoff frequency to player proximity using the same proximity sensor from last lecture. Now students experience the effect as part of the interaction atom they just learned: input (distance), transformation (proximity-to-frequency curve), output (low pass cutoff). They hear the room "open up" as they approach. That's one effect, deeply taught, instead of six effects superficially listed.
+
+### 2. Git has now been flagged in two consecutive critiques and still hasn't been demonstrated
+
+Lecture 4's critique, point #4, was explicit: "This is now two lectures in a row where Git has been verbally recommended but never shown." It even provided a 90-second script. This is now lecture 5. The spec-driven workflow you're teaching — write spec, generate code, test, revise spec, regenerate — is inherently iterative and inherently risky. Every regeneration can break working code. This is exactly the workflow where version control isn't optional.
+
+You are building students' comfort with AI code generation without building their safety net. When (not if) a student's AI regeneration breaks their project and they can't get back to the working state, they will lose hours. Some will lose motivation. You will have taught them to drive without teaching them to use the seatbelt.
+
+**Suggestion:** This cannot wait for Lecture 6. The critique already gave you the script. Do it. Before the first AI interaction of the next session: terminal, `git add .`, `git commit -m "working entry controller"`. Change the spec. Regenerate. If it works, commit again. If it breaks, `git checkout -- .` and you're back. Narrate it. 90 seconds. Done. Every lecture after this, commit before and after every AI modification, visibly, until students do it without being told.
+
+### 3. The tile set setup consumed too much class time for infrastructure
+
+The procedural generator is a good tool, but the live walkthrough of populating the scriptable object — dragging prefabs from folders, locking inspectors, opening second inspectors, explaining which module is 3x3 versus 2x3 — took a substantial portion of the session. This is assembly work, not design thinking. Students were watching you organize prefab references in an inspector, which is the same category of problem as watching someone set up trigger sensors they already know how to set up.
+
+The tool itself is smart. The live setup of the tool is not a good use of class time.
+
+**Suggestion:** Pre-populate one complete tile set and include it in the package. Students import it, hit Generate, and have a room in 30 seconds. Then say: "If you want to create your own style sets, duplicate the existing one and swap the prefabs. The tool documentation explains the fields." You save 10-15 minutes of inspector-dragging and gain 10-15 minutes of interaction design work. Students who want to customize will do so at home. Students who don't care about tile sets (most of them, probably) never have to think about it.
+
+### 4. The matrix was presented but never tested as a thinking tool
+
+You introduced four interaction categories: one-shot, switch, binding, conditional. You defined them clearly. Then you moved on to implementation. At no point did you ask students to categorize interactions using the matrix. You did it for them.
+
+This is a missed opportunity because the matrix's value is as a design tool, not a taxonomy. If students can look at an interaction idea and say "that's a binding" or "that's a conditional trigger pretending to be a switch," they can design more intentionally. But that skill requires practice, not just exposure.
+
+**Suggestion:** After introducing the matrix, spend 5 minutes on a rapid-fire exercise. Show 6-8 interaction examples (video clips, descriptions, or things from games they know) and ask students to categorize each one. "The Rain Room from last lecture — which category?" "A door that opens when you look at it for 3 seconds?" "Your phone's flashlight toggle?" "A theremin?" Force them to use the vocabulary. Disagreements are productive — they reveal edge cases where the categories blur, which is exactly where interesting design lives.
+
+### 5. The Cinemachine section at the end was reactive, not planned
+
+A student suggested camera shake. You improvised a Cinemachine demonstration — Noise profiles, Impulse Listener — which is genuinely useful content but was clearly unplanned. It arrived in the last stretch of the session, wasn't connected to the spec-driven workflow, and wasn't integrated into the entry controller the class had been building. It was a sidebar triggered by a good student question.
+
+This is a minor issue. Following student curiosity is a teaching strength, not a weakness. But in the context of a lecture that had a strong arc (theory → tool → implementation → layering), this moment broke the arc. The camera became a disconnected suggestion rather than a designed feedback layer.
+
+**Suggestion:** Next lecture, when you revisit the entry controller or build a new interaction, include camera behavior as one of the spec'd feedback layers from the start. "When the player enters the room: audio pitch ramps over 2 seconds, ambient light fades in over 3 seconds with a 1-second delay, and the camera shake increases from zero to a subtle handheld wobble over 4 seconds." Now Cinemachine isn't a tangent — it's the third voice in the feedback composition.
+
+### 6. The homework is better but still relies on self-motivation without structure
+
+"Fate almeno un'interazione nuova, di qualsiasi tipo" with a suggestion to choose between a curve-animated switch or a continuous proximity mapping. This is an improvement over previous lectures — you gave two concrete options and tied them to the day's framework. But "almeno un'interazione nuova" is still open-ended in a way that invites doing the minimum.
+
+More importantly: you mentioned that students aren't practicing between sessions. You designed the in-class exercises partly to compensate. This tells you the homework isn't landing. Simply making it slightly more specific won't fix the underlying problem.
+
+**Suggestion:** Make the homework a deliverable, not an activity. "Before next class, create one room in the Backrooms that uses at least two feedback layers (from different categories in the matrix) to create a specific emotional moment. Write one sentence describing the emotion you're targeting. Bring the project file and the sentence." The sentence is the key — it forces intentionality and gives you something to discuss at the start of the next lecture. It also connects directly to your principle that interactions should serve an emotional direction.
+
+### 7. The MIDI controller promise is now a forward thread with no timeline
+
+You mentioned the MIDI-to-TouchDesigner-to-Unity pipeline at the start of the lecture as something you'd show "la prossima volta." This is exciting content that would powerfully demonstrate the modularity of the input-transformation-output model — same outputs, different input source. But it's also the second consecutive lecture where external controllers have been teased without delivery.
+
+**Suggestion:** Either bring the MIDI demo to Lecture 6 as promised, or stop mentioning it until it's ready. Repeated promises that don't land erode the "this is going somewhere exciting" energy that makes the promises effective in the first place.
+
+
+OVERALL ARC ASSESSMENT
+-----------------------
+
+This is a genuinely strong lecture — arguably the strongest in the course so far. The theoretical framework is the right level of abstraction: concrete enough to be immediately useful, abstract enough to generalize beyond any single Unity feature. The Backrooms environment gives the work emotional stakes. The layered feedback demonstration (audio + lighting + emission, each with curves and delays) is the kind of thing students will point to later as the moment interaction design stopped being about trigger zones and started being about experience.
+
+The session had a clear five-act structure: recap and promise (MIDI teaser, proximity sensor review), theory (the interaction atom, the signal matrix), infrastructure (Backrooms generator), implementation (entry controller with iterative spec-driven feedback layering), and synthesis (combining interaction types, inspirations, course overview). Each act served the next. The theory wasn't abstract because the implementation immediately used it. The infrastructure wasn't busywork because the interactions needed a space.
+
+The recurring issues are narrowing. The pacing problem from early lectures is largely resolved — the most important content (the matrix, the layered feedback implementation) got the most time. The audio effects survey and the tile set setup are the main time sinks, and both are fixable. The Git gap is now a pattern, not an incident, and it needs to be treated with urgency.
+
+The honest concern: you're five lectures in, and students still aren't practicing between sessions. The in-class work is strong, but the between-class work isn't happening. This means each lecture is starting nearly from where the last one ended, with minimal independent consolidation. The theoretical framework you introduced today — the matrix, the interaction atom — is the kind of thing that only becomes a thinking tool through repeated use. If students don't use it independently before the next lecture, it will remain "that diagram the professor showed" rather than "how I think about interactions." The homework structure needs to change in a way that makes practice feel necessary, not optional. The deliverable suggestion above is one approach. Another is starting each lecture with a 5-minute show-and-tell of student work, which creates social pressure to have something to show.
+
+You are now teaching interaction design, not Unity. That's the right transition. The question is whether your students are making that transition with you.

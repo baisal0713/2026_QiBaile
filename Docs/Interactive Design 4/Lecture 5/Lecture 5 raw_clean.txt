@@ -1,0 +1,267 @@
+## Introduction and Recap
+
+Oggi parliamo di questo modello di interazione che stiamo vedendo e che stiamo imparando. Tra l'altro qualcuno mi aveva chiesto -- forse la volta scorsa, forse era nell'altra classe -- so che state studiando Touch Designer, corretto? O solo Max MSP? Insomma, il Touch anche. Stavo pensando a come usare dei controller esterni. Arduino si fa in un altro modo, però per quelli fra di voi che vogliono provare a usare dei mini controller, sto testando un pipeline che passa da un mini controller a Touch e poi Unity, per controllare varie operazioni, varie cose che stiamo facendo. Quindi la prossima volta vi faccio vedere questo.
+
+Ovviamente poi, per comprendere anche i passaggi, dobbiamo spiegare ancora un paio di cose su questo modello di interazione che stiamo vedendo.
+
+Allora, un breve recap di quello che abbiamo fatto la volta scorsa. La volta scorsa abbiamo visto il passaggio tra l'approccio che avevamo fatto l'anno scorso -- un'interazione di solito binaria fatta su trigger zone: entri nell'area, succede qualcosa, si accende qualcosa, esci dall'area, si spegne -- e abbiamo visto come in questa scena (nel frattempo avevo aggiunto qualcosa per l'altra classe) abbiamo ripassato un attimo il suono spaziale, il suono 3D.
+
+La differenza è che anziché avere l'area che accende e spegne le cose, abbiamo un sensore di prossimità che prende la variabile della distanza del giocatore da un oggetto -- in questo caso questa colonna -- e trasforma questo valore, mappa questa variabile su altre variabili, come per esempio il suono, l'intensità dell'emissione, e anche il pitch del suono, per quello quando ci avviciniamo c'è questo effetto un po' "eerie".
+
+Allora, questo passaggio vi torna come idea? E per fare questo abbiamo scritto una specifica per questo componente e poi abbiamo chiesto a lei di aggiungere o di mettere in layer questi diversi feedback.
+
+## The Interaction Atom: Input, Transformation, Output
+
+Quello che vorrei fare oggi è specificare un po' meglio questo -- chiamiamolo l'atomo dell'interazione. Sicuramente forse avrete visto, se fate Touch o altri software, questa trasformazione di valori da un formato all'altro. Però per Unity o in generale per ambienti digitali credo che c'è una formula che, se la prendete, poi potete seguire per creare qualsiasi interazione con molta facilità.
+
+Praticamente in qualsiasi ambito, a partire dagli anni '50-'60 della cibernetica, quando si formulavano tutte le teorie che ad oggi sono alla base delle tecnologie del computer in generale, c'è sempre stato questo modello tripartito: input, processo o trasformazione, e output.
+
+Credo che anche nel design delle interazioni avremo più o meno la stessa formula, dove l'input può essere qualsiasi azione che facciamo noi mediata da controller, dell'avatar dentro la scena, suono che vogliamo emettere, MIDI, e tutte queste cose -- possono essere anche data stream dall'esterno. Quando diciamo input, intendiamo una cosa che stiamo azionando noi.
+
+L'output in questo caso sono tutti i componenti di Unity, o quelli esistenti o quelli che vogliamo creare noi, che hanno uno o cento feedback in qualche modo layerizzati. È sempre l'esito dell'interazione.
+
+Quello che sta in mezzo è la parte interessante, e la parte che se apprendiamo a pensare, poi ci dà massima libertà di progettare interazioni: la trasformazione.
+
+Fino ad ora abbiamo sempre pensato in termini di "qua voglio mettere il trigger zone", piuttosto che "c'è il timer che fa qualcosa", "spawner". Abbiamo pensato in termini di componenti e quello che fanno in Unity, senza scorporare in modo più astratto l'interazione stessa.
+
+Adesso invece dobbiamo iniziare a scorporare, a pensare in modo più astratto, perché così vedremo che quando abbiamo un progetto, un design in mente, è molto più facile decidere come implementarlo.
+
+L'input può essere lo sguardo, l'avatar dentro lo spazio digitale che sta fermo, il contatto, il tocco. Può essere anche qualcosa di autonomo: il tempo o dei numeri che vanno a random.
+
+L'output -- conosciamo già svariati componenti, forse quelle che non conosciamo sono tutte le loro variabili. In base al design che vogliamo implementare, dobbiamo andare a esplorare, capire o sapere già quale variabile vogliamo alterare.
+
+## The Signal Matrix: Discrete vs. Continuous, Bound vs. Unbound
+
+Quello che c'è in mezzo riprende da questa cosa che stavamo facendo con il sensore. Il sensore ha un segnale. Fino ad ora non sapevamo esattamente a cosa serve questo segnale, però adesso possiamo iniziare a vederlo.
+
+Il segnale può essere binario -- cioè continuo o discreto, in sostanza. Può essere binario, nel senso che c'è la luce che si accende quando entro nella stanza, però non fa nient'altro che on/off: c'è un segnale, però è discreto, due o pochi stati. Oppure il segnale può essere continuo: prendo una variabile -- la distanza, lo sguardo, la velocità del corpo, qualsiasi cosa -- prendo una variabile continua e la mappo su un'altra variabile, come abbiamo fatto la volta scorsa con l'intensità.
+
+Se mettiamo insieme l'idea del discreto e continuo con il concetto della relazione, ci sono questi due componenti che diventano una specie di matrice a quattro che ci permette di capire la categoria macro dell'interazione:
+
+1. **One-shot** (discreto, scollegato): Non abbiamo una vera connessione. C'è un trigger e il trigger fa partire qualcosa di suo -- una canzone, un'animazione che si sviluppa a modo suo, o anche un'intera simulazione, come abbiamo visto nelle prime tre lezioni con il life cycle: basta spawnare una cosa e poi loro si muovono in base al ciclo di vita, ai comportamenti, e così via.
+
+2. **Switch** (discreto, collegato): Qua abbiamo una relazione, parleremo del cosiddetto binding -- stiamo abbinando a delle variabili, però non mandiamo nessun tipo di informazione, il segnale non è continuo.
+
+3. **Binding** (continuo, collegato): Un binding vero e proprio, dove stiamo appaiando due variabili con segnale continuo, come abbiamo fatto con l'esempio della volta scorsa.
+
+4. **Conditional trigger** (continuo, ma cerca un valore): Quando non vogliamo appaiare in modo continuo le variabili, però abbiamo una condizione. Ad esempio, se ho una movement speed di cinque e diventa sette a un certo punto, solo allora triggera un post-process effect o qualcosa del genere. È sempre una cosa che ascolta una variabile, però cerca solo un valore, una condizione.
+
+Queste quattro cose possono essere combinate in vari modi, però mi sembra un buon riassunto di spazio di possibilità.
+
+## Semantics of Interaction and the Backrooms Theme
+
+Adesso usiamo questo modello mentale per vedere diverse cose. Se adesso andate a scaricare o se avete già scaricato questi due pacchetti e li importate --
+
+Quello che volevo fare oggi è portare questa logica. Siamo ancora sull'idea della semantica dell'interazione. La grammatica sono le categorie, la semantica è cosa effettivamente vogliamo andare a disegnare.
+
+La volta scorsa eravamo partiti dal corpo nello spazio che diventa oggetto di interazione -- la sua assenza o la sua presenza. Prima di passare al tocco e a varie altre forme, mi interessa comprenderla e farvi esercitare su questa idea di come creare e layerizzare dei feedback e collocarli in queste categorie.
+
+[Logistics: Students download and import two packages.]
+
+Volevo trovare una formula che ci porta anche un certo significato. Anziché stare sempre in questo spazio completamente astratto, avevo visto questo pacchetto dei Backrooms. L'ho un attimo risistemato e pulito perché era un po' incasinato, in modo che potete lavorarci con più facilità.
+
+L'interaction design, come qualsiasi altra forma di design o arte, ha comunque l'obiettivo di suscitare qualche emozione. Vogliamo trasmettere qualcosa. I Backrooms mi sembravano una metafora interessante che già racchiude un set di emozioni: la "lankiness", l'eerie... tutto quello che è un po' atmosferico e liminale.
+
+Sta emergendo abbastanza fortemente questo genere di giochi ed esperienze interattive che stanno molto sul liminale.
+
+[A student shares their knowledge of Backrooms lore.]
+
+Esatto. È quasi umano, quasi reale, però in realtà non lo è. E queste cose, a livello viscerale, colpiscono molto.
+
+Volevo usare almeno come contesto, come collocazione, questo spazio e questo set di emozioni. Poi passeremo a qualcosa d'altro più avanti. Almeno abbiamo un target: quando progettiamo le interazioni possiamo chiederci "questa cosa che abbiamo in mente sta aggiungendo a questa emozione o non c'entra niente?" Nei valori di come abbiniamo le variabili, vedrete che ci auguriamo di riuscire a fare questa connessione piena dall'implementazione alle emozioni -- che è un po' lo scopo.
+
+[Logistics: Students import the packages.]
+
+## The Backrooms Asset Pack and Procedural Room Generator
+
+Allora, cosa abbiamo qua dentro questo pacchetto? È una libreria, un asset pack modulare che ci permette di costruire un po' questi Backrooms. Sono moduli di muri, floor e varie altre cose simili, abbastanza generiche, quindi possiamo cambiare il materiale, cambiare la visuale. Ho convertito tutti gli shader a quello standard, così possiamo lavorare senza fare cose strane.
+
+Ci sono due scene qua dentro, ma noi costruiamo qualcosa di nostro. Una scena contiene tutti i vari asset con rampe, scale, e poi un esempio già costruito. Purtroppo chi ha fatto quest'asset l'ha costruito in Blender, quindi è un oggetto unico -- noi ce ne facciamo poco perché vorremmo spostare il muro, cambiare i singoli segmenti.
+
+Però nel frattempo ho fatto un piccolo generatore di istanze, un tool procedurale -- il secondo pacchetto che vi ho condiviso -- perché ovviamente in questo tipo di level design il level design stesso può diventare un'intera lezione. Preferirei introdurre qualche tool procedurale per il level design, così almeno un attimo lo automatizziamo, come il terreno il semestre scorso.
+
+### Setting Up the Tile Set
+
+Ci servono due cose. La prima è un scriptable object che contiene dei segmenti del terreno di cui poi sarà costruita la nostra stanza.
+
+[Logistics: Instructor helps a student with deprecated packages.]
+
+Dentro questo pacchetto, in Asset Packs > Backrooms > Prefabs, abbiamo delle cartelle: Doors, Floor, Ramp, Stairs, e Walls. Per dare al generatore i componenti, dobbiamo creare un data object. Andiamo su Create > Ludcore > Backroom Style Set.
+
+Per ogni modulo, ogni segmento ha una dimensione: 3x2, 2x3, 2x1, e così via. Per semplicità usiamo il 3x3. Lo scriptable asset ha i seguenti campi:
+
+- **Floor & Ceiling**: In questo pacchetto sono la stessa cosa, perché è stato pensato per avere più piani -- il floor di un piano sarebbe il ceiling di quello sotto, quindi le lampade saranno attaccate sotto.
+- **Walls**: Possono essere normali o con aperture per porte, finestre, angoli.
+- **Corners**: Il segmento "wall corner" o "wall edge" per dove si uniscono le mura.
+- **Doors & Windows**: Le porte e finestre effettive.
+
+Un trucco: quando stiamo riempiendo da una parte all'altra, chiudiamo l'inspector -- usiamo il lock. Poi apriamo la cartella dei prefabs. Possiamo anche aprire un secondo inspector: tre punti > Add Tab > Inspector, così vediamo sia quello che abbiamo loccato che uno normale che ci fa vedere quello che selezioniamo.
+
+Vi sto facendo vedere come popolare questa cosa perché vi invito a casa a provare altre combinazioni. Possiamo mettere più varianti e il tool poi andrà a randomizzare nella generazione. Una volta impostato un set, possiamo fare anche altri set con altri segmenti.
+
+### Generating Rooms
+
+Una volta fatto questo, andiamo su Tools > Backroom Generator, gli diamo il tile set, e poi generiamo una stanza. Ci sono tre modalità:
+
+- **Open Room**: Una stanza aperta senza niente dentro.
+- **Maze**: Una stanza con muri interni, porte, e così via -- l'idea dei Backrooms come maze infinito.
+- **Rooms and Corridors**: Una grande stanza fatta di stanze più piccole.
+
+Poi scegliamo quanto deve essere grande -- per esempio 18x18, divisibile per 3 perché usiamo moduli a 3. Sotto ci sono le percentuali: fra tutte le mura, quanto vogliamo che abbiano porte o finestre.
+
+Se premiamo Generate, la stanza appare. Nella gerarchia della scena tutti gli oggetti saranno ordinati per tipologia: mura, corners, floor, ceiling, tutti raggruppati. Se qualcosa del layout non vi piace, potete rigenerare togliendo le chance delle porte o editarlo a mano.
+
+[Logistics: Students test the room generator and set up the character controller inside the generated room.]
+
+## Audio Effects in Unity
+
+Adesso che abbiamo un contesto, tuffiamoci nell'interazione. La prima cosa con cui vorrei iniziare è il suono. Abbiamo visto la volta scorsa il suono spaziale, però non vi ho ancora fatto vedere come alterare il suono e quali sono le proprietà più semplici con cui possiamo giocare in termini di effetti.
+
+Creiamo un audio source e mettiamo un audio di sottofondo. Userò la traccia "Dark Lu" dal pacchetto Ambience SFX della volta scorsa, che è molto drone.
+
+Quando impostiamo il suono, usiamo la variante spaziale: loop attivo, spatial blend tutto a 3D. Possiamo mettere un po' di spread -- si sente piuttosto nelle cuffie, se mettete uno spread più alto è più equilibrato. Poi non lasciamo il min/max distance troppo alto, sennò diventa un suono globale: mettiamolo a 7 o 10, così negli angoli forse non sentiamo il suono e possiamo giocare con le proprietà.
+
+### Doppler Effect
+
+La prima cosa abbastanza "low cost" è l'effetto Doppler. È semplicemente il modo in cui il suono viene alterato in base alla velocità -- il classico esempio dell'ambulanza che passa. Se aumentiamo l'effetto Doppler, il pitch del volume si altera quando ci passiamo in modo più veloce. È più utile se abbiamo un oggetto che si muove con un audio source attaccato. Per un suono statico non dà molto.
+
+### Built-in Audio Filters
+
+Unity ci dà questi effetti: Chorus, Distortion, High Pass Filter, Low Pass Filter, e Reverb.
+
+Il **Low Pass Filter**, se lo portiamo al minimo, taglia tutte le frequenze fino alla frequenza 10 -- praticamente non sentiamo più niente. L'effetto interessante è che è una specie di fade, però frequenziale: se lo alziamo lentamente, facciamo entrare mano a mano tutte le frequenze. Diventa una specie di fade con questa sonorità un po' strana.
+
+Il **Reverb Filter** aggiunge riverbero. Ci sono già dei preset, oppure possiamo tenerlo su "User" e alterare le variabili noi stessi, come il reverb level. Può essere che quando entriamo in una stanza, il riverbero diventa molto più forte -- un'interazione molto semplice.
+
+Insomma, sappiate che esistono, sappiate che potete combinarli: mettete l'audio source, mettete uno o più effetti, e poi quando vogliamo fare qualcosa di interattivo col suono, possiamo prendere singole variabili e alterarle per creare effetti interessanti.
+
+## Building the Entry Controller: Spec-Driven Workflow
+
+Adesso vediamo cosa vorrei fare. Voglio fare due controller. Vi ricordate il workflow: abbiamo un'interazione in mente, creiamo un controller per quella interazione.
+
+Il primo è un **binding continuo** -- possiamo riutilizzare la distanza e poi anche lo sguardo. Il secondo è una **modalità binaria** -- come il semester scorso, però voglio aggiungere l'idea della curva e dell'animazione. Non solo switch on/off, ma switch on/off di qualcosa che ha poi un suo ciclo di vita o fa qualcosa di suo: segnale discreto, due variabili che si toccano solo in un momento e poi non fanno niente.
+
+### Writing the Spec Document
+
+Il mio suggerimento è sempre pensare un attimo prima cosa si vuole fare, quindi scrivere le specifiche in un breve documento anziché nel prompt. Se non l'avete, create una cartella "docs" nel progetto, e dentro una cartella "specs".
+
+Creo un file txt: "room one entry controller". Qua proviamo a scrivere quello che vogliamo che succeda.
+
+Visto che stiamo facendo un'interazione che non prevede un binding ma semplicemente playa una cosa quando il trigger sensor viene attivato dal giocatore, scrivo: "Quando il trigger sensor viene attivato, andiamo a playare l'interazione."
+
+La parte più interessante: l'interazione avrà diversi layer di feedback, ciascuno con la propria animazione DOTween. Per ogni feedback, voglio scegliere la curva esposta nell'inspector.
+
+### Tweening Curves (Easing)
+
+Perché parliamo di curve? Le curve sono funzioni matematiche che determinano come mappi un valore su un altro. Può essere lineare, può entrare debole e poi improvvisamente raggiungere il valore inteso, oppure fare un movimento diverso. La selezione della curva determina quello che sentiamo: linearmente, o con accelerazione, e così via. A livello estetico hanno un'importanza fondamentale.
+
+Un consiglio: quando parliamo dell'atomo dell'interazione, la trasformazione dovrebbe sempre avere una curva. Spesso la relazione non sarà lineare, perché la relazione lineare non è molto interessante -- a volte funziona, ma raramente.
+
+### The First Feedback: Audio Pitch
+
+Nello spec scrivo:
+
+- **Fields**: Audio Source
+- **Methods / On Play**: Il pitch dell'audio source va da zero a uno, su una certa durata esposta nell'inspector, con la curva menzionata.
+- Variabili esposte: pitch entry duration e curve.
+
+### Generating Code with AI
+
+[Logistics: Instructor helps a student set up a laptop.]
+
+Allora, due documenti che adesso non entriamo in merito, però sono una cosa che nella mia esperienza con l'AI funziona sempre. Il primo è il **Coding Style Guide**: descrive degli standard di codice, vari pattern o principi che lei deve seguire per questo progetto specifico. Il secondo è un documento con indicazioni sull'**architettura**: quali principi di composizione deve seguire nel progetto. Quello più basilare è la separazione tra data, simulazione, e presentazione -- tutto ciò che è feedback.
+
+Questi due documenti li metto nella cartella Docs in modo che l'AI possa leggerli e seguirli.
+
+L'idea è che il peso della descrizione sta nel documento, non nel prompt. Ovviamente potete anche farlo nel prompt, però è molto meglio se l'abbiamo da una parte separata: se lo cambiamo, lo alteriamo, non lo perdiamo nella chat history.
+
+> **[Digression]** Anche queste specifiche possono essere iterate con l'AI. Possiamo iniziare dicendo "Guarda, ho questa idea, ragioniamo un attimo, facciamo brainstorming" -- sono tutti ottimi per brainstormare e farsi venire idee. Però sono due momenti diversi: non facciamoli nella stessa chat. Se brainstormiamo, cerchiamo di definire, poi apriamo un'altra chat. Quando abbiamo definito le specifiche, implementiamo, perché sennò più spesso succedono casini.
+
+### Testing the First Feedback
+
+L'AI ha generato il controller. Come vediamo, richiede un sensore e un audio source, con due variabili: una durata per quando entrerà il pitch e una curva che seguirà il valore per arrivare da 0 a 1.
+
+Metterò il solito sphere collider insieme al trigger sensor. Il trigger sensor andrà a identificare il giocatore. Adesso, visto che gli ho già detto intrinsecamente "quando vedi che il sensore ti dà il segnale, il player è entrato, triggera subito queste cose", possiamo anche non linkarli nell'editor.
+
+Definiamo la durata a 2 secondi. Ricordatevi: l'audio source va con il pitch a zero inizialmente, perché è il valore di partenza.
+
+Quando sono passato dal trigger, il suono nel corso di 2 secondi è arrivato al pitch da 0 a 1. È una cosa semplice, però se capiamo il concetto poi possiamo usarlo su qualsiasi altra interazione. La relazione lineare è un po' meno interessante -- possiamo usare curve diverse, oppure crearci una nostra curva che può essere anche più brusca. La durata è sempre 2 secondi, però il modo in cui arriviamo al valore sarà leggermente diverso.
+
+## Layering Multiple Feedbacks
+
+Perché vi sto facendo vedere questo? Perché a livello di interazione è importante capire la differenza tra un'interazione binaria on/off e una cosa che comunque mandiamo in play ma che ha un qualche comportamento -- in questo caso ha una curva, ha una durata. Per tutte le cose raffinate, vogliamo considerare questi comportamenti. Molto raramente useremo la cosa "o no, e basta" come abbiamo fatto finora.
+
+### Adding Lighting Feedback
+
+Una cosa che secondo me avrà un bell'effetto: partire dal buio e, insieme al suono, accendere in modo graduale anche le luci. Per fare questo potremmo usare il materiale emissivo sui segmenti del tetto, oppure l'illuminazione in generale. Sempre usando l'AI, abbinate un altro feedback. La cosa importante è che segua lo stesso comportamento: viene acceso con la curva, con la durata, così viene la stessa interazione di base.
+
+Se seguiamo la formula dell'input-transformation-output: il nostro input per ora è solo la presenza dell'avatar, l'avatar che sta triggerando cose o è vicino/lontano da cose. Dobbiamo decidere l'output: da una parte abbiamo il suono, adesso vogliamo aggiungere le luci -- il materiale emissivo, qualcosa dell'ambiente, la directional light. E la trasformazione l'abbiamo già definita nello spec: un tween con la curva e con la durata.
+
+Questo pattern, se riuscite a tenerlo a mente come modello, poi per qualsiasi cosa si può replicare.
+
+### Updating the Spec
+
+Aggiorno lo spec con nuovi feedback. Dico all'AI: "Ho aggiornato il spec con nuovi feedback, leggi e implementa."
+
+Le tre variabili per l'illuminazione con i loro range:
+- **Intensity Multiplier**: da 0 a 1
+- **Environment Lighting**: da 0 a 1
+- **Emissione del materiale del tetto**: da -10 a 5
+
+Vedete che c'è il peso della descrizione nel documento, non nel prompt. A casa provate anche a discutere con l'AI cosa fare -- vi darà un milione di idee, poi sta a voi scegliere. Siete sempre voi i designer o gli artisti. Vi consiglio di farlo in due momenti separati: o scrivete la decisione nel spec, o fatela scrivere dall'AI nel spec, e poi in un'altra chat implementatela, per mantenere un po' di ordine.
+
+### Results and Refinement
+
+L'AI ha aggiornato lo script. Per ciascuna interazione ci ha dato una durata, una curva. Possiamo anche dirgli "per tutte queste feedback vorrei usare la stessa durata e la stessa curva", oppure tenerle granulari.
+
+Adesso abbiamo: l'audio source, le due variabili della luce, e il campo del materiale. Effettivamente adesso ha molto più senso -- tutti questi layer del feedback, quando siamo più vicini al suono si sente ancora di più.
+
+Su tutte queste variabili ho messo la stessa durata e la stessa curva, però essendo variabili che hanno range diversi, ha senso anche forse mettere una durata diversa, o addirittura inserire un punto di partenza diverso -- tipo la luce parte un po' più tardi del suono.
+
+### Adding Delays
+
+Ho chiesto all'AI di aggiungere un delay per ogni variabile. Così ho inserito un delay per ogni feedback: le due variabili della luce partono un po' più tardi del suono e dell'emissione.
+
+L'ultima cosa: spegnere il sensore quando l'abbiamo usato una volta. Non è sempre il caso -- a volte lo vogliamo poter riutilizzare -- ma qui è un'interazione di entrata, quindi non la vogliamo ripetere. Per farlo senza aggiungere logica all'AI, possiamo usare il vecchio metodo della detected event e dire "una volta entri, semplicemente spegni l'oggetto" -- spegni se stesso, in pratica. Oppure possiamo dire all'AI di distruggerlo una volta utilizzato.
+
+### Initializing Values
+
+Idealmente dobbiamo già impostare i valori delle cose con i loro valori iniziali, oppure possiamo chiedere all'AI di aggiungere una parte dove il controller stesso resetta le variabili indipendentemente da cosa abbiamo fatto nella scena. Così almeno nella scena possiamo lavorare normalmente.
+
+## Combining Interaction Types
+
+Volevo recapitolare questa parte e anche quello che abbiamo fatto la volta scorsa. Per esempio sulla parte del proximity sensor: adesso non siamo più andati a fare la parte continua, però era importante capire l'idea di questo tipo di interazione, che conoscevamo già ma adesso abbiamo visto in una forma più completa -- con durata, curva, e altre proprietà. È di base un'animazione, e abbiamo visto come integrare più diversi feedback, forse anche con un delay diverso in base a quello che vogliamo fare.
+
+Questo può assolutamente coesistere con il proximity sensor -- il column controller della volta scorsa. Posso portare anche le colonne luminose e, in questo spazio più piccolo, restringere il campo del sensore.
+
+> **[Digression]** Qua nel buio non so dove sto andando -- devo camminare nella direzione opposta.
+
+Qua abbiamo abbinato l'animazione di entrata con l'interazione basata sulla distanza della volta scorsa. Ovviamente dobbiamo sistemare le grafiche di queste colonne, però vedete che già solo con queste due interazioni stiamo iniziando ad approcciarci a una sensazione di qualcosa di molto strano, di uncanny. Questo spazio sta iniziando ad assumere una dimensione più tematica.
+
+## Liminal Games: Inspirations
+
+[A student asks about camera shake as feedback.]
+
+Per esempio, in Cinemachine abbiamo il Noise -- è built-in nella nuova versione. C'è un Noise Profile che possiamo cambiare: provate a mettere "Hand Strong". Se mettiamo un profilo strong, quando la camera è ferma c'è questo senso di respiro. Possiamo accenderlo insieme alle altre cose per fare uno shake.
+
+Un'altra alternativa per dare una scossa alla camera: l'extension **Cinemachine Impulse Listener**, che ascolta quando arriva un impulso e fa uno shake in base a qualche noise preset.
+
+Giusto per darvi qualche esempio di riferimento: quest'anno stanno uscendo tanti giochi su questa idea dei non-luoghi, del liminale. Uno dei più belli che ho visto si chiama "Liminal Core" -- c'è una variante dei Backrooms che sono i "pool rooms", infiniti spazi piastrellati di piscine con cose strane dentro. L'idea di questi progetti è che sono molto orientati all'atmosfera: creare uno spazio ed elicitare emozioni, però senza horror -- niente mostri. Stanno lavorando quasi esclusivamente con proprietà percettive: suoni, luci, materiali, oggetti. In questo gioco a un certo punto esci "fuori", sei in mezzo a un oceano -- interessante come hanno curato questi spazi. Dura quasi 2 ore. Vi passo qualche link, e secondo me ci sono anche molte interazioni non ancora esplorate che possiamo pensare.
+
+## Homework and Course Overview
+
+Per la prossima volta, provate a usare i Backrooms, provate a fare almeno un'interazione nuova, di qualsiasi tipo. Il mio suggerimento: fate una delle due -- un'interazione switch (binaria) però con curva e animazione, oppure una cosa continua dove la distanza o la velocità o qualcos'altro viene mappato su un'altra variabile o più variabili. Se vi viene in mente qualcosa che gioca su questo tipo di emozione, di esperienza liminale, ancora meglio.
+
+Le aree su cui ci stiamo concentrando nel corso:
+
+- **Simulazione**: Abbiamo visto l'ecosistema, che è sempre integrabile.
+- **Interazione con avatar**: Corpo, presenza, assenza, feedback. Input e output possono essere qualsiasi cosa con qualsiasi trasformazione in mezzo.
+- **Input alternativi**: UI, controller MIDI (la prossima volta vi faccio vedere come le stesse variabili della luce e del suono partono non dall'avatar ma da pulsanti su un controller).
+- **Fisica**: Da integrare ancora.
+- **NPC**: Forme umanoidi e character, animazioni.
+- **Environment manipulation**: Tutti i componenti dell'ambientazione.
+- **Narrativa**: Tecniche per testo come oggetto 3D nella scena.
+
+La richiesta tecnica per questo semestre è usare questo approccio: il progetto deve dimostrare diversi tipi di interazioni. Massima libertà sul tema, però il corso essendo basato sul design interattivo deve dimostrare molta più interattività e idealmente usare le interazioni in modo coerente per qualche obiettivo. Non solo mettere cose in sequenza, ma far sì che le interazioni portino una direzione emotiva.
+
+[Logistics: Class ends. Instructor will continue with more interaction examples next time.]

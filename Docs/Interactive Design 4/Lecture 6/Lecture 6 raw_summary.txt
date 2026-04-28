@@ -1,0 +1,45 @@
+Teacher Summary -- Interactive Design 4, Lecture 6
+
+TEACHING OBJECTIVES
+
+This lecture aimed to move students from building isolated interactions toward thinking systematically about interaction as a designable phenomenon. The core framework -- a 2x2 matrix of binding type and signal type -- gives students clarity about what kind of relationship they are creating between user and environment. Equally important was shifting design from code to data: by extracting parameters into ScriptableObjects, the instructor wanted students to see that the "feel" of an interaction is a design decision, iterable and testable independently of the code that executes it. Beneath both goals sits a conviction that the transformation between input and output -- the curve, the envelope, the timing -- is where emotional meaning lives.
+
+PEDAGOGICAL APPROACHES
+
+The session employed a layered scaffolding strategy. The instructor began with a theoretical framework (the input-process-output model, the four interaction categories) but grounded each concept immediately in the scene students already had open. Classification exercises -- "what type of interaction is this?" -- made the taxonomy feel like a useful lens rather than academic overhead. The stillness dimmer was particularly well-chosen because it sits ambiguously between categories, forcing students to reason about the framework rather than memorize it.
+
+The hands-on portion followed a deliberate "I do, we do, you do" progression: explore existing interactions, swap profiles to feel the difference, watch the instructor build a new interaction from scratch, then build one independently. The "we do" phase took the interesting form of the instructor live-designing a spec with AI assistance, narrating his reasoning aloud. The two-pass design approach -- spec first, implement second -- was taught as a practical habit that pays dividends in clarity and iteration speed. The instructor also practiced productive imperfection: debugging camera clipping live, encountering stuck doors, discovering wrong parameter values. These moments became micro-lessons in reading tooltips and the iterative nature of real work.
+
+DESIGN PHILOSOPHY AND PRINCIPLES
+
+Several transferable beliefs surfaced clearly. First, that interaction design is fundamentally about the transformation between input and output, not the endpoints themselves -- choosing what to connect matters, but how you shape the connection is where expression happens. Second, that separating data from behavior is not merely good software practice but good design practice, because it lets you name and compare the "personality" of an interaction the way a musician might compare synthesizer presets. Third, that constraints (few assets, modular kits with imperfect seams, thin-walled geometry) are productive: you patch the light leaks with a ceiling plane, adjust the camera radius, and the result is still evocative if the interaction design is sound. Fourth, that layering multiple feedback channels (light, sound, material animation, post-processing, spatial deformation) onto a single input creates richer, more visceral experiences than any single channel alone.
+
+KEY IDEAS AND CONCEPTS INTRODUCED
+
+The session's conceptual spine was the four-category taxonomy of interactions, defined by two axes: binding (continuous vs. unbound) and signal (continuous vs. binary). Tracking (continuous/continuous) mirrors input in real time. Switch (continuous/binary) toggles state. One-shot (unbound/binary) fires once and plays out. Threshold (unbound/continuous) monitors a continuous value and fires when a condition is met.
+
+Alongside this taxonomy, the concept of the interaction "profile" was central: the same controller logic can produce wildly different experiential qualities depending on curve shape, duration, delay, and value mappings stored in a ScriptableObject. The instructor invited students to name profiles by the feeling they evoke, reinforcing that these are design artifacts, not just data containers.
+
+The two-pass workflow (spec first, implement second) was presented as both a productivity technique and a thinking tool -- the spec becomes a readable artifact you can validate and hand to an AI or a collaborator. The notion of invertibility -- reversing an interaction by swapping values in its profile without touching code -- was demonstrated with the stillness dimmer and made a compelling case for data-driven design.
+
+DIGRESSIONS AND ANECDOTES WORTH PRESERVING
+
+The synthesizer/envelope analogy connects the students' likely background in sound design (Max/MSP) to interaction design concepts, making the idea of shaping a response curve feel familiar. The instructor explicitly drew the parallel between attack-release-duration-sustain in audio synthesis and the curve/range/envelope parameters of an interaction profile.
+
+The live debugging of the compacting corridor -- walls only closing at the end because max distance was wrong, nearly crushing the player by setting values too aggressively -- demonstrated that interaction design is inherently iterative and that reading variable tooltips is not optional. The camera clipping discussion, while seemingly technical, carries a design lesson: seeing through walls shatters immersion instantly, and managing the camera's physical relationship to the environment is as much a design concern as any interaction parameter.
+
+STUDENT LANDSCAPE
+
+A small class of likely four to six students at NABA, with backgrounds including some Max/MSP and signal processing. They have worked with Unity since the previous semester and are familiar with triggers, colliders, and basic scene setup. At least one student had previously attempted spatial expansion/contraction. The students are quiet but engaged; one expressed a clear preference for more abrupt interaction responses, indicating developing aesthetic opinions about interaction quality. They are comfortable enough with Unity to follow along but need guidance on details like ScriptableObject workflows and shader property naming. Italian is the primary language of instruction, with English used for technical terms and AI prompts.
+
+SESSION ARC
+
+The session had a clear three-act structure. The first act (roughly 20 minutes) was theoretical: reviewing the input-process-output model, introducing the four interaction categories, and classifying three existing scene interactions as concrete examples.
+
+The second act was the longest and most hands-on. Students explored existing interaction profiles and swapped them to feel the difference, then watched the instructor live-build the compacting corridor interaction (including the two-pass workflow with AI), culminating in adding multiple feedback layers (material animation, vignette, desaturation). Two maintenance interludes -- camera collision settings and ceiling planes for light leaks -- were woven in naturally when the need arose.
+
+The third act was student-directed: time to design and implement their own interactions. The instructor circulated, helped debug, and offered a door physics mini-lesson as an additional tool. The session closed with homework (complete the scene with a narrative purpose and at least one or two more interactions) and a preview of next session's topics. The overall rhythm -- conceptual framing, guided experimentation, independent creation -- was deliberate, with the instructor's own iterative process (including mistakes) serving as model throughout.
+
+FORWARD THREADS
+
+Several things were explicitly promised or left open. Gaze was mentioned multiple times as the next input modality, with the instructor beginning a gaze sensor example during students' independent work time. The MCP Server for Unity was introduced as an upcoming tool that lets AI agents inspect the Unity scene directly, promised for next session. VR conversion was discussed as a near-term goal -- converting the current scene to run on a headset using the XR Unity Toolkit, with hand tracking as a further possibility. The homework itself is a forward thread: students are to complete the backrooms scene with a narrative arc (escape from point A to point B) using multiple layered interactions. The instructor also hinted at providing a better style guide for AI-generated code, particularly around tooltip documentation for inspector variables.

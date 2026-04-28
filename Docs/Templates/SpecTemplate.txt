@@ -1,0 +1,59 @@
+---
+Implement only what is specified in this document. If the
+component already exists, evaluate the diff and update or
+add the new features. If something is unclear, ask me
+clarifying questions explicitly before implementing.
+---
+
+<One paragraph: what this interaction does and why.
+ Frame it as an atom: what's the INPUT, what's the
+ RELATIONSHIP, what's the OUTPUT. Note whether the
+ Controller is STANDALONE or talks to a Manager (and why).>
+
+Components: <list each script and namespace>.
+
+============================================================
+[ComponentName]
+============================================================
+
+<One sentence: this component's role.>
+
+Fields:
+- field — short explanation. (default: …)
+- field — short explanation.
+- field (optional) — falls back to … if empty.
+
+Methods / Behavior:
+- On Play (triggered by <event/sensor>):
+  - step 1
+  - step 2 (after <delay>)
+  - step 3
+- OnDisable / cleanup:
+  - cancel pending invokes / kill tweens / clear state
+
+Edge cases:
+- If <X> happens during <Y>, then <behavior>. (Why: …)
+- If <field> is empty, then <fallback behavior>.
+
+============================================================
+[Second component, if any]
+============================================================
+
+<Repeat the structure above.>
+
+============================================================
+Out of scope (not implementing unless requested)
+============================================================
+
+- <related feature you considered but are deferring>
+- <alternative approach you rejected>
+- <integration with X system>
+
+References
+----------
+- Docs/Interactive Design 4/Interaction Model/primitives.md
+  (catalog of inputs / outputs / relationship configurations)
+- Docs/Interactive Design 4/Interaction Model/transformation-model-v2.md
+  (the Input → Relationship → Output frame and ADSR envelope)
+- Docs/Specs/TeleportSpec.txt
+  (canonical filled-out spec to imitate)

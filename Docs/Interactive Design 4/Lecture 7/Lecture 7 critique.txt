@@ -1,0 +1,89 @@
+INTERACTION DESIGN 4 — LECTURE 7 CRITIQUE
+==========================================
+
+WHAT WORKED WELL
+----------------
+
+The Discard cautionary tale was the strongest piece of pedagogy in the first half. When you described the exam student who selected half their project in GitHub Desktop and clicked Discard — "ma cosa hai fatto Fabio?" — you turned a potential dry warning into a memorable narrative beat. It was also one of the few moments this semester where Git appeared as concrete reality rather than verbal recommendation. Students will remember not to click Discard.
+
+The validate-then-operationalize handling of Veronica's transparent-door idea was textbook. She came with a design intuition ("the door becomes transparent as I approach"), you accepted it without re-routing, and you immediately walked her into the technical reality — material alpha, the standard-lit-but-transparent path, why she didn't actually need alpha clipping, the hidden requirement of toggling the collider when the alpha drops. The collider note was particularly good: it's the kind of thing a less-experienced teacher would either skip or treat as a separate lesson, and you embedded it inside her own design conversation. That's a student becoming a designer in real time.
+
+The tile-rotation demonstration was the most economical architectural lesson of the course. One TileRotation script, two configurations: a per-tile timer for self-animation, or a manager that finds all tiles and triggers them with staggered delay. Same code, two architectural personalities. You used a working artifact to make the case for modularity without saying "modularity" until late. The line "non fare un componente che fa tutto, ma fare un componente che fa un'azione" (raw line 581-582) is the cleanest principle-statement of the day, and it landed inside the demonstration rather than on a slide.
+
+The use of another student's spec attempt as a teaching case study was a stronger move than I've seen in earlier lectures. You took their teleport-spec — which used Rigid Body where the project uses Character Controller — and used it to teach the whole group about giving the AI the right context. "La logica era era giusta, è solo la il contesto" (raw line 458) protected the student while turning their work into shared material. In a class of four to five students, this kind of generalization is high-leverage.
+
+The gaze-and-fog classification at the very end was, on its own, the most precise application of the 2x2 matrix in any lecture so far. You built the interaction (focus a sphere, fog density rises), then asked "secondo voi di che tipo è questo esempio?" (raw line 808), waited, and then walked through why it's actually a switch and not tracking — because the sensor is binary even when the visual feedback is continuous. The matrix stopped being a slide and became a thinking tool. This is exactly the move Lecture 5's and 6's critiques have been asking for.
+
+The state definition is the cleanest one-sentence definition you've offered all semester: "quando parliamo di stato parliamo semplicemente di salvare una o più variabili con cui abbiamo interagito in quella sessione di gioco" (raw line 624-626). No hedging, no "diciamo," no "un po'." Compare this to your usual aesthetic-register fog. When you're in technical territory, the prose tightens — that's a strength.
+
+The spec-as-permanent-artifact framing was a quietly important new beat: "questa chat sarà persa, però lo spec resta" (raw line 595-596). You're now teaching the AI workflow not just as a method but as a documentation practice. That shift matters because it gives students a reason to write the spec well.
+
+
+WHAT COULD IMPROVE
+-------------------
+
+### 1. The Git migration consumed half the session and Git was still not demonstrated as a workflow
+
+This is the fifth consecutive critique flagging that you have never shown a live commit, diff, or revert. The irony is that this lecture spent its first fifty minutes on Git — creating repositories, inviting collaborators, cloning, copying project folders, batch-committing in GitHub Desktop. You used the Desktop UI exclusively (the same UI whose Discard button you warned against), and not once did you open a terminal in your project folder and demonstrate `git add`, `git commit -m "...", `git diff`, or a revert. The Discard anecdote was a cautionary tale, not a workflow.
+
+You also acknowledged at the end of class: "abbiamo perso un sacco di tempo con la col dit eccetera" (raw line 482). The cost was real. And the structural lesson is now visible after five lectures: when Git is treated as setup rather than as practice, it generates infinite logistical surface area without ever becoming a habit students can use.
+
+**Suggestion:** The single highest-leverage thing you can do for Lecture 8 is open a terminal in your project, type the four commands, and narrate them. Sixty seconds. Before any AI modification: `git status`, `git add .`, `git commit -m "working state"`. After: `git diff`, then either `git commit` again or `git restore .` to revert. If you are committed to GitHub Desktop, do the equivalent with named commits visible in the History panel — but the terminal is faster, more transferable, and gets students used to the tool you actually recommend. If this doesn't happen in Lecture 8, retire the verbal recommendation. The advice-without-practice gap is now louder than the recommendation itself.
+
+### 2. The AI-tool introduction was a survey, not a lesson
+
+You walked through Mistral, OpenCode, Kilo, npm-based CLI installation, and terminal basics in roughly fifteen minutes, with no concrete recommendation about which to choose or why. "Cambia un po' il modello che c'è dietro, però insomma" (raw line 162-163). Lecture 5's critique flagged the audio-effects survey as catalog rather than lesson. Same pattern recurring with AI tools. Students now know these tools exist; they don't know which one to install Monday morning.
+
+**Suggestion:** Pick one. The case for OpenCode is that you used it live in this session, so students saw it work. Tell students at the top of next session: "Install OpenCode via npm. We'll use it for the next two lectures. If you want to try alternatives later, you'll already understand the workflow." A single recommended tool with a known install path will get students unblocked faster than a menu of equivalents.
+
+### 3. The bonus gaze-and-fog content explicitly modeled the wrong workflow
+
+You said it out loud: "skippo il passo della dello spec e così via. Sbagliato, non fatelo, ammazziamo di fretta" (raw line 803). This is the moment you introduced a brand new sensor (gaze) and built an interaction with it, while announcing that the workflow you were modeling was the one students should not copy. The classification payoff at the end was excellent (see What Worked), but the build that preceded it was an anti-demonstration: the same instructor who has spent four lectures advocating spec-first design improvised an interaction and labeled the improvisation as bad.
+
+This isn't about the time pressure — the time pressure was real and you had to choose. It's about which content gets sacrificed when time is short. Sacrificing the spec step in front of students teaches them that the spec step is the optional one.
+
+**Suggestion:** When time runs out, cut content, not workflow. If the gaze-and-fog interaction can't be built with a spec inside the available time, defer the build to next session and use the remaining minutes for the classification exercise alone — that exercise was the highest-value moment of the closer anyway. Or pre-write the spec yourself at home, distribute it as a teaching artifact, and walk students through it as a finished example. Either path keeps the spec visible as non-negotiable.
+
+### 4. The manager/controller boundary was implied but never named
+
+You introduced "manager" through use cases (three controllers, all touching the light) and let the abstraction emerge. That's a good on-ramp. But you never closed the loop with a definition. What makes something a manager and not a controller? A controller decides when to fire; a manager owns shared output and exposes operations on it — that's the working distinction in your demo, but you never said it. Compounding this: "controller" itself has shifted meaning since Lecture 4, where it meant "an interaction script attached to a GameObject," and now means "the thing that calls a manager." Students who internalized the earlier usage will have to re-shape it without the shift being flagged.
+
+**Suggestion:** At the start of Lecture 8, put this on a slide or whiteboard: "Controller: owns one interaction, decides when to fire it. Manager: owns a shared output (lights, fog, audio), exposes operations on it. Controllers call managers, not the other way around." Three lines. Then point at the LightManager and the TeleportTrigger from this lecture and re-classify them aloud. A two-minute clarification will save weeks of confused implementations.
+
+### 5. State was introduced verbally but never built
+
+You named state cleanly. You motivated it with a designer's example (third visit closes the door, fourth opens another). And then the live build saved the home location on Awake — which, as you noted yourself, "in realtà si poteva usare anche solo un semplice oggetto" (raw line 670-671). The interesting case (state that changes over time, gates new behavior) wasn't built. The trivial case (write once, read forever) was.
+
+The lecture's two declared ideas were manager/controller and state. One got an architecture demo. The other got a definition and a deferred example. Students leave with a verbal handle on state but no working code that demonstrates it.
+
+**Suggestion:** Lecture 8 should open with the smallest possible state demo: a manager that counts how many times a trigger has fired, with one observable behavior change at count = 3. Sixty seconds, no AI involved, written together with students. The demo is more important than its content — the goal is to make state physical before students forget what you meant by the word.
+
+### 6. Homework remains structurally absent — now across three consecutive lectures
+
+You distributed three production templates (design document, production plan, asset list) and explicitly framed them as optional: "non è che non passate l'esame se non ce le avete" (raw line 335). Lecture 5's critique recommended deliverable-style homework. Lecture 6's critique reinforced it. Lecture 7 produced no deliverable at all — only an invitation to start filling in templates eventually. You also didn't ask students to bring their interaction work back next session.
+
+This is the third consecutive lecture where between-session practice was named as missing without any structural change to make it required. The pattern is now visible: you understand the problem, you have not yet built a fix.
+
+**Suggestion:** "Before next class: fill in the design document with one paragraph naming the experience your project is about. Add one entry to the production plan: which interaction you'll prototype this week. We'll spend the first ten minutes of next session reviewing them in pairs." Make it small enough that it can't be skipped. The pair-review forces showing work. The opening ten minutes makes it visible to you whether students did it.
+
+### 7. The classification exercise was a closer when it should have been an opener
+
+The gaze-fog classification (raw line 808-820) was the lecture's best matrix-as-thinking-tool moment. It happened at roughly 2:40, after several students had left, with only Veronica and one or two others still present. The handful of students who got that benefit are not the full class, and the moment couldn't carry the room because there was barely a room.
+
+Compare this to Lecture 6's critique, which suggested running a rapid-fire classification round before any building happens. The same suggestion holds here. The matrix needs to live at the front of the session, not at the end.
+
+**Suggestion:** Open Lecture 8 with three minutes of classification. Show two existing scene interactions (the teleport from this session, the tile-rotation wave from this session) and ask students to classify each. They will already know the interactions. The exercise lets them practice the matrix on familiar material before any new content. It also sets the expectation that classification is part of how this course thinks, not a quiz at the end.
+
+
+OVERALL ARC ASSESSMENT
+-----------------------
+
+This session got hijacked. NABA's GitHub disappearing the day of class is genuinely external bad luck, and you handled the immediate crisis competently — students left with working repositories. But the structural cost was severe: the cleanest, most coherent lecture of the course (Lecture 6) was followed by the messiest. The first fifty minutes were almost entirely logistics; the conceptual content of the lecture had to be compressed into a second half that was already being interrupted by one-on-one help with Veronica's transparent door and another student's missing Visual Studio.
+
+What's underneath the chaos is real. The manager/controller architecture is the right next concept — it's the move from "I can wire one interaction" to "I can compose a system." The pairing of state and architecture in the same session was deliberate and correct: you can't really teach state without a manager to put it in. The tile-rotation demo and the LightManager wiring are working artifacts students can study. The course is genuinely escalating in ambition.
+
+The trajectory across lectures has been: theory grounded (Lecture 5), framework taught (Lecture 6), architecture introduced (Lecture 7). That's the right shape. The risk is that Lecture 7's compression means the architecture didn't fully land — manager/controller is a verbal handle, not yet a working pattern in students' hands. Lecture 8 has to do double duty: deliver the planned content and reinforce what the disrupted week left fuzzy. The smallest possible state demo, the manager-controller definition, and the rapid-fire classification opener are the three highest-leverage moves available.
+
+The persistent gaps are now persistent enough to be predictive: Git as workflow remains a verbal recommendation only (five lectures), homework remains optional in form (three lectures), the classification exercise remains under-used as an opener (three lectures). These are no longer items on a to-do list; they are now the structure of how the course operates. Closing one of them in Lecture 8 — any one — would change the pattern. Closing none of them confirms it.
+
+The most honest signal of the day was Veronica staying past the official end of the session for an extra half-hour, asking sustained questions about the matrix, classifying her own door interaction, watching the gaze build. That's an engaged student doing what the course wants students to do. It's also one student. The question for the back half of the semester is whether the rest of the class will be brought to that level of engagement, and the answer probably depends on whether between-session practice ever becomes structurally required rather than verbally encouraged.

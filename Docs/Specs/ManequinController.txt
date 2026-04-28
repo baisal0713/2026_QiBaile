@@ -1,0 +1,78 @@
+---
+Implement only what is specified in this document. If the component already
+exists, evaluate the diff and update or add the new features. If something
+is unclear, ask me clarifying questions explicitly before implementing.
+---
+
+Controller attached to a mannequin in the room. Two behaviors:
+
+1. Teleport within a bounding box (toggleable random-interval timer +
+   external trigger).
+2. Sample the ceiling tile(s) directly above the mannequin and brighten
+   their emissive material instances. Previously-lit tiles are restored to
+   their prior emission when the mannequin moves away, so StillnessDimController
+   transitions on the overall ceiling are not clobbered.
+
+Follows the same architecture as CompactingCorridorController +
+CompactingCorridorProfile (ScriptableObject profile for tuning, MonoBehaviour
+for scene references and runtime logic).
+
+========== PROFILE (ScriptableObject) — ManequinProfile ==========
+
+  Teleport Timer
+  - useTimer          : bool             — master enable for random-interval teleports
+  - minInterval       : float (sec)      — lower bound of random wait between teleports
+  - maxInterval       : float (sec)      — upper bound of random wait between teleports
+
+  Ceiling Detection
+  - layerMask         : LayerMask        — which colliders count as ceiling tiles
+  - footprintSize     : Vector2          — XZ size of the overlap box (world units)
+  - verticalOffset    : float            — Y offset from mannequin origin where the box starts
+  - detectionHeight   : float            — Y size of the overlap box
+
+  Emission
+  - emissionColor     : Color (HDR)      — base emission color applied to lit tiles
+  - brightIntensity   : float            — exponent applied as Mathf.Pow(2, x) * emissionColor
+                                           (matches the project's existing convention)
+
+========== CONTROLLER (MonoBehaviour) — ManequinController ==========
+
+  Scene References
+  - bounds            : BoxCollider      — defines the teleport region. XZ is sampled
+                                           within the box (rotation-aware via
+                                           transform.TransformPoint). Mannequin Y is
+                                           preserved (keeps it on the floor).
+
+  Profile
+  - profile           : ManequinProfile
+
+  Events
+  - onTeleport        : UnityEvent       — fired after each teleport completes
+
+  Public API
+  - Teleport()        : void             — release current tiles, teleport, light new tiles
+
+  Runtime behavior
+  1. On Enable: if profile.useTimer, start random-timer coroutine.
+  2. Timer coroutine: wait Random.Range(minInterval, maxInterval), Teleport(), loop.
+  3. Teleport():
+     a. Restore emission on currently-lit material instances (cached prior values).
+     b. Pick a random XZ inside the bounds collider (local-space sampling with
+        TransformPoint so rotation/scale on the bounds transform is respected).
+        Y = current transform.position.y.
+     c. Apply random Y rotation (0..360).
+     d. Physics.OverlapBox above the mannequin using footprintSize/detectionHeight
+        /verticalOffset + layerMask.
+     e. For each hit, resolve a Renderer on the collider or its parent. Cache the
+        material instance's current _EmissionColor, then set to
+        emissionColor * Mathf.Pow(2, brightIntensity). EnableKeyword("_EMISSION").
+     f. Fire onTeleport.
+  4. Inspector context-menu entry for Teleport() so it can be triggered manually.
+
+  On Disable / OnDestroy
+  - Stop the timer coroutine.
+  - Restore emission on all currently-lit material instances.
+
+  Editor Gizmos
+  - Draw the ceiling-detection box above the mannequin (so the sampling volume
+    is visible while tuning footprintSize / verticalOffset / detectionHeight).

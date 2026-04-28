@@ -1,0 +1,60 @@
+---
+Implement only what is specified in this document. If the component already
+exists, evaluate the diff and update or add the new features. If something
+is unclear, ask me clarifying questions explicitly before implementing.
+---
+
+# Video Focus Controller
+
+A controller that drives a `UnityEngine.Video.VideoPlayer` based on a
+`Focusable`'s state: video plays only while the object is focused, and the
+first frame is always visible when it isn't.
+
+## Behavior
+
+- On focus: play the video from frame 0, looping. Fade audio volume up to the
+  profile's target volume.
+- On unfocus: fade audio volume down to 0, then pause and seek back to frame 0
+  so the first frame is what's displayed.
+- Looping is always on while playing (the video repeats as long as focus is
+  held).
+- Audio is only audible while focused. When unfocused (or before the player
+  has ever focused the object) it must be silent.
+- First frame visibility: on `Start`/`OnEnable` the controller prepares the
+  VideoPlayer and seeks to frame 0 so the render texture / material is not
+  black before the first focus event. Audio starts at volume 0.
+
+## Wiring
+
+- One `Focusable` reference, required, assigned in the inspector.
+- One `VideoPlayer` reference, required, assigned in the inspector (no
+  auto-find via `GetComponent`).
+- One `VideoFocusProfile` ScriptableObject reference, required.
+- Subscribes to `OnFocused` / `OnUnfocused` in `OnEnable`, unsubscribes in
+  `OnDisable`. Kills any active tween in `OnDisable`.
+
+## Profile (ScriptableObject)
+
+`VideoFocusProfile` — `Create > Ludocore > Video Focus Profile`.
+
+- `focusedVolume` (float, 0–1) — target audio volume while focused.
+- `fadeInDuration` (float, seconds) — audio fade-in on focus.
+- `fadeOutDuration` (float, seconds) — audio fade-out on unfocus.
+- `ease` (DOTween `Ease`) — easing for both fades.
+
+## Implementation notes
+
+- Use DOTween for the audio volume tween, mirroring `FogFocusController`'s
+  pattern: keep a single `Tween` field, `Kill()` it before starting a new one
+  so rapid focus/unfocus events interrupt cleanly.
+- The pause-and-rewind on unfocus must happen *after* the fade-out completes
+  (chain via `OnComplete`), otherwise audio cuts mid-fade.
+- Drive volume on the VideoPlayer's `AudioSource` (the one bound via
+  `SetTargetAudioSource` on track 0). Assume an `AudioSource` is wired; do not
+  fall back to `VideoPlayer.SetDirectAudioVolume` unless the VideoPlayer's
+  audio output mode is `Direct` — in that case use `SetDirectAudioVolume(0,
+  v)` instead.
+- `isLooping = true` is set by the controller on enable so the prefab/scene
+  setting can't drift.
+- Namespace: `Ludocore`. File location: `Assets/Scripts/`. Match the comment
+  banner / region style used by `Focusable.cs` and `FogFocusController.cs`.

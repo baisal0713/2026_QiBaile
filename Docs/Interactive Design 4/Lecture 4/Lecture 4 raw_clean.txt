@@ -1,0 +1,234 @@
+
+[Logistics: L'istruttore chiede agli studenti che tipo di progetti stanno preparando per i loro corsi. Alcuni menzionano progetti audiovisivi con suoni, immagini e colori. Si discute brevemente di VCV Rack, protocollo OSC e possibilità di collegare controller MIDI a Unity. L'istruttore esprime curiosità per i progetti e per l'integrazione di varie tecnologie.]
+
+---
+
+## Ripasso: bilanciamento dell'ecosistema
+
+Vediamo una versione più o meno stabile del sistema e ripassiamo quali sono i dati, le proprietà e cosa effettivamente può essere cambiato per modificare il bilanciamento.
+
+Giusto per ricapitolare: qua avevamo praticamente due tipi di piante — le piante verdi che spawnano questi altri cubi rosa. Abbiamo degli erbivori che vanno un po' in giro e cercano le piante, però hanno anche un ciclo di vita abbastanza breve. E poi abbiamo dei predatori che ovviamente cercano gli erbivori. Il senso, un po' come nel Game of Life, è arrivare a creare un ecosistema che si autobilancia.
+
+> **[Digression]** Vi mando un link a un video che adoro, che parla di come la reintroduzione dei lupi nel parco di Yellowstone in America ha praticamente, dopo un po' di tempo, cambiato i fiumi. Si fa vedere questa cascata trofica — l'interazione tra predatori, erbivori e piante, che poi modellano le rive e stabilizzano i fiumi. Vi consiglio di guardarlo perché in fondo è un po' anche il potenziale di questi progetti, di queste simulazioni sistemiche.
+
+Ecco qua. Forse abbiamo un po' troppe piante, quindi possiamo lavorare sul bilancio. Non vogliamo avere troppe piante, però nemmeno uno stato in cui per un po' ci sono troppi erbivori o troppi carnivori e poi muoiono tutti e tutto è vuoto.
+
+---
+
+## I tre livelli per cambiare il bilanciamento
+
+Come possiamo cambiare il bilancio di questo ecosistema? Possiamo partire dagli spawner — ogni 5 secondi spawniamo 25 flora, cinque erbivori e due predatori. Forse i predatori possiamo aumentarli un pochino. Visto che tutte queste cose hanno un ciclo di vita e si propagano — la flora spawna piante e così via — si creano questi loop.
+
+> **[Digression]** Negli ecosistemi ci sono interazioni a livello di loop tra varie entità. Possono portare a due esiti: un loop cosiddetto positivo, cioè equilibrante, che mantiene lo stato del sistema; oppure un loop negativo, destabilizzante, che porta all'estinzione o all'iperabbondanza. Idealmente vogliamo un sistema in equilibrio, e se il sistema è interattivo dobbiamo chiederci come le azioni del giocatore cambiano l'equilibrio.
+
+Ricapitolando, possiamo operare su tre livelli. Primo: gli spawner, che determinano ogni tot cosa spawniamo. Secondo: i dati delle singole entità — gli ScriptableObject che contengono quanto dura il ciclo di vita, l'energia e così via. Terzo: i componenti intermedi come il controller e il consumer — per esempio, il consumer della fauna determina quanta energia la creatura prenderà consumando una pianta, e questo estende il ciclo di vita.
+
+In termini tecnici: la configurazione iniziale negli ScriptableObject, il runtime state che si tiene nei vari componenti e può cambiare durante il ciclo di vita, e poi il macro livello degli spawner che determina le popolazioni. Giocando su questi tre livelli potete ottenere un loop equilibrante o un loop destabilizzante.
+
+[L'istruttore chiede se ci sono domande su questa parte]
+
+---
+
+## Nuovo tema: interazioni semplici con l'ambiente
+
+Oggi vorrei allontanarmi dai sistemi e dai cicli di vita e parlare della reintroduzione del giocatore nello spazio — o del giocatore o comunque di un'interfaccia, un avatar, qualsiasi cosa che rappresenti noi in un ambiente virtuale — e delle interazioni semplici con l'ambiente.
+
+Vorrei vedere quattro modalità di interazione: la sola presenza che può cambiare il mondo in vari modi; lo sguardo (il gaze); il contatto; e l'interazione quando prendiamo un oggetto. Se usiamo queste come input — come azioni, non come input vero e proprio dal mouse o dal controller — cosa succede a livello di outcome? Per ora iniziamo con luce, superfici, rendering, suoni, atmosfera. Cerchiamo di fare queste cose in modo più graduale, forse usando le curve del tempo per far entrare o mixare questi output tra di loro.
+
+Il passaggio che vorrei fare è vedere prima alcuni componenti macro generici, poi passare a farvi vedere come costruire dei vostri componenti usando l'AI che abbiamo installato in VS Code.
+
+---
+
+## MCP Server per Unity
+
+Forse un'aggiunta: ci sono questi cosiddetti MCP server — dei tool che si integrano a qualsiasi AI e contengono una serie di comandi. Per esempio, abbiamo questo Unity MCP che permette all'AI di mettere mani direttamente nel progetto Unity. Possiamo dirgli di costruire una scena con un corridoio con le mura nere — adesso non può fare cose complesse ancora, ma questi tool stanno evolvendo. Presto potremmo dirgli di creare una scena con il sole di là, il materiale così, e più o meno ci sta arrivando. È un aiuto per comporre cose più facilmente o anche per esplorare.
+
+---
+
+## Esempi di progetti: interazione basata sulla presenza
+
+[L'istruttore mostra esempi di installazioni interattive basate sulla presenza del corpo]
+
+C'è questo artista che ha fatto varie iterazioni di un'installazione dove ci sono piante che quando uno passa si illuminano — una cosa che esiste da circa 17 anni, molto famosa. Poi c'è il Rain Room, dove cammini e la pioggia si ferma dove passi.
+
+Perché vi sto facendo vedere queste cose? Perché a livello di teoria dell'interazione, parliamo di presenza: c'è un corpo e il corpo può alterare l'ambiente.
+
+[Uno studente menziona un progetto con superfici termiche che reagiscono al calore corporeo]
+
+Bellissimo. Ovviamente il passaggio da un ambiente puramente digitale a un ambiente installativo include anche l'aspetto aptico, che è tantissima roba.
+
+---
+
+## Setup: Character Controller e scena base
+
+[Logistics: L'istruttore chiede agli studenti di scaricare dall'Asset Store il pacchetto "Starter Assets - Character Controllers URP" e importarlo. Si verifica lo spazio su disco dei computer dell'aula. Il link viene condiviso su Discord e Blackboard.]
+
+Importiamo lo starter assets, character controllers, poi troviamo la cartella Starter Assets. Prendiamo il first person controller. Apriamo il playground giusto per ricordarci come funziona — dobbiamo solo lanciare la scena e vedere se funziona.
+
+Quello che farei è duplicare questa scena per riutilizzare alcuni aspetti. Adesso toglierei un po' di cose: per ora non useremo la UI, quindi i componenti UI possiamo toglierli. Delle luci teniamo la directional light e cancelliamo le altre — reflections e così via non ci interessano ora. Dell'ambiente vorrei tenere solo il pavimento per avere un po' di spazio delineato.
+
+L'ambiente è un prefab, quindi se vogliamo modificarlo facciamo tasto destro > Prefab > Unpack. Da dentro potrei togliere tutto tranne il pavimento. Il greybox possiamo tenerlo perché ci dà un minimo di bordi, un minimo di spazio delineato.
+
+Cosa vorrei fare? C'era un progetto che avevo visto anni fa: uno spazio astratto con delle colonne che si illuminavano e emettevano suoni diversi in base alla vicinanza e alla presenza. Sempre un po' il concetto del Rain Room o dei fiori. Ho creato un cilindro, ne ho modificato la scala. Vi ricordo sempre che c'è anche il ProBuilder per costruirci qualcosa di geometria custom.
+
+Vogliamo popolare il mondo con queste colonne e implementare dei feedback interattivi.
+
+---
+
+## Audio 3D: ripasso e implementazione
+
+La prima interazione: ripassiamo un attimo il suono 3D, perché è essenziale e vogliamo lavorare più con l'audio quest'anno.
+
+[Logistics: L'istruttore passa un pacchetto gratuito con tracce audio ambientali di tipo synth/drone. Gli studenti scaricano e importano.]
+
+Abbiamo tre tracce, tra l'altro separate tra intro, loop e outro, perché spesso nei videogiochi ci interessa poter loppare la parte media dell'audio indefinitamente.
+
+In Unity ci serve un audio source — è quello che riproduce l'audio. Possiamo partire da un oggetto vuoto e aggiungere il componente audio source, oppure andare su Audio > Audio Source direttamente. Assegniamo la traccia: per ora useremo le parti medie, quelle che andranno in loop all'infinito.
+
+> **[Digression]** Nell'audio source vedo che hanno rinominato il campo da "AudioClip" a "Audio Generator" nella versione 6 di Unity. Hanno fatto qualche aggiunta, il che ci sta perché il sistema audio di Unity è praticamente medievale.
+
+Le modifiche per rendere l'audio 3D: in primo luogo usare lo slider Spatial Blend, portarlo a destra perché diventi pienamente 3D. Poi mettere un po' di spread — quanto effettivamente quando entriamo nello spazio sentiamo il suono. E poi la distanza minima e massima del suono. L'audio source parte come se fosse un audio generale, quindi la distanza è molto grande, ma noi vogliamo che queste colonne abbiano degli audio space appena overlapping, in modo da poter fare la transizione da uno all'altro.
+
+Farei tipo 3 o 4 il min distance e 10 il max distance. Poi copio gli audio source nelle altre colonne: duplico l'audio source, lo porto dentro un altro oggetto — la seconda colonna — e faccio reset della posizione per ricentrarlo sull'origine di quell'oggetto. Ugualmente per il terzo.
+
+Assegniamo tre tracce audio diverse a questi audio source e li lasciamo andare in loop.
+
+Una cosa importante: la controparte dell'audio source in Unity è l'audio listener. Di solito nella scena non abbiamo più di un audio listener — è l'equivalente del renderer per la grafica, quello che effettivamente renderizza il suono. L'audio listener di base sta sulla camera. Attenzione: se avete una camera statica ma volete avere un suono dinamico, dovete spostare l'audio listener sul giocatore. In questo caso, visto che la camera si muove insieme al player, dovrebbe andar bene, però a volte per sicurezza possiamo spostarlo sul player.
+
+Un'altra cosa carina: la reverb zone. Possiamo assegnare un audio reverb zone per simulare un riverbero. Sull'audio source c'è il reverb zone mix, che determina quanto effettivamente il riverbero è mixato in base al suono spaziale.
+
+[Logistics: L'istruttore verifica che gli studenti riescano a sentire l'audio; alcuni computer dell'aula non hanno casse.]
+
+---
+
+## Trigger Zone e cambio materiale per presenza
+
+L'altra cosa che vorrei coinvolgere sono le luci e le superfici. Il modo più semplice per usare la presenza del corpo sono sempre i trigger zone. Probabilmente siete stufi dei trigger zone, però il 50% delle interazioni nei videogiochi e nei progetti sono fatti con trigger zone.
+
+> **[Digression]** Recentemente dei colleghi sono andati al GDC — la Game Developers Conference a Los Angeles — e hanno parlato del gioco Expedition 33 che ha vinto un sacco di award. La quantità di soluzioni semplici di implementazione nel più grande gioco di quest'anno è incredibile. A volte bisogna lavorare smart e non hard.
+
+Cosa vogliamo fare? Come abbiamo fatto con i sensori, l'evoluzione del trigger zone per noi sarà il sensore che possiamo usare per varie cose. Facciamo un oggetto vuoto che chiameremo trigger sensor. Per mantenere conformità useremo la sfera come volume, ma può essere anche un'altra forma. A questo oggetto attacchiamo il trigger sensor con il tag "player".
+
+Ripeto: abbiamo un oggetto vuoto con un sphere collider allo stesso raggio dell'audio zone. Le unità possono essere diverse — per l'audio source la distanza era 10, per il collider sarebbe 2 perché usano una matematica leggermente diversa, ma si vede a occhio. Abbiamo il trigger sensor e stiamo sempre attenti ai tag — sono il modo migliore per riconoscere oggetti separati.
+
+### Cambio colore con Material Color
+
+In base ai trigger zone, andiamo a cambiare l'apparenza del materiale. Cosa dovremmo fare per cambiare l'intensità della colonna — farla più luminosa quando siamo dentro?
+
+[Uno studente suggerisce di cambiare il materiale]
+
+Esatto. Assegniamo un materiale base. Creo due materiali emissivi: "emissive low" e "emissive high", la cui differenza è solo nell'intensità dell'emissione — per esempio, da 2 nel low a 5 nell'high. Possiamo tenerli bianchi.
+
+Nella cartella degli script modules troviamo il componente material color (nella lezione precedente avevamo usato il material swapper). Questo componente è un po' più generico: prende un target renderer — l'oggetto che vogliamo cambiare — e cambia il colore di qualsiasi materiale quella colonna abbia. Nell'oggetto possiamo avere anche più materiali: quando un componente vi chiede il material index, questo vuol dire nella lista dei materiali quale materiale vuoi cambiare. Per ora siamo all'indice zero — l'enumerazione programmatica parte da 0, 1, 2, 3 anziché 1, 2, 3, 4.
+
+Posso usare il trigger sensor per riconoscere il giocatore e poi sull'on detected event chiamare material color play. Play perché può essere animato: possiamo avere una duration per fare il blending.
+
+Ripeto: ho messo il material color sulla colonna. Le proprietà sono queste — ho cambiato il colore target, la durata volendo. Dal trigger sensor ho fatto riferimento a dove sta il componente e ho fatto material play. Controlliamo che il giocatore abbia effettivamente il tag "player". E ricordiamoci: il sphere collider deve essere un trigger — questa è l'errore che spesso si dimentica.
+
+[Uno studente chiede chiarimenti sulla struttura]
+
+Il material color prende il target renderer — il mesh renderer della colonna — e cambia il colore del materiale già applicato a quell'oggetto. Non lavora su un materiale esterno. Questo è il paradigma del trigger, azione e evento che li unisce.
+
+Questi componenti ovviamente potete tenerli anche su un oggetto sottostante. Potrei fare un sotto-oggetto "material feedback in" e un altro "material feedback out" — questa è una scelta libera. In Unity i componenti possono stare tutti sullo stesso oggetto o su oggetti diversi, dipende. Decidete voi come preferite organizzare queste cose.
+
+### Inversione: cambio colore all'uscita
+
+Adesso il compito inverso: cosa dobbiamo fare per cambiare il colore all'uscita dal trigger?
+
+[Uno studente suggerisce di usare il completed event]
+
+Attenzione: il completed event si riferisce a quando finisce l'animazione del materiale, ma io posso stare dentro l'area molto più tempo. Quale evento devo usare?
+
+Lost. Nel trigger sensor abbiamo detected event e lost event — quando identifichiamo l'oggetto oppure quando lo perdiamo. Quindi duplichiamo il componente material color, facciamo "material out", cambiamo il colore a quello base, e nel trigger sensor lo mettiamo sul lost event.
+
+[Logistics: L'istruttore lascia qualche minuto agli studenti per implementare il setup.]
+
+---
+
+## Dal binario al continuo: il Proximity Sensor
+
+[Break: pausa di 5 minuti. Durante la pausa, l'istruttore e Veronica chiacchierano di tecnologie applicate alla sanità, progetti EU, burocrazia per la certificazione medica e suggerimenti di videogiochi — Expedition 33 e un gioco horror con piscine e spazi liminali.]
+
+Quello che vorrei farvi vedere adesso è il passaggio di logica dal paradigma che abbiamo usato l'anno scorso — un paradigma binario, on/off, basato su eventi: entri nell'area succede qualcosa, esci succede un'altra cosa — a un paradigma basato su variabili, su parametri.
+
+Una cosa sicuramente migliore è usare la distanza o la prossimità del giocatore per controllare direttamente l'intensità, il colore, il suono, quello che vogliamo. Questa operazione si chiama interpolazione: cambiare gradualmente una variabile in base a un'altra variabile.
+
+Teniamo le colonne con il trigger come esempio valido, però si può fare di meglio. Anziché usare il trigger sensor, potremmo usare il proximity sensor — un sensore che identifica la prossimità dell'oggetto. Come funziona? Tenendo sempre un sphere collider come trigger, assegniamo il proximity sensor con il tag "player". Possiamo testarlo: avendo selezionato l'oggetto, vediamo se la colonna riconosce il giocatore. Il proximity sensor misura la distanza e la manda via, quindi un altro componente può prendere questa distanza e farci qualcosa.
+
+---
+
+## Creare un controller custom con l'AI
+
+Qua il tradeoff è tra usare componenti generici — come il material color che può essere applicato in qualsiasi scena e farà sempre quella cosa, però fa una cosa sola — e creare componenti custom. Se vogliamo aggiungere luci, suoni e altri effetti, dovremmo usare tanti componenti generici e legarli con gli eventi. Mentre la programmazione, adesso con l'AI ancora più facilmente, ci permette di comprimere queste cose nello stesso componente, progettandolo con esattamente i feedback che vogliamo.
+
+### Creare lo script
+
+Sulla colonna, vado su Add Component > New Script. Diamogli un nome: "column controller". Create and Add. Questo creerà lo script e lo aggiungerà direttamente all'oggetto. Quando aggiungiamo cose dentro lo script, le vedremo qui nell'inspector. Creiamolo nella cartella scripts. Poi apriamolo con VS Code.
+
+### Spec-driven development
+
+Un consiglio quando creiamo componenti o controller: il mio consiglio è di creare un documento separato, non di scrivere solo un prompt. Questo si chiama spec-driven development — prima definiamo uno spec, un piccolo file che descrive cosa deve fare il nostro componente, poi diamo questo file all'AI. Nel processo aggiungiamo o togliamo cose, ma è meglio perché ci permette di ragionare prima. Non semplicemente "fammi queste cose che aumenta la luce con la prossimità" — dobbiamo essere un po' più specifici.
+
+Cosa fare: creiamo una cartella "docs" nel progetto. Dentro creiamo un semplice documento di testo — possiamo chiamarlo "column controller spec". Questo approccio può sembrare un overkill, ma come buona pratica quando poi andate a fare sistemi più complessi è indispensabile avere un documento separato che è memorizzato e dove potete andare a cambiare cose. Diventa un'interfaccia tra voi e l'AI — anche banalmente potete perdere la conversazione.
+
+> **[Digression]** Un altro formato ancora migliore per scrivere specifiche è il Markdown (.md) — un testo semplice con un po' di formattazione avanzata ma leggibile anche in formato plain. Per usarlo, visualizzate le estensioni dei file (File Name Extensions), rinominate da .txt a .md e aprite con un code editor.
+
+### Dare lo spec all'AI
+
+Nello spec ho sintetizzato tutto quello che serve: il proximity sensor ci dà la variabile di distanza, e vogliamo incrementare l'intensità del colore emissivo. Dobbiamo essere specifici: c'è il colore normale e il colore emissivo che sono due colori separati, e dentro il colore emissivo l'intensità è una variabile a parte. Possiamo specificare che stiamo usando URP e che il colore è HDR.
+
+All'AI diciamo: "I have a component specification" e poi, usando la chiocciola (@) o il pulsante "add context", gli diamo il file dello spec. Il prompt è semplice: "implement this spec" o "implement this controller". L'AI leggerà il documento e poi, quando aggiungiamo cose nuove, possiamo dire "Ho aggiornato lo spec, puoi aggiornare il componente?".
+
+Perché facciamo questo e non semplicemente tenerlo nella conversazione AI? Perché è più facile ragionare avendolo scritto, cambiandolo. Possiamo usare più chat e non diventa dispersivo.
+
+Se abbiamo già creato lo script, anche se è vuoto, possiamo darlo come contesto aggiuntivo dicendo "Questo è il mio script vuoto, usalo come base per implementare questo componente". Possiamo dargli più elementi di contesto.
+
+[Logistics: L'istruttore lascia tempo agli studenti per provare a generare il componente con l'AI. Si nota che su Visual Studio per accettare le modifiche dell'AI bisogna premere Tab e poi salvare lo script.]
+
+---
+
+## Risultato del Column Controller generato
+
+Se l'AI è stato bravo — e dovrebbe esserlo perché è una cosa semplice — nel componente che prima era vuoto dovremmo vedere una variabile per il proximity sensor, una variabile per il target renderer, il colore emissivo, e l'intensità minima e massima. Giochiamo con i valori: l'intensità massima può essere 10, la max distance può corrispondere a quella del proximity sensor — per esempio 6.
+
+Se ha scritto la cosa corretta, dovremmo riuscire a vedere l'intensità che aumenta avvicinandosi alla colonna. Dovete giocare un po' con i valori: nel materiale base abilitate l'emission ma mettete l'intensità a zero, così parte dal colore base e vedete effettivamente che alza l'intensità.
+
+[L'istruttore aiuta singolarmente gli studenti con problemi di configurazione]
+
+Quando lavoriamo con l'AI, la cosa più importante è scrivere il contesto ed essere specifici. A volte l'AI vuole essere troppo inventiva e aggiunge cose non richieste. Dobbiamo darle dei guardrail: dire esplicitamente "non aggiungere nient'altro". Oppure a volte possiamo usare la modalità esplorativa: "dammi più alternative", e magari fa qualcosa che non avevamo pensato e lo prendiamo come ispirazione. Però quando dobbiamo implementare per bene, deve fare quello che gli diciamo e non di più. Se ha fatto qualcosa in più, dobbiamo dire: "Leggi di nuovo lo spec e fai solo quella cosa lì."
+
+---
+
+## Aggiungere feedback in layer: lo spec aggiornato
+
+Ovviamente noi adesso abbiamo l'esempio con l'intensità, però idealmente vogliamo usare più proprietà. Il controller, a differenza dei moduli generici dove un modulo è un'azione, ci permette di mettere più cose. Sicuramente terremo l'intensità del colore emissivo. Potremmo mettere una luce — per esempio un point light di cui modificare l'intensità. Potremmo modificare qualcosa sull'audio — sull'audio source abbiamo anche la proprietà pitch che si può alterare. Tutto quello che è una variabile continua può essere abbinato alla prossimità del giocatore.
+
+Organizziamo meglio il documento spec. Scriviamo una nuova versione:
+
+"Implement this Unity proximity feedback component with the following specs only. Don't add anything more."
+
+Poi elenchiamo: intensità dell'emissive power di un assigned renderer; pitch di un assigned audio source; intensità di un point light. E poi una frase che chiude: "All of these properties follow the proximity sensor" — tutte queste variabili devono essere basate sulla prossimità.
+
+Avendo aggiornato lo spec e dato un guardrail, possiamo tornare dall'AI e dirgli: "I updated my spec file. Implement the new functionality." Gli diamo il file dello spec aggiornato e lui genera il codice. Facciamo apply, poi Tab, salviamo e torniamo su Unity.
+
+Dovremmo vedere nuovi campi: un campo per l'audio source e un campo per il point light, con max pitch e intensità massima configurabili. Riempiamo tutti i campi — non lasciamo mai dei campi di riferimento vuoti.
+
+Così facendo abbiamo creato un feedback controller multilayer basato su una variabile continua come la prossimità.
+
+---
+
+## Prefab e composizione finale
+
+Ricordiamoci che una volta impostata la colonna con tutti i feedback, possiamo salvarla come prefab e usarla per costruire un percorso, una struttura — per esempio un corridoio di colonne che interagiscono con la presenza e col corpo. Era un po' il senso di questa lezione.
+
+[Logistics: L'istruttore aiuta alcuni studenti con errori di script e configurazione dei materiali. Consiglia di assegnarsi un materiale ex novo e non usare quello di default, che ha una logica leggermente diversa.]
+
+---
+
+## Esercizio e prossima lezione
+
+Come vedete, la logica delle singole azioni è uguale ai moduli che abbiamo usato in passato con gli eventi, però tutto aggregato e adesso anche parametrizzato — possiamo usare le variabili continue per fare degli effetti più carini.
+
+Per la prossima volta: provate a usare questo workflow per fare una composizione più interessante. Usate l'AI per aggiungere almeno un nuovo feedback — abbiamo fatto suono, luce, colore, provate una variabile nuova. La prossima volta continuiamo con gaze, contact e interaction, che avranno la stessa logica però tipi di azioni diverse. E cerchiamo di fare un esempio di progetto più carino. Ricordatevi le cuffie per la prossima volta.
+
+[Logistics: Saluti e chiusura della lezione. L'istruttore va ad aiutare Veronica con il suo setup.]

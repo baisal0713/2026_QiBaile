@@ -1,0 +1,81 @@
+---
+Implement only what is specified in this document. If the component already
+exists, evaluate the diff and update or add the new features. If something
+is unclear, ask me clarifying questions explicitly before implementing.
+---
+
+Scene-level orchestrator that inverts every TileInversionController in the
+scene exactly one time per Play() call. Supports an optional staggered
+dispatch so the inversions cascade rather than all firing on the same frame.
+
+Does not interfere with each tile's own random timer — Play() simply calls
+Invert() on each discovered tile. Tiles' per-instance axes, rotation amounts,
+and animations are untouched.
+
+Follows the same architecture as CompactingCorridorController +
+CompactingCorridorProfile (ScriptableObject profile for tuning, MonoBehaviour
+for scene references and runtime logic).
+
+========== PROFILE (ScriptableObject) — RoomInversionProfile ==========
+
+  Stagger
+  - staggered         : bool            — if true, tiles are inverted sequentially
+                                          with staggerDelay between them.
+                                          If false, all tiles invert on the same frame.
+  - staggerDelay      : float (sec)     — wait between consecutive tile Invert() calls
+                                          when staggered = true.
+
+========== CONTROLLER (MonoBehaviour) — RoomInversionController ==========
+
+  External trigger
+  - Play() is public and wired externally via UnityEvents in the inspector
+    (e.g. from a TriggerSensor's public UnityEvent). No internal sensor
+    subscription — keeps the controller decoupled from any specific
+    detection source.
+
+  Profile
+  - profile           : RoomInversionProfile
+
+  Events
+  - onPlayStart       : UnityEvent      — fired immediately when Play() begins.
+                                          Typical wiring: StillnessDimController.Dim()
+                                          to darken the room during the flip.
+  - onPlayComplete    : UnityEvent      — fired after the last tile's flip
+                                          animation finishes (accounts for
+                                          stagger offset + longest tile duration).
+                                          Typical wiring: StillnessDimController.Brighten()
+                                          to restore lighting.
+
+  Discovery
+  - Cached on Start via FindObjectsByType<TileInversionController>(None).
+  - Public Refresh() method re-scans the scene (for tiles spawned at runtime).
+  - Dispatch order is scene hierarchy order (sibling index, deterministic).
+
+  Public API
+  - Play()            : void            — dispatch Invert() to every cached tile.
+                                          Staggered or instantaneous per profile.
+  - Refresh()         : void            — re-scan the scene for tiles.
+
+  Runtime behavior
+  1. On Start: cache all TileInversionController instances in the scene,
+     sorted by hierarchy order.
+  2. Play() (invoked externally via inspector UnityEvent wiring):
+     a. Fire onPlayStart.
+     b. If !profile.staggered or staggerDelay <= 0:
+        Iterate cached tiles and call Invert() on each, same frame.
+     c. Else:
+        Start a coroutine that calls Invert() on each tile, waiting
+        staggerDelay between calls.
+     d. Schedule onPlayComplete to fire after:
+           (tileCount - 1) * staggerDelay  +  max(tile.InvertDuration)
+        (stagger offset is 0 when staggering is disabled).
+        Requires public InvertDuration getter on TileInversionController,
+        which returns profile.duration when animate == true, else 0.
+  3. Calling Play() while a dispatch is mid-flight resets the completion
+     timer to reflect the new dispatch (previous pending onPlayComplete is
+     cancelled so you don't get a stale brighten in the middle of a new flip).
+  4. Inspector context-menu entry for Play() so it can be triggered manually.
+
+  On Disable / OnDestroy
+  - Stop the stagger coroutine if running.
+  - Cancel any pending onPlayComplete.

@@ -1,0 +1,75 @@
+---
+Implement only what is specified in this document. If the component already
+exists, evaluate the diff and update or add the new features. If something
+is unclear, ask me clarifying questions explicitly before implementing.
+---
+
+This interaction uses a Trigger Sensor to teleport the player back to a
+saved home location. The teleport is instant, but the lights dim during
+the cut so the transition reads as a short blackout rather than a pop.
+
+Two components, both in the Ludocore namespace.
+
+=============================================================
+HomeLocation
+=============================================================
+
+Captures and exposes a position + rotation to teleport back to.
+
+Fields:
+- Target Transform (optional) — if set, the home is captured from this
+  transform; if empty, captured from the component's own transform.
+- Capture On Awake (bool, default true) — snapshot at startup.
+
+Methods:
+- Capture() — snapshot position+rotation now. Exposed via ContextMenu.
+- Position { get; } — the saved world position.
+- Rotation { get; } — the saved world rotation.
+
+=============================================================
+Teleport
+=============================================================
+
+Sensor-driven component. On first detection, dims global lights, warps
+the player after a short darkness delay, then brightens again.
+
+Delegates all lighting to the existing LightManager (Dim / Brighten).
+Does NOT tween lights itself. Timing of the dim/brighten curves lives
+on the LightManagerProfile — this component only owns WHEN to switch
+and WHEN to warp within that window.
+
+Fields:
+- Sensor — source of detection (typically a TriggerSensor).
+- Home — a HomeLocation reference (destination).
+- Player — CharacterController to warp. If empty, falls back to the
+  Transform of the first detected signal.
+- Light Manager (optional) — falls back to LightManager.Instance.
+- Darkness Delay (float, seconds) — time to wait after Dim() before
+  performing the warp. Tune to land the warp near peak darkness.
+- Re-Enable Cooldown (float, seconds) — ignore new detections for
+  this long after a teleport completes, so re-entering the trigger
+  immediately doesn't retrigger.
+
+Methods:
+- On Play (triggered by sensor first-detected):
+  - LightManager.Dim()
+  - after Darkness Delay: warp player to Home (CharacterController.Warp
+    if available, else transform.position/rotation assignment)
+  - LightManager.Brighten()
+
+Edge cases:
+- If lights are already dim when the teleport fires, Dim() is a no-op
+  (LightManager guards this). The warp still happens after the delay,
+  and Brighten restores the lit state. Acceptable.
+- While a teleport is in flight (between Dim and Brighten), further
+  sensor detections are ignored.
+
+=============================================================
+Out of scope (not implementing unless requested)
+=============================================================
+
+- Audio muffling / low-pass during the blackout.
+- Post-process vignette or exposure override.
+- Rigidbody support (only CharacterController + plain Transform).
+- Per-teleport lighting overrides (use a separate LightManagerProfile
+  swap if a different feel is wanted).

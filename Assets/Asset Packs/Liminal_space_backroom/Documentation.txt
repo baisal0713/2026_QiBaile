@@ -1,0 +1,86 @@
+Shader Graph Documentation
+Table of Contents
+    1. Introduction 
+        ? About This Package 
+        ? Supported Render Pipeline 
+    2. Installation 
+    3. Shader Details 
+        ? Animated Floor Shader 
+        ? Animated Wall Shader 
+        ? Decal Shader 
+        ? Decal Eye Shader 
+        ? Floor Shader 
+    4. How to Use 
+        ? Assigning Shaders to Materials 
+        ? Adjusting Shader Properties 
+    5. Troubleshooting & FAQ 
+    6. Contact & Support 
+
+1. Introduction
+About This Package
+This package includes five custom shaders created using Unity's Shader Graph. These shaders are designed for use in the Universal Render Pipeline (URP) and have been tested only with the textures included in the package.
+Supported Render Pipeline
+    • Universal Render Pipeline (URP) 
+
+2. Installation
+    1. Import the package into your Unity project. 
+    2. Ensure your project is using the URP Render Pipeline. 
+    3. Assign the shaders to materials and apply them to the appropriate GameObjects. 
+
+3. Shader Details
+Animated Floor Shader
+Purpose: Animates the floor material using scrolling textures.
+Properties:
+    • Albedo Map – Base color texture 
+    • Normal Map – Defines surface detail 
+    • Metallic (RGB) / Smoothness (Alpha) – Controls reflectivity and roughness 
+    • Animation Speed – Adjusts the speed of the scrolling animation 
+Animated Wall Shader
+Purpose: Animates wall materials using scrolling textures.
+Properties:
+    • Albedo Map – Base color texture 
+    • Normal Map – Defines surface detail 
+    • Normal Map Strength – Adjusts the intensity of the normal map effect 
+    • Metallic (RGB) / Smoothness (Alpha) – Controls reflectivity and roughness 
+    • Animation Speed – Adjusts the speed of the scrolling animation 
+Decal Shader
+Purpose: Animates decals using transparency and scrolling effects.
+Properties:
+    • Alpha Map – Defines transparency 
+    • Decal Color – Adjusts the overall color tint 
+    • Animation Speed – Controls the speed of the animation 
+Special Features:
+    • Supports transparency 
+Decal Eye Shader
+Purpose: Animates decals using transparency but does not have adjustable properties.
+Special Features:
+    • Supports transparency 
+Floor Shader
+Purpose: Creates a floor material with minimal visible tiling.
+Properties:
+    • Albedo Map – Base color texture 
+    • Normal Map – Defines surface detail 
+    • Metallic (RGB) / Smoothness (Alpha) – Controls reflectivity and roughness 
+
+4. How to Use
+Assigning Shaders to Materials
+    1. Create a new Material in Unity. 
+    2. In the Inspector, set the Shader to one of the custom shaders from this package. 
+    3. Assign the material to the corresponding GameObject in your scene. 
+Adjusting Shader Properties
+    • Modify the shader properties in the Inspector to customize the look and behavior. 
+    • Use the provided textures for optimal results. 
+
+5. Troubleshooting & FAQ
+Q: Why isn’t the animation working?
+    • Ensure that the Animation Speed property is set to a value greater than zero. 
+    • Verify that the shader is correctly assigned to a material. 
+Q: Why do my decals look incorrect?
+    • Check if Alpha Map is assigned correctly. 
+    • Ensure that Transparency settings are configured properly in the Material Inspector. 
+Q: Can I use my own textures?
+    • Yes, but the shaders were tested only with the provided textures. Results may vary. 
+
+6. Contact & Support
+For support, please contact [Your Contact Email or Website].
+

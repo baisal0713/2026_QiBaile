@@ -1,0 +1,147 @@
+============================================================
+[YourSystem]Manager — TEMPLATE
+(only when needed — see "When to introduce a Manager")
+============================================================
+
+When to introduce a Manager
+---------------------------
+Don't reach for one by default. A Manager is the answer to
+ONE specific problem:
+
+  "Two or more Controllers want to drive the SAME output,
+   and they would fight if each owned it directly."
+
+Examples:
+  - Several interactions all want to dim the global lighting.
+  - Several interactions all want to play through the same
+    music system / audio bus.
+  - Several interactions all need to set the fog density.
+
+Without a Manager: each Controller tweens the same value;
+last write wins; state drifts; nobody owns the truth.
+
+With a Manager: ONE author of the output, ONE source of
+truth ("the space remembers"). Controllers stop owning the
+output and start REQUESTING state changes.
+
+If only one Controller drives the output, you don't need
+this — keep the Controller standalone. (See ControllerTemplate.txt.)
+
+Role
+----
+SINGLE author of a shared output. Owns its current state.
+Exposes high-level verbs that hide the mechanism.
+Exactly one in the scene. Singleton.
+
+Pattern
+-------
+- Two-state machine: <StateA> (default) and <StateB>.
+- Two API verbs (e.g. Calm/Intense, Dim/Brighten), each
+  with TWO overloads:
+      Verb()                    →  uses default profile
+      Verb(profileOverride)     →  uses override if non-null,
+                                   else default
+- "No-op if already in target state" early-out.
+
+Profile override (the important bit)
+------------------------------------
+The Manager's profile is the GLOBAL feel of the output.
+But each Controller may want its own feel without changing
+that global tuning. So Controllers carry an OPTIONAL profile
+of their own and pass it on every call. The Manager uses
+that profile for THIS one transition, then the next caller
+gets whatever profile THEY pass (or the default).
+
+This is how Controllers keep ownership of THEIR tuning even
+though they no longer own the output.
+
+Fields
+------
+Scene References:
+- the things the Manager actually drives
+  (Material, AudioSource, Light, RenderSettings, …)
+
+Profile:
+- profile  — default tuning, used when no override is passed
+
+Debug:
+- currentState  [ReadOnly]
+
+Lifecycle
+---------
+Awake:
+  if (Instance != null && Instance != this) { Destroy(go); return; }
+  Instance = this;
+
+Start:
+  Snap to default state (no tween).
+
+OnDestroy:
+  Kill in-flight tweens.
+  if (Instance == this) Instance = null;
+
+API skeleton (one verb shown — mirror for the other)
+----------------------------------------------------
+[ContextMenu("<StateA>")]
+public void <StateA>() => <StateA>(null);
+
+public void <StateA>(Profile overrideProfile)
+{
+    var p = overrideProfile ? overrideProfile : profile;
+    if (!p || currentState == State.<StateA>) return;
+    currentState = State.<StateA>;
+    TweenAll( values from p, timing from p );
+}
+
+Live example in this project
+----------------------------
+- LightManager.cs                 (states: Lit / Dim — drives global lighting)
+- StillnessDimControllerV2.cs     (controller that calls LightManager, no override)
+- Teleport.cs                     (controller that calls LightManager with an override profile)
+
+Notice: StillnessDimController.cs (V1) is the STANDALONE version of the same idea
+— it drives the lighting itself. V2 is the version refactored to use the Manager
+because OTHER controllers also wanted to drive lighting. Compare the two.
+
+Conventions every Manager follows
+---------------------------------
+(Same three rules as ControllerTemplate.txt — repeated here so this file is
+self-contained.)
+
+1. CONTEXT MENU on parameterless verbs.
+   The state-change verbs are perfect for this — students can
+   right-click the manager and invoke Dim/Brighten/etc. without
+   any wiring.
+
+       [ContextMenu("<StateA>")]
+       public void <StateA>() => <StateA>(null);
+
+2. READONLY DEBUG FIELDS for runtime state that mutates AND
+   is not otherwise observable. The current state of the
+   machine is the canonical example.
+
+       [Header("Debug")]
+       [ReadOnly, SerializeField] private State currentState;
+
+3. EVENTS — broadcast state changes for outside listeners.
+
+   UnityEvent (inspector wiring) — designer-facing. Two
+   parameterless events, one per state, are easier to wire
+   in the inspector than one event with a state-enum payload.
+
+       [Header("Events")]
+       [SerializeField] private UnityEvent onEnteredStateA;
+       [SerializeField] private UnityEvent onEnteredStateB;
+       ...
+       onEnteredStateA?.Invoke();
+
+   C# event (code wiring) — one event with a payload is
+   nicer for programmatic subscribers.
+
+       public event System.Action<State> StateChanged;
+       ...
+       StateChanged?.Invoke(currentState);
+
+   Fire BOTH right after currentState flips, BEFORE starting
+   the tween — so listeners can coordinate their own
+   transitions in lockstep.

@@ -1,0 +1,811 @@
+INTERACTIVE DESIGN 4 -- LECTURE 7 SPEECH PATTERNS
+================================================================================
+
+Analysis based on the full raw transcript (852 lines, approximately 2 hours
+52 minutes), with the cleaned transcript used for structural context. All
+quotations are from the raw transcript unless noted. Counts are approximate
+due to transcription artifacts (this transcript is unusually noisy in parts,
+with frequent Italian-English fragmentation and many low-content lines from
+on-stream audio dropouts) but reflect the correct order of magnitude.
+
+The lecture splits cleanly into two halves separated by a long, irregular
+mid-block of one-on-one help and student work. The first half is dominated
+by logistics speech (Git migration, AI tools); the second half contains the
+actual teaching. Speech patterns differ noticeably between the two.
+
+
+================================================================================
+1. EXPLANATION ARCHITECTURE
+================================================================================
+
+--- LAYERING ORDER: USE-CASE FIRST, THEN ABSTRACTION ---
+
+This lecture marks a small but real shift away from the abstract-first
+pattern that dominated Lecture 6. The 2x2 matrix lecture began with the axes
+and then ran examples through them. The manager/controller lecture begins
+with the problem:
+
+  "ora qua potrebbe esserci un problema quando vogliamo fare un'interazione
+  uguale o simile in vari momenti con qualche differenza... per esempio
+  vogliamo che abbiamo i Steelness di Dimmer..." (line 601-602)
+
+The instructor lays out three concrete scenarios where the same output
+(light) is needed by different controllers, and only after that walks
+toward the abstraction:
+
+  "se c'è più di una cosa, c'è più di un controller, più di un'interazione
+  che fa più o meno la stessa cosa, forse ha senso creare un manager."
+  (line 612-613)
+
+The framework is named only after the friction has been felt verbally.
+This is a different posture from the matrix lecture and it suits the
+material: architectural decisions are easier to motivate from problems
+than from principles. It also means the abstraction itself ("manager,"
+"controller") is left somewhat under-defined -- the words land but the
+boundary between them is implied rather than stated.
+
+--- SCAFFOLDING THROUGH CALLBACK (UNCHANGED) ---
+
+The temporal callback remains the dominant scaffolding move:
+
+  "la volta scorsa abbiamo ehm stiamo ancora un attimo nei nei backrooms
+  come contesto" (line 190)
+
+  "la volta scorsa abbiamo visto un pochino meglio quello che era,
+  diciamo, l'atomo dell'interazione" (line 192)
+
+  "abbiamo fatto questo steelness dimer, no? Quando ti fermi tutto
+  diventa buio" (line 226-227)
+
+  "questo è molto simile alla alla interaction grabber della della
+  lezione del corso dell'anno scorso" (line 776-777)
+
+The cross-year callback to last year's course (line 776) is rarer than
+the within-semester ones but appears at least twice in this lecture.
+Both function the same way: positioning a new concept as continuous with
+prior material rather than as a discrete unit.
+
+--- REPETITION PATTERNS: THE MANAGER THESIS, FOUR TIMES ---
+
+The instructor restates the manager principle four distinct times in the
+second half, each in slightly different framing:
+
+  1. "se appunto ci sono tre diversi controller che devono tutte e tre
+     controllare ehm la luce, forse ha senso fare una cosa che controlla
+     la luce e che tutti e tre controller poi chiamano" (line 608-609)
+
+  2. "se c'è più di una cosa, c'è più di un controller, più di un'interazione
+     che fa più o meno la stessa cosa, forse ha senso creare un manager"
+     (line 612-613)
+
+  3. "anziché implementare la logica appunto 5 6 10 volte e la implementiamo
+     in un manager e poi controller. Ah, semplicemente chiami il manager"
+     (line 620-621)
+
+  4. "se più di una controller più di un'interazione utilizzano gli stessi
+     feedback, cioè gli stessi output, forse facciamo un manager che tiene
+     quella logica e quindi tutti i controller chiamano" (line 644-646)
+
+Each restatement broadens or sharpens slightly: from "the light" to "any
+shared logic" to "shared feedback / shared output." The repetition is
+spaced rather than back-to-back, which gives it the pacing of deliberate
+reinforcement rather than stuck-in-a-loop circling. Compared to Lecture
+5's tighter loops on a single point, this feels intentional. Compared to
+Lecture 6's similarly distributed repetitions of the transformation
+thesis, this is the same technique applied to a new central claim.
+
+--- GRANULARITY SHIFTS ---
+
+"Per esempio" remains the dominant zoom-in marker, with frequency
+similar to Lecture 6 (rough count: 20-25 occurrences). Examples span the
+range from sentence-level concretizations to entire teaching sequences:
+
+  "per esempio, vogliamo che abbiamo i Steelness di Dimmer" (line 602)
+     -- introduces a hypothetical use case for the principle.
+
+  "per esempio nel corridoio" (line 349)
+     -- minor zoom into a specific scene element.
+
+  "per esempio nei Backrooms è l'esperienza della come si dice un canino
+  del non della horror, però più appunto della stranezza del liminale"
+  (line 309-310) -- zooming from "experience-driven design" to a
+  specific genre register.
+
+The zoom-out marker remains less consistent. "Quindi" appears often but
+is also used as a sentence opener. The implicit "back to the general"
+move is often unsignaled, the instructor simply continues at higher
+abstraction.
+
+
+================================================================================
+2. RHETORICAL TOOLKIT
+================================================================================
+
+--- FRAMING PHRASES ---
+
+A new framing phrase emerges this lecture, one that wasn't prominent
+before:
+
+  "il bottom line"
+  "il bottom line era che se voi prendete open code oppure kilo... può
+  funzionare esattamente come il GitHub Compilot" (line 163)
+
+This is the only occurrence in the lecture but it's notable -- it's an
+English idiom transplanted into Italian flow, and it functions as a
+summary marker. This suggests the instructor reaches for explicit
+"here's the takeaway" framing more easily in English than in Italian.
+
+The recurring framing inventory is otherwise stable:
+
+  "la cosa più importante" / "la parte più importante" -- present but
+  less emphatic than in Lecture 6. The lecture's most important content
+  (manager/controller) is not introduced with this phrase but rather
+  through problem-statement framing.
+
+  "quello che vorrei fare oggi" -- used twice (line 187, 285) to bookend
+  the announcement of the day's two ideas. This is the instructor's
+  consistent agenda-setting formula.
+
+  "quello che vi chiederei" -- used once for the design document /
+  production plan request (line 320 area). Same announcement formula
+  applied to assignment-giving.
+
+  "le cose che vorrei che vi portaste a casa come proprio fondamenti"
+  (line 643) -- a closing-frame variant that flags the takeaways.
+  This appears late in the lecture as a synthesis cue.
+
+  "scusate, sto facendo tante cose" (line 261) -- a relatively new
+  metacognitive frame that surfaces during the messy first half.
+  Acknowledges the multitasking openly. It softens the chaotic feel
+  but also reveals strain.
+
+--- DEMONSTRATION NARRATION: THINKING ALOUD (UNCHANGED) ---
+
+The thinking-aloud register is consistent with previous lectures.
+During the teleport build:
+
+  "Ah, ecco, una cosa che ho dimenticato di dire qua è di usare i
+  profili" (line 629) -- realization mid-build.
+
+  "Oddio, scusa, puoi ripetere la logica" (line 361) -- reaction to
+  losing track of a student question.
+
+  "Va bene, questo lo dobbiamo gestire dal manager" (line 677) --
+  narrating a discovered limitation as design rationale.
+
+  "Questo volevo evitare, però beni" (line 679) -- accepting an
+  unwanted outcome as a teachable moment.
+
+The most interesting narration moment is when the teleport-fade fails to
+register and the instructor names this as a coordination problem rather
+than smoothing it over: "Allora, non fa il fate o lo fa molto velocemente,
+non riesco. No, non fa il fate. Va bene, questo lo dobbiamo gestire dal
+manager" (line 676-677). The failure becomes the argument for the
+manager pattern.
+
+--- ENUMERATION AND CATEGORIZATION ---
+
+The taxonomic instinct from Lecture 6 reappears in two forms:
+
+  THREE-PART PRODUCTION DOCS:
+  "Design document, production plan, asset list. Questo è il minimo
+  delle produzioni." (line 337)
+  -- a clean three-element list, named and bounded.
+
+  TWO-COMPONENT ARCHITECTURAL SPLIT:
+  "due componenti, cioè un trigger che salva la posizione...
+  e poi un altro che lo riporta" (line 519-520)
+  -- pair-based decomposition of a single interaction.
+
+  TWO IDEAS FOR THE SESSION:
+  "oggi volevo introdurre due idee. La prima è... e l'altra è"
+  (line 285-287)
+  -- explicit dual-topic framing, used as a structural opener.
+
+The 2x2 matrix from Lecture 6 also resurfaces in the gaze-and-fog
+classification exercise (line 808-820), where the instructor uses the
+matrix to argue that gaze-fog is a "switch" rather than "tracking"
+because the sensor is binary even though the visual feedback is
+continuous. This is the most precise application of the matrix in any
+lecture so far.
+
+--- RHETORICAL QUESTIONS ---
+
+Genuine setups appear, but in lower volume than Lecture 6. The most
+substantive instance is in the gaze section:
+
+  "secondo voi di che tipo è questo esempio? Questo questa è una una
+  domanda perché poi anche l'esercizio, no? Vedere, cioè o pensare a
+  un'interazione, poi chiedersi ma qual è la relazione in questa insomma
+  in questa interazione" (line 808-810)
+
+The instructor explicitly frames classification as an exercise, not just
+a question. He pauses for student thought ("pensate un attimo se
+volete"). The follow-up is more developed than in Lecture 6 -- he then
+walks through why the answer is "switch" and not "tracking," which
+lets students hear the matrix being used as a thinking tool. This
+addresses the longstanding critique-flag from Lectures 5 and 6 that
+matrix application was instructor-led; here, at least once, it's a
+genuine exercise with explanation.
+
+Other rhetorical question moments:
+
+  "Qual è il problema?" (line 273) -- setup for the Discard anecdote.
+  "qual è il contesto giusto?" (line 449) -- setup for the spec
+  context-giving lesson.
+  "ma per fare questa interazione abbiamo già qualche componente?"
+  (line 453) -- prompts re-use thinking.
+
+These are setups, not student-prompts. They function as cognitive
+direction-pointers in the instructor's monologue.
+
+
+================================================================================
+3. LANGUAGE AND CODE-SWITCHING
+================================================================================
+
+--- BILINGUAL PATTERNS ---
+
+The Italian-English mix continues at the now-established rate. English
+terms are used without Italian gloss for almost all technical vocabulary.
+What's new this lecture is the volume of terminal/CLI vocabulary in
+English: "command prompt," "open in terminal," "command line," "CLI,"
+"npm install," "open code," "kilo." None of these are translated.
+
+Notable code-switches into English mid-sentence:
+
+  "use trigger sensor to teleport player location" (line 521)
+  "We have component for saving the home location and another one"
+  (line 522-523)
+  "Yeah." (line 524)
+  "read teleport spec" (line 529)
+  "in implement" (line 597)
+  "Focus density. Focus duration please." (line 822)
+
+These all occur during AI-spec writing or naming components. The pattern
+is consistent: when writing prompts for the AI or naming code artifacts,
+English is the default. The instructor previously acknowledged this
+("scusate, io scrivo in inglese per abitudine, ma potete scrivere in
+italiano" -- Lecture 6) and the habit persists.
+
+A new English idiom appears in the manager discussion:
+
+  "il bottom line era che se voi prendete..." (line 163)
+
+"Bottom line" is an English summarizer for which the instructor reaches
+when he wants to flag a takeaway. It's used once but is striking because
+the surrounding sentence is otherwise Italian.
+
+--- REGISTER SHIFTS ---
+
+The first half of the lecture is dominated by what we might call
+LOGISTICS REGISTER -- shorter, more fragmented, heavier on "ehm" and
+"un attimo" because the instructor is multitasking (running the
+projector, helping students individually, checking that the cloning
+worked). Examples:
+
+  "Ehm potete usare lo stesso account, ok?" (line 3)
+  "Un attimo solo perché mi è sfuggito un secondo" (line 144)
+  "Ah, sì, scusate, questa è l'ultima cosa." (line 108)
+
+This register has higher filler density than the teaching register and
+features more "scusate," more "un attimo solo," and more sentence breaks
+mid-thought.
+
+The TEACHING REGISTER returns when the recap of the interaction atom
+begins (line 190 area). Sentences lengthen, fillers thin out:
+
+  "la cosa su cui un attimo ci siamo soffermati, abbiamo aggiunto la
+  volta scorsa era la quello che succede in mezzo, no? la trasformazione,
+  come effettivamente decidiamo la relazione tra l'input e l'output"
+  (line 201-203)
+
+The longest, most structured sentences appear during the manager/
+controller introduction (lines 605-625), where the instructor is making
+his core argument and the prose noticeably tightens.
+
+The WORKSHOP REGISTER -- live build narration -- behaves as it has in
+prior lectures. Fragmented bursts during the teleport build: "Ok," "E
+niente, tutto qua," "Aspetta, cosa è successo?" "Datemi un attimo," "Ah."
+
+What's new is the proportion. This lecture has more LOGISTICS register
+than any previous one, by a significant margin. The first 50 minutes are
+almost entirely procedural. This compresses the time available for
+teaching register and partly explains why the conceptual content of the
+lecture lands in shorter passages than usual.
+
+--- TECHNICAL VOCABULARY INTRODUCTION ---
+
+Three new terms are introduced this lecture: "manager," "controller" (in
+the architectural sense, distinct from the existing "interaction
+controller" usage), and "stato" / "state."
+
+  MANAGER: Defined through use rather than gloss. The instructor never
+  says "a manager is X." He describes what managers do: "il manager che
+  da solo non fa niente, non non decide... semplicemente chiamano il light
+  manager" (line 615-619). The definition is implied: a manager owns a
+  shared output and exposes operations on it.
+
+  CONTROLLER: Reused from prior lectures but with shifted meaning. In
+  Lectures 4-6, "controller" was simply a script attached to a GameObject
+  that runs an interaction. Here it gains a relational meaning: a
+  controller is what calls a manager. This shift is not flagged. A
+  student paying close attention might notice that "controller" now means
+  something slightly different than it did last week.
+
+  STATO / STATE: Defined explicitly:
+  "quando parliamo di stato parliamo semplicemente di ehm salvare appunto
+  una o più variabili con cui abbiamo interagito eh in quella sessione di
+  gioco" (line 624-626)
+  This is one of the cleanest definitions the instructor has offered all
+  semester. Single sentence, present tense, no hedging, no "diciamo."
+
+The instructor's three modes from Lecture 6's analysis (assume / gloss
+on first use / define through use) are all present. State gets the gloss
+treatment; manager gets the define-through-use treatment; controller
+gets neither and quietly shifts meaning.
+
+
+================================================================================
+4. QUESTIONING AND INTERACTION STYLE
+================================================================================
+
+--- QUESTION TYPES ---
+
+TYPE 1: TAG QUESTIONS ("no?")
+Frequency comparable to or slightly below Lecture 6 (rough count: 80-90).
+Function unchanged: rhythmic punctuation. The reduction may simply
+reflect the higher proportion of logistics speech, where "no?" has less
+purchase than in teaching speech.
+
+TYPE 2: GENUINE COMPREHENSION CHECKS
+A few, but the most substantive is the gaze classification:
+  "secondo voi di che tipo è questo esempio?" (line 808)
+The instructor pauses, then walks through the answer. The pause is real
+-- the transcript shows several seconds of silence before the answer.
+This is the closest the lecture comes to an actual student-driven
+classification.
+
+TYPE 3: CONFIRMATION CHECKS ("vi torna?")
+Lower volume than Lecture 6. One notable instance:
+  "so che non so se ti torna come idea semplicemente" (line 736-737)
+In a one-on-one with Veronica during the matrix-classification exchange.
+Here it's a real check, used in a small-group setting where the
+instructor is more attentive to comprehension.
+
+TYPE 4: META-QUESTIONS DURING SPEC WRITING
+A new pattern: when writing AI prompts, the instructor narrates the
+prompt as a question:
+  "ci serve un componente macro che è consapevole di tutte le stanze, di
+  tutti i teleport? Forse no" (line 502-503)
+  "quando facciamo il teleport, quando passiamo dal trigger, dobbiamo
+  salvare la posizione del giocatore o ce l'abbiamo già salvata?"
+  (line 517-518)
+These are not student questions but design questions externalized. They
+make the spec-writing process visible -- students hear the kind of
+question a designer asks the system before asking the AI.
+
+--- STUDENT INTERACTION HANDLING ---
+
+The validate-then-operationalize pattern from Lecture 6 reappears
+explicitly with Veronica:
+
+  "Cosa vorresti far diventare trasparente? La porta. Ok. Ehm, fai
+  pensare. Ah, potresti usare un materiale" (line 407-408)
+
+The instructor receives the design idea, validates it, and immediately
+transitions into how to make it work technically. This is the same move
+as in Lecture 6 ("preferiresti avere... la risposta più brusca... prova
+a duplicare un profilo più brusco").
+
+A new variant: USING-STUDENT-WORK-AS-CASE-STUDY. The instructor takes
+another student's spec attempt (the teleport-spec with Rigid Body) and
+uses it as a teaching example for the whole group:
+  "questo è un buon tentativo, però qual è il contesto giusto?" (line
+  448-449)
+He doesn't just help the individual; he generalizes the lesson. This is
+a stronger pedagogical move than Lecture 6's profile-swapping
+demonstration because it makes student work visible to peers as material
+for collective learning.
+
+The down-side: in a class this small (4-5 students), making a single
+student's attempt the teaching example can put that student in the
+spotlight. The instructor handles this gently ("la logica era era
+giusta, è solo la il contesto") but the asymmetry exists.
+
+
+================================================================================
+5. PACING AND RHYTHM
+================================================================================
+
+--- TWO-ACT STRUCTURE WITH UNUSUAL FRONT-LOAD ---
+
+Most ID4 lectures have a roughly proportional theory/practice arc. This
+lecture is bottom-heavy with logistics:
+
+  ACT 1 (0:00-0:50, ~50 min): Logistics-dominant. Git migration, AI
+  tool walkthrough, terminal basics. Pacing is slow because much of
+  the time is spent waiting for clones, helping students individually,
+  and troubleshooting installations. Speech is fragmented, filler-heavy,
+  and frequently interrupted by inaudible student exchanges.
+
+  ACT 2 (0:50-1:00, ~10 min): Brief recap of the interaction atom
+  from Lecture 6. Tight, theory-register speech.
+
+  ACT 3 (1:00-2:30, ~90 min): The day's actual content. Production
+  documents distributed, students attempt their own interactions,
+  Veronica's transparent door, the tile-rotation modular interaction
+  demo, the manager/controller architecture, the live teleport build.
+  Pacing alternates between dense theory passages and live-build
+  fragmentation, similar to Lecture 6's act 2.
+
+  ACT 4 (2:30-2:50, ~20 min): Bonus content for committed students --
+  the gaze sensor and the focus-fog interaction. Slightly rushed
+  because the scheduled time is over. The rush is acknowledged
+  verbally: "skippo il passo della dello spec e così via. Sbagliato,
+  non fatelo, ammazziamo di fretta" (line 803).
+
+The contrast with Lecture 6's clean three-act structure is sharp. Here,
+the structure is forced by external circumstance (the GitHub crisis)
+rather than chosen, and the instructor names the cost openly:
+"abbiamo perso un sacco di tempo con la col dit eccetera" (line 482).
+
+--- TOPIC TRANSITION STYLE ---
+
+Two patterns from Lecture 6 persist:
+
+  ANNOUNCED TRANSITIONS:
+  "Bene, allora quello che volevo fare oggi" (line 282) -- closes
+  logistics, opens the teaching session.
+  "Bene, allora ci ho detto proviamo a fare appunto un'interazione"
+  (line 342) -- closes recap, opens the practice block.
+  "Allora, ehm, ok, allora provo a fare un commit unico" (line 267) --
+  pivot from teaching back to logistics.
+
+  ORGANIC DRIFT:
+  More frequent in this lecture than in Lecture 6. The drifts mostly
+  occur in the first half, where the instructor moves between Git
+  setup, AI tool installation, and student troubleshooting without
+  always signaling the shift. The mid-block (lines 393-510) where
+  Veronica's door comes up alongside teleport-spec discussion is a
+  particularly loose stretch.
+
+--- SENTENCE-LEVEL RHYTHM ---
+
+Theory passages have the characteristic clause-heavy rhythm:
+
+  "se appunto ci sono tre diversi controller che devono tutte e tre
+  controllare ehm la luce, forse ha senso fare una cosa che controlla
+  la luce e che tutti e tre controller poi chiamano, no?" (line 608-609)
+
+  -- one long sentence with three nested ideas (premise, conclusion,
+  framing tag).
+
+Logistics passages fragment more aggressively than in any prior lecture:
+
+  "Ah, sì, sì, abbiamo cominciato 5 minuti facile. No, non ci
+  mancherebbe. Ma stavo facendo vedere questa questa storia di git
+  che in fin dei conti..." (line 33-34)
+
+  -- five micro-sentences in a row, each addressing a different
+  conversational thread (greeting a late student, downplaying the
+  delay, returning to the topic).
+
+This fragmentation is functional -- it reflects real-time multitasking
+-- but it's noticeably more pronounced than in Lectures 4-6.
+
+--- DIGRESSION BEHAVIOR ---
+
+The Discard cautionary anecdote (lines 271-281) is a clean digression:
+explicitly framed ("io ho avuto la l'altra sessione di esame, un
+studente"), bounded by a return ("comunque, insomma, non poi per fortuna
+ci sono sempre c'è sempre qualche modo per recuperare"), and
+substantively connected to the surrounding instruction (don't click
+Discard). This is the cleanest digression structure of the lecture.
+
+The Mistral / OpenCode / Kilo introduction (lines 128-170) drifts more
+loosely. The instructor is recommending tools while also explaining the
+terminal while also installing OpenCode. The structure is more "I'm
+showing you several things at once" than "let me digress and return."
+
+The personal anecdote about Fork as the instructor's preferred Git
+client (line 38-39) is a small one-line aside that doesn't expand. This
+is a milder digression style than in earlier lectures, where personal
+asides sometimes ran for paragraphs.
+
+
+================================================================================
+6. VERBAL HABITS AND SIGNATURE MOVES
+================================================================================
+
+--- PET PHRASES (FREQUENCIES) ---
+
+  "no?" -- ~80-90 occurrences. Slight reduction from Lecture 6 (~95).
+  Reduction likely tied to higher logistics-speech proportion.
+
+  "insomma" -- ~50-55 occurrences. Roughly comparable to Lecture 6.
+  Continues to function as a vague summarizer:
+  "insomma, sì, certo. Sì, sì, condivido subito" (line 105)
+  "insomma, comunque eh in nessuna organizzazione" (line 36)
+
+  "un attimo" -- ~45-50 occurrences. Higher than Lecture 6 (~40),
+  consistent with higher logistics density. Particularly clustered
+  during the multitasking first half.
+
+  "diciamo" -- ~35-40 occurrences. Stable.
+
+  "ehm" -- Markedly more frequent in the first half, particularly
+  during Git troubleshooting. Drops noticeably during the manager/
+  controller exposition.
+
+  "scusate" / "scusami" / "scusa" -- ~12 occurrences, the highest
+  of any lecture analyzed. The instructor is apologizing more often
+  this session, almost always for context-switching:
+  "Quindi scusate sto facendo tante cose" (line 261)
+  "Scusate, adesso vi lascio andare" (line 663)
+  "Scusate se prendo un po' di tempo" (line 512)
+  This is a genuine signal of strain in the first half.
+
+--- ENTHUSIASM MARKERS ---
+
+The instructor's most energized speech in this lecture appears around:
+
+  1. THE MODULAR-LOGIC PRINCIPLE:
+  "pensando in questo modo, diciamo, non fare un componente che fa tutto,
+  ma fare un componente che fa un'azione che poi possiamo scegliere di
+  orchestrare oppure di tenere in locale" (line 581-582)
+  -- the sentence has rare imperative directness; "non fare X, fare Y"
+  is uncharacteristically clean.
+
+  2. THE FOG-DENSITY DEMONSTRATION:
+  "La la nebbia arriva, se non la focalizziamo si sposta. E questo,
+  ripeto, è switch, no? E poi, oddio, addirittura se non ci muoviamo
+  diventa ancora peggios" (line 825-826)
+  -- "addirittura" and "peggios" (peggio + s) signal genuine delight
+  at the layered effect.
+
+  3. VERONICA'S TRANSPARENT-DOOR IDEA:
+  "Bene. Beh, questa questa è una buona idea perché poi unisce anche
+  l'idea della c'è qualcosa che ha una vita sua dentro questo spazio,
+  no?" (line 365-366)
+  -- explicit "buona idea," brief but unhedged.
+
+The instructor's enthusiasm for student work continues to be a
+consistent pattern: he validates ideas openly when they fit the
+course's design philosophy.
+
+--- HEDGING AND CONFIDENCE (UNCHANGED PATTERN) ---
+
+The Lecture-6 finding holds: heavy hedging on aesthetic/experiential
+claims, light hedging on workflow/methodology. New examples this lecture:
+
+  HIGH HEDGING (aesthetic):
+  "ovviamente quello che succede in mezzo è è la parte interessante"
+  (line 314) -- "interessante" with "ovviamente" is doubled hedging.
+  "non ci interessa che i progetti siano così tanto un un technical
+  demo" (line 303-304) -- triple-hedged claim about project quality.
+
+  LOW HEDGING (workflow):
+  "non fate discard perché sennò li cancellate in modo quasi
+  irrevocabile" (line 79) -- direct imperative.
+  "Idealmente quando facciamo lo spec dobbiamo cercare di dare il
+  contesto giusto" (line 448) -- "dobbiamo" rather than "potremmo."
+  "cioè separiamo i dati, la configurazione dal controller" (line 644)
+  -- naked imperative.
+
+The strongest unhedged statement of the lecture comes near the end:
+"non fare un componente che fa tutto, ma fare un componente che fa
+un'azione" (line 581). Two clean imperatives, no softeners.
+
+--- METACOGNITIVE NARRATION ---
+
+This category sees the most growth in this lecture. The instructor is
+unusually transparent about his own choices and limitations:
+
+  "scusate, sto facendo tante cose" (line 261) -- naming the
+  multitasking strain.
+
+  "Comunque qua come location sarà uno script che salva, ma in realtà
+  lo salva all'inizio del gioco, quindi in realtà si poteva usare anche
+  solo un semplice oggetto. Va bene" (line 670-671) -- narrating a
+  design decision and accepting an imperfect solution.
+
+  "skippo il passo della dello spec e così via. Sbagliato, non fatelo,
+  ammazziamo di fretta" (line 803) -- naming the rushed pedagogy
+  explicitly. This is a particularly honest meta-moment because the
+  instructor does the wrong thing while announcing that it's wrong.
+
+  "sicuramente manca qualcosa, forse perdi qualche idea. Io, almeno
+  che non sono molto molto di fretta e non ho le idee molto molto
+  chiare, faccio sempre almeno un breve pass" (line 498-500) --
+  metacognitive framing of his own spec-writing habit.
+
+These moments humanize the instruction and make the process visible.
+They also reveal a pattern: the instructor's metacognitive narration
+increases in proportion to time pressure. When the lecture has been
+disrupted, he externalizes more of his reasoning to compensate.
+
+--- THE "PROVATE A" DIRECTIVE ---
+
+Still the dominant task-assignment form (~20 occurrences, slightly
+reduced from Lecture 6 because there are fewer hands-on assignments
+in this lecture):
+
+  "provate a pensare adesso" (line 353)
+  "provate a pensare, può essere anche un'interazione semplice" (line 347)
+  "provate a vedere se avete probito o squadza che abbiamo scorso" (line 244)
+  "pensate un attimo se volete" (line 810)
+
+The pattern is unchanged: soft directive framing, exploration over
+obligation. The reduction in volume reflects content rather than habit.
+
+--- THE "ECCO" PATTERN ---
+
+Continues to function as a presentational marker. New examples:
+
+  "Ecco, una cosa che ho dimenticato di dire qua" (line 629) --
+  spotlight on a forgotten point.
+  "Ecco, così dovrebbe andar bene" (line 791) -- confirmation of a fix.
+  "Ah, ecco, questo è un problema" (line 786) -- spotlight on a
+  discovered issue.
+
+Frequency comparable to Lecture 6.
+
+
+================================================================================
+7. RECURRING PATTERNS (CROSS-LECTURE)
+================================================================================
+
+Comparing Lecture 7 to L4, L5, and L6:
+
+--- STABLE VERBAL IDENTITY ---
+
+  "No?" as rhythmic punctuation: Present and frequent in every lecture
+  (L4 ~47, L5 ~87, L6 ~95, L7 ~80-90). The minor variation likely
+  reflects content density rather than habit shift.
+
+  "Allora" as transition marker: Consistent across all four lectures.
+
+  "Un attimo" as minimizer: Present in every lecture. L7 shows the
+  highest frequency yet (~45-50), tracking with logistics intensity.
+
+  "Insomma" as filler: Present in every lecture. L7 sits between L6's
+  reduced frequency and L5's high frequency.
+
+  Hedging pattern (high on aesthetics, low on workflow): Stable across
+  all four lectures. The contrast remains a defining feature of the
+  instructor's voice.
+
+  Self-correction via "scusate" / "anzi": Higher than usual in L7 (~12
+  scusate), reflecting the multitasking strain.
+
+  "Provate a" as soft directive: Present in every lecture, dominant
+  task-assignment form.
+
+  Validate-then-operationalize pattern: Now present across L5, L6, L7.
+  Becoming a defining instructional move.
+
+  Italian-English code-switching for technical terms: Stable. Persistent
+  English-default for AI spec writing.
+
+--- SHIFTING PATTERNS ---
+
+  EXPLANATION ARCHITECTURE: L6 led with abstraction (the 2x2 matrix axes
+  before any examples). L7 leads with use cases (three scenarios where
+  shared output causes friction, then "manager"). This isn't a wholesale
+  shift; both modes appear in both lectures. But the dominant approach
+  for the day's central new concept changes between L6 and L7. The
+  manager/controller idea is more native to use-case-first framing
+  because architectural decisions resist top-down explanation.
+
+  GENUINE QUESTIONING: L6 introduced classification questions as a
+  partial improvement. L7 sustains this with the gaze-fog classification
+  exercise (line 808-820), which is the most developed instance of
+  matrix-as-thinking-tool in any lecture. The instructor pauses, the
+  students are given time, and the answer is then walked through with
+  reasoning. This is a step forward from L6 where classification was
+  posed but answered immediately.
+
+  METACOGNITIVE NARRATION INTENSIFIES: L6's metacognitive markers were
+  generally about session structure ("adesso ho quasi finito con la
+  teoria"). L7 adds metacognitive markers about strain and rushed
+  decisions ("ammazziamo di fretta," "scusate sto facendo tante cose").
+  The instructor is more transparent about his own constraints.
+
+  LOGISTICS REGISTER MORE PROMINENT: L7's first 50 minutes are dominated
+  by logistics speech in a way no previous lecture is. This is
+  externally caused (Git crisis) but it shapes the entire session's
+  texture: more fragmentation, more "ehm," more "scusate," more
+  multitasking. The teaching register reasserts itself in act 3 but
+  has less time to breathe than usual.
+
+  ARCHITECTURAL VOCABULARY EMERGING: "Manager" is a new architectural
+  term introduced this lecture. "Controller" is reused but with a
+  shifted relational meaning (now meaning "the thing that calls
+  managers"). This is the first lecture in the analyzed set where
+  software-architecture vocabulary appears as an explicit teaching
+  category. The instructor avoids "OOP," "design pattern," and
+  "separation of concerns," preferring the neutral "manager" /
+  "controller" pair. Whether the boundary between these terms is clear
+  enough for students to use independently is an open question.
+
+  AI-WORKFLOW NARRATION DEEPENING: L4-5-6 introduced spec-driven AI
+  workflow as a method. L7 introduces it as a tool with explicit modes
+  (Plan and Build), shows the tools that expose this distinction
+  (OpenCode, Kilo), and adds the practice of having the AI revise the
+  spec at the end of a session ("così se lo apriamo tra due settimane
+  ci ricordiamo, perché questa chat sarà persa, ma lo spec resta" --
+  line 595-596). This is the most sophisticated AI-process moment of
+  the course.
+
+
+================================================================================
+8. THE STATE DEFINITION
+================================================================================
+
+One sentence in this lecture deserves separate attention because it's
+unusually clean:
+
+  "quando parliamo di stato parliamo semplicemente di ehm salvare appunto
+  una o più variabili con cui abbiamo interagito eh in quella sessione
+  di gioco" (line 624-626)
+
+Single sentence. Present tense. No "diciamo," no "un po'," no "in
+qualche modo." The two "ehm"s are real-time fillers, not hedges. This
+is the closest the instructor comes in any analyzed lecture to a
+textbook definition delivered without softening.
+
+The contrast with how the instructor typically defines aesthetic
+concepts ("una percezione proprio emotiva, esperienziale, anche
+viscerale a volte") is striking. State is a precise concept and the
+prose tightens accordingly. This is consistent with the broader
+hedging pattern: the instructor speaks more crisply about technical
+abstractions than about experiential ones.
+
+
+================================================================================
+9. THE "SI POTEVA USARE" CONSTRUCTION
+================================================================================
+
+A new minor pattern: when the instructor narrates a design decision
+that turned out slightly suboptimal, he uses the imperfect-conditional
+construction "si poteva":
+
+  "in realtà si può poteva usare anche solo un semplice oggetto"
+  (line 670-671)
+  "qua per esempio non abbiamo il non abbiamo il profilo. Dovremmo per
+  farlo bene dovremmo fare scritto object" (line 822-823)
+  "essendo l'alternativa è partire da zero e importare tutte le cose,
+  ma vanno bene entrambi" (line 401-402)
+
+These are all post-decision retrospections: "what I did is fine, but
+what I could have done is also fine." This construction is honest about
+choice without claiming optimality. It's a useful instructional habit
+because it teaches students to evaluate decisions as choices rather
+than as right-or-wrong determinations.
+
+
+================================================================================
+SIGNATURE PROFILE
+================================================================================
+
+This instructor's voice is now recognizable across four analyzed
+lectures: he teaches through frameworks named-and-populated, hedges
+constantly on aesthetic claims while speaking directly about workflow,
+narrates his own thinking aloud during live demos (complete with
+"oddio" and "scusate"), code-switches seamlessly between Italian for
+pedagogy and English for technical terms, and frames almost every
+exercise as an invitation ("provate a") rather than an obligation. He
+relies on temporal callbacks to scaffold continuity, on "no?" tags as
+breathing space, and on "per esempio" as his zoom-in marker. This
+lecture adds two patterns to the profile: a noticeably higher
+"scusate" frequency under multitasking strain, and a willingness to
+narrate his own time-pressured shortcuts ("ammazziamo di fretta,
+sbagliato, non fatelo") rather than pretending the pedagogy is
+unaffected. If you read three of his transcripts back-to-back, you
+would notice the use-case-first / framework-second oscillation (he
+chooses based on whether the concept is a taxonomy or an architecture),
+the steady rhythm of self-corrections that humanize without undermining,
+and the small but stable habit of validating student ideas before
+operationalizing them -- a move that makes the design conversation
+feel collaborative rather than transactional.

@@ -1,0 +1,100 @@
+LECTURE 4 — TEACHER SUMMARY
+Interaction Design 4, NABA — 31 March 2026
+
+---
+
+TEACHING OBJECTIVES
+
+The primary goal of this session was to pivot from the ecosystem simulation work of the previous lectures toward a new thematic block: the player's body as an agent of change inside a virtual environment. Where Lectures 2 and 3 had focused on autonomous organisms interacting with one another, Lecture 4 reintroduced the human — presence, proximity, and eventually gaze and contact — as the central input driving environmental feedback. The instructor framed this explicitly at the outset: "vorrei parlare della reintroduzione del giocatore nello spazio."
+
+A secondary but equally deliberate objective was to advance the students' AI-assisted development workflow from last session's tentative introduction of Copilot into a more structured practice. Specifically, the instructor introduced the concept of spec-driven development — writing a plain-text specification document before prompting the AI — as a disciplined alternative to ad-hoc conversational prompting. This is a pedagogical investment: the spec file forces students to think about what they want before they ask for it, and it creates a persistent artifact they can iterate on.
+
+A tertiary objective, woven through the session, was the conceptual shift from binary interaction (trigger enters, trigger exits — on/off) to continuous, parameterized interaction (proximity as a floating-point variable that smoothly controls intensity, color, pitch, light). This is a significant design maturation: the same trigger-action-event paradigm from the previous year now gains a new dimension of expressiveness.
+
+PEDAGOGICAL APPROACHES
+
+The session opened with an extended recap and reframing of the ecosystem work, deliberately kept brief and conceptual rather than hands-on. The instructor used this as a bridge: showing the balanced ecosystem running, introducing the vocabulary of trophic loops (positive/stabilizing vs. negative/destabilizing), sharing the Yellowstone wolves video as an inspirational reference, and then cleanly closing that chapter — "poi passiamo al… andiamo avanti." This was a conscious act of narrative closure, giving students permission to move on while affirming the ecosystem work's value.
+
+The new material was introduced through a sequence of inspirational references before any implementation. The instructor showed two installation art projects — Daan Roosegaarde's illuminating flowers and Random International's Rain Room — to ground the abstract idea of "presence-based interaction" in tangible, prestigious examples. This is a recurring and effective pattern in this instructor's teaching: anchor the technical in the cultural, so that the Unity exercise feels like it is reaching toward something real rather than being an isolated coding task.
+
+The live-build approach continued from previous sessions. The instructor reconstructed the scene from scratch — duplicating the starter assets playground, stripping it down to a floor and grey box perimeter, populating it with cylinders as stand-ins for columns. This modeling of scene preparation as a deliberate, considered act (rather than something that just exists) is valuable for students who might otherwise treat Unity scenes as given rather than authored.
+
+The 3D audio setup was treated as a review exercise, kept brisk: audio source, spatial blend slider, spread, min/max distance, audio listener placement. The instructor acknowledged the classroom limitation (no speakers on some machines, no headphones) pragmatically rather than letting it derail the lesson: "vi faccio vedere, voi lo rifarete fidandovi che si può sentire."
+
+The transition from trigger-based to proximity-based interaction was handled as a deliberate conceptual escalation. The instructor first had students implement the familiar pattern — trigger sensor detects player, material color swaps on enter, swaps back on exit — explicitly labeling it as "il paradigma dell'anno scorso." Then he named its limitation ("abbastanza binaria, cioè on and off") and proposed the upgrade: the proximity sensor, which outputs a continuous distance value. This contrast-then-upgrade structure is a hallmark of the instructor's scaffolding method and works well because students can see exactly what changes and why.
+
+The AI workflow segment was the most methodologically ambitious part of the session. Rather than simply telling students to "ask Copilot to write a script," the instructor walked through a full spec-driven pipeline: create a docs folder in the project, write a column-controller-spec.txt file describing the desired component's behavior, reference that file as context when prompting the AI, and then iteratively update the spec as requirements grow. He explicitly justified each step — "potete perdere la conversazione," "è un'interfaccia tra voi e l'AI" — and acknowledged that it might feel like overkill for a simple component but becomes indispensable for complex systems. He also addressed a common AI pitfall head-on: the tendency of the model to add unrequested features, and the need to constrain it with explicit guardrails ("specs only, don't add anything more").
+
+The work periods were genuine but compressed by the session running slightly long. The instructor circulated, troubleshot individual setups (especially around accepting Copilot suggestions in Visual Studio vs. VS Code — "press tab to accept, poi salvare"), and periodically pulled the group back together to address shared issues.
+
+DESIGN PHILOSOPHY AND PRINCIPLES
+
+Several design principles surfaced, some carried forward from previous sessions, some new:
+
+From binary to continuous interaction: the most prominent conceptual thread was the upgrade from event-driven (on/off) feedback to variable-driven (interpolated) feedback. The instructor named this explicitly as "interpolazione — cambiare gradualmente un numero, una variabile in base ad un'altra variabile." This principle applies far beyond the column exercise; it is the foundation of responsive, atmospheric design in any interactive medium.
+
+Layered feedback as richness: the instructor repeatedly emphasized combining multiple output channels — emissive intensity, point light brightness, audio pitch — all driven by the same proximity variable. He used the term "mettere in layer" to describe this stacking of feedback channels, framing it as the path from a technical demo to something that feels designed and immersive.
+
+Spec-driven development as design thinking: the introduction of the specification file was not merely a coding productivity tip. The instructor framed it as a thinking tool — a way to articulate intent before implementation, to separate the "what" from the "how," and to create a contract between the designer and the AI assistant. This mirrors professional practice in both software engineering and interaction design.
+
+Controller over modules for custom behavior: the instructor drew an explicit tradeoff between using generic, reusable modules (the material-swap component, the trigger-action-event paradigm from last year) and writing custom controller scripts that bundle multiple behaviors. The generic approach is cleaner for simple cases but becomes "un po' pesante" when layering many effects. The custom controller, especially when AI-assisted, compresses complexity into a single, purpose-built component. This is a mature design judgment: know when modularity serves you and when it becomes overhead.
+
+The prefab as a design unit: at the end, the instructor saved the configured column as a prefab and quickly duplicated it into a corridor arrangement, showing students that the payoff of careful component design is effortless replication and spatial composition.
+
+KEY IDEAS AND CONCEPTS INTRODUCED
+
+The session introduced or consolidated several concrete concepts. Trophic loops were named and diagrammed at the ecosystem level — positive (stabilizing) loops that maintain equilibrium versus negative (destabilizing) loops that lead to extinction or overpopulation. The Yellowstone wolves video ("How Wolves Change Rivers") was shared as a real-world example of trophic cascades, connecting the classroom simulation to ecology.
+
+Three levels of ecosystem tuning were articulated: the initial configuration (ScriptableObject data), the runtime state (variables inside components that change during play), and the macro-level spawn parameters. This tripartite framework gives students a structured way to think about balancing.
+
+The four interaction modalities were outlined as the roadmap for the coming lectures: presence (body alters environment), gaze (looking at something triggers response), contact (touching/colliding), and object interaction (picking up, manipulating). Only presence was implemented in this session; the others were promised for future lectures.
+
+3D spatial audio was reviewed: audio source configuration with spatial blend, spread, min/max distance, and the audio listener's placement on the player rather than a static camera. The concept of barely overlapping audio zones was introduced as a spatial design technique — placing sound sources so their ranges just touch, enabling smooth transitions as the player walks between them. Audio reverb zones were mentioned as an additional atmospheric tool.
+
+The proximity sensor was introduced as an evolution of the trigger sensor. Where the trigger sensor fires binary events (detected/lost), the proximity sensor outputs a continuous distance value that other components can consume. This was positioned as the key technical enabler for the shift from binary to continuous interaction.
+
+The material color property system in Unity's URP pipeline was explored: the distinction between base color and emissive color, the HDR emissive intensity as a separately controllable value, and the material index for objects with multiple materials.
+
+The spec-driven AI development workflow was introduced as a multi-step process: create a specification document describing the component's purpose and behavior, reference it as context when prompting the AI, provide the existing (even empty) script as an additional context anchor, constrain the AI with explicit instructions not to exceed the spec, and iteratively update the spec as requirements evolve.
+
+MCP (Model Context Protocol) servers were briefly mentioned as an emerging capability that allows AI tools to directly manipulate the Unity project — creating scenes, placing objects, setting materials — rather than only generating code. The instructor flagged this as experimental and not yet reliable for complex tasks but worth watching.
+
+DIGRESSIONS AND ANECDOTES WORTH PRESERVING
+
+The Yellowstone wolves video ("How Wolves Change Rivers") is a teaching asset worth reusing. It viscerally demonstrates trophic cascades — the reintroduction of wolves changed elk grazing patterns, which allowed vegetation to recover along riverbanks, which stabilized the rivers themselves. The instructor's connection to the classroom simulation was apt: "in fondo è un po' anche il potenziale di queste simulazioni sistemiche."
+
+The Expedition 33 anecdote is pedagogically valuable. The instructor relayed that colleagues who attended GDC reported on the surprisingly simple implementation techniques behind one of the year's most awarded games — "la quantità di soluzioni stupide di implementazioni nel più grande gioco di quest'anno è incredibile." This normalizes simple solutions and reinforces the "work smart, not hard" philosophy, directly justifying the use of trigger zones for a majority of interactions.
+
+The break-time conversation about game recommendations — the pool/horror liminal-space game (likely a Backrooms-adjacent title) where "non succede niente, cioè continui a andare" — is worth noting because it connects to the lecture's theme of atmospheric, presence-based design. The instructor's enthusiasm for a game built entirely on ambiance and anticipation without conventional gameplay reinforces the idea that spatial experience and mood can be sufficient design goals.
+
+The conversation with Veronica during the break about applied technology projects, medical device certification bureaucracy, and the instructor's own professional frustrations with multi-institutional coordination ("già solo coordinarsi, ti assicuro che è un incubo, porta via più tempo che fare il lavoro") is a small but authentic moment of mentorship. It models the realities of professional practice and the instructor's own design ambitions.
+
+The Unity audio system update surprise — "hanno rinominato questo campo, si chiamava AudioClip, non audio generator" — is a minor but relatable moment. The instructor discovering a UI change live, in front of students, and adapting on the fly normalizes the reality that tools change and professionals must continuously re-orient.
+
+STUDENT LANDSCAPE
+
+The cohort remains small, likely eight to twelve students. Veronica continues to be the most vocally engaged student, asking questions, troubleshooting actively, and staying after class to get her setup working. A student mentioned having attended a conference or event where they saw presentations on healthcare technology and met the instructor's colleague Francesca Bali. Another student asked for game recommendations (apparently interested in a career or studies related to game development), prompting the Expedition 33 and liminal-space game suggestions.
+
+The classroom infrastructure posed practical friction: some computers lacked speakers, disk space was limited (one machine already at 14 GB on the C drive), and the difference between Visual Studio and Visual Studio Code created workflow confusion around accepting AI-generated code (the "press tab to accept" vs. "keep" button discrepancy). The instructor handled these issues with patience but they consumed noticeable time. The audio portion of the lesson was particularly compromised — many students could not hear the spatial audio effects and had to trust the instructor's demonstration.
+
+Students appear comfortable with the basic Unity workflow (importing packages, creating scenes, adding components) but the AI-assisted coding step was new territory for most. Several needed individual guidance to get the spec-to-implementation pipeline working, and at least one student had the AI write code into the wrong file or add unrequested functionality. The instructor's response — teaching them to constrain the AI and read the spec back — was the right corrective.
+
+SESSION ARC
+
+The session had four distinct movements. The first was a conceptual wrap-up of the ecosystem work: a brief demonstration of the balanced simulation, an introduction of trophic loop vocabulary, the Yellowstone wolves video reference, and a clear articulation of the three tuning levels (configuration, runtime state, spawn parameters). This lasted roughly ten minutes and served as both closure and bridge.
+
+The second movement introduced the new thematic block: presence-based interaction. The instructor showed inspirational references (Roosegaarde's flowers, Rain Room), set up a clean scene with columns, reviewed 3D spatial audio, and then walked through the familiar trigger-sensor-plus-material-swap pattern for binary color change on enter/exit. A five-minute student work period followed. This occupied roughly thirty-five minutes and established the baseline.
+
+The third movement, beginning after the break, was the conceptual and technical core of the lecture: the shift from binary to continuous interaction. The instructor introduced the proximity sensor, explained interpolation as a design concept, and then pivoted into the spec-driven AI workflow. Students created a column controller script, wrote a specification document, fed it to Copilot, and attempted to get the AI-generated component working with emissive intensity driven by proximity. This was the densest segment, running about forty-five minutes, and where the most individual troubleshooting occurred.
+
+The fourth movement was a rapid extension: the instructor updated the spec to add point light intensity and audio pitch as additional proximity-driven feedback layers, demonstrating the iterative spec-update workflow and the concept of multi-layer feedback. He then saved the column as a prefab, duplicated it into a corridor arrangement, and assigned the homework. The session ran slightly over time, with the instructor staying to help Veronica resolve her setup.
+
+FORWARD THREADS
+
+The homework assignment is to add at least one new feedback variable to the proximity-driven column controller using the spec-driven AI workflow. Students should bring headphones to the next lecture for audio-focused work. The instructor plans to continue through the interaction modality sequence: gaze-based interaction and contact-based interaction in subsequent sessions, using the same proximity-and-interpolation logic but with different input sources.
+
+The ecosystem balancing exercise from Lecture 3 was not formally collected or reviewed; the instructor exported a stable version as a package for students who want to continue experimenting. The MCP server integration (Unity MCP allowing AI to directly manipulate scenes) was flagged as something to attempt on classroom computers but not confirmed working; this could become a powerful pedagogical tool if the setup stabilizes. The instructor also mentioned Open Code as an open-source, model-agnostic alternative to Copilot that he wants to show students in a future session.
+
+The practical issue of classroom audio equipment needs resolution before the next lecture — the instructor noted this and asked students to bring headphones. The Visual Studio vs. VS Code workflow discrepancy around accepting AI suggestions should be addressed with a brief standardization at the start of the next session, since it caused disproportionate confusion relative to its complexity.
+
+The broader trajectory is clear: the course is moving from systems (ecosystem simulation) to spaces (interactive environments driven by player presence and action), with AI-assisted development becoming an increasingly central part of the workflow rather than an occasional tool. The instructor's promise that "niente sarà più complesso di quello che avete già visto" from Lecture 3 held true — the new material reuses familiar patterns (sensors, controllers, events) but recombines them toward a different design goal.

@@ -1,0 +1,345 @@
+## Artist References: Living Interfaces
+
+Allora, cosa hanno fatto questi artisti? In realta qua sono gia contenuti alcuni dei loro lavori. Credo il loro piu famoso sia questa installazione dove ci sono delle piante vive e poi toccando le piante ci sono delle piante digitali che crescono.
+
+Non so se avete assistito a progetti simili che utilizzano degli organismi o comunque delle piante vive come interfaccia.
+
+[A student mentions having seen similar projects using plants to create sounds]
+
+Ci sono alcuni artisti che usano le piante per creare dei suoni. Negli ultimi anni e andata un po' di moda questa idea, e a livello tecnico e abbastanza facile da realizzare perche si tratta solo di misurare la conduttanza delle foglie. Sono due elettrodi -- come quando si misura, per esempio, la conduttanza galvanica, il GSR e cosi via. Ci sono due elettrodi, tu tocchi la pianta e cambi la conduttanza sulla superficie, questo viene rilevato, e in base a questo -- di solito la resistenza tra questi due punti -- si puo scatenare un'interazione. In questo caso loro facevano crescere un po' le foglie. Credo questo sia 2D, quindi semplicemente generano altre foglie attorno ad un cluster. Per quelli fra di voi a cui interessa piu il lavoro installativo, e sicuramente un'idea carina.
+
+Poi un'altra cosa che loro avevano fatto -- questa tra l'altro e una credo del '93-'94, questa e una versione modernizzata -- c'era un'altra cosa carina che era sempre una specie di acquario dove ci sono dei pesci e toccando l'acqua, con un proiettore che rileva la posizione di un oggetto, poi genera o muove i pesci. Questo qua invece usa sempre questa idea di rilevare la posizione di un oggetto. In questo caso e un fascio di luce che fa muovere delle farfalle.
+
+La cosa interessante e che in tutti questi progetti le entita che vengono effettivamente controllate hanno una loro vita. Hanno un ciclo di vita e poi per esempio queste farfalle in questo progetto sono praticamente sensibili: finche sono illuminate si replicano, diventano un gruppo, poi se non le illumini invece decadono.
+
+Capite l'idea? Qua vi ho lasciato alcuni altri artisti se volete esplorare -- hanno fatto cose in questo senso. Cosa rende un mondo vivo? Abbiamo delle entita che di solito vengono spawnate, hanno un ciclo di vita, muoiono, pero avranno dei comportamenti e possono interagire tra di loro.
+
+---
+
+## Overview: What We'll Build Today
+
+Oggi vediamo l'implementazione a un livello un po' piu granulare, passo per passo. Do anche alcuni esercizi piccoli per capire i concetti un po' piu in fondo.
+
+Quello che faremo adesso -- anzi, come prima cosa vi passo questa scena cosi iniziamo da li. I principi di costruzione di questa scena li abbiamo visti abbastanza il semestre scorso e il semestre prima, quindi non mi soffermo cosi tanto sugli effetti ambientali -- la nebbia e cosi via. Se osservate questa scena, e chiaro com'e composta: abbiamo la skybox con la directional light, abbiamo l'environmental fog, abbiamo qualcosa in termini di luci e materiali emissivi, e poi il terreno che abbiamo visto i semestri scorsi. In realta qua il terreno ha solo un materiale. Vi esporto un attimo questa scena cosi ce l'avete, poi man mano costruiamo dentro l'ecosistema.
+
+[Logistics: instructor exports the scene, asks students to download it from Blackboard and enable post-processing]
+
+---
+
+## Using AI Tools for Development
+
+Un'altra cosa che vi faro vedere oggi e anche come utilizzare l'AI per creare alcuni componenti, alcuni comportamenti.
+
+[The instructor asks if anyone has tried using AI tools for coding, either for the previous demo or in the previous semester. A brief exchange follows where students share limited experience.]
+
+Allora, e un tema un po' grigio, perche ci sono molti problemi a livello etico e a livello dell'impatto che queste tecnologie stanno avendo. Personalmente mi sento che e un po' difficile evitarli, soprattutto nel lavoro della programmazione, dello sviluppo. Sono ormai diventati di un utilizzo totalmente grande che io letteralmente non conosco nessuna persona che non li utilizza. Poi credo che per questione di arte, musica, eccetera, probabilmente anche meglio non usarli per creare arte, perche probabilmente non parliamo piu di arte -- questo e un altro tema ancora.
+
+So che c'e qualcuno o qualche altro studente che per esempio non vuole assolutamente usare AI. Questo va bene, non vi sto obbligando. Se volete fare qualcosa senza certi strumenti, non vi funziona, chiamatemi, forse riesco ad aiutarvi direttamente. Era per dire che non e una cosa obbligatoria, pero e abbastanza utile, soprattutto visto che non stiamo veramente studiando programmazione. Mi sento di dire che e quasi l'unico modo per creare qualcosa di nuovo che non sia esattamente quello che sto facendo io o dei derivati simili.
+
+---
+
+## Setting Up GitHub Copilot
+
+[Logistics: instructor guides students through enabling GitHub Copilot in Visual Studio. Students log into their NABA GitHub Enterprise accounts, open Visual Studio from Unity, and install the GitHub Copilot Chat extension. The instructor also mentions ensuring the Unity plugin integration is active in Visual Studio.]
+
+Credo che tra gli utilizzi migliori di queste tecnologie -- che a breve arriveranno anche dentro Unity, stanno gia arrivando un po' di cose, non funzionano ancora bene, ma credo che dai prossimi update ci saranno dei tool fantastici -- credo che l'utilizzo migliore sia quasi anche per studiare. Cioe usarli per capire: "non capisco queste cose, come funziona, aiutami a capire come comporre questo". Veramente poche persone li utilizzano in questo modo, ma credo che soprattutto per studiare siano veramente strumenti ottimi.
+
+---
+
+## AI Context and the Importance of Project Awareness
+
+Qual e il motivo principale per cui useremo AI in questa modalita? La parte importante e il contesto. Quando utilizziamo strumenti di AI, quasi la cosa piu importante -- a parte l'istruzione che gli diamo -- e il contesto. Visto che noi stiamo aprendo Copilot dentro un ambiente che e gia dentro il nostro progetto Unity, questo assistente, questo agente, dovrebbe gia riuscire a vedere i nostri script.
+
+Provate a fare una cosa: provate a chiedergli una domanda sul codice o i sistemi che gia esistono nel vostro progetto. Per esempio sulle cose che abbiamo fatto la volta scorsa -- tipo "riesci a dirmi come funziona il flocking behavior delle automata cellulari?" -- giusto per vedere se vede il contesto del progetto, se riesce a leggere gli script e dare una risposta sensata. Dovrebbe farlo.
+
+Questo e anche un esempio del motivo per cui non stiamo usando, per esempio, ChatGPT su un web client: ovviamente possiamo caricare i file uno per uno, ma non faremo mai niente in questo modo. Ci interessa che l'AI sia consapevole del progetto. Questa e la parte fondamentale.
+
+[Students test Copilot by asking questions about their project code. The instructor notes that different models are available and suggests switching to Claude if the default doesn't work well for a specific task.]
+
+---
+
+## Installing the Toolkit Package
+
+[Logistics: instructor distributes a new script package ("Ludo Core Scripts") via Blackboard, rather than the Unity Package Manager. Students import the scripts into their projects.]
+
+Questi sono degli script nuovi che useremo da qua in poi. Forse aggiungeremo e modificheremo delle cose per le prossime lezioni. Avrei voluto passarveli come pacchetto perche e piu facile da aggiornare, pero i pacchetti sono troppo complessi per ora -- devo capire un attimo. Quindi puo essere che la volta prossima vi chieda di sostituire questo pacchetto, pero per ora usiamolo cosi.
+
+### Fixing Namespace Errors
+
+Ci saranno tre file dove bisogna aggiungere una riga di codice. Se installando questa cosa vedete degli errori, aprite ciascun errore e sopra, dove ci sono i namespace -- se vi ricordate, abbiamo parlato di namespace, sono collezioni di script -- semplicemente aggiungete `using LudoCore`.
+
+Perche e necessario? Semplicemente perche questi script nuovi li ho tutti messi in un namespace mio, in modo da evitare conflitti di vario tipo. Se voi volete creare altre cose, eccetera.
+
+Su questi errori aprite ciascun errore, tanto vedrete che sono credo tre file da aggiornare, e sopra dove ci sono tutte le direttive `using`, aggiungete questa riga che si chiama `using LudoCore` e dovrebbero essere a posto.
+
+[A student asks for help finding the errors; the instructor clarifies to double-click on console errors and add the using directive at the top of each script.]
+
+---
+
+## Step 1: Simple Life Cycle (Timer-Based)
+
+Ho diviso questi esempi in un paio di passi, dal piu semplice al piu complesso -- un po' come l'esempio che abbiamo visto preassemblato la volta scorsa.
+
+Il modo piu semplice per fare in modo che delle entita vivano nella scena e praticamente: spawn, exist (quindi un life cycle basato presumibilmente su un timer), e poi il decay o la morte.
+
+Nella scena proviamo a creare un oggetto -- per ora un oggetto astratto -- e vedere di implementare questo primo passo. Faccio un semplice cubo, seguiamo un po' questa estetica astratta ed emissiva. Chiamiamolo qualche forma di cristallo.
+
+Creiamo un materiale: tasto destro nella cartella, creiamo un materiale, chiamiamolo "emissive material". Sul materiale stesso andiamo ad abilitare la proprieta emissiva e ad aumentare l'intensita un pochino, poi facciamo drag and drop di questo materiale sull'oggetto.
+
+Nella scena ho gia abilitato il post-processing. Se riuscite a vedere l'illuminazione che risale -- dipende dal valore del bloom.
+
+[A student asks about emission intensity; the instructor suggests setting it to 5.]
+
+Cosa ho fatto fino ad ora? Un semplicissimo oggetto con un materiale emissivo abilitato.
+
+### Adding the Timer
+
+Cosa vogliamo fare per attribuirgli un ciclo di vita? Il modo piu semplice sarebbe usare il timer. Tra l'altro, gli script che vi ho appena passato -- quelli che useremo da qua in poi -- potete riconoscerli perche hanno "Ludo Core" accanto, cosi sapete che e effettivamente lo script che vi ho indicato. Se importate altri pacchetti, potrebbe spesso esserci script che si chiamano nello stesso modo.
+
+Questo e anche un po' un ripasso di una cosa che abbiamo visto l'anno scorso. Questo timer ha due modalita: una durata e dei tick. Se lasciamo la durata di uno, questa cosa fara un tick ogni secondo. Se la mettiamo a 10, fara un tick ogni 10 secondi. Abbiamo due livelli per definire la temporalita. Piu avanti vedremo perche e molto utile, pero per ora lasciamo un secondo e mettiamo questo a forse 10 secondi.
+
+### Destroy on Timer Complete
+
+Per dargli un ciclo di vita: questo oggetto esistera per un tot di tempo e poi useremo l'azione Destroy che possiamo allacciare direttamente nella completed event. Questa e la modalita che usavamo anche il semestre scorso.
+
+Quello che sto facendo qua e: a parte aver aggiunto il timer dandogli, non so, 5 secondi, gli assegniamo anche l'azione chiamata Destroy. Diamo il target che e se stesso e poi lo assegniamo nel completed event.
+
+> **[Digression]** In realta la stessa cosa si puo fare anche col delay del Destroy, pero usiamo il timer per questo scopo.
+
+Provate a allacciare questo componente in questo oggetto in questo modo.
+
+[Students work on implementing the timer-based lifecycle.]
+
+---
+
+## Step 2: Adding Visual Feedback (Scale Animation)
+
+Ovviamente un oggetto che sparisce non basta. Ci servono due cose: un modo per istanziare questo oggetto (farlo nascere) e un feedback visuale. Iniziamo dal feedback visuale, che e un attimo piu facile.
+
+Nella cartella che vi ho appena passato, vedrete che a differenza del semestre scorso -- dove avevo diviso gli script in trigger e azioni, che era un buon modo per iniziare -- questo semestre andiamo un passo avanti. Non parliamo piu di separazione tra trigger e azioni. Se vi ricordate, il trigger di base e una condizione (un tempo, un sensore, un'area, una zona), mentre l'azione di base e un metodo, un'operazione.
+
+Questo semestre parleremo di moduli, perlopiu riutilizzabili. Se aprite la cartella runtime vedrete che abbiamo alcuni effetti, input, ciclo di vita, movimento, e cosi via. Non separiamo cosi tanto tra trigger e azioni -- che saranno dentro il codice -- ma separiamo piuttosto per funzionalita: un modulo che servira per una determinata cosa.
+
+### The Scale Module
+
+Possiamo usare il modulo Scale. Visto che questo oggetto parte da scale 1, facciamolo crescere fino a una scala diversa. Se gli diamo una durata uguale al timer -- che era 5 secondi -- e lanciamo questo oggetto con questo modulo, dovremmo vedere l'effetto.
+
+Per vedere la funzionalita possiamo fare tasto destro su Scale e fare "Play". In realta a noi interessa che questa cosa inizi appena l'oggetto nasce.
+
+Se gli date una scala tipo 5, 5, 5, fate play e la scala funziona.
+
+---
+
+## Step 3: The Spawner
+
+E quindi adesso abbiamo un feedback visuale. L'ultima cosa da fare e effettivamente fare lo spawn di questo oggetto. Aggiungiamo un nuovo oggetto che si chiama "Spawner" e aggiungiamo su questo spawner lo script che si chiama effettivamente Spawner.
+
+Come funziona questo spawner? Andra a istanziare, a creare degli oggetti di un certo tipo come prefab, e potremmo avere un count -- per esempio 5, 3 alla volta, e cosi via. Ci serve un prefab. Il prefab per noi sara il cristallo. Quello che vogliamo fare: prendiamo il cristallo, trasciniamolo nella cartella in modo che diventi blu (cioe un prefab), e poi assegniamo questo prefab nella voce prefab dello spawner. L'abbiamo fatto anche il semestre scorso.
+
+Per quanto riguarda dove spawnare, possiamo avere due opzioni: in un punto preciso oppure in un'area. Consiglierei di usare l'area per ora. Ho aggiunto dei valori all'area size. Possiamo ruotare l'oggetto in modo randomico oppure dargli la rotazione dello spawn point. Il parenting se vogliamo istanziarlo in una gerarchia -- questo non ci interessa per ora.
+
+Usero in modo interscambiabile i termini "istanziare" e "spawnare". In Unity tecnicamente si chiama "istanziare" il comando. Per vedere il comportamento possiamo lanciare il gioco e poi fare tasto destro sullo spawner e poi "Spawn".
+
+[A student confirms the behavior works.]
+
+Se non vi funziona vengo a darvi una mano. In questo caso sto usando l'area con l'area size. Possiamo alzare il count. Ovviamente possiamo anche esagerare: 500 dovrebbero comunque andare bene. Forse 5.000 crasha la scena, pero in fondo e solo un cubo e un timer.
+
+---
+
+## Connecting Spawner to Timer (Continuous Spawning)
+
+Abbiamo il cristallo -- che tra l'altro adesso non ci serve neanche piu nella scena perche l'abbiamo prefabbato, quindi adesso vive come asset per l'eternita e possiamo usarlo in vari modi. Abbiamo questo spawner. Cosa ci manca?
+
+In un mondo vivente, a parte il ciclo di vita dei singoli organismi, vogliamo avere anche un certo senso di temporalita dell'ambiente stesso. Questo puo essere espresso con un altro timer che ogni tot fa spawnare, cioe triggera questo spawner.
+
+Sullo spawner aggiungo un timer, pero questo timer non si occupa della singola entita ma del tempo generale. Gli do, non so, 1000 tick -- in modo che sia praticamente infinito. Non useremo il completed event perche non arriveremo mai a 10.000 secondi, pero useremo il tick event: prendiamo lo spawner e facciamo spawn, diamo il riferimento nell'evento dell'oggetto stesso.
+
+Ora dovremmo vedere che ogni secondo avremo tanti oggetti che tra l'altro avranno il loro ciclo di vita.
+
+### Duration vs. Ticks Explained
+
+[A student asks about the tick value.]
+
+Come funziona? Il tick ripete ogni durata. Facciamo che noi vogliamo spawnare oggetti ogni 3 secondi -- forse ogni secondo e troppo veloce. Posso scrivere 5 secondi di durata e 1000 tick. Cosa vuol dire? Lui fara un tick ogni 5 secondi per 1000 volte. Questo ci permette di dire non solo quanto deve durare il timer, ma anche quanto frequentemente ripetersi.
+
+### Single Responsibility Principle
+
+Il numero di cubi spawnati non viene definito dal timer. Per il timer l'unica cosa che gli interessa e seguire il tempo e poi chiamare l'azione spawn. L'azione spawn e definita sopra nel componente Spawner: istanzia un prefab per il numero di volte definito dal count nell'area.
+
+Cosi ogni script ha una sua funzione. Lo spawner gli interessa solo definire: cosa sto istanziando, quanto devo istanziare, e dove devo farlo. Tre domande. Pero non decide quando. Decidere quando, in questo caso, e una responsabilita del timer.
+
+Questo nello sviluppo, quando si fanno i sistemi, si cerca sempre di modularizzare e di non fare in modo che uno script abbia piu di una responsabilita. Questo e un principio importante che incontrerete.
+
+---
+
+## The Life Cycle Trigger (On Start)
+
+Scrivo al volo una cosa. Il problema usando questo approccio -- dove stiamo collegando tra di loro delle funzioni usando gli eventi nello inspector -- e che quando abbiamo un modulo che di per se non fa niente e aspetta che qualcun altro gli dica cosa fare, dobbiamo avere un trigger aggiuntivo. Ho un trigger del timer, posso avere un trigger della morte, ma non ho un trigger della nascita. Quindi devo creare questo trigger della nascita che attiva l'animazione appena l'oggetto e nato.
+
+Lo aggiungo al volo: si chiama LifeCycleTrigger. Qua dentro -- e vi consiglio sempre di provare almeno a leggere uno script -- abbiamo il namespace, la classe. Vedete che adesso sto mettendo l'intera classe dentro un namespace mio per separarla da tutte le altre cose e evitare conflitti.
+
+Creo un evento on start e molto semplicemente chiamo questo evento nel metodo Start. Cosa fara questo? Questo piccolo script eseguira questo evento -- qualsiasi cosa noi mettiamo dentro -- appena l'oggetto parte. Potremmo anche usare OnEnable, che vuol dire quando l'oggetto e abilitato o attivato, pero per ora usiamo Start che e piu chiaro.
+
+Quindi sul prefab aggiungo questo script, LifeCycleTrigger, e nel suo on start gli dico: guarda che devi iniziare a fare l'animazione Scale -- play. Adesso questo e un modo macchinoso, ci sono modi piu veloci, ma per ora cosi ripassiamo le modalita esistenti.
+
+Se lanciamo questo, dovremmo vedere che questi oggetti non solo nascono, ma hanno anche un feedback visuale.
+
+Con questa logica, combinando anche solo questi semplici elementi, possiamo gia creare una cosa che sembra un po' piu viva. Poi aggiungiamo altri elementi, pero sicuramente voi potete pensare ad altre entita che si comportano in modo diverso -- non necessariamente scalano. Forse cambiano colore, si spostano, fanno altre cose.
+
+Ovviamente vi sto facendo vedere questo in modo astratto, ma la stessa logica vale se avete delle piante, dei fiori. Se volete esplorare un po' questa idea, i fiori possono non solo scalare per crescere, ma possono anche avere un ciclo di vita, possono essere spawnati in vari modi.
+
+[Break: ~5 minutes]
+
+---
+
+## Step 4: Full Life Cycle with Energy
+
+Fino ad ora la logica e chiara: c'e un semplice ciclo di vita con il timer, abbiamo un feedback visuale e lo spawn. Quello che adesso vorrei farvi vedere e il prossimo passo. Vi sto dando dei passi che sono anche livelli di implementazione con complessita diverse, in modo che quando dovete farlo per i vostri progetti potete scegliere se vi basta una cosa semplice con timer oppure volete fare qualcosa di piu completo.
+
+Per fare un ciclo di vita fatto un po' meglio -- come quello che abbiamo visto la volta scorsa con diverse creature che potevano consumarsi o stimolare un ecosistema -- ci serve anche la nozione di energia, e quindi la nozione di stato.
+
+### What is State?
+
+Mi sentirete usare questa parola probabilmente tanto: stato. Cosa vuol dire? Vuol dire semplicemente che un oggetto, in un dato momento, ha certi valori nelle sue variabili. Stato non e niente di nuovo: per esempio, questo cristallo sara al secondo tre del suo ciclo di vita. Quindi lo stato del cristallo e il valore delle sue variabili in quel dato momento.
+
+### Energy as an Intermediate Variable
+
+Perche parliamo di stato? Perche in realta il tempo di vita e importante, pero quando vogliamo fare un ecosistema puo essere mediato dall'energia. Non stiamo misurando piu il tempo direttamente, ma stiamo misurando una variabile aggiuntiva che e sempre basata sul tempo ma che puo essere alterata. Di base forse decresce -- c'e un decay. Per esempio, animali che possono mangiare piante possono aggiungere energia; in altri contesti, forse vogliamo aggiungere effetti ambientali.
+
+> **[Digression]** Non so se qualcuno ha visto su Netflix la nuova serie sui dinosauri, dove ad un certo punto ci sono ere glaciali. Se c'e un cambio di temperatura possiamo dire "l'energia inizia a decrescere molto piu velocemente". Quindi tutti questi effetti in piu diventano possibili.
+
+### Implementing the Life Cycle Component
+
+Un mio consiglio: quando create i progetti, provate a crearvi dei primitivi, un'implementazione semplice in una scena. Io qua potrei duplicare questa scena, chiamarla "simple life cycle", giusto per ricordarmi che questo e un esempio di quella cosa. Questa invece la chiamo "full life cycle", perche adesso stiamo per fare il ciclo di vita pieno.
+
+Lo spawner lo possiamo lasciare generico. Creo un altro oggetto, forse con un altro colore, giusto per distinguere. Gli assegno un materiale con un'altra densita di colore. Invece di usare un semplice timer, voglio usare un altro componente che si chiama Life Cycle. Questo e il componente che abbiamo impostato anche la volta scorsa, ma forse non abbiamo ben spiegato.
+
+Se lo aprite dentro, vedrete che in pratica l'unica cosa che fa e: ha una variabile chiamata `currentEnergy` e nel metodo Update dice "l'energia attuale dovrebbe decrescere: meno uguale l'energy decay rate, moltiplicato per Time.deltaTime". Quando vedete queste cose nel codice, e semplicemente una misura della durata del frame -- ogni frame fara qualcosa.
+
+Anche qua abbiamo il timer, cioe le stesse cose di prima: semplicemente prima avevamo un timer esplicito, qua il timer e ridotto a una riga di codice. Pero e sempre lo stesso concetto, e in piu abbiamo l'energia come variabile.
+
+### Creating Life Cycle Data (ScriptableObject)
+
+Per usare le variabili iniziali -- la cosiddetta configurazione -- usiamo questi ScriptableObjects che vi ho fatto vedere la volta scorsa. Sono semplicemente piccole classi che stanno al di fuori della scena, in una cartella, e contengono i valori delle variabili che vogliamo salvare.
+
+Come creiamo la variabile per questo ciclo di vita? Andiamo su Create, Ludo Core, e poi Life Cycle Data.
+
+Nella cartella della scena, tasto destro, Create, Ludo Core, Life Cycle Data. Vedremo un nuovo oggetto con una specie di cubo blu wireframe. Questo vuol dire che e sempre un tipo di asset salvato, ma in questo caso contiene solo variabili, non un intero oggetto.
+
+Cosa abbiamo qua? Starting energy, max energy, decay rate. Per matchare quello di prima: il life cycle era di 5 secondi. Possiamo dire che partiamo da 25 di energia con un decay di 5 al secondo, cosi durera 5 secondi. Diversi organismi avranno diversi valori.
+
+Ho creato un nuovo oggetto, ho aggiunto su questo oggetto il Life Cycle anziche il timer, ho creato il Life Cycle Data e ho aggiunto qualche valore. E se vogliamo distruggerlo, abbiamo il flag "destroy on death" -- quando arriviamo a zero, distruggiamo. E una cosa molto comune, quindi l'ho integrata dentro il componente anziche farlo separatamente.
+
+[A student asks about the relationship between the Life Cycle Data and the object. The instructor clarifies: the data lives separately, the object references it.]
+
+### The Difference Between Timer and Energy-Based Life Cycle
+
+Sto facendo vedere due modalita. Nel primo esempio, quello che determinava il ciclo di vita era il timer a 5 secondi. In questo caso c'e un timer interno, ma questo timer va a modificare l'energia -- fa il decay dell'energia. C'e una variabile intermedia.
+
+Dentro il Life Cycle Data stiamo definendo quanta energia perdiamo ogni secondo (l'energy decay rate), come decresce l'energia, quanto e il massimo di energia, quanto e lo starting energy. Quando arriviamo a zero, ci spegniamo. Ogni secondo perdiamo cinque energia.
+
+Questa e la differenza tra la prima implementazione e la seconda: abbiamo questa variabile intermedia che adesso poi inizia a essere importante quando aggiungiamo altre cose.
+
+---
+
+## Adding Movement: NavMesh Wander
+
+A questo punto possiamo riabilitare lo spawner e vedere queste entita spawnate. La differenza rispetto a prima e che, anziche solo crescere, in questo caso hanno il comportamento di muoversi.
+
+La cosa probabilmente piu importante che vorrei oggi trasmettere e questa idea: possiamo definire degli oggetti che creiamo, distruggiamo, che hanno un ciclo di vita, e questi oggetti possono avere anche dei comportamenti. Combinando queste cose, la scena prende vita.
+
+[The instructor helps a few students individually with setup issues.]
+
+Vediamo un attimo il movimento. Ho un paio di modalita di movimento che avevamo visto anche il semestre scorso: follow, look, move away -- basati su vari sistemi. Pero io vorrei brevemente ripassare il NavMesh, che sicuramente lo useremo molte volte ed e utile.
+
+### Setting Up NavMesh
+
+Ci ricordiamo del NavMesh? E la superficie su cui possiamo far muovere degli agenti, calcolando dei punti e facendo muovere gli oggetti su una traiettoria percorribile.
+
+Creo un oggetto separato che chiamo "NavMesh Surface" e aggiungo il componente con lo stesso nome. Se non vedete il componente, dovrete installare il pacchetto dal Package Manager, Unity Registry: si chiama "AI Navigation", pero credo di avervi detto di installarlo all'inizio.
+
+Il terreno e semplice, non ci interessa fare qualcosa di particolare, quindi possiamo premere direttamente il tasto Bake.
+
+[Logistics: the instructor shows students how to enable the NavMesh overlay visualization in the Scene view via the three-dot menu, Overlays, Overlay Menu, AI Navigation.]
+
+### NavMesh Components on the Entity
+
+Per far muovere un oggetto sulla superficie, ci serve un NavMesh Agent sull'oggetto che vogliamo far muovere. Qua abbiamo velocita, slope, rotazione -- lasciamoli come sono per ora.
+
+Poi i componenti che sto usando: NavMesh Motor, che e il componente principale per qualsiasi tipo di movimento (puo essere patrolling, puo volare, fare qualsiasi cosa, pero di base sara mosso da questo componente), e poi il tipo di movimento specifico: il Wander.
+
+Se riuscite a tollerare questa divisione, la facciamo per una questione di modularita. Abbiamo un motore che muove e poi il Wander si collega direttamente al motore. Non dovete fare niente, dovete solo aggiungere questi due componenti che vanno insieme.
+
+Una cosa importante: l'oggetto deve essere posizionato sulla NavMesh -- deve essere piu o meno sulla superficie, altrimenti non parte.
+
+Avremo un radius di 10 unita all'interno di cui questo oggetto andra a muoversi. La logica e che andra a scegliersi dei punti casuali.
+
+Ripeto: per attivare il NavMesh ci serve un oggetto con la Nav Surface (facciamo bake, per ora non ci preoccupiamo di opzioni secondarie), e poi sul nostro organismo aggiungiamo tre componenti: NavMesh Agent, NavMesh Motor, e NavMesh Wander.
+
+### A Note on Prefab Overrides
+
+Stavo dicendo: quando abbiamo gia creato un prefab da un oggetto nella scena e lo abbiamo editato non il prefab vero ma la copia nella scena, se vogliamo salvare queste modifiche nel prefab possiamo fare Overrides e poi Apply All. Cosi il prefab avra gli stessi cambiamenti.
+
+Pero attenzione: questo non e sempre utile, perche forse ho fatto un cambiamento che non voglio trasmettere a tutte le altre copie. Forse ho un milione di copie e voglio cambiare solo una. Quindi non sempre vogliamo applicare gli overrides dalla scena al prefab: piuttosto ricordiamoci di editare il prefab direttamente.
+
+---
+
+## Step 5: Self-Replication (Recursive Spawning)
+
+Adesso completiamo il componente: abbiamo dato all'entita un ciclo di vita come componente singolo, con i valori nell'Energy Data, e il movimento. Chiarire: nel primo esempio il ciclo di vita era il timer a 5 secondi; in questo caso c'e un timer interno che fa il decay dell'energia. C'e una variabile intermedia che diventa importante.
+
+Un primo tipo di interazione tra oggetti puo essere che un oggetto spawna altri oggetti. Per esempio, la forma piu semplice: un oggetto quando muore, oppure quando riceve un tot di energia, si replica. Cosi creiamo queste cascate.
+
+### Building the Self-Replicating Object
+
+In questa scena non vorrei avere un spawner generale. Fino ad ora abbiamo usato un spawner per l'intera scena, ma in un ecosistema quello che vorrei fare e partire da un organismo e popolare la scena in questo modo.
+
+Dentro l'oggetto creo un altro oggetto che chiamo "Replication Spawner" e gli aggiungo uno Spawner. Do un'area attorno all'oggetto stesso dove puo avvenire questa replicazione. L'organismo deve creare se stesso: rendo tutta questa cosa un prefab, apro il prefab, e dentro lo spawner assegno lo stesso prefab. Cosi abbiamo una cosa ricorsiva -- andra a replicare se stesso.
+
+L'ultima cosa da fare e collegare queste due cose: nel died event del Life Cycle, semplicemente diciamo che nell'evento della morte andremo a fare Replication Spawner spawn.
+
+Quindi: abbiamo un semplice oggetto con Life Cycle, dentro abbiamo un spawner che replica se stesso, e questo spawn avviene nell'on died event. Avendo "destroy on death" attivo, dovrebbe spawnarsi e poi sparire.
+
+Attenzione: provate a mettere lo spawner a piu di uno, perche se mettete solo uno ci sara solo un sostituto. Provate a mettere tre, cinque -- cosi uno crea tre, questi tre creano tre, e abbiamo una propagazione.
+
+[The instructor's Unity eventually crashes from the exponential growth of objects.]
+
+---
+
+## Step 6: Building an Ecosystem Chain (Three Creatures)
+
+Aggiungiamo un ultimo pezzo: le connessioni tra le entita. Quello che vorrei fare e una cascata. Per questa ultima iterazione non aggiungiamo niente di nuovo, semplicemente proviamo a mettere insieme almeno tre creature.
+
+### Naming the Entities
+
+Ho rinominato i primi due oggetti in "Flora" e "Fauna". Flora era il primo oggetto che abbiamo creato con il timer, che scala e poi a un certo punto muore. Fauna invece e il secondo oggetto che si muove, che va in giro.
+
+### The Chain
+
+Sul secondo oggetto (Fauna), dentro il prefab ho aggiunto un spawner: quando muore, istanzia il primo (Flora), con lo stesso pattern -- c'e un spawner e poi ciclo di vita on died event spawna Flora.
+
+Nella scena, il cristallo replicante, quando muore, spawna non solo se stesso ma anche Fauna. Cosi abbiamo una cascata: il cristallo si replica, pero spawna anche della fauna che si muove in giro, poi quando la fauna muore spawna delle piante, e cosi via. Si propagano.
+
+L'unica cosa che non spawna niente e la Flora, il primissimo oggetto. A casa quello che vi inviterei a fare e espandere questo, forse creare almeno un'altra connessione.
+
+### Making It Visually Distinct
+
+L'unica cosa che rendera questo piu chiaro e avere dei materiali con colori diversi, cosi possiamo distinguere. Potete anche cambiare le forme: per esempio, la fauna puo essere anche una sfera, forse piu grande. Potete anche giocare con i valori sui componenti -- velocita maggiore per la fauna, area del wander molto piu grande, e cosi via. Il comportamento puo essere molto alterato.
+
+L'idea e creare questo ecosistema. Cercate di tenere i numeri di spawn bassi, non spawnate 20 cose, perche essendo comunque esponenziale...
+
+Possiamo dare alla flora un ciclo di vita un po' piu lungo. Facciamo le aree un po' piu grandi, cosi non si accumula troppo velocemente.
+
+---
+
+## Closing and Homework
+
+La prossima volta andremo avanti a creare altri tipi di creature, come abbiamo visto nella prima lezione: erbivori, carnivori. Il senso non e avere una crescita infinita, ma avere un ecosistema che si autobilancia. Noi possiamo giocare con i valori: una volta che abbiamo impostato tutto, possiamo giocare con i valori in modo da creare il tipo di equilibri che ci piacciono.
+
+Vi carico anche le slide se volete rivederle. In queste prime tre lezioni abbiamo dedicato un po' di tempo a questi esempi del living environment.
+
+Provate a fare questo esercizio a casa: il giro completo di creare almeno tre creature collegate in una cascata, e provate ad applicare questi meccanismi in un'altra scena -- forse con un ambiente dove queste cose possono diventare piante, fiori, animali, qualcos'altro. La logica resta uguale.
+
+[Logistics: the instructor shares the Blackboard link for the lecture recording and materials.]
+
+Ci vediamo la settimana prossima.

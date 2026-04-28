@@ -1,0 +1,81 @@
+INTERACTION DESIGN 4 — LECTURE 6 CRITIQUE
+==========================================
+
+WHAT WORKED WELL
+----------------
+
+The profile-swapping exercise is the single best hands-on moment in the course so far. You gave students working interactions, handed them two ScriptableObject profiles per controller — one gentle, one abrupt — and said "feel the difference." That is teaching interaction design, not Unity. When a student responded that they preferred a more abrupt, direct response, they were expressing an aesthetic opinion about transformation curves. That student is now doing interaction design. The fact that this happened naturally, without prompting, tells you the exercise worked exactly as intended.
+
+The inversion demonstration with the stillness dimmer was elegant and conceptually loaded. Swapping lit/dim values to reverse the meaning of an interaction — stand still and the world illuminates, move and it darkens — is a small gesture that carries a large idea: the same controller, the same code, produces opposite emotional experiences based on data alone. You made the data-driven design philosophy tangible in about two minutes. And by having students try the inversion themselves, you turned a demonstration into a felt experience.
+
+The four-category taxonomy landed well because you didn't present it in isolation. You introduced the 2x2 matrix (binding type x signal type) and then immediately used it to classify the three interactions already in the scene. The stillness dimmer classification was particularly effective — it sits ambiguously between categories, which forced genuine reasoning rather than pattern-matching. You even named the ambiguity: "it's a bit of a hybrid." That honesty about edge cases makes the framework feel like a thinking tool, not a rigid box.
+
+The synthesizer envelope analogy was a smart bridge to your students' backgrounds. When you connected attack-release-duration-sustain from audio synthesis to the curve/range/envelope parameters of an interaction profile, you gave students a mental model they already own. For a class with Max/MSP experience, this is exactly the right move — it reframes interaction design as something they've been doing in a different medium, not something alien. The analogy also reinforces your central claim that shaping the transformation is where expression lives, because that's precisely what envelope design does in sound synthesis.
+
+The compacting corridor build demonstrated the two-pass workflow with genuine transparency. You wrote two sentences of spec, handed them to the AI, read back the expanded specification in plain language, validated the design decisions, and only then moved to implementation. The moment where the AI asked "which axis do the walls move on?" and you decided to make it configurable from the inspector — that's the spec-driven workflow proving its value in real time. Students saw the spec catch a design decision that code-first would have buried.
+
+The live debugging during the corridor build was also effective. When the walls only started closing at the end because max distance was wrong, and then nearly crushed the player when you overcorrected, you modeled iterative design without pretending to be infallible. Your emphasis on reading variable tooltips — "hovering over a variable name in the inspector should tell you what it actually does" — is a small habit that compounds. These moments of productive imperfection teach students that real work is messy, and that reading the tools you're using is not optional.
+
+The layered feedback additions (material scroll, vignette, desaturation) on the corridor were the right level of ambition. Each layer reinforced the same emotional direction — claustrophobia, urgency — and the combined effect was genuinely atmospheric. You also handled the technical friction well: the shared-material versus material-instance distinction and the URP shader property name ("BaseMap" not "MainTex") were taught as practical knowledge embedded in a real build, not as isolated tips. You're now consistently demonstrating that interaction design is about composing multiple feedback channels, not wiring one input to one output.
+
+
+WHAT COULD IMPROVE
+-------------------
+
+### 1. The classification exercise was done for them, not by them
+
+You introduced four categories and then classified all three interactions yourself. The stillness dimmer was the most interesting case — genuinely ambiguous — but you answered your own question after about five seconds of silence. This was flagged in Lecture 5's critique (point #4): "At no point did you ask students to categorize interactions using the matrix. You did it for them." One lecture later, the same pattern. You asked what type the door trigger would be and answered it yourself within the same breath — "It might seem like a switch, but... it's a one-shot type." The matrix will only become a thinking tool if students are forced to use it under mild pressure.
+
+**Suggestion:** Next lecture, bring 6-8 interaction examples — video clips, game moments, or descriptions on slides — and run a rapid-fire classification round. Students call out the category, you push back on edge cases. Five minutes, high energy. Do this before any building happens. The matrix needs to live in their heads, not just on your slide.
+
+### 2. The camera clipping and ceiling plane fixes consumed class time on infrastructure
+
+The camera collision settings walkthrough (Cinemachine Third Person Follow, collision filter, camera radius, Avoid Obstacles) and the ceiling plane fix for light leaks are legitimate production knowledge. But they landed as maintenance interludes right before the corridor build — you introduced them as "two maintenance things" at the exact moment students were primed for the new interaction. Even though you positioned them as a deliberate preamble, they still cost momentum. Combined, they occupied time that delayed the conceptual payoff students were ready for.
+
+**Suggestion:** Pre-fix these in the distributed scene. Camera settings and ceiling planes are not conceptual — they're cleanup. If you want students to know these tricks, add a one-paragraph note to the homework: "If you see camera clipping or light leaks in your own rooms, here's how to fix them." Protect class time for the transformation work that only you can teach live.
+
+### 3. The independent work period produced uneven engagement
+
+You gave students time to design their own interaction, which is the right move. But the prompt was broad — "think of another interaction, ideally with three or four feedback layers" — and the supports were indirect: browse available parameters, use AI to brainstorm, look at what exists. One student was working on an animation-stops-when-player-stops interaction, which suggests at least some traction. But for a small class, the silence during this period and the lack of any student presentations or sharing at the end suggests several students may have been stuck or unsure where to start.
+
+This connects to a pattern flagged since Lecture 5: students aren't practicing between sessions, and open-ended prompts don't generate enough activation in class either.
+
+**Suggestion:** Provide two or three concrete interaction briefs as starting options. "A door that slowly opens as you approach but slams shut if you stop moving — tracking type, two feedback layers minimum." "A room where the floor texture scrolls faster the closer you are to the center — tracking type, add post-processing." Students who have their own idea can pursue it; students who are stuck have a clear target. Having defined options also makes the subsequent sharing conversation more productive because you can compare different solutions to the same brief. This also gives you a natural end-of-session moment: "Show us what you built for brief #2" is a prompt that generates discussion. "Show us what you came up with" is a prompt that generates silence.
+
+### 4. The door physics section was useful but unconnected
+
+The hinge joint demonstration — anchor placement, axis configuration, player push settings, collider interference — is practical knowledge students will use. But it arrived as a standalone mini-lesson during independent work time, disconnected from the interaction design framework you'd spent the session building. A door that opens with physics is not an interaction in the sense you've been teaching (no transformation, no profile, no feedback layers). It's a physics setup.
+
+**Suggestion:** Either connect it to the framework — "a physics door is actually a tracking interaction: input is force, transformation is the hinge constraint and damping, output is rotation. You could layer audio feedback that increases with angular velocity" — or save it for an asynchronous reference. As taught, it was a useful tangent, but it diluted the session's conceptual focus right when students should have been internalizing the profile-driven workflow.
+
+### 5. Git still has not been demonstrated live
+
+This is the fourth consecutive critique flagging this issue. Lecture 3 identified it. Lecture 4 repeated the call. Lecture 5 said explicitly: "This cannot wait for Lecture 6." It is now Lecture 6. You are teaching students a spec-driven AI workflow where every regeneration can break working code. You are asking them to iterate on ScriptableObject profiles and controller scripts. You have never once, in six lectures, shown a commit, a diff, or a revert.
+
+The compacting corridor build was the ideal moment. You had a working scene, you were about to add material animation and post-processing via AI — two changes that could easily break the shader setup. A 60-second detour to commit the working state before regenerating would have modeled exactly the safety practice you keep verbally recommending.
+
+**Suggestion:** At this point, the suggestion is unchanged from three critiques ago because it has never been attempted. Before the first AI modification in Lecture 7: terminal, `git add .`, `git commit -m "working corridor controller"`. Modify. Test. Commit or revert. Narrate it. 90 seconds. If you do not do this in Lecture 7, stop recommending Git verbally — the mismatch between advice and practice is worse than saying nothing.
+
+### 6. Homework remains structurally weak
+
+"Complete this scene, add one or two more interactions, give it a narrative purpose — player escapes from A to B." This is the most ambitious homework yet, but it stacks multiple demands (narrative design, new interactions, multiple feedback layers) without clear minimum targets or deliverables. It also assumes students have internalized the profile-driven workflow well enough to use it independently, after one session of exposure.
+
+Lecture 5's critique suggested making homework a deliverable with a one-sentence intention statement. That approach would work here too.
+
+**Suggestion:** "Before next class: add one new interaction to your Backrooms scene using the ScriptableObject profile workflow. It should have at least two feedback layers. Write one sentence describing what emotion or sensation the interaction creates. Bring the project and the sentence." This is achievable, specific, and gives you material for a 5-minute opening review next session. The narrative framing (escape from A to B) is a good stretch goal, not a baseline requirement.
+
+
+OVERALL ARC ASSESSMENT
+-----------------------
+
+This session had the clearest intellectual structure of any lecture in the course. The arc — taxonomy, classification, profile experimentation, live build with two-pass workflow, feedback layering, independent work — is exactly right. Each section earned the next. The theory was immediately applied, the profiles were immediately felt, and the build demonstrated every concept that had been introduced. If the first three lectures were finding the course's identity, and Lectures 4-5 were sharpening the structure, Lecture 6 is what the course looks like when it's working.
+
+The ScriptableObject profile system is a genuinely strong pedagogical artifact. It makes the central claim of the course — that the transformation between input and output is where emotional meaning lives — into something students can touch, swap, duplicate, and name. When you told students they could name profiles by the sensation they evoke, you were teaching design thinking through data architecture. That's a rare move and it landed.
+
+The recurring gaps are narrowing but not closing. Git remains undemonstrated after four critiques. Homework remains loosely defined. The classification exercise is still instructor-led rather than student-practiced. These are not new observations, and the fact that they persist suggests they've become blind spots rather than items on a to-do list. The single highest-leverage change for Lecture 7 is the live Git demonstration — not because version control is the most important concept, but because closing a four-lecture-old gap signals to yourself that critique actually changes practice.
+
+Two forward threads deserve attention. The gaze sensor you started building during independent work time is a strong next step — it adds a new input modality that fits naturally into the taxonomy you just taught, and it opens design possibilities (gaze-triggered interactions, attention-based feedback) that will feel fresh after three sessions of proximity-based work. The MCP Server for Unity is also a promising tool, but be careful about introducing another infrastructure layer before students have fully internalized the current workflow. If Lecture 7 tries to cover gaze, MCP, and VR conversion, it will be three new systems in one session. Pick one and do it well.
+
+The honest read on students: they are following the conceptual material and at least one is developing genuine aesthetic preferences about interaction quality. But the independent work period and the persistent absence of between-session practice suggest that most students are still in reception mode, not production mode.
+
+The profile-swapping exercise is the model for bridging that gap — low setup cost, immediate felt result, room for personal expression. More moments like that, fewer open-ended "now design something" prompts, and these students will start building with intention.

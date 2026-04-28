@@ -1,0 +1,60 @@
+INTERACTION DESIGN 4 — LECTURE 1 SUMMARY
+2026-03-10 (approx.)
+
+---
+
+TEACHING OBJECTIVES
+
+The central ambition of this opening session was to establish a way of thinking before establishing a way of doing. The instructor wanted students to leave with a conceptual vocabulary — grammar, vocabulary, syntax — for analyzing and designing interactive works, and to internalize one particular conviction: that the most compelling interactive works are not collections of isolated triggers and responses but living systems whose behavior exceeds what their creator explicitly programmed. The cellular automata thread was not an arbitrary starting point; it was chosen to make this idea visceral before any code was written. A secondary objective, quieter but present throughout, was to demonstrate a particular relationship between data and behavior — that separating what something is from what something does yields creative leverage — and to get students comfortable with that architectural instinct early, so it becomes reflexive rather than theoretical.
+
+---
+
+TEACHING APPROACHES
+
+The session moved through three distinct registers. The first was discursive and framework-oriented: the instructor laid out the grammar/vocabulary/syntax model as a shared language for the semester, drawing from game design theory (the PRLH acronym from Advanced Game Design) but reshaping it freely. This was presented conversationally rather than as received knowledge — "I've structured this on my own over the years" — which positioned the framework as a living tool the class could adapt rather than a fixed taxonomy to memorize.
+
+The second register was exploratory. Before explaining cellular automata rules, the instructor dropped students into an online Game of Life simulation and simply said: play with it, figure out how it works. Students discovered stability, oscillation, and death conditions on their own. Only after they had formed intuitions did the instructor name the rules. This pattern — experience first, language second — ran through the entire session.
+
+The third register was guided construction. The Unity walkthrough was not a follow-along tutorial in the usual sense. The instructor built a living ecosystem step by step, but at each step paused to name the design principle behind the technical move: why we separate data into Scriptable Objects, why sensing precedes action, why prefab variants matter for iteration speed. The technical scaffold was always in service of a design idea. There was also a deliberate restraint around code — the instructor repeatedly emphasized that understanding structure and being able to read code matters more than writing it, and that AI tools like Copilot would handle much of the generation, provided students could articulate what they wanted in modular, well-structured terms.
+
+---
+
+DESIGN PHILOSOPHY AND PRINCIPLES
+
+Several beliefs surfaced clearly. The most prominent is that interactivity at its best produces emergence — behavior that surprises even the designer. The instructor framed this through the lens of complexity theory: simple entities with simple rules, at sufficient scale, generate properties that are "more than the sum of their parts." This was the thread connecting Conway's Game of Life, Wolfram's mathematical work, the Lotka-Volterra predator-prey model, and the Unity ecosystem demo.
+
+A second principle is modularity as creative infrastructure. Separating data, simulation, and presentation is not just good engineering hygiene; it is what makes rapid design iteration possible and what makes AI-assisted development tractable. The instructor was explicit: when you ask an AI to help, it will produce better results if your project has legible structure.
+
+A third, more implicit principle is that interaction design should draw freely from game design's deep well of systems thinking without being confined to the game format. References came overwhelmingly from games and ecology, but the instructor consistently reframed them toward installation art, experimental interfaces, and open-ended interactive experiences.
+
+---
+
+KEY IDEAS AND CONCEPTS INTRODUCED
+
+The session introduced a three-level analytical framework. Grammar refers to the macro rules organizing interaction — parts, actions, loops, and emergent properties. Vocabulary encompasses the palette of things one can do in a digital world: instantiation, destruction, movement, physics, environmental effects, interfaces, agents, narration, and installation-level connections between digital and physical. Syntax addresses implementation architecture — moving beyond flat trigger-event-action chains toward a layered structure of data, simulation model, and presentation.
+
+On the technical side, students encountered Scriptable Objects as separated data containers, prefab variants as a tool for managing type hierarchies, trigger-based sensing with Signal objects carrying contextual information, modular component design (life cycle, motor, sensor, consume, agent), and the concept of behavior rules as data — specifically, pairing cell types with actions like attract, repel, consume, flock, or ignore. The key demonstration was that inverting a single rule in a data object (making plants hunt herbivores instead of fleeing them) instantly and radically altered the system's behavior, which made the power of data-driven design tangible.
+
+---
+
+DIGRESSIONS AND ANECDOTES WORTH PRESERVING
+
+The instructor mentioned two American artists who exhibited in Italy using cooking pots and porchetta cookers as interfaces that produced sounds, images, and lighting changes — an example meant to stretch students' idea of what an interface can be and to argue that a game engine can simulate complex physical installations cheaply. There was also a brief account of testing an AI coding agent on a large task: it worked autonomously for forty minutes, produced an enormous amount of code, and "more or less worked." The point was not to celebrate AI capability but to distinguish that kind of wholesale generation ("vibe coding") from the step-by-step, module-aware approach the course will teach. The Lotka-Volterra aside — predator-prey population waves — served to connect the Unity ecosystem demo to actual ecological dynamics, grounding the abstraction in something real.
+
+---
+
+STUDENT LANDSCAPE
+
+Little emerged about individual students in this session. The class appears to have had some Unity exposure in the previous semester (references to character controllers, trigger zones, rigid bodies, and a plant-themed project suggest Interaction Design 3 as a prerequisite). One student confirmed that prior courses had not provided much theoretical grounding for analyzing interactive works, which validates the instructor's decision to open with the grammar/vocabulary/syntax framework. No detailed introductions took place. The students were quiet — no questions were asked at the two explicit question breaks — though they did engage observationally during the Game of Life exploration. There is a sense that the class is small and possibly cautious at this stage.
+
+---
+
+SESSION ARC
+
+The session had a funnel shape: wide and conceptual at the top, narrowing into concrete construction. It opened with the analytical framework (grammar, vocabulary, syntax), which provided the language. It then moved into the living-world idea through cellular automata — first as a web-based toy, then as a 3D Unity demo with tunable rules — which provided the inspiration. After a short break, the instructor built a free-agent ecosystem from scratch in Unity, assembling it component by component (life cycle, motor, sensor, consume action, agent brain, behavior rules as data), which provided the method. The finale — swapping a single rule to invert predator and prey — served as the payoff, demonstrating that the architecture they had just built was genuinely generative. The session ran slightly over time, with the instructor acknowledging the pace was fast.
+
+---
+
+FORWARD THREADS
+
+Several things were promised or left open. Flocking behavior (murmuration) was mentioned as an additional step students could explore at home and that will be covered next time. The next session will also bring an avatar into the ecosystem so students can interact directly with the agents, not just watch them interact with each other. The instructor plans to show a workflow for using AI (GitHub Copilot) to extend or modify the system's components. There was a mention of bringing a "nicer example" — presumably a more visually polished or contextually grounded version of the ecosystem. Students were encouraged to start generating project ideas so the instructor can tailor examples toward their interests. A student raised an unspecified question at the very end and was asked to send a reminder on Discord.

@@ -1,0 +1,64 @@
+LECTURE 3 — TEACHER SUMMARY
+Interaction Design 4, NABA — 24 March 2026
+
+---
+
+TEACHING OBJECTIVES
+
+The driving goal of this session was to move the ecosystem simulation from isolated behaviors to interconnected systems. In Lecture 2, students had built individual organisms with life cycles and basic spawning-on-death logic. This time, the intention was to show that the same modular components — spawners, life cycles, energy variables — can be recombined to produce qualitatively different behaviors, and that the interesting design work lives not in the code itself but in the configuration: the tuning of values, the choice of which event triggers which action, the balancing of an ecology. Underneath that practical goal sat a deeper one: building the students' confidence that they can reason about systems compositionally, assembling behavior from small, legible pieces rather than writing monolithic scripts.
+
+A secondary but deliberate objective was introducing AI-assisted coding inside VS Code (GitHub Copilot) as a normal part of the workflow — not as a spectacle, but as a tool for extending existing scripts with small, purposeful modifications.
+
+PEDAGOGICAL APPROACHES
+
+The session followed a layered, live-build approach. Rather than presenting a finished ecosystem and reverse-engineering it, the instructor reconstructed the flora entity from scratch — partly as review, partly to model the habit of rebuilding from first principles. Each new concept was introduced as a minimal delta on what already existed: "We had spawning on death; now let's spawn on energy accumulation instead." This scaffolding-by-contrast let students see exactly where the logic pivoted.
+
+There was a clear pattern of demonstrate-then-release: the instructor would wire up a behavior live, narrate the reasoning, then pause and say "provate" — try it yourselves. These work periods were genuine, not token; several ran five to ten minutes, with the instructor circulating and troubleshooting individually. When a student asked about pivot points and scaling direction, the instructor pivoted into a brief ProBuilder detour — showing how to relocate a mesh pivot — before pulling back with an honest "this is cosmetic, let's not get lost here." That willingness to acknowledge a tangent and consciously table it is a useful teaching instinct.
+
+The introduction of AI tooling was handled with care. The instructor first confirmed that students had some familiarity with generative AI (images, ChatGPT for code), then reframed the advantage of an in-editor assistant: it has project context, it can read your files, so you are not doing one-shot copy-paste. The demonstration was deliberately modest — adding a rotation to an existing LifeCycleView script — and the instructor made a point of showing how to undo (Ctrl-Z, restore checkpoint). The message was: start small, test, save to Git before experimenting further. This is good scaffolding for a group that could easily over-rely on AI generation without understanding what changed.
+
+DESIGN PHILOSOPHY AND PRINCIPLES
+
+Several principles surfaced repeatedly, sometimes stated explicitly, sometimes embedded in choices:
+
+Modularity as a design value: components should do one thing and be reusable. The spawner is the same spawner whether it handles initial population seeding or self-replication. The life cycle is the same life cycle whether energy decays or accumulates. The instructor used the term "glue" for the controller scripts that wire modules together for a specific organism — a useful metaphor that distinguishes general-purpose parts from organism-specific orchestration.
+
+Configuration over code: the recurring emphasis was that the interesting decisions are in the data — starting energy, decay rate, max energy, replication threshold, spawn count, spawn area — not in writing new logic. The ScriptableObject (LifeCycleData) pattern reinforces this by separating tunable values from runtime behavior.
+
+Minimal viable implementation: the instructor explicitly said "ci interessa sempre implementare la soluzione minimale per quella cosa che ci serve" — always implement the minimal solution for what you need. Last session, a simple timer sufficed; now that energy mediation is needed, the life cycle replaces it. This principle guards against over-engineering.
+
+Emergent complexity from simple rules: the connection to Conway's Game of Life was drawn at the end — the same idea that simple local rules produce complex global behavior. The ecosystem exercise is a three-dimensional, continuous-space version of that insight.
+
+KEY IDEAS AND CONCEPTS INTRODUCED
+
+The session introduced or consolidated several concrete concepts. Energy as a mediating variable replaced the simple timer-based death from Lecture 2; the life cycle component now has a current energy value that can be both decreased (natural decay) and increased (via an EnergyProvider component), making the organism's lifespan dynamic rather than fixed.
+
+The EnergyProvider component was new — a small script that adds energy per second to the life cycle, enabling accumulation behavior. When the energy gain exceeds the decay rate, the organism grows rather than dies, which opens up a different replication logic.
+
+Two replication strategies were contrasted: chain spawn (replicate on death, which produces exponential waves) and threshold spawn (replicate when energy reaches a certain level, which produces more gradual proliferation). The FloraController was introduced as the "glue" script that monitors energy and triggers spawners at specific thresholds, including an intermediate spawner that fires every N energy units.
+
+The priority queue pattern appeared in the FaunaController: a simple if-else chain that checks, in order, whether the organism is alive, whether it should replicate, whether it should flee a predator, whether it should seek food, and finally defaults to wandering. The instructor framed this as trivially extensible — adding a new behavior is just adding another if-statement in the right position.
+
+Sensors and tags were revisited: trigger colliders with a TriggerSensor component that recognizes specific tags (flora for herbivores, fauna for predators), requiring a kinematic Rigidbody for detection.
+
+The predator entity was introduced as the third organism, completing the classic flora-herbivore-predator triangle needed for ecosystem balance.
+
+DIGRESSIONS AND ANECDOTES WORTH PRESERVING
+
+The ProBuilder detour (pivot relocation) was prompted by a student's question about scaling direction. It is worth remembering because the same issue will recur whenever students animate growth, door-opening, or any directional transformation. The instructor's self-aware frustration with the new ProBuilder UI ("hanno rovinato il ProBuilder") is a small but honest modeling of how professionals deal with tool changes.
+
+The Unity crash mid-session — caused by uncapped spawning — was turned into a teaching moment: the instructor noted that controlling spawn quantities is a real design concern, not just a performance issue. The fact that the crash happened live, and the instructor simply killed the process and moved on, normalizes failure as part of iterative work.
+
+The brief mention of the stream recording audio but not video is a logistical note to self: check OBS/streaming setup before next lecture.
+
+STUDENT LANDSCAPE
+
+The group appears to be a small cohort, likely around eight to twelve students, with at least one student (Veronica) actively asking questions about energy mechanics and a student (Elisabeth) working on the pivot/scaling problem. Students have some prior exposure to Unity from the previous semester (Interaction Design 3) and have taken a course with "Professor Bacc" involving AI-generated models/images. Their AI literacy is mostly consumer-level — ChatGPT for images and occasional code generation — but they had not previously used an in-editor AI assistant. Some students appear comfortable with the component-assembly workflow; others needed individual help during the work periods. There is also a parallel section ("altra classe") that is less advanced and working on different material, which the instructor references when noting that the replication bug did not appear with them.
+
+SESSION ARC
+
+The session had three broad movements. The first was a reconstruction and review phase: rebuilding the flora entity with life cycle, scale animation, and death-triggered replication — consolidating Lecture 2's content while demonstrating autoplay and ScriptableObject data separation. The second movement introduced the energy-accumulation paradigm: the EnergyProvider, the FloraController as glue, and threshold-based spawning as an alternative to death-based spawning. This is where the conceptual center of the lecture lived. A break fell naturally after this section. The third movement, post-break, shifted to visualization (LifeCycleView with emissive materials and point lights), AI-assisted script modification, and then a rapid assembly of the full three-organism ecosystem (flora, fauna, predator) with sensors, tags, and priority-based controllers. The ending was slightly rushed — a replication bug forced the instructor to skip fauna self-replication, and the Unity crash ate a few minutes — but the instructor recovered by exporting a pre-configured package for students to import and experiment with at home.
+
+FORWARD THREADS
+
+The replication bug on the fauna controller needs to be investigated and a fix sent to students via an updated package. The homework assignment is ecosystem balancing: students should adjust spawn rates, energy values, life cycle durations, and organism counts to achieve a stable (non-exploding, non-collapsing) ecosystem. The instructor promised a short recorded tutorial (~10 minutes) for the parallel section that is behind. Next lecture will move beyond this ecosystem exercise ("la prossima volta facciamo altre cose"), though the instructor assured students that nothing ahead will be more complex than what they have already seen — future work will be variations on the same pattern of connecting data, variables, and interactions. Git workflow (committing before AI modifications, reverting when things break) was advised but not formally taught; it may deserve a brief demonstration next time. The use of 3D models instead of primitive shapes was mentioned as a possibility students could explore on their own.

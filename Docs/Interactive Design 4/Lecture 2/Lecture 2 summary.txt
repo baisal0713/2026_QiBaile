@@ -1,0 +1,46 @@
+INTERACTION DESIGN 4 — LECTURE 2 SUMMARY
+=========================================
+
+Teaching Objectives
+
+The central ambition of this session was to move students from observing a living digital environment (shown pre-assembled in Lecture 1) to building one themselves, layer by layer. The instructor wanted to demystify ecosystem mechanics by decomposing them into small, composable steps — spawn, live, die — before letting complexity emerge from their combination. A secondary but deliberate goal was to introduce AI-assisted development (GitHub Copilot) not as a shortcut but as a context-aware companion, establishing the norm that these tools are part of a professional workflow while leaving room for students who prefer not to use them. Underneath both goals sits an implicit one: to reinforce the modular, single-responsibility mindset that lets designers think in systems rather than monolithic scripts.
+
+Pedagogical Approaches
+
+The session was structured as a staircase of incremental complexity — six clearly delineated steps, each adding exactly one new concept to the previous one. Step 1 was a cube with a timer that destroys itself. Step 2 added a scale animation for visual feedback. Step 3 introduced the spawner. Step 4 replaced the simple timer with an energy-based life cycle mediated by a ScriptableObject. Step 5 made organisms self-replicate recursively. Step 6 chained three different creature types into a cascading ecosystem. This scaffolding meant students always had a working scene before the next layer arrived; nothing was theoretical for long.
+
+The instructor leaned heavily on guided exploration within constraints. Students were told what components to add and roughly what values to set, but they assembled the systems themselves in their own projects. When things broke — notably when the recursive spawner crashed Unity through exponential growth — that was treated as a valuable lesson rather than an error. The crash concretely demonstrated why ecosystem balance matters, which is exactly the problem the course is heading toward.
+
+The no-code-first philosophy persisted: almost everything was wired in the Inspector through events and modular components. The one exception — the LifeCycleTrigger script — was written live and kept to a handful of lines, with the instructor walking through its structure (namespace, class, a single event invoked in Start). This positioned code-reading as a skill worth developing while keeping code-writing minimal.
+
+The introduction of AI tools followed the same spirit. Students were not told "use Copilot to generate your project." Instead, the instructor framed it as a study tool — ask it to explain existing code, query it about your project's architecture — and emphasized that the reason they use an IDE-integrated tool rather than a web chatbot is project context. The ethical nuance was acknowledged plainly: these tools raise real concerns, using them is not mandatory, but in professional development work they are now ubiquitous.
+
+Design Philosophy and Principles
+
+Several principles were stated or demonstrated throughout the session. The most explicitly articulated was single responsibility: the timer decides when, the spawner decides what and where and how many, the life cycle manages energy. Each module answers one question. This was not presented as abstract software engineering dogma but as a practical design stance — if you want to swap a timer for an energy system, you can do it without rewriting the spawner.
+
+Closely related was the idea of the intermediate variable. The shift from a raw timer to an energy value that decays over time was framed as the conceptual leap that makes ecosystems possible. Time alone is rigid; energy can be added, drained, accelerated by environmental events. The instructor used the example of an ice age accelerating energy decay to illustrate how a single intermediary variable opens a vast design space.
+
+The notion that living worlds are built from entities with autonomous life cycles — birth, behavior, death — was the session's throughline. The artistic references at the opening (Allora's plant-touch installations, the fish aquarium, the light-sensitive butterflies) all embodied this: entities that have their own rhythms and respond to interaction. The instructor drew a direct line from those installations to the Unity scene being built, establishing that the technical work serves an aesthetic and conceptual vision.
+
+Key Ideas and Concepts Introduced
+
+The session covered: timer-based life cycles and the destroy action; emissive materials and bloom as minimal visual feedback; the spawner component with area-based randomized instantiation; the distinction between prefabs and scene instances, including prefab overrides; continuous spawning via tick events; the concept of state as the current values of an object's variables; energy as a decaying resource governed by ScriptableObject data; NavMesh setup (surface baking, agent, motor, wander behavior); self-replication through recursive prefab spawning; and multi-entity ecosystem chains where death events of one species trigger the birth of another. The module/namespace architecture of the new LudoCore script package was also introduced, replacing the simpler trigger/action split from the previous semester.
+
+Digressions and Anecdotes Worth Preserving
+
+The Netflix dinosaur series reference — where ice ages change survival conditions — was a compact way to sell the power of the energy variable. It landed the point that environmental modifiers become trivially easy once you have an intermediate value to act on, and it connected the abstract system to narrative and drama.
+
+The brief discussion around AI ethics was handled with notable care. The instructor acknowledged the grey area, explicitly validated students who refuse to use AI tools, and then offered a reframe: these tools are perhaps most valuable not for generating code but for understanding it. That pedagogical use-case — AI as tutor rather than ghostwriter — is worth returning to as the course progresses.
+
+Student Landscape
+
+No formal introductions occurred in this session (those likely happened in Lecture 1). The class appears to be a mix of students with varying comfort levels around code — some had tried AI tools before, most had not used them meaningfully. At least one student is opposed to using AI on principle, and the instructor made space for that. Students were generally able to follow the step-by-step construction, though several needed individual help with setup issues (package imports, namespace errors, NavMesh installation). The group seems oriented toward interactive and installative work, which the opening artist references were clearly chosen to speak to.
+
+Session Arc
+
+The session opened with a brief artistic framing — living interfaces, plant-based installations, autonomous digital creatures — that set the conceptual stakes. It then moved into logistics: distributing a starter scene, introducing the LudoCore script package, and setting up GitHub Copilot. The core of the lecture was the six-step staircase from a self-destructing cube to a three-species cascading ecosystem. Each step was demonstrated, then handed to students to replicate, with the instructor circulating to troubleshoot. A short break fell naturally after the first three steps (simple life cycle, visual feedback, spawner). The second half introduced the energy-based life cycle, NavMesh movement, recursive replication, and the final ecosystem chain. The arc moved from mechanical to organic — by the end, the scene felt alive in a way the opening cube did not, and that contrast was the lesson.
+
+Forward Threads
+
+The instructor explicitly promised that Lecture 3 will introduce predator-prey dynamics — herbivores and carnivores — shifting the focus from exponential growth to self-balancing ecosystems. The homework asks students to build the full three-creature cascade at home and to try transplanting the logic into a more authored environment (plants, flowers, animals rather than abstract cubes). The LudoCore package may be updated or replaced next session. AI tools inside Unity itself were teased as an incoming feature. The broader arc of the first three lectures is framed as building the living environment foundation before moving on to whatever comes next in the course.

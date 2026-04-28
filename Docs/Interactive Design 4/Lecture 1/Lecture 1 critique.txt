@@ -1,0 +1,67 @@
+INTERACTION DESIGN 4 — LECTURE 1 CRITIQUE
+==========================================
+
+WHAT WORKED WELL
+----------------
+
+The grammar/vocabulary/syntax framework is a genuine gift to these students. Giving them analytical language before technical tools is a strong pedagogical move — it means every Unity demo later in the semester can be discussed, not just replicated. The fact that you positioned it as your own evolving framework ("I've structured this on my own over the years") rather than received doctrine invites students to think with it rather than memorize it.
+
+The Game of Life exploration was the strongest moment in the session. Dropping students into the simulation before naming any rules is exactly right — they discovered stability, oscillation, and death on their own. This is the kind of experience-first teaching that builds real intuition. Students who were silent during the theory sections actually spoke up here. That tells you something.
+
+The payoff moment — inverting a single rule so plants chase herbivores — was perfectly placed. It made the entire architecture tangible in one gesture. If students remember one thing from this lecture, it will be that moment.
+
+The separation of data, simulation, and presentation as an architectural principle (not just a Unity trick) is the kind of transferable idea that will serve students far beyond this course.
+
+
+WHAT COULD IMPROVE
+-------------------
+
+### 1. The opening 45 minutes are too dense and too abstract
+
+The framework section (grammar, vocabulary, syntax) runs long before students touch anything. You cover Parts/Rules/Loops/Emergent Properties, then the full vocabulary list (instantiation, physics, agents, narration, installation...), then the three-layer architecture, then the course structure — all before the first break. That's a lot of conceptual payload for an opening session.
+
+**Suggestion:** Cut the vocabulary overview in half. You don't need to name every category — students will encounter them organically. Give the grammar concept (Parts, Rules, Loops, Emergence) and *one* concrete example, then move to the Game of Life within 20 minutes. You can reference the vocabulary list as a handout they revisit throughout the semester rather than a lecture section.
+
+### 2. Student silence is a signal, not just a personality trait
+
+At both explicit question breaks, no one spoke. During the Game of Life, they did. The difference is that one situation asked them to process and respond to abstract frameworks, while the other gave them something to observe and describe. The framework sections would benefit from micro-interactions: "What's an example of a loop you've seen in a game you played recently?" or "Can someone name a project from last semester that had emergent behavior — even a small one?"
+
+**Suggestion:** Build in 2-3 "turn and tell your neighbor" moments during the theory section. Even 60 seconds of pair discussion before you ask the room changes the dynamic entirely. Students who won't raise a hand in front of everyone will happily tell the person next to them.
+
+### 3. No student introductions happened
+
+The summary notes that little is known about individual students. For a course that aims to tailor examples toward student interests ("pull out ideas from you as soon as possible"), not knowing who's in the room is a missed opportunity. You asked for project ideas at the end, but by then students had been listening for 3+ hours and were unlikely to volunteer.
+
+**Suggestion:** Start Lecture 3 with a quick round: name, one thing that interested you from the first two sessions, one direction you might want to explore for a project. Keep it to 30 seconds per person. This also gives you material to customize examples going forward.
+
+### 4. The jump from cellular automata to building the ecosystem was steep
+
+The cellular automata demo (voxel grid with three cell types and interaction rules) was great for inspiration but is explicitly a "black box" you told students not to look inside. Then immediately after, you built a free-agent ecosystem from scratch with six new components (Life Cycle, Motor, Sensor, Consume, Agent, Behavior Rules). Students had to hold the conceptual thread (emergence, data-driven design) while also absorbing six new Unity workflows in rapid succession.
+
+**Suggestion:** Consider splitting the build into two sessions. In Lecture 1, build only the Life Cycle + Motor + Sensor — enough that students leave with organisms that can sense each other. Then in Lecture 2, add the Consume action, the Agent brain, and the behavior rules. This would also give students a homework target that's achievable: "Get three moving organisms that can detect each other."
+
+### 5. The pace was acknowledged but not adjusted
+
+You said "sorry, I went a bit fast" at the end. That's honest, but the better move is to notice the pace mid-lecture and adjust. When you're building in Unity and students are following along, periodically ask "raise your hand if your cells are moving" — a quick room check that costs 10 seconds and tells you whether half the class is lost.
+
+**Suggestion:** At each major step (Life Cycle working, Motor working, Sensor detecting), pause and ask for a show of hands. If fewer than 70% are with you, stop and circulate for 3-5 minutes before continuing. Better to cover four steps well than six steps poorly.
+
+### 6. The digressions are charming but cumulative
+
+The cooking-pot artists, the AI agent experiment, vibe coding, Lotka-Volterra — each one is interesting individually, but together they add 15-20 minutes and break the momentum of the build. In a session that already ran over time, that's significant.
+
+**Suggestion:** Budget yourself two digressions per session. Choose the ones that most directly support today's core idea. The Lotka-Volterra aside is essential (it grounds the ecosystem concept in reality). The cooking-pot artists are great for expanding what "interface" means. The vibe coding tangent could move to Lecture 2 when you actually set up Copilot — that's where it's contextually relevant.
+
+### 7. Homework was vague
+
+"Try to redo these things at home, add another cell type" is open-ended in a way that may paralyze students who are still catching up. The flocking step was mentioned as optional but without clear guidance on where to find it.
+
+**Suggestion:** Give a concrete, minimum-viable homework: "By next week, have your scene with at least Flora and Herbivore working — sensing each other, with behavior rules assigned. If you want to go further, add a third type (Predator) and try the flocking step in the tutorial." Concrete targets reduce anxiety and increase completion rates.
+
+
+OVERALL ARC ASSESSMENT
+-----------------------
+
+This lecture tried to do three things: establish a conceptual framework, inspire through cellular automata, and teach a complete build workflow. Any two of those would fill a session comfortably. All three made it feel rushed at the end, which is exactly where the most important material lived (the Agent brain and behavior rules).
+
+The strongest version of this lecture would be: framework (compressed) -> Game of Life exploration -> cellular automata Unity demo -> first three build steps (Life Cycle, Motor, Sensor). Save the Agent, Consume, and behavior rules for the top of Lecture 2, where they'd get the time and attention they deserve.

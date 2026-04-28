@@ -1,0 +1,75 @@
+---
+Implement only what is specified in this document. If the component already
+exists, evaluate the diff and update or add the new features. If something
+is unclear, ask me clarifying questions explicitly before implementing.
+---
+
+This controller is attached to a ceiling/floor tile. Within a random period
+it rotates the tile (inversion). Rotation can be driven by an internal random
+timer (togglable) or triggered externally via a public method.
+
+No physics coupling — if the player is on top of the tile when it inverts,
+they fall. The player is not parented or otherwise handled by this controller.
+
+Follows the same architecture as CompactingCorridorController +
+CompactingCorridorProfile (ScriptableObject profile for tuning, MonoBehaviour
+for scene references and runtime logic). Uses DoTween for animated rotation,
+matching Room1EntryControllerV2.
+
+========== PROFILE (ScriptableObject) — TileInversionProfile ==========
+
+  Timer
+  - useTimer          : bool            — master enable for the random-interval auto-invert
+  - minInterval       : float (sec)     — lower bound of random wait between inversions
+  - maxInterval       : float (sec)     — upper bound of random wait between inversions
+
+  Rotation
+  - rotationAmount    : float (deg)     — angle applied per Invert() call (default 180)
+  - animate           : bool            — true = DoTween animated rotation,
+                                          false = instant snap
+  - duration          : float (sec)     — tween duration when animate = true
+  - ease              : AnimationCurve  — tween easing when animate = true
+
+========== CONTROLLER (MonoBehaviour) — TileInversionController ==========
+
+  Scene References
+  - tile              : Transform       — the ceiling/floor tile to rotate
+
+  Config (per-instance, NOT in profile — different tiles may invert on
+  different axes while sharing a profile)
+  - axis              : Vector3         — local-space rotation axis (e.g. 1,0,0
+                                          for a forward flip)
+
+  Profile
+  - profile           : TileInversionProfile
+
+  Events
+  - onInvertStart     : UnityEvent      — fired when a rotation begins
+  - onInvertComplete  : UnityEvent      — fired when the rotation settles
+                                          (immediately, if animate = false)
+
+  Public API
+  - Invert()          : void            — performs one rotation by
+                                          profile.rotationAmount around axis.
+                                          Resets the random timer so external
+                                          triggers and timer triggers don't
+                                          stack back-to-back.
+
+  Runtime behavior
+  1. On Enable: if profile.useTimer, start the random-timer coroutine.
+  2. Timer coroutine: wait Random.Range(minInterval, maxInterval), call
+     Invert(), loop.
+  3. Invert():
+     a. Fire onInvertStart.
+     b. If profile.animate: DoTween rotate tile by rotationAmount around axis
+        over profile.duration using profile.ease, then fire onInvertComplete.
+     c. Else: apply rotation instantly, fire onInvertComplete on the same frame.
+     d. Reset the random timer (if running).
+  4. While a rotation is in flight, additional Invert() calls are ignored
+     (the current tween completes first — prevents compounding mid-flip).
+  5. Inspector context-menu entry for Invert() so it can be triggered manually
+     from the editor for testing.
+
+  On Disable / OnDestroy
+  - Stop the timer coroutine.
+  - Kill any active tween.

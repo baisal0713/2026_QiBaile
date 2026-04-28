@@ -1,0 +1,203 @@
+## Setup and Scene Opening
+
+[Logistics: Instructor shares a link and asks students to open the Lecture 6 example scene from the shared folder.]
+
+The scene contains some new scripts and updated versions of scripts from the previous lecture. It's similar to what we had before -- the two interactions from last time and the time before -- but updated with a new element, plus another interaction I want to explain. We'll also create a couple more, but first open the scene, launch it, and see if you can spot what's different.
+
+At the beginning you have to walk forward a bit in the dark. I added a longer corridor to represent this walk.
+
+[Logistics: Discussion about headphones -- instructor doesn't have his own, students share a pair.]
+
+## Review: Bodies in Space and the Interaction Model
+
+Let me review what we've been talking about. The theme we started two lectures ago and are concluding today is this idea of bodies in space -- how just through the use of the body, presence, absence, and today we also introduce gaze, we can create interactions. We gave some examples with flowers that illuminate, Rain Room, and perhaps today we'll also see something with particles.
+
+We said we can have presence without gaze, or also contact. Contact we saw last semester too -- the simple trigger. From next time we start actually building interactions in various modalities that are a step forward from these things. But the most important thing we introduced last time, and now examine a bit more closely, is this basic model of interaction -- which actually doesn't belong to interaction design per se. It comes from signal processing, data processing: the simple model of input, process, and output.
+
+What are input and output for us? As we said last time, we have various components in Unity that we already know -- lights, sounds, particles, post-processing. These components have properties: intensity, volume, and various other things we've seen. This we can call our output -- in an interaction, it will be the feedback.
+
+What can we use as input? Many things. We can use proximity, gaze, as we were saying, stillness -- now I'll show you an example of that which is a bit counterintuitive but actually quite nice. We can also use contact, grab, or even UI buttons. We're not using much UI right now, but keep in mind that as input we can also use time, random sequences -- sometimes we simply need things to change a little in a random sequence.
+
+So what is the logic of what I'd called the atom -- the minimum indivisible part of the interaction? We can combine input and output in multiple ways, including one-to-many relationships and so on. The interesting part in all of this is not simply combining variables -- it's what happens in the middle: the process, the transformation.
+
+## Three Example Interactions in the Scene
+
+What we've seen so far is a type of trigger from last time. When we pass through the door, the space lights up -- it's a composite animation. We have the pitch of the sound increasing slightly, the luminosity intensity, and also the ambient multipliers of the light. So it's always a trigger, but it uses a transformation: these variables follow a curve, perhaps ranges, a duration of the transition.
+
+Another thing we have is these columns that light up and also have a sound interaction. This is a type of interaction where the input is proximity and the output is intensity, sound, and in another example we'd also mapped scale and so on.
+
+A third thing I'll show you is based on not moving. We can use as input movement or non-movement, or also the velocity of movement, or various parameters of this type. In this case, the space requires the user to keep moving. As soon as they stop, everything goes dark, maybe even worse -- it contracts. So we can use multiple mappings.
+
+## The Four Categories of Interaction
+
+Why am I making these examples? Because I want to talk about these four categories of interaction. Some we know from last semester, others we've seen now, and the most important part -- if you actually want to use interaction design to convey emotions, to create interesting experiences -- is how we design the transformation in the middle.
+
+What does the transformation in the middle mean? We have some parameters that will be more or less always present. The mapping curve we saw last time can be linear or have various shapes -- and that already says a lot. We can have a range, and we can have this thing called an envelope, which I think you've seen from signal processing, like in MSP or Max. If you've worked a bit with synthesizers, the envelope would be attack, release, duration, and sustain. We don't have a continuous wave to shape like in synthesizers, but we have the curve, which is a way in which two or more variables are mapped onto each other.
+
+Now let me show you the way I personally work, which I believe is the best way to also test quickly. The thing I'd like you to remember today -- I'm almost done with the theory -- is these four categories of interaction. What are they based on? They're based on the type of binding and the type of signal.
+
+If we go back a bit, in the first lectures we made a passage where last semester we talked about triggers. This semester we started talking about sensors. What's the difference between a trigger and a sensor? A trigger is basically a thing that fires once -- one-shot. You open the door, something happens. It can obviously trigger an animation, something that has a shape, a behavior, but you saw the problem yourselves: in your project you had to look at a specific object and then do something on that specific object. With a trigger, that doesn't work. For that you need a sensor -- the only difference being that the sensor sends a signal. The signal can be empty if we don't have particular requirements, but if we need to identify a specific object, a specific position in space, the signal can carry this data.
+
+So if we imagine these two axes -- the type of binding and the type of signal -- we get four categories:
+
+**Continuous binding + continuous signal = Tracking.** We take a variable like proximity and map it directly to one or more output variables like intensity. One variable traces the other -- when one moves, the other moves too. That's the continuous interaction.
+
+**Continuous binding + binary signal = Switch.** Similar, but the signal is simply on/off. Enter the room, it turns on; leave, it turns off. We still have a continuous relationship, but the signal isn't continuous -- there's no continuous tracking.
+
+**Unbound + binary signal = One-shot.** We saw this extensively last semester. A single interaction that then plays out its behavior, its curve.
+
+**Unbound + continuous signal = Threshold.** A signal transmits information -- like "my proximity is 1, 2, 3, 5" -- and when it reaches five, something happens. Two variables that aren't continuously paired, but one variable listens to the other's value and when it reaches a certain value, something triggers.
+
+This is a bit abstract and we'll see it in various examples going forward. But if you remember this 2x2 matrix, it helps you think: "If I want something to happen when the player enters a space -- should this be one-shot? Binary? Do I want it continuous?" You design it accordingly, and then it's much easier to implement and test.
+
+## Categorizing Our Examples
+
+Let's use the examples we have and try to categorize them.
+
+The reactive columns would be the tracking type -- continuous signal, continuous relationship.
+
+The interaction at the beginning of the scene, where entering through the door triggers something -- what type would that be? It might seem like a switch, but notice: once it happens, if we turn it off, it doesn't happen again. So it's a one-shot type -- a single interaction that then plays out its behavior and curve.
+
+And the third interaction, where when I don't move everything dims except the column lights? This is a slightly harder question because we haven't seen what it's based on. It's based on the velocity of movement -- when the velocity is zero, something happens. So this stillness dimmer controller listens to velocity, a continuous variable, but simply acts on a single value: zero. When it's zero or more than zero, different things happen. So we have a threshold. The behavior itself is on/off, so it's a bit of a hybrid, but the interaction itself starts from a threshold of a continuous variable.
+
+> **[Digression]** This taxonomy is something I need to explain because we need a minimum of theoretical structure. But then when you build the interactions it's intuitive -- just know that these possibilities exist.
+
+## Curves, Profiles, and ScriptableObjects
+
+What I'd like to focus on now is this idea of curves. The transformation in the middle -- input to output, we can already combine in various ways -- but the transformation follows certain parameters: curve, range, envelope, and sometimes other additional things.
+
+Now go into this scene and find the controllers for these three interactions: the columns, the door trigger that starts the initial animation, and the stillness dimmer. Try to see how the variables are defined inside them, because they're defined in a slightly different way compared to last time.
+
+[Students explore the scene to find the controllers.]
+
+How are the variables defined inside these controllers? Can you see the difference? Last time we used room entry and defined the variables for audio, light, reflections directly inside the controller in the inspector. Now the last implementation step I wanted to make is to show you this approach -- which we also used a bit in the first three lectures with the little animals, where the data for the life cycle and so on used these so-called ScriptableObjects.
+
+They're always the same variables -- curve, duration, delay -- but they're defined externally to the controller. When we go to create the controllers, ideally my advice is to always use ScriptableObjects because it becomes much easier to test different profiles.
+
+Now try the same interactions. I've created two profiles per interaction type -- one that's a bit gentler, more continuous, and the other should be more abrupt. We can even give them names, like the sensation they evoke, because ultimately the idea with interactive design is that we're creating a truly emotional, experiential, sometimes visceral perception -- and these variables should help with that.
+
+Go to these three interactions and try changing the profile. Go to the controller, for example the trigger, go to the profile, and if you click the little dot on the right, you'll see the other available profile. Try changing it, or try playing with the values to get a specific effect. Or create a new profile: Ctrl+D, duplicate this object, call it something else, modify the values, then assign it directly to the field. Try to see how changing profiles or creating your own actually changes the interaction. Does changing the curves, durations, and so on create a noticeable difference in the experience?
+
+[Students experiment with profiles for several minutes.]
+
+[A student comments they'd prefer a more abrupt, direct response from the environment.]
+
+Try to modify one of the profiles or duplicate and create a profile that is even more abrupt, so you can see how modifying the variables actually changes the response. This is the central thing I wanted to transmit in this lesson. If we've decided what type of input and output to combine, the transformation in the middle determines the expressiveness of the response.
+
+## Inverting Interactions
+
+A trick for the transformation is that it can be invertible -- you can reverse the direction. For example, in the stillness dimmer interaction, if you go to the ScriptableObject and look at the values for when it's "lit" versus "dim," by inverting these values we can make it so that when we move, the space becomes dark, and when we're still, it illuminates. This is also a possibility of this approach that separates the data from the controller.
+
+For example, if I go to the stillness dimmer profile, create a new profile called "Stillness Dim Inverse" or "Reverse," and swap the emission lit/dim values and the ambient/reflection values -- keeping the same curves -- and then assign this inverted profile to the Stillness Dimmer, we can test both possibilities with a single controller.
+
+Be aware that the stillness dimmer doesn't activate until the entry animation has completed. Once the entry animation finishes, it activates -- and now we see that if we stand still and then walk, it goes dark. So this inversion is possible: alongside the other transformation parameters, we simply add values for each state of the interaction.
+
+[Students try the inversion exercise.]
+
+## Building a New Interaction: Compacting Corridor
+
+Now I want to build a new interaction to review the process using ScriptableObjects, and then I'll let you try to design and implement your own interaction, or extend this one.
+
+First, two maintenance things:
+
+**Camera clipping in tight spaces.** Cinemachine has collision functionality, but because these walls are very thin, what happens is the camera can see through them. The solution: go to the Cinemachine camera, find Third Person Follow at the bottom, and check the collision filter -- set it to Default so the camera collides with all colliders on the default layer. Also increase the camera distance a bit -- even to 1 -- so the player's own collider acts as a buffer. Set Avoid Obstacles to included, and lower the camera radius slightly. Playing with these parameters helps reduce that unpleasant clipping effect.
+
+**Light leaking through modular walls.** When working with modular packs, the modules sometimes don't fit perfectly, and light from the directional light enters through the cracks. A common solution is to place a plane covering the entire ceiling, so external light and ambient effects don't leak through.
+
+Now let's build the compacting corridor interaction. Walking through a corridor, the walls gradually close in -- but you can still squeeze through. What type of interaction is this?
+
+[A student suggests it's continuous/tracking.]
+
+Right. Based on the player's position in the corridor -- if you're at the entrance, you're fine; at the midpoint, the walls have moved; at the end, they're just barely passable. So we'd have continuous binding, continuous signal -- a tracking interaction using proximity/distance.
+
+### The Two-Pass Design Approach
+
+I recommend separating the design of the interaction from the implementation. We work in two passes: first we design the interaction -- write it down, either by hand or with AI help -- and in the second pass we take the spec and implement it. We can also ask AI to help expand the spec.
+
+I've written just two sentences for the compacting corridor spec. I can open an AI agent, give it this file with my two sentences, and ask it to help me design this interaction. It's useful for two reasons: the AI will fill in a more complete specification with properties, and we can read the spec in human language to validate the interaction design rather than reading code.
+
+> **[Digression]** You can write specs in Italian -- the language is irrelevant now. I write in English out of habit.
+
+The AI suggests: at maximum distance (when entering the corridor), the walls are at normal width. It proposes a compaction curve, max compaction value (how far the walls close), and attack/release parameters. The controller will have a proximity sensor, references to the two walls, and the profile. It also asks useful questions: which axis do the walls move on? I tell it to make the axis configurable from the inspector.
+
+This pre-implementation pass is valuable because the AI can ask questions that reveal design considerations we might miss, and we can validate the interaction before writing any code.
+
+### Implementing the Corridor
+
+I'll implement it and pass it to you. We need to think about the structure: the modular walls are made of different segments, so I select the wall segments, group them into two parent objects (Wall 1 and Wall 2) using Create Empty Parent. We place a proximity sensor near the exit and set the radius to cover the corridor length. The controller needs: sensor reference, Wall 1, Wall 2, the movement axis, and the profile.
+
+Create the profile asset: right-click, Create > LudCore > Compacting Corridor Profile. Set the max distance to match the corridor length (about 15), max compaction to around 1-1.2, start with a linear curve, and leave attack/release speed at zero for now.
+
+[Instructor iterates on the values, noting the walls only started closing at the end because max distance needed to match the corridor collider size. Adjusts the curve to make walls close earlier. Encounters an issue where walls close too much, causing player clipping.]
+
+[Logistics: Instructor uploads the scripts for students to try.]
+
+Always read the tooltips on variables -- hovering over a variable name in the inspector should tell you what it actually does. The max distance tooltip says "maximum detection distance, proximity is normalized against this value" -- so it needs to match the corridor collider size.
+
+[Break: 5 minutes]
+
+## Adding Feedback Layers to the Compacting Corridor
+
+Now let me show you how to add a couple more feedback outputs to this interaction.
+
+First, **material animation**: on the wall material, we can animate the texture offset. If the walls have arrow textures, we can make the arrows scroll downward -- and the scroll speed increases with proximity, reinforcing the sense of urgency.
+
+Second, **post-processing**: we can use vignette and desaturation. Adding a vignette creates a tunnel-vision effect, and desaturating the color reinforces the claustrophobic feeling. Both mapped to proximity.
+
+I update the spec with these additional feedbacks and ask the AI to update the implementation. I need to create a duplicate material specifically for the corridor walls so we don't modify the global shared material.
+
+When working with materials, we need to specify the correct shader property names. In URP Lit materials, the texture property is called "BaseMap" not "MainTex" -- this is the kind of detail where being precise in the prompt matters.
+
+[Instructor demonstrates the combined effect: walls closing in, vignette intensifying, color desaturating. Notes camera clipping issues that still need refinement.]
+
+For the wall material, remember the difference between shared material and material instance -- they're two different things we need to understand.
+
+## Designing Your Own Interaction
+
+What we've now seen in terms of the input-output-transformation grid: as outputs we've used lights, materials, sounds, various ambient effects, post-processing, and camera. As inputs we've used proximity, stillness, velocity, and a couple of other things.
+
+Now either continue refining this compacting corridor interaction, or try to think of another interaction. As an exercise, it should ideally have at least three or four feedback layers.
+
+Think about what could complement this sense of strangeness in liminal spaces, using what we already have. We don't have many assets, but that's actually a positive constraint. We can do things with the doors, the walls, the space, sounds.
+
+[Logistics: Students can generate new rooms using Tools > Backroom Generator.]
+
+If you can't think of an idea right away, try starting from the parameters -- the variables, materials, lights, emissive things, sounds we already have in the scene -- and that might spark an idea. Or think about what type of input to pair them with: velocity, distance, position.
+
+> **[Digression]** One thing we haven't seen yet is gaze -- using a gaze sensor to trigger something. I'll work on a gaze example while you work on your interaction.
+
+You can also use the AI to brainstorm possible interactions before even writing the spec, by describing the experience you're working on and the assets you have. Since it's already in the project, it can see the interactions done so far and suggest other possibilities.
+
+[Students work on their own interactions for several minutes. Instructor assists individually.]
+
+[A student is working on an interaction where animation stops when the player stops moving.]
+
+## Physics: Opening Doors with Hinge Joints
+
+A quick useful thing: how to make doors open with physics. It's actually super simple -- you need a joint.
+
+On the door object, add a Hinge Joint. It will also add a Rigidbody. The key thing is setting the anchor correctly -- the hinge point should be at the edge of the door where it connects to the frame. Set the axis to Y for a standard door rotation. Test by rotating to confirm the correct axis.
+
+Be careful about the player capsule radius -- if it's too large, the player won't fit through doors.
+
+Also important: on the player controller, enable "Can Push" for physics effects, so the player can actually push the door open.
+
+Watch out for door size relative to the door frame colliders -- the door needs to be slightly smaller than the frame, otherwise it gets stuck on the surrounding colliders.
+
+[Instructor encounters a stuck door, diagnoses it as collider interference, suggests making the door slightly smaller than the door frame.]
+
+## Wrap-Up and Next Steps
+
+[Logistics: Instructor notes the class ran about 10 minutes over the usual time.]
+
+Do these concepts make sense -- creating interactions in layers using ScriptableObjects for the data, so we can create different profiles? That was the main thing I wanted to transmit: creating different profiles that we can test to evaluate the quality and experience of the interaction.
+
+**Homework:** Complete this scene. We've added several interactions -- use these as a base, but try to give the scene a purpose. For example, imagine the player has to get from point A to point B, escaping this environment. We have the strange reactive columns, the compacting corridor -- try to add one or two more interactions so the player can escape. Ideally the exercise should have multiple feedback layers per interaction.
+
+**Next time:**
+- Finish gaze interactions
+- Gaze controller setup (requires a couple of extra steps)
+- Introduction to MCP Server for Unity -- an AI addition specifically for Unity that allows the AI to enter your project, see objects in the scene, understand how things are built. Currently the AI can write scripts and edit text files, but it can't enter the scene and find things. With MCP, it can explore the scene, see objects, and diagnose issues. It's a package installed via Git URL; I'll show you the setup or send you the link to try at home.
+- Potentially convert the scene to VR -- same process as before (import XR Unity Toolkit, switch from FPS controller to XR rig), and also explore doing more with hand tracking or controllers.
+
+[A student asks about VR headset support -- instructor confirms plans to revisit VR conversion soon.]

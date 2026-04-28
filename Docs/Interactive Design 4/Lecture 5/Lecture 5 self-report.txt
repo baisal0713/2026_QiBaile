@@ -1,0 +1,37 @@
+INTERACTION DESIGN 4 — LECTURE 5 SELF-REPORT
+=============================================
+
+
+PREPARATION CONTEXT
+
+The lesson was prepared under severe time pressure, with most of the work happening overnight before the session. The preparation time split unevenly: the majority went into infrastructure — designing the interaction atom model, preparing slides, building and cleaning the Backrooms asset pack, and developing the procedural room generator — rather than into the actual interaction content that would form the meat of the class. The slides and theoretical framework (the interaction atom, the signal matrix) were used for roughly 10 minutes during the session, meaning most of the overnight work produced a brief segment. The generator and asset packs, while functional, were not rehearsed or thought through in terms of classroom flow.
+
+
+WHAT HAPPENED IN THE SESSION
+
+The lecture covered theory (the interaction atom, the 2x2 signal matrix), infrastructure setup (the Backrooms generator, tile sets, audio effects overview), and one interaction built live (the room entry controller with layered feedback: audio pitch, ambient lighting, emissive materials, each with curves and delays). The closing was clean — a recap of interaction categories, inspirational references, course overview, and homework framing.
+
+Only one interaction was built across the entire session. The generator setup, while necessary for future work, consumed time that could have gone toward building more interactions or giving students hands-on practice. The theoretical material, though well-conceived, was delivered quickly and not tested through student exercises.
+
+
+SELF-ASSESSMENT
+
+The session was weak overall. The core problem: too much infrastructure and theory, not enough actual interaction work — specifically, interactions that are emotionally oriented, which is the real substance of the course. This is the fifth lecture, and the instructor feels that the content is not landing with students. They don't yet understand where the course is going, despite attempts to frame the Backrooms as an emotional target and to articulate the design framework.
+
+Student engagement was low. The instructor attributes this partly to the imbalance between setup/theory and hands-on work, and partly to the cumulative effect of five lectures that have been individually messy even if each one managed to close cleanly. The ability to close off sessions well is acknowledged as a growing strength, but the intermediate portions — the actual teaching — remain disorganized and under-prepared.
+
+The instructor recognizes a pattern: theoretical frameworks and tools are being created at a high level, but the connection between those frameworks and emotionally meaningful student work hasn't been made. The interaction atom is a good model, but students experienced it as a diagram, not as a design tool they used themselves.
+
+
+ROOT CAUSES IDENTIFIED
+
+1. **Time pressure**: Overnight preparation leaves no room for rehearsal, iteration, or thinking through classroom flow. The materials get built; the teaching plan doesn't.
+
+2. **Infrastructure over content**: The instinct to build tools (the generator, organized asset packs) and frameworks (the atom, the matrix) consumes the preparation time that should go toward designing the actual interactions students will build. The tools serve future lectures but leave the current one thin.
+
+3. **Accumulation of messiness**: Five lectures in, each one individually manageable but collectively not adding up to a clear trajectory that students can feel. The instructor can sense this gap but hasn't found a way to close it.
+
+
+WHAT NEEDS TO CHANGE
+
+The instructor wants to find a way to deliver these sessions in a "much better way" but hasn't yet identified a specific structural fix. The self-assessment suggests the priority should be shifting preparation time from infrastructure/theory toward designing concrete, emotionally targeted interactions that students build themselves during class — so the lesson demonstrates through doing, not just through frameworks and live demos.

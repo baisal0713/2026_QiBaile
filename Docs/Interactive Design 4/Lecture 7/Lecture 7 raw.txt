@@ -1,0 +1,853 @@
+Sì, non non esiste piùamo.
+0:1717 secondsSì, allora adesso rivediamo un attimo i passi. Ripasso il link della link dello stream e poi iniziamo, no?
+0:2828 secondsEhm, potete usare lo stesso account, ok?
+0:3131 secondsNon non dovete cambiare niente, solo semplicemente ehm
+0:4747 secondsscusa, la lezione del 14 risulta presente su Bword?
+0:5252 secondsCio perché vedevo le Ah ah però mi hanno detto che cio c'era due e
+1:031 minute, 3 secondsnel due c'è era un budget dizione. Ok, ho capito. Sì,
+1:091 minute, 9 secondsin realtà c'era sostò era strana la visualizzazione.
+1:141 minute, 14 secondsOk, ok, meno male perché non non mi ero accorto. Ehm, comunque
+1:221 minute, 22 secondspoi vi dico perché Marica era in feria anche lei ritorna o no? è ritornati ieri, quindi adesso oggi le scrivo per
+1:301 minute, 30 secondsfare i recuperi, poi vi dico quando lo facciamo. Bene, [schiarire la voce]
+1:341 minute, 34 secondsallora su su queste cose di git basta logarsi con l'account nabo, va benissimo qualsiasi account che volete. Eh, per fare un reposito, diciamo, personale,
+1:441 minute, 44 secondsquello che vi consiglierei. Anzi, ci sono due due cose che si possono fare. Vediamo un attimo. Anzi, quasi quasi lo farei con
+1:511 minute, 51 secondsl'altro profilo Ok. Ah, potete fare un un repository
+2:022 minutes, 2 secondsprivato in modo che non si vede da da nessuno su internet e così via, oppure un repository pubblico. Qual è la
+2:102 minutes, 10 secondsdifferenza? L'unica differenza è che in quello privato dovete invitarmi a mano.
+2:152 minutes, 15 secondsEcco, però il vantaggio forse è che non il vostro repository non è pubblico.
+2:212 minutes, 21 secondsAh, quindi cosa dobbiamo fare? Dobbiamo andare nel profilo, andare nella sezione repositories,
+2:302 minutes, 30 secondsehm,
+2:322 minutes, 32 secondspremere sul tasto new e qua diamo il nome al repository.
+2:402 minutes, 40 secondsConsiglierei di usare comunque lo stesso nome. Il nome del progetto per me sarebbe MD 426 DF. Ok. M4 26.
+2:532 minutes, 53 secondsCosì poi quando mi invitate riesco a riconoscere o o MD4, PM4, guardare perché inglese o italiano. E qua abbiamo le due scelte.
+3:043 minutes, 4 secondsDiciamo che quello che usavamo nell'organizzazione prima era interno,
+3:083 minutes, 8 secondsche era una specie di privato solo per quel gruppo, adesso non possiamo più farlo. Il mio consiglio, se volete che
+3:153 minutes, 15 secondsse non volete, diciamo, condividere queste cose con altre persone facilmente perché il pubblico, basta condividere il link, si apre, basta, fatelo anche
+3:233 minutes, 23 secondsprivato, basta solo un po' invitarvi come membro. Vi faccio vedere cosa cosa imprime questo. Quindi qua eh lo
+3:303 minutes, 30 secondspossiamo tenere privato. Il ritmi non ci serve. Il gitore sappiamo che è importante, quindi mettiamo il git ignore Unity, anche se in realtà
+3:383 minutes, 38 secondsdovrebbe già esserci uno del cartella che andiamo a copiare, però va bene.
+3:433 minutes, 43 secondsLicense non ci serve. E niente, tutto qua. Facciamo create repository.
+3:503 minutes, 50 secondsOk. E poi appena vediamo questa finestra code,
+3:573 minutes, 57 secondsprocedimento è lo stesso. Open with Gitub Desktop che a volte fa dei capricci, quindi non si collega nonostante è installato.
+4:094 minutes, 9 secondsAh, buongiorno.
+4:124 minutes, 12 secondsSì, sì, abbiamo cominciato 5 minuti facile. No, non ci mancherebbe. Ma stavo facendo vedere questa questa storia di
+4:194 minutes, 19 secondsgit che in fin dei conti na ha esaurito semplicemente lo spazio e quindi ha dovuto sta cioè sta cancellando tutte le
+4:274 minutes, 27 secondsorganizzazioni stanno ristrutturando e quindi per questo semestre dopo troppo dovremo migrare. Stavo rifacendo vedere i passi che semplicemente
+4:364 minutes, 36 secondscreare un nuovo repository su anche sullo stesso account semplicemente privato o pubblico insomma comunque eh
+4:434 minutes, 43 secondsin nessuna organizzazione. Quindi, una volta che siamo qua, proviamo eh riproviamo a fare questa cosa. Open with
+4:524 minutes, 52 secondsdes perché, scusate, io, cioè, io di solito non utilizzo questo sistema perché non funzionerò mai, utilizzo
+5:005 minutesun'altra cosa che si chiama ehm fork che è un po' più evolute come client come git client.
+5:075 minutes, 7 secondsAllora, nel caso non si aprisse una cosa che possiamo fare, comunque usiamo per ora il GitHub Clan perché ehm comunque
+5:175 minutes, 17 secondssiamo abituati. Andiamo a copiare questo link. Ok, copiamo il link qua, andiamo sul sul GitHub client, qua GitHub Desktop, facciamo file clone repository,
+5:315 minutes, 31 secondsquindi file clone repository.
+5:355 minutes, 35 secondsin questa finestra premiamo URL e qua diamo il link e ovvo.
+5:465 minutes, 46 secondsSì, dimmi.
+5:555 minutes, 55 secondsNo, credo tu sei su questa finestra qua o no? Devi cambiare cartella, comunque. Quindi, eh, stavo stavo arrivando,
+6:036 minutes, 3 secondsquindi eh facciamo paste del link qua,
+6:066 minutes, 6 secondschoose folder e qua dobbiamo creare una nuova cartella vuota. Cioè quando cloniamo repository sempre in una cartella vuota, senò non funziona.
+6:166 minutes, 16 secondsOk. Projects Unity.
+6:196 minutes, 19 secondsE poi io qua creerei una cartella che ha un nome simile, però 26.
+6:276 minutes, 27 secondsChiamo pure new, così mi ricordo che è quella. Ok.
+6:366 minutes, 36 secondsE niente, e facciamo un clone. Ah!
+6:586 minutes, 58 secondsSe vi dà un errore può essere che non siete perché io ho qua due account anche sul sul GitHub desktop bisogna
+7:067 minutes, 6 secondsessere logati con l'account giusto nel caso. Comunque a volte può essere che sia slogati, quindi non Quindi io vi faccio qua la vicenda.
+7:187 minutes, 18 secondsOk.
+7:307 minutes, 30 secondsE una volta che l'abbiamo clonato,
+7:317 minutes, 31 secondsquindi ehm vediamo le cartelle vuota,
+7:387 minutes, 38 secondsbasta solo copiare le cartelle del progetto dentro. Ci siamo su questo. Ok,
+7:437 minutes, 43 secondsquindi quello che farei qua, anzi chiudiamo prima il progetto così non esplode niente.
+7:507 minutes, 50 secondsIn modo più veloce dal Unity Hub facciamo tre punti show in Explorer. Questa è la cartella.
+7:597 minutes, 59 secondsPrendo l'intera cartella del progetto e la spostro e la sposto dentro il repository. La cartella del rep.
+8:578 minutes, 57 secondsSì, esatto. No, no, uguale. stesso procedimento,
+9:049 minutes, 4 secondssolo che qua la differenza era che quando crea un nuovo repository ehm il mio consiglio era anche di farlo privato
+9:119 minutes, 11 secondscosì non perché non abbiamo più la l'opzione interno che esiste solo per le organizzazioni, quindi non possiamo in
+9:209 minutes, 20 secondsmodo facile, diciamo, tenerlo semiprivato, però anche inviarlo perché quello pubblico o basta inviare il link,
+9:279 minutes, 27 secondsio lo posso aprire in quello in quello privato. Dovete poi invitarmi. Infatti adesso vi faccio
+9:339 minutes, 33 secondsvedere da dove, però sì, nel senso non cioè
+9:419 minutes, 41 secondsperché è veramente un pulsante per invitarmi. Non non io quando posso evito di tenerli pubblice.
+9:519 minutes, 51 secondsPoi controlliamo se il git ignore è dentro la cartella del Unity Project o dove c'è il progetto.
+10:0110 minutes, 1 secondQuindi ehm torniamo su GitHub Desktop.
+10:0510 minutes, 5 secondsEh sì, quando fai la depository ricloni la cartella in una cartella vuota. Poi devi solo copiare la cartella del
+10:1210 minutes, 12 secondsprogetto dentro e qua controlliamo al volo se non abbiamo la cartella library.
+10:1810 minutes, 18 secondsQuesta è l'indicazione migliore che appunto non qualcosa non funziona col git ignoro o altro. Quindi
+10:2510 minutes, 25 secondsqua dentro questa lista non dobbiamo vedere la cartella a library e poi committiamo e poi cerchiamo di
+10:3310 minutes, 33 secondscommittare questi file. Adesso visto che sono tanti file io lo farei in un paio di commit. Ecco, non farei tutto in una
+10:4110 minutes, 41 secondsvolta perché io probabilmente ho anche più più cose di voi. Farei una cosa del genere, cioè prenderei per esempio eh
+10:4810 minutes, 48 secondsfarei eh deselezionando qua seleziono solo una parte, per esempio,
+10:5910 minutes, 59 secondstutta la cartella delle lezioni per me. Faccio include selected files. Anzi no,
+11:0611 minutes, 6 secondsquesto è abbastanza poco. Possiamo fare di più.
+11:2011 minutes, 20 secondsprendo un paio di di cartelle. include selected files, non discard. Non fate discard perché sennò li cancellate in modo quasi irrevocabile.
+11:3011 minutes, 30 secondsEhm e facciamo un paio di commit.
+11:4911 minutes, 49 secondsFacciamo commit e push direttamente. Non accumuliamo commit perché Bene, intanto controlliamo un attimo l'internet, ok? Perché è saltato?
+12:1212 minutes, 12 secondsEh, controlliamo i viti minor adesso qua e fatemi poi fatemi sapere poi se vi funziona questa cosa.
+12:2112 minutes, 21 secondsCosa è successo? Un disastro. Cos'è qui? No, no, ma ma perché?
+12:3212 minutes, 32 secondsOk, ok, ok, non ti preoccupare, succede.
+12:3612 minutes, 36 secondsAh, io ho avuto la l'altra sessione di esame, un studente che doveva Ah, sì. vuole perché ciao, buongiorno.
+12:4712 minutes, 47 secondsEra da remoto o forse era prima dell'esame, dovevo inviarmi il suo progetto. Stava facendo il repository git quel giorno e ha fatto queste cose
+12:5512 minutes, 55 secondsche vi stavo facendo vedere. Ha selezionato metà del progetto e fatto discart cancellando appunto metà il suo progetto e poi mi ha detto "Ma non ho più le scene, ma cosa hai fatto Fabio?"
+13:0613 minutes, 6 secondsComunque, insomma, non poi per fortuna ci sono sempre c'è sempre qualche modo per recuperare,
+13:1413 minutes, 14 secondsno? Allora, quando fai gli scart spesso è come fa fare dei le spesso vanno nel cestino, non insomma non tutte le volte,
+13:2213 minutes, 22 secondsperò ecco, cioè non non fatelo se non perché no, dico solo quando si fa un reposito di nuovo, poi quando il reposito resiste, abbiamo fatto un po'
+13:3213 minutes, 32 secondsdi commit, se fai discard comunque puoi sempre ritornare al allo al commit prima, allo stato prima. Bene.
+13:5613 minutes, 56 secondsF.
+14:4514 minutes, 45 secondsAppeto inizia Sì,
+15:3115 minutes, 31 seconds16
+16:0816 minutes, 8 secondsProva a liberare 4 gig. Sì, sì, sì, sì. Eh no, comunque non è un tuo problema,
+16:1716 minutes, 17 secondsnel senso che cioè sono loro che non fanno manutenzione del dei file di sistema.
+16:2516 minutes, 25 secondsVabbè. Ehm, quindi intanto Ah, ciao, ciao i nuovi arrivati. Breve recap,
+16:3216 minutes, 32 secondsdobbiamo migrare i i repository git, ok?
+16:3516 minutes, 35 secondsQuindi quello che avevo fatto, se se volete poi dopo lezione vi do una mano adesso per non bloccare per creare un nuovo repository su qualsiasi account,
+16:4516 minutes, 45 secondsanche sul vostro account personale, quello che volete, però repository,
+16:4916 minutes, 49 secondsandare sul tasto new e poi clonare come abbiamo fatto prima e poi dovete copiare la cartella del progetto dentro questa
+16:5916 minutes, 59 secondsnuova cartella del repository, no? e committare. Se avete tanti file fate commit
+17:0617 minutes, 6 secondscioè fate tre4 commit piuttosto che eh comitare 3000 file.
+17:1717 minutes, 17 secondsBene, adesso faccio anch'io questa e poi fammi sapere se funziona.
+17:3417 minutes, 34 secondsSì, dimmi Ah, cosa? Così. Sì, sì, il mio sì, certo. Sì, sì,
+17:4317 minutes, 43 secondscondivido subito. Ehm,
+17:5717 minutes, 57 secondsappena riesco a fare comin bene. Intanto apro e così iniziamo le cose di oggi.
+18:0818 minutes, 8 secondsAh, sì, scusate, questa è l'ultima cosa. Sì, come come invitare al ai repository.
+18:1318 minutes, 13 secondsEhm, allora, bisogna, anzi, facciamo facciamolo qua, così non ce lo perdiamo.
+18:1818 minutes, 18 secondsScambiamoci i gli ID, i Gitcup, che è semplicemente il nome che vedete qua. Uno dei due,
+18:2518 minutes, 25 secondscredo che dovrebbero andare entrambi. Ah, e e perché è necessario questo?
+18:3018 minutes, 30 secondsPerché poi quando andiamo qua nel repository andiamo in settings
+18:3718 minutes, 37 secondscollaborators, che è il primo m a sinistra, la prima voce a sinistra e facciamo qua add people e poi eh potete trovarmi con credo entrambi questi no.
+18:5018 minutes, 50 secondsVediamo un attimo.
+18:5518 minutes, 55 secondsM sì, mi prende che io non posso trovare me stesso, comunque, però sì, diciamo
+19:0219 minutes, 2 secondsche
+19:2019 minutes, 20 secondsoppure anche con l'email con cui avete fatto l'account.
+19:3919 minutes, 39 secondsil mio, questo è il mio account personale, quindi se non mi trovate con con l'altro nome,
+19:4619 minutes, 46 secondsok? [schiarire la voce]
+19:5019 minutes, 50 secondsdovrebbe essere uguale in realtà, poi se non ti funziona fammi sapere.
+19:5519 minutes, 55 secondsAllora, ehm, provo a intanto a invitarvi alla alla mia al mio repository, quindiamo.
+20:0520 minutes, 5 secondsQuindi dal dentro repository settings collaborators add people,
+20:1320 minutes, 13 secondsok?
+20:1520 minutes, 15 secondsAps e poi dalla poi dalla vostra email
+20:2120 minutes, 21 secondsdovete accettare l'invito. Questa adesso. Quindi per tutti quelli che
+20:2920 minutes, 29 secondsvogliono avere poi accesso a questo progetto, mandatemi il vostro kit e fatemi sapere se riuscite a invitarvi a invitarmi voi.
+20:4120 minutes, 41 secondsScusami. Ok, grazie.
+21:1121 minutes, 11 secondsBene, e vi faccio vedere una seconda cosa che purtroppo adesso che non abbiamo più il il non abbiamo più il Bitcoin Enterprise,
+21:2221 minutes, 22 secondsnon abbiamo l'AI che era comoda, però niente preoccupazione perché ci sono vari altri AI, diciamo, gratuiti o
+21:3021 minutes, 30 secondssemigratiti che possiamo usare e ve ne faccio vedere alcuni che e vi faccio vedere anche volendo un modo alternativo
+21:3721 minutes, 37 secondsper usarli. Ehm perché tanto comunque un AI di supporto ci serve sempre.
+21:4721 minutes, 47 secondsEsatto. Eh sì, mi dispiace, però nessun problema perché con un breve setup si si
+21:5621 minutes, 56 secondsrifà. Cioè, comunque provate, però non credo che No, scusa,
+22:0322 minutes, 3 secondsanzi facciamo una prova perché forse sbaglio, perché forse è collegato al vostro account.
+22:0822 minutes, 8 secondsnaba come come studenti e non alla e non all'organizzazione. Effettivamente sì, a pensare dovrebbe essere
+22:1622 minutes, 16 secondsesattamente così, quindi forse non ci serve altra. Eh, se se riesci a aprire e semplice scrivere, vedere se ti risponde, allora sarà tutto a posto.
+22:2822 minutes, 28 secondsIntanto ehm vabbè vi dico questo se poi vi chi interessa vuole esplorare
+22:3622 minutes, 36 seconds[schiarire la voce]
+22:3822 minutes, 38 secondsun AI che ha una buona qualità abbastanza buona e ed è abbastanza gratuito, si chiama Mistral e questo è,
+22:4622 minutes, 46 secondsdiciamo, basato sul web, quindi dovete logarvi e poi potete chattare dentro come con chat GPT qualsiasi altro.
+22:5522 minutes, 55 secondsPurtroppo non è non c'è un modo immediato per usarlo dentro il progetto,
+23:0023 minutesno? Però insomma anche copy paste a volte funziona. Questo qua abbastanza forte. Ah, invece se volete usare se
+23:0923 minutes, 9 secondsvolete provare un altro AI, usarlo dentro il progetto come abbiamo fatto con VS Code. Ci sono due opzioni eh che vi mando qua.
+23:2623 minutes, 26 secondsEhm un attimo solo perché mi è sfuggito un secondo. Ok,
+23:5023 minutes, 50 secondssono questi due qua che vi mando, anzi vi mando anche questo.
+23:5523 minutes, 55 secondsTutti questi hanno ovviamente anche una versione pagata, però hanno per ora hanno un'abbondante versione gratuita.
+24:0524 minutes, 5 secondsE perché vi sto facendo vedere questi?
+24:0724 minutes, 7 secondsPerché forse avete notato che io spesso utilizzo il il terminal. Cos'è il terminal? in Windows o anche in ehm
+24:1624 minutes, 16 secondssu Mac in modo leggermente diverso, però ehm si attiva, però funziona in modo abbastanza simile e questa cosa chiamata
+24:2424 minutes, 24 secondsdi il Command Prompt in Windows. Ahm e come funziona? In realtà questa cosa può essere aperta in qualsiasi cartella. Per
+24:3224 minutes, 32 secondsesempio, io posso andare nella cartella del progetto che sarebbe per me qua nuovo repository,
+24:4124 minutes, 41 secondseccolo qua. E posso fare tasto destro su questa cartella e posso fare open in terminal e così qua parto un terminale,
+24:5124 minutes, 51 secondsposso usare vari comandi per fare cose dentro queste cartelle, no? Questo è uguale anche in in su Mac.
+24:5824 minutes, 58 secondsAhmé vi sto dicendo questo? Perché ah questi AI qua che vi ho mandato ve li ho mandati, sì, ah possono possono essere installati in VS Code, però un modo,
+25:0825 minutes, 8 secondsdiciamo, molto più veloce. Infatti qua credo che vedevo un attimo. Oddio,
+25:1325 minutes, 13 secondsc'era, vabbè, c'era un tasto per installarlo su su VS Code, però un modo molto veloce semplicemente ah fare questo questa cosa, andare su npm, fare ehm questa insomma copiare,
+25:2725 minutes, 27 secondsper esempio, facciamo che vogliamo usare questa cosa che si chiama open code.
+25:3025 minutes, 30 secondsPossiamo compiare questa riga del dell NPN o anche Crow uguale. Sono diversi modi per installarlo nel terminale.
+25:3725 minutes, 37 secondsCopiare qua. Adesso mi dirà che è già installato perché un attimo e una volta che lo installiamo
+25:4625 minutes, 46 secondsdovrebbe funzionare questo anche su su Ma uguale.
+25:5525 minutes, 55 secondsNo, sono uguali. Cioè, vi sto facendo vedere questo. Nel caso un domani, boh,
+26:0026 minutesnon avete più, cioè avete raggiunto un limite, non si attiva, perché questi strumenti cambiano in continuazione,
+26:0626 minutes, 6 secondsquindi volevo darvi un po' di un po' di cose in più. Poi alla fine il modo di utilizzo è uguale, nel senso cambia un
+26:1326 minutes, 13 secondspo' il modello che c'è dietro, però insomma il il bottom line era che se voi
+26:2126 minutes, 21 secondsprendete open code oppure kilo che qua vediamo install Kilo sarebbe da Eccolo qua. Qua c'è importante installing via scot e può funzionare esattamente come il ah come il GitHub Compilot, però io,
+26:3326 minutes, 33 secondscioè per me è un attimo più veloce usarlo dal il cosiddetto cle, cioè dal command line qua, eh. e quindi funziona
+26:4026 minutes, 40 secondsappunto in questo modo. Copiamo questa riga, facciamo paste una volta che abbiamo aperto il command line da in una
+26:4826 minutes, 48 secondscar idealmente nella cartella del progetto così non deve così ha un contesto mirato, lavora solo in quella cartella, no? Open intermital,
+26:5526 minutes, 55 secondsinstalliamo e poi per esempio se io ho appena installato Open Code posso semplicemente scrivere Open Code
+27:0227 minutes, 2 secondse così mi si apre l'AI dentro quelle cartelle, posso iniziare a chattare. Ok. Ah, tutto qua.
+27:1227 minutes, 12 secondsScusa, puoi ripetere? Ah! Ah! Ok,
+27:1927 minutes, 19 secondsaspetta, fammiare un occhio.
+30:4830 minutes, 48 secondsCioè, questi sono ambienti molto basila che di solito si installano con
+30:5630 minutes, 56 secondsMa anche a qualcun altro non funziona il Visual Studio? A tutti funziona? No. Ok. Boh,
+31:0531 minutes, 5 secondsviso il l'editor per il codice, diciamo. Ehm, un attimo un attimo,
+31:2431 minutes, 24 secondsperò se M.
+31:4331 minutes, 43 secondsStai.
+32:0232 minutes, 2 secondsPerò poi permette che c'è stale un attimo.
+32:1732 minutes, 17 secondssettimana perché siccome meno utile per ogni cosa
+32:2532 minutes, 25 secondsc'av password dammi la password così non cioè
+32:3432 minutes, 34 secondsnon venire una persona importante però
+32:4432 minutes, 44 secondsAllora, guarda, prova. Ah, sì, tu non puoi installare. Prova prova a vedere se riesci a installare almeno il VS Code,
+32:5132 minutes, 51 secondsche non è il Visual Studio Code, ma è il Visual VS Code, letteralmente, che quello di solito c'ha un installer molto leggero che forse te lo fai installare,
+33:0033 minutesquindi pro fai VS code download e poi
+33:0833 minutes, 8 secondsmi spiace. Allora, adesso ritorniamo sulla lezioni. Questi erano due, insomma, due cose da sistemare.
+33:1433 minutes, 14 secondsEhm, bene. Intanto vediamo se se funziona.
+33:4033 minutes, 40 secondsAllora, cosa vorrei fare oggi? Vediamo un attimo siamo qua.
+33:5433 minutes, 54 secondsAh, sì, ovviamente quando spostate il vostro progetto dovete riaprirlo dal da qua, no? Quindi facciamo Unity
+34:0434 minutes, 4 secondsHub, add project from disc e semplicemente apriamo il progetto nella cartella nuova qua.
+34:1734 minutes, 17 secondsOk. Bene, allora la volta scorsa abbiamo ehm stiamo ancora un attimo nei nei backrooms come contesto, semplicemente
+34:2534 minutes, 25 secondsperché vorrei vorrei trasmettere, insomma, vorrei darvi due concetti nuovi che sono abbastanza importanti.
+34:3534 minutes, 35 secondsLa volta scorsa abbiamo visto un pochino meglio quello che era, diciamo, l'atomo dell'interazione, chiamiamolo,
+34:4434 minutes, 44 secondsche abbiamo detto per disegnare una
+34:5134 minutes, 51 secondsqualsiasi interazione, anche se poi è moltivaliegata, cioè contiene molti feedback eccetera, comunque ha sempre
+34:5834 minutes, 58 secondspiù o meno questa struttura, decidiamo l'input che può essere appunto la prossimità, la distanza, il velocità di movimento,
+35:0735 minutes, 7 secondsqualsiasi non qualsiasi, però una tante variabili possiamo usare, no? Ah, poi se usiamo touch midi, eccetera, che poi VR,
+35:1635 minutes, 16 secondscontroller e così via, tutte queste variabili possono servire come come punto di partenza per l'input. L'output
+35:2535 minutes, 25 secondsquello lo conosciamo probabilmente ancora meglio in Unity, luce, non so,
+35:2935 minutes, 29 secondsnebbia, colori, tutte le cose dei nei componenti che possiamo effettivamente manipolare, tutte le vari tutte le
+35:3635 minutes, 36 secondsproprietà dei componenti di unity oppure possiamo crearci dei nostri componenti che fanno esattamente quello che vogliamo. Ah,
+35:4535 minutes, 45 secondse la cosa su cui un attimo ci siamo soffermati, abbiamo aggiunto la volta scorsa era la quello che succede in mezzo, no? la trasformazione, come
+35:5335 minutes, 53 secondseffettivamente decidiamo la relazione tra l'input e l'output e abbiamo detto che la relazione può in questo modo un attimo
+36:0236 minutes, 2 secondspiù astratto, però se poi ve lo ricordate potete applicarlo in realtà in qualsiasi contesto. Non è una cosa solo di Unity, è una cosa, se volete fare web interactions,
+36:1236 minutes, 12 secondsinstallazione, qualsiasi cosa, come principio, potete pensare, ok,
+36:1636 minutes, 16 secondsun'interazione avrà un segnale, quindi un segnale è una relazione tra almeno due variabili, oppure tra una e 100
+36:2436 minutes, 24 secondsvariabili, però sia il segnale che questa relazione possono essere discreti o continui, quindi c'è un continuo aggiornamento dove la variabile, non so,
+36:3336 minutes, 33 secondsprossimità, intensità della luce e viene continuamente aggiornata.
+36:3936 minutes, 39 secondsAh, oppure abbiamo, non lo so, un segnale che non è discreto, cioè binario, quindi entro nella stanza, si accende la luce, escono nella stanza si
+36:4736 minutes, 47 secondsspegne, però comunque ho messo in relazione queste due sempre queste due variabili, la mia presenza o o e la
+36:5636 minutes, 56 secondscomponente della luce, oppure può essere anche one shot, questo l'abbiamo visto molte volte, no? Qua un caso borderline
+37:0437 minutes, 4 secondsè questa cosa del threshold dove abbiamo della appunto un un appunto un limite dove potremmo avere una relazione che
+37:1137 minutes, 11 secondsnon è continuamente aggiornata, il prossimità intensità della luce non viene come l'abbiamo fatto con le
+37:1837 minutes, 18 secondscolonne, ma può essere che solo quando arrivo a 5 di prossimità allora inizia o succede qualcosa, l'intensità si
+37:2737 minutes, 27 secondsillumina quest insomma ehm si muove Questa è sempre appunto una relazione,
+37:3437 minutes, 34 secondspuò essere anche un caso in cui possiamo combinare queste cose ehm e queste modalità, però la cosa più interessante
+37:4337 minutes, 43 secondsper voi a livello, diciamo, estetico, a livello esperienziale è appunto una volta che abbiamo definito l'interazione, la relazione tra le variabili, cosa succede in mezzo, no?
+37:5437 minutes, 54 secondscome gestiamo questa trasformazione?
+37:5537 minutes, 55 secondsQuesto è un po' ah secondo me il pane della dell interaction design perché noi possiamo avere la stessa interazione,
+38:0238 minutes, 2 secondsperò in base a come gestiamo le la curva di relazione, la l'attacc, cioè l'envelope, no, che forse conoscete dal
+38:1038 minutes, 10 secondssound design, l'attacc, la duration sustain e può essere un paio di altri variabili che possiamo
+38:1938 minutes, 19 secondsscegliere di usare che che gestiscono questa trasformazione. L'esperienza può cambiare molto, no? E quindi la volta scorsa l'abbiamo visto questo
+38:2738 minutes, 27 secondsaggiungendo in unity, cioè separando questa diciamo configurazione della della relazione del cambiamento,
+38:3438 minutes, 34 secondsseparandolo in una cosa che abbiamo chiam insomma abbiamo visto che si chiama scriptable object, no? Quindi un
+38:4138 minutes, 41 secondsfile di configurazione dove non ehm non decidiamo il valore della variabile nel componente come abbiamo fatto fino ad
+38:5038 minutes, 50 secondsora. diciamo, ma lo decidiamo in un in un file, in un asset file praticamente che serve per contenere i dati
+38:5938 minutes, 59 secondsall'esterno e poi mettiamo questo asset file dentro la nostra interazione. Per esempio, avevamo fatto questo steelness
+39:0739 minutes, 7 secondsdimer, no? Quando ti fermi tutto diventa buio, anzi dimostriamolo un attimo.
+39:1339 minutes, 13 secondsAh, sì, certo. Sì. Ok.
+39:2739 minutes, 27 secondsEh, dammi un attimo arrivo, scusami. Eh,
+39:3039 minutes, 30 secondsadesso vediamo. Finisco solo queste cose. Quindi,
+39:3739 minutes, 37 secondsehm,
+39:4339 minutes, 43 secondsvolevo solo far vedere l'esempio della volta scorsa per un breve ric qua.
+39:5139 minutes, 51 secondsE quindi abbiamo un attimo trasformato queste interazioni dalla che avevamo fatto nelle volte scorse, quindi le le colonne, la l'interazione, l'inizio con
+40:0040 minutesi suoni, con le luci, l'intensità e così via. Ehm, l'abbiamo [schiarire la voce]
+40:0440 minutes, 4 secondstrasformato, l'abbiamo portata a questo utilizzo del profilo, cosiddetto, no?
+40:0840 minutes, 8 secondsQuindi descriptive object che contiene appunto la curva di cambiamento, i valori della sustain o insomma vari dati
+40:1840 minutes, 18 secondsche gestiscono la relazione. Abbiamo visto cosa succede se cambiamo questi profili, no? Cambiamo i questi valori e
+40:2440 minutes, 24 secondspossiamo avere una un feel molto molto diverso nel dell'interazione, no? Una interazione graduale versus questo.
+40:3240 minutes, 32 secondsVediamo un attimo quale profilo era questo? il
+40:4140 minutes, 41 secondsOk. E se facciamo invece se cambiamo invece con questo che era anche invertito
+40:5140 minutes, 51 secondsmolto più graduale, no? E quindi il senso di di questo, per finire questo breve recap, il senso di questo era che
+40:5940 minutes, 59 secondspossiamo decidere l'interazione, però se poi cambiamo o costruiamo profili diversi che gestiscono appunto questa
+41:0741 minutes, 7 secondstrasformazione tra come le variabili vengono mappati, il fil può cambiare drasticamente, no? Quindi provate a
+41:1341 minutes, 13 secondsvedere se avete probito o squadza che abbiamo scorso. Cè stato potete e andiamo avanti.
+41:3141 minutes, 31 secondsSì.
+42:4942 minutes, 49 secondsV
+43:1443 minutes, 14 secondsPerò M.
+44:3844 minutes, 38 secondsse magari faccio però
+44:4844 minutes, 48 secondssemplicemente
+45:3545 minutes, 35 secondsAllora,
+45:4345 minutes, 43 secondsAre la
+45:5245 minutes, 52 secondspersona che se andrebbe su lezione alla fine
+45:5845 minutes, 58 secondsoggetti del ruolo del e poi lezione ce la f peròci se vuoi
+46:0846 minutes, 8 secondsse vuoi però insomma a casa
+46:1746 minutes, 17 secondsmi spiace se bene.
+46:2546 minutes, 25 secondsQua siamo a posto
+46:3546 minutes, 35 secondsperché siamo Ah,
+46:4446 minutes, 44 secondsquando si aprire
+46:5646 minutes, 56 secondsdiscorso allora
+47:0247 minutes, 2 secondsun attimo per quente se non ci puoi già partire da da qua ok e poi a casa fai il
+47:1047 minutes, 10 secondstuo progetto. Quindi scusate sto facendo tante cose. Aspetta, cosa è successo?
+47:2747 minutes, 27 secondsDatemi un attimo. Ah.
+48:0648 minutes, 6 secondsSì, eh funziona in modo abbastanza uguale perché è la è lo stesso editor,
+48:1248 minutes, 12 secondsla versione Lite, diciamo, quindi, però devi reinstallare il pacchetto, devi reinstallare Gitcopilot e logarti da VSC, ok, con il tuo account, perché,
+48:2248 minutes, 22 secondscioè, è lo stesso environment, però è sempre un programma diverso, quindi purtroppo non Allora, ehm,
+48:3248 minutes, 32 secondsok,
+48:3448 minutes, 34 secondsallora provo a fare un commit unico perché sennò non facciamo Pio. E
+48:4148 minutes, 41 secondsquesto sarebbe Allora, 1700 file sono un po' tanti per
+48:4848 minutes, 48 secondsunit, però la connessione oggi sembra buona, pericolo più che non riesce a a inviarli.
+48:5748 minutes, 57 secondsBene, allora
+49:0749 minutes, 7 secondsno, devi semplicemente inserire i pacchetti che hai già.
+51:2851 minutes, 28 secondsAdesso forse capicare
+51:4151 minutes, 41 secondsprima scaricare con quello.
+51:4551 minutes, 45 secondsAllora, ci siamo. Quindi adesso provate a Ah, no, non ho ancora pushato. Adesso pusho che sta inviando. E potete provare
+51:5451 minutes, 54 secondsa scaricare il mio progetto che Ah, devi darmi il tuo nome Git, il tuo account Git su su Discord o dimmelo anche a
+52:0352 minutes, 3 secondsinsomma. Ehm, no, se se riesci a scriverlo qua, così lo copio e lo lo e ti invito sul progetto. Ok.
+52:1352 minutes, 13 secondsE nel frattempo faccio una Meet del Git ignore.
+52:3052 minutes, 30 secondsBene, intanto vi dico due tre cose perché abbiamo perso tanto tempo. Uh, mi spiace con questa cosa. Intanto recuperiamo
+52:3852 minutes, 38 secondsehm Sì, fit nors diciamo e quando cre vabbè
+52:5152 minutes, 51 secondsquando create i repositori dice allora quello che volevo aggiungere oggi Ah, vediamo se me lo fa caricare così.
+53:0253 minutes, 2 secondsSì, devi devi togliere il l'undersore all'inizio, deve essere solo doting.
+53:0853 minutes, 8 secondsBene, allora quello che volevo fare oggi, intanto voi tra un minuto. Ok,
+53:1353 minutes, 13 secondsadesso dovrebbe essere a posto, quindi prova a aggiornare il progetto, vediamo se ti spariscono gli errori, più che altro. Ok, perfetto. Allora, io sto
+53:2253 minutes, 22 secondslavorando qua in questa scena a lezione 7 esempio. Siamo qua dentro. Allora,
+53:2953 minutes, 29 secondsoggi volevo introdurre due idee.
+53:3453 minutes, 34 secondsLa prima è un, diciamo, un split tra controller e manager, che adesso vi spiego al volo, e l'altra è l'idea del
+53:4353 minutes, 43 secondsdello stato, cioè del del fatto che quando facciamo interazioni a volte dobbiamo salvare il valore delle
+53:5053 minutes, 50 secondsvariabili, no, per fare in modo che entriamo in una stanza, facciamo delle cose, queste azioni vengono salvati e poi ehm andiamo avanti. Però prima,
+54:0154 minutes, 1 secondmentre state aprendo, chi sta ancora facendo qualcosa, intanto voi avevate a casa provato a vedere un pochino questa,
+54:0954 minutes, 9 secondsci avete provato a fare qualche interazione usando l'AI,
+54:1354 minutes, 13 secondscioè quello che fino ad ora abbiamo visto come processo. Ok, voi avete avuto il design. Va bene,
+54:2054 minutes, 20 secondsci sta. Ah, come scusa?
+54:2654 minutes, 26 secondsNo, no, mi va bene.
+54:3054 minutes, 30 secondsNo, non ti puoi fare. Allora, facciamo così, prima di fare il manager eccetera,
+54:3554 minutes, 35 secondsperché vorrei rafforzare un po' il workflow, ehm, proviamo a fare un'interazione e nel fare questo,
+54:4654 minutes, 46 secondsanzi vi condivido, vediamo un attimo se posso condividervi questi file qua.
+55:0455 minutes, 4 secondsAllora, sono due file eh che idealmente vorrei che anche voi
+55:1255 minutes, 12 secondsun attimo iniziaste già a pensare appunto al vostro progetto del dell'esame, no? perché anche se non
+55:1955 minutes, 19 secondsabbiamo ancora visto, cioè ci mancano tre concetti appunto importanti per avere il quadro, insomma, del delle cose
+55:2755 minutes, 27 secondsche poi andremo ovviamente a ripetere e a fare sotto varie forme anche nelle prossime lezioni, però comunque vorrei,
+55:3555 minutes, 35 secondscioè comunque credo che la base spero stia passando, no, del dell'interaction design, l'approccio a creare il i
+55:4355 minutes, 43 secondscomponenti, i controller usando l'AI e così via E ovviamente per i vostri progetti ah, come dire, non mi interessa
+55:5155 minutes, 51 secondsche i progetti siano così tanto un un technical demo, cioè un demo di un di interazione, che non è mai questo il
+55:5855 minutes, 58 secondssenso, un po' come avete fatto voi al l'esame scorso, anche qualcun altro,
+56:0556 minutes, 5 secondsperò non c'è oggi, che appunto avevate fatto più una esperienza, no? cioè avevate avuto qualcosa da comunicare,
+56:1256 minutes, 12 secondsavete trovato il modo per, cioè le giuste interazioni, le le giuste sequenze per farlo. Quindi mh secondo me
+56:2056 minutes, 20 secondsla cosa più semplice che emerge anche un po' da questo esempio dei backro e se non avete appunto un'idea non serve
+56:2956 minutes, 29 secondsun'idea filosofica grandiosa, cioè che non dobbiamo fare niente di estremo,
+56:3456 minutes, 34 secondspossiamo partire anche da una esperienza come per esempio nei Backrooms è l'esperienza della come si dice un
+56:4156 minutes, 41 secondscanino del non della horror, però più appunto della stranezza del liminale. e
+56:4856 minutes, 48 secondscosì via. Ah, e quindi immaginare una una sequenza, immaginare, per esempio, anche poi dipende sempre del progetto,
+56:5656 minutes, 56 secondspuò essere esserci o meno un obiettivo che non è questo, anche questo è sempre in funzione a quello che si esprime. In questo caso, visto che il contesto un
+57:0457 minutes, 4 secondspo' lo lo contiene, entri nei backrooms a caso e devi uscire, quindi è abbastanza
+57:1257 minutes, 12 secondsautocontenuto come obiettivo. Ovviamente quello che succede in mezzo è è la parte interessante. Ah ci possono essere altri obiettivi, volendo, cioè chi chi aveva
+57:2157 minutes, 21 secondsfatto la l'anno scorso, no, non era in questa classe, un progetto con delle foto dove andavi in giro e raccoglievi
+57:2957 minutes, 29 secondsdelle foto e poi ti entravi nella foto e ti trasportavi nella tua stanza di infanzia o una cosa del genere. Ottimo.
+57:3657 minutes, 36 secondsCioè è un un progetto personale che prende dalla propria storia. Ecco, vi sto lanciando appunto qualche qualche
+57:4457 minutes, 44 secondsdirezione, quindi non mi interessa per i progetti finali che ci sia poi se volete provare assolutamente, però partire da
+57:5257 minutes, 52 secondsappunto da un'esperienza, da qualcosa si vuole che si vuole comunicare, può usare gli strumenti che stiamo stiamo un po'
+57:5757 minutes, 57 secondsstudiando per farlo, no? E quindi nel fare questo eh vi chiederei man mano,
+58:0358 minutes, 3 secondsadesso non subito, non dovete farlo per forza per la prossima volta, però man mano iniziare a preparare, a votare cioè
+58:1158 minutes, 11 secondsquesti due documenti, no? da una parte e il design document che semplicemente appunto esprime ok l'idea dei backrooms
+58:1758 minutes, 17 secondse creare questo senso di un canenny e poi forse vorrei farlo usando un po'
+58:2358 minutes, 23 secondsqueste questa interazione, questi momenti, questi incontri e man mano si strutturano. L'altro documento che a
+58:3058 minutes, 30 secondslivello di produzione credo sia cruciale è il piano di produzione che di solito contiene due cose, contiene appunto una
+58:3758 minutes, 37 secondstimeline che quando eh è per quello che è utile anche iniziare a prima possibile. Adesso siamo non ancora a
+58:4558 minutes, 45 secondsmetà corso per quasi. Ehm appunto ok. Eh,
+58:5458 minutes, 54 secondsse se insomma se avete qualche idea già possiamo iniziare. Forse facciamo verso fine lezione, così riesco a spiegarvi queste due cose per oggi, ma iniziamo a
+59:0359 minutes, 3 secondsparlarne, così posso anch'io prendere un po' degli esempi e già farvi vedere ah insomma sviluppare qualcosa di delle
+59:1059 minutes, 10 secondsvostre idee, però insomma eh Production Plan contiene un attimo una una sequenza di eh quando, cioè l'ordinano, in che
+59:1959 minutes, 19 secondsordine vorrei provare a fare e questo non deve essere ovviamente cambiare da settimana in settimana, anzi spesso nei team c'è una persona che aggiorna la documentazione per ricambi
+59:2759 minutes, 27 secondscontinuamente, però avere un minimo di tracce, no? Vorrei provare a fare prima questo, poi questo e avere l'asset list,
+59:3359 minutes, 33 secondsquindi queste due cose. Asset list, cosa mi serve per quell'interazione? mi serve appunto una texture della del muro,
+59:4059 minutes, 40 secondsmateriali di questo tipo, forse un shader e sicuramente avete già mi sa che voi avevate già la lista che anche la
+59:4759 minutes, 47 secondsvolta scorsa che era che era una buona cosa. Quindi queste tre cose ehm non è che non passate l'esame se non ce le
+59:5559 minutes, 55 secondsavete, però per facilità mia così riesco a un po' visualizzare le vostre idee e secondo me anche per facilità vostra.
+1:00:021 hour, 2 secondsDesign document, production plan, asset list. Questo è il minimo delle produzioni. Adesso vi condivido questi
+1:00:081 hour, 8 secondsdue file che sono una bozza veloce ahm per questa questo progetto dei Backrooms
+1:00:161 hour, 16 secondsche tra l'altro ovviamente non è non è in un stato completo, forse per la prossima volta riesco a completarlo, così lo vediamo.
+1:00:241 hour, 24 secondsinsomma, compariamo i documenti con la con lo stato finale, però per ora volendo, usiamoli anche semplicemente
+1:00:311 hour, 31 secondscome ispirazione per prendere qualche interazione, provare a farlo.
+1:00:371 hour, 37 secondsBene, allora ci ho detto proviamo a fare appunto un'interazione usando usando l'approccio. Vi lancio qualche idee.
+1:00:451 hour, 45 secondsCosa stiamo facendo qua? Io nel frattempo in questa scena lezione 7 avevo aggiunto un paio di cose anche con l'altra classe. Abbiamo fatto una
+1:00:531 hour, 53 secondsinterazione che oddio, non mi ricordo più. C'era il corridoio che si restringe alle colonne
+1:00:591 hour, 59 secondsche suonano o che insomma ah c'era Ah sì, c'è una cosa che ribalta la geometria. Ecco questo. Ah, insomma.
+1:01:081 hour, 1 minute, 8 secondsQuindi, qual è l'idea?
+1:01:111 hour, 1 minute, 11 secondsEhm, provate a pensare, può essere anche un'interazione semplice, però ora stiamo usando principalmente la presenza e la prossimità, no? quindi il sensore del eh il trigger sensor, il proximity sensor.
+1:01:221 hour, 1 minute, 22 secondsAh, tra poco vi faccio vedere anche il gaze, quindi guardiamo una cosa e questa cosa fa qualcosa.
+1:01:281 hour, 1 minute, 28 secondsEhm, che sempre usa il ray castor. Ehm e poi come output potete usare il post processing. Per esempio nel corridoio.
+1:01:381 hour, 1 minute, 38 secondsUna volta scorsa abbiamo fatto il corrido che si restringe, però cambia anche The Satora fa partire la la vignet
+1:01:461 hour, 1 minute, 46 secondsche restringe il campo visivo e non mi ricordo n altra cosa. Insomma, possiamo fare un paio di layer di di feedback.
+1:01:541 hour, 1 minute, 54 secondsAh! Eh! Oddio, non funziona perché forse ho spento il trigger, però e c'era anche il le mura che che si muovono. E quindi
+1:02:041 hour, 2 minutes, 4 secondsprovate a pensare adesso, ovviamente non stiamo facendo un intero progetto, una una interazione che vi vi assomiglia un
+1:02:111 hour, 2 minutes, 11 secondspo', cioè vi richiama un po' questa questa sensazione che può essere una tappa nel viaggio di questo personaggio che sta cercando di uscire da dei
+1:02:191 hour, 2 minutes, 19 secondsBackrooms e tutto diventa progressivamente sempre più ehm caotico e e disorientante un poin e e
+1:02:281 hour, 2 minutes, 28 secondsproviamo a ripassare la il workflow con l'AI e con creando il profilo e il controller della per quell'interazione,
+1:02:381 hour, 2 minutes, 38 secondsok? Quindi prendetevi qualche minuto. Se non avete idee vi do, cioè vi do io che provate a fare questa interazione, però
+1:02:451 hour, 2 minutes, 45 secondspensateci un attimo prima. E in questa scena qua eh
+1:02:561 hour, 2 minutes, 56 secondsno in qualsiasi in qualunque della Io qua avevo aggiunto, vediamo un attimo,
+1:03:011 hour, 3 minutes, 1 secondc'erano due stanze, una all'inizio una fine in più. Questa per qualsiasi motivo non l'ho avvicinata, però Oddio,
+1:03:121 hour, 3 minutes, 12 secondsscusa, puoi ripetere la logica di Ah, wow! Ok, certo. Sì,
+1:03:201 hour, 3 minutes, 20 secondssì. Mh mh. Sì.
+1:03:301 hour, 3 minutes, 30 secondsMh mh. Ok.
+1:03:371 hour, 3 minutes, 37 secondsOttimo, ottimo. Mi piace.
+1:03:401 hour, 3 minutes, 40 secondsSì. Bene. Beh, questa questa è una buona idea perché poi unisce anche l'idea della c'è qualcosa che ha una vita sua
+1:03:481 hour, 3 minutes, 48 secondsdentro questo spazio, no? Quindi assolutamente pensateci un attimo, poi ehm posso anch'io prendere una quartiera nel
+1:03:561 hour, 3 minutes, 56 secondsfrattempo provare a farla fare lo sketch. Ehm,
+1:04:041 hour, 4 minutes, 4 secondscomunque su questa cosa su questa cosa di riutilizzare qualche meccanico,
+1:04:081 hour, 4 minutes, 8 secondsqualche script, considerate che lei ha può vedere il contesto, no? Quindi potete dirgli "Guarda che vorrei usare il life cycle della ehm no della delle
+1:04:181 hour, 4 minutes, 18 secondslezioni prima e adattarlo e dovrebbe riuscire a farlo anche in questo senso integrativo.
+1:04:281 hour, 4 minutes, 28 secondsAllora, io scusate, in questa scena qua avevo spento un po' di trigger, quindi le adesso li rimetto e vi ricomito la
+1:04:351 hour, 4 minutes, 35 secondsscena se volete vedere le cose per com'erano prima.
+1:04:401 hour, 4 minutes, 40 secondsIns e se vi perdete potete anche per chi ha preferisce un approccio anche un attimo,
+1:04:501 hour, 4 minutes, 50 secondscioè top down, potete anche partire da oddio, m quale input o quale output o che in che
+1:04:591 hour, 4 minutes, 59 secondsmodo vorrei combinarli, no? Che che relazione con che parametri? Tra l'altro questi slide, questo blocco, non so se condiviso.
+1:05:131 hour, 5 minutes, 13 secondsVido.
+1:05:321 hour, 5 minutes, 32 secondsQuindi però pensate un attimo e fatemi sapere. Vi vi do anche una mano volendo per realizzare.
+1:05:411 hour, 5 minutes, 41 secondsAllora, vi vi ricordo la l'approccio usando i spec, no? Cioè pensiamo prima buttiamo giù due righe, cioè non andiamo
+1:05:481 hour, 5 minutes, 48 secondssubito all'AI, proviamo prima a buttare giù qualche righe in un file txt normalissimo. Poi possiamo con le volendo possiamo fare anche due pass,
+1:05:561 hour, 5 minutes, 56 secondscioè possiamo andare con le, anzi in questi in questi tool qua che vi ho,
+1:06:011 hour, 6 minutes, 1 secondopen code e anche l'altro che si chiama Kilo, ha hanno proprio queste due modalità, c'hanno le modalità plan, le modalità build e questo anche su altri
+1:06:101 hour, 6 minutes, 10 secondsAI, cioè perché è una buona pratica usare l'E per pensare, decidere ok e può usare un'altra un'altra chat, un'altra
+1:06:191 hour, 6 minutes, 19 secondsistanza per implementare questo. Quindi potete fare il vostro spec del controller,
+1:06:271 hour, 6 minutes, 27 secondsbuttare giù qualche riga e poi usare il la funzione plan o insomma comunque usare l'AI per esplorare altre idee, ok?
+1:06:361 hour, 6 minutes, 36 secondsper arrivare, poi si decide e poi si implementa ad occhio. Ok, questa è la la divisione che vi consiglio.
+1:06:441 hour, 6 minutes, 44 secondsSe insomma, se volete poi ripassiamo
+1:07:251 hour, 7 minutes, 25 secondsPotete anche usare la non solo la presenza, ma anche l'assenza. Qualcosa può succedere in uno spazio, anche esso solo quando non siamo lì dentro.
+1:07:571 hour, 7 minutes, 57 secondsComunque se avete la Vittoria, se hai problemi con i pacchetti fammi fammi sapere che zì no.
+1:08:251 hour, 8 minutes, 25 secondsGuarda, se vuoi se vuoi [schiarire la voce] provo a fare come loro. Se vuoi per oggi provo a scaricare il mio progetto così ci ci lavori dentro
+1:08:331 hour, 8 minutes, 33 secondse poi però come scusami?
+1:08:391 hour, 8 minutes, 39 secondsAh, devi mandarmi la tua il tuo GitHub.
+1:08:431 hour, 8 minutes, 43 secondsAh, scusa, ti ho visto adesso. Devi mandarmi il tuo GitCup, così ti invito al progetto e puoi scaricarlo.
+1:09:011 hour, 9 minutes, 1 secondOk,
+1:09:041 hour, 9 minutes, 4 secondsprova a andare nel tuo email, accetti l'invito e poi puoi scaricare il progetto. Ok.
+1:09:341 hour, 9 minutes, 34 secondsinvitato. Controlla la tua email.
+1:10:591 hour, 10 minutes, 59 secondsFacciamo facciamo
+1:11:421 hour, 11 minutes, 42 secondsSì, diciamo,
+1:11:461 hour, 11 minutes, 46 secondssecondo però in realtà se poi
+1:11:531 hour, 11 minutes, 53 secondstirarlo e di mettero
+1:12:011 hour, 12 minutes, 1 secondsta cosa No, no, no. Puoi puoi farlo, nel senso,
+1:12:061 hour, 12 minutes, 6 secondseh, essendo però mh ecco, devi devi copiarlo, essendo l'alternativa è partire da zero e
+1:12:141 hour, 12 minutes, 14 secondsimportare tutte le cose, ma vanno bene entrambi, insomma, entrambi i modi.
+1:12:321 hour, 12 minutes, 32 secondsGuarda, io ho litigato, io ho litigato forte con delle persone. Sì, sì, lasciamo stare. Comunque,
+1:12:411 hour, 12 minutes, 41 secondspurtroppo
+1:17:181 hour, 17 minutes, 18 secondsAllora, se state pensando su qualcosa che non che non vi torna, cioè, ditemi pure che vi do una mano, insomma, se ehm M.
+1:19:201 hour, 19 minutes, 20 secondsNo.
+1:34:081 hour, 34 minutes, 8 secondsCosa vorresti far diventare trasparente? La porta. Ok. Ehm,
+1:34:161 hour, 34 minutes, 16 secondsfai pensare. Ah, potresti usare un materiale. Vediamo. Però graduale.
+1:34:281 hour, 34 minutes, 28 secondsSì, sì, sì, ci sta. Sì, fammi pensare. Allora, ehm,
+1:34:401 hour, 34 minutes, 40 secondsun attimo seò arrivo, eh, questo che Allora, potresti usare un materiale semitrasparente.
+1:34:521 hour, 34 minutes, 52 seconds[schiarire la voce]
+1:34:531 hour, 34 minutes, 53 secondsVediamo un attimo se io vado qua e facciamo che crea un materiale.
+1:35:031 hour, 35 minutes, 3 secondsAhm e questo materiale lo assegno a qualche Vediamo dove c'è una porta. Qua.
+1:35:111 hour, 35 minutes, 11 secondsOk. lo assegno a questa porta e poi quindi un normalissimo materiale
+1:35:181 hour, 35 minutes, 18 secondsstandard lit che però non è opaco ma trasparente qua.
+1:35:231 hour, 35 minutes, 23 secondsOk, mi serve un attimo e poi Ok abilitare Alpha Clipping.
+1:35:371 hour, 35 minutes, 37 secondsInizialmente gestendo questo dovrebbe funzionare, però ovviamente dobbiamo Ah, no, sì. Allora, devi rendere il
+1:35:461 hour, 35 minutes, 46 secondsmateriale, l'alfa del del materiale un attimo a insomma non fino in fondo, ma così. E
+1:35:541 hour, 35 minutes, 54 secondspoi dovresti riuscire a vediamo un attimo, a giocare con questi due valori,
+1:36:011 hour, 36 minutes, 1 secondperò il problema è farlo graduale perché non Ah, ok, ecco così.
+1:36:131 hour, 36 minutes, 13 secondsEsatto. Sì. Allora, anzi, in realtà,
+1:36:161 hour, 36 minutes, 16 secondsscusa, in realtà non ti serve al clipping, ti serve, vabbè, solo se hai elementi che devono sempre essere
+1:36:231 hour, 36 minutes, 23 secondstrasparenti, in realtà tu vuoi rendere tutto trasparente, quindi rendilo solo trasparente. Poi del colore base che dovrebbe chiamarsi appunto base color,
+1:36:331 hour, 36 minutes, 33 secondsdevi specificare, ok, questo è un materiale elite, devi solo gestire l'alfa del materiale gradualmente, no?
+1:36:391 hour, 36 minutes, 39 secondscosì e poi ovviamente se vuoi anche poterci passare a ricordati di spegnere
+1:36:461 hour, 36 minutes, 46 secondsil collider volendolo quando diventa trasparente si spegne anche il cul e così poi
+1:36:541 hour, 36 minutes, 54 secondsattraversare sc No, è una buona idea.
+1:37:031 hour, 37 minutes, 3 secondsM.
+1:38:161 hour, 38 minutes, 16 secondsAllora, intanto vi mentre state lavorando vi faccio vedere al volo questa
+1:38:221 hour, 38 minutes, 22 seconds[schiarire la voce]
+1:38:241 hour, 38 minutes, 24 secondsanzi messaggio qua. Ok.
+1:38:431 hour, 38 minutes, 43 secondsOk. Se aggiornate il progetto adesso avrete questa, diciamo, la stessa scena, però con qualche interazione nuova.
+1:38:521 hour, 38 minutes, 52 secondsEhm,
+1:38:551 hour, 38 minutes, 55 secondsanzi vedo che state lavorando, quindi vi lascio finire, poi vi faccio vedere un'altra, anzi due altre cose, però finite pure se avete bisogno di una
+1:39:031 hour, 39 minutes, 3 secondspausa, possiamo anche adesso. Vediamo come siamo con i tempi.
+1:40:081 hour, 40 minutes, 8 secondsSe avete qualche Quita
+1:40:231 hour, 40 minutes, 23 secondsprovate a fare Sì.
+1:40:581 hour, 40 minutes, 58 secondsQuando se vuoi farlo, diciamo,
+1:41:191 hour, 41 minutes, 19 secondsAllora
+1:41:361 hour, 41 minutes, 36 secondssi cons una volta.
+1:41:431 hour, 41 minutes, 43 secondsAh, ok.
+1:41:571 hour, 41 minutes, 57 secondse leggiamo perché ci sono scritto servire iniziali
+1:42:041 hour, 42 minutes, 4 secondsper poi inserire e
+1:42:121 hour, 42 minutes, 12 secondsvolte c'è Allora,
+1:42:421 hour, 42 minutes, 42 secondsper se vuole quindi così diciamo
+1:42:531 hour, 42 minutes, 53 secondse poi sembra
+1:43:431 hour, 43 minutes, 43 secondsAmen. Diciamo che [schiarire la voce]
+1:43:481 hour, 43 minutes, 48 secondsidealmente quando facciamo lo spec dobbiamo cercare di dare il contesto giusto. Cioè questo è un buon tentativo,
+1:43:551 hour, 43 minutes, 55 secondsperò qual è il contesto giusto?
+1:43:571 hour, 43 minutes, 57 secondsQuando, per esempio, se vogliamo fare una cosa dove il giocatore, appunto,
+1:44:011 hour, 44 minutes, 1 secondtrigger una zona, qualsiasi cosa, non sempre, però in tuo caso era importante dirgli, guarda che io sto per il giocatore sto usando il first person
+1:44:091 hour, 44 minutes, 9 secondscontroller, no? E poi anche scriverlo n spec e dire "Guarda che Ah, quindi m usi il first person controller". E poi
+1:44:161 hour, 44 minutes, 16 secondspotete anche pensare, ma per fare questa interazione abbiamo già qualche componente, perché non è utile fare tutto da zero. E quindi l'altro
+1:44:241 hour, 44 minutes, 24 secondscomponente utile può essere il trigger zone che il trigger sensor che esiste già, no? Quindi dandogli questo contesto
+1:44:311 hour, 44 minutes, 31 secondssecondo me riesce a sistemare perché lui ha usato rigid body che non in questo caso non abbiamo, abbiamo il car
+1:44:381 hour, 44 minutes, 38 secondscontroller, però è un cioè la logica era era giusta, è solo la il contesto. Poi
+1:44:451 hour, 44 minutes, 45 secondsnel layi più potente sarebbe andato a cercare, ok, vediamo a inferire se si usa una cosa più dsa che l'altra. Questo
+1:44:531 hour, 44 minutes, 53 secondsha l'ha fatto letteralmente, però eh ci sta, nel senso che comunque la logica è corretta. tu hai salvi le coordinate
+1:45:001 hour, 45 minutesiniziali e poi hai eh il trigger sensor che ti rimandano alla posizione iniziale tranne una porta che è giusta. buon,
+1:45:101 hour, 45 minutes, 10 secondsinsomma, buon esempio.
+1:45:141 hour, 45 minutes, 14 secondsQuindi io quello quello che farei nel vostro spec è semplicemente scrivere provo a riutilizzare, cioè i componenti
+1:45:221 hour, 45 minutes, 22 secondsche ho che sono per il giocatore il first person controller, per il trigger zone, il trigger sensor. Puoi puoi scriverle anche proprio così con,
+1:45:331 hour, 45 minutes, 33 secondsinsomma, in modo naturale, poi lei andrà a trovarli nella cartella.
+1:45:391 hour, 45 minutes, 39 secondsEhm e volendo fate anche un pass di provo a rivedere questo spec,
+1:45:451 hour, 45 minutes, 45 secondsaggiungeresti qualcosa o insomma fammi delle fammi delle domande, è un prompt sempre utile perché Ok e poi io implementare.
+1:45:581 hour, 45 minutes, 58 secondsOk.
+1:46:261 hour, 46 minutes, 26 secondsComunque se qualcuno è di fretta andate pure. Io mi fermerei un attimo di più, anche perché oggi abbiamo perso un po'
+1:46:321 hour, 46 minutes, 32 secondsdi tempo con eh insomma, però se siete di fretta andate.
+1:49:441 hour, 49 minutes, 44 secondsAh, per si dice studio. Mi spiace questo.
+1:49:581 hour, 49 minutes, 58 secondsOk. No, beh, se poi non ci riesce o non si apre m insomma facciamolo anche insieme così non ne estendiamo troppo.
+1:50:081 hour, 50 minutes, 8 secondsPerò ora provate. Tu quindi quale quale l'interazione che volevi fare che quando ti avvicini alla porta diventa trasparente tipo Esatto.
+1:50:161 hour, 50 minutes, 16 secondsOk. E poi ha l'audio. Ok. Ok.
+1:55:171 hour, 55 minutes, 17 secondsSì, certo.
+1:56:441 hour, 56 minutes, 44 secondsAllora,
+1:57:141 hour, 57 minutes, 14 secondsOk,
+1:57:171 hour, 57 minutes, 17 secondsbuonaamente bisogna fare unarazione inizialmente
+1:57:261 hour, 57 minutes, 26 secondsandiamo
+1:57:371 hour, 57 minutes, 37 secondsallora tra l'altro se se volete la pausa 5 minuti
+1:57:461 hour, 57 minutes, 46 secondsadesso che fare con se ci se ci ste ehm
+1:57:531 hour, 57 minutes, 53 secondsio però il no ci mancherebbe.
+1:58:051 hour, 58 minutes, 5 secondsDove, scusami. Ah, ok, ok, certo, non ci mancherebbe. Anzi, allora, per le 12:00, diciamo,
+1:58:121 hour, 58 minutes, 12 secondsufficialmente finiamolo perché abbiamo iniziato alle 9:30, mi fermeremo una mezz'oretta solo perché abbiamo perso un sacco di tempo con la col dit eccetera,
+1:58:191 hour, 58 minutes, 19 secondsperò c'è la registrazione, quindi va bene. Allora, se uno vuole andare in
+1:58:271 hour, 58 minutes, 27 secondspausa proviamo a fare questa interazione, poi vediamo qualcosa anche un po' delle altre. Allora, ehm,
+1:58:401 hour, 58 minutes, 40 secondsvediamo se riesco a ehm dove posso non mi volevo fare e qua
+1:58:481 hour, 58 minutes, 48 secondsquesta. Diciamo che usiamo questa parte con le porte semplicemente estendiamo qua,
+1:58:561 hour, 58 minutes, 56 secondsaggiungiamo un paio di porte. Ok. Sì.
+1:59:031 hour, 59 minutes, 3 secondsPorta.
+1:59:241 hour, 59 minutes, 24 secondsEhm.
+1:59:381 hour, 59 minutes, 38 secondsSto sto pensando a come farlo visivamente, quindi se entriamo qua,
+1:59:481 hour, 59 minutes, 48 secondsanzi sarebbe quasi quasi più utile farlo in mezzo alla stanza.
+1:59:561 hour, 59 minutes, 56 secondsTra l'altro questa è una in vari giochi c'è questa questa struttura, come dire delle scale, tu continui a scendere
+2:00:032 hours, 3 secondssulle scale e sei in uno, però ci sta anche con le porte. Semplicemente lì volevo mettere qua in mezzo che in modo sia un attimo più visibile, però vabbè,
+2:00:122 hours, 12 secondsno, non perdiamo tempo. Allora, ehm, cosa farei qua?
+2:00:172 hours, 17 secondsFarei un spake.
+2:00:252 hours, 25 secondsOk.
+2:00:392 hours, 39 secondsIo che la Io io lo faccio sempre.
+2:00:462 hours, 46 secondsSì, nel senso, anche perché anche se scrivi, a parte che non è inutile scrivere tutto a mano,
+2:00:542 hours, 54 secondssicuramente manca qualcosa, forse perdi qualche idea. Io, almeno che non sono molto molto di fretta e non ho le idee molto molto chiare, faccio sempre almeno
+2:01:032 hours, 1 minute, 3 secondsun breve pass di ok, rivedi questo, sto perdendo qualcosa? Forse no, però a
+2:01:092 hours, 1 minute, 9 secondsvolte emergono quindi ehm no, chiamiamolo tipo teleport spec. Ehm
+2:01:202 hours, 1 minute, 20 secondse quindi perché c'è sicuramente anche un un momento di design iniziale perché la domanda qua è ci serve un componente
+2:01:282 hours, 1 minute, 28 secondsmacro che è consapevole di tutte le stanze, di tutti i teleport? Forse no,
+2:01:332 hours, 1 minute, 33 secondscioè forse ci serve solo un componente locale che possiamo copiare che ci riporta alla posizione iniziale, no?
+2:01:402 hours, 1 minute, 40 secondsQuindi in realtà il door loop come lo voleva fare lui forse non è lui.
+2:01:462 hours, 1 minute, 46 secondsComunque teleport spec io farei una cosa del Sì.
+2:01:542 hours, 1 minute, 54 secondsMh. Tu dici se cambia qualcosa nella stanza?
+2:02:062 hours, 2 minutes, 6 secondsNo, scusa. Ok.
+2:02:102 hours, 2 minutes, 10 secondsMa no, e diciamo per le per questa cosa che stiamo facendo noi che serve a noi i passi che consiglierei sono questi.
+2:02:182 hours, 2 minutes, 18 secondsNon so se tu dici se cambi qualcosa nella stanza devi salvarlo e poi ritornare, poi risalvare. Forse non ho capito.
+2:02:272 hours, 2 minutes, 27 secondsAh, ok. No, no, dicevo solo che quando si fa adesso, adesso lo faccio. Quando si fa lo spec si può
+2:02:342 hours, 2 minutes, 34 secondssi può fare un pass di pianificazione o di design insieme all'AI an. Quindi qua farei ehm Scusate se prendo un po' di tempo, adesso lo facciamo al volo.
+2:02:462 hours, 2 minutes, 46 secondsDiamogli sempre le istruzioni del defens defensive. Ehm, e quindi qua vogliamo in realtà sto pensando
+2:02:552 hours, 2 minutes, 55 secondsehm allora, allora possiamo farlo che ti teleporta al punto iniziale.
+2:03:022 hours, 3 minutes, 2 secondsOvviamente dobbiamo però aggiungere qualcosa, forse come minimo dobbiamo aggiungere che si spengono le luci e si riaccendono perché sennò ehm boh, poi si
+2:03:122 hours, 3 minutes, 12 secondssi può fare in vari modi, però io farei così. Ehm
+2:03:202 hours, 3 minutes, 20 secondsah e poi l'altra domanda è dubbia, cioè
+2:03:322 hours, 3 minutes, 32 secondsquando facciamo il teleport, quando passiamo dal trigger, dobbiamo salvare la posizione del giocatore o ce l'abbiamo già salvata? Quindi forse
+2:03:412 hours, 3 minutes, 41 secondsavremmo bisogno di due componenti, cioè un trigger che salva la posizione perché così lo possiamo anche possiamo anche iterare con diversi layout più volte,
+2:03:502 hours, 3 minutes, 50 secondsno? Quindi un trigger che salva la posizione del giocatore e poi un altro che lo riporta, no? Così due componenti
+2:03:582 hours, 3 minutes, 58 secondspuò essere lo stesso sistema, però use trigger sensor to teleport player location.
+2:04:102 hours, 4 minutes, 10 secondsIo lo farei così. We have component for saving the
+2:04:192 hours, 4 minutes, 19 secondshome location and another one. Bene.
+2:04:282 hours, 4 minutes, 28 secondsYeah. E quindi cosa vogliamo usare?
+2:04:462 hours, 4 minutes, 46 secondsEhm,
+2:04:572 hours, 4 minutes, 57 secondscioè va bene anche scrivere un modo più verboso. Adesso qua non non vado avanti a scriverli variabili eccetera eccetera,
+2:05:052 hours, 5 minutes, 5 secondssemplicemente perché non mi viene altrimente. Quindi proviamo a fare proviamo a fare questo. Ehm e quindi io
+2:05:132 hours, 5 minutes, 13 secondsapro qua l'ai e ehm un attimo,
+2:05:212 hours, 5 minutes, 21 secondsquesto si chiama teleport spec e farei read teleport spec.
+2:05:372 hours, 5 minutes, 37 secondsQuesto dovrebbe essere giusto. So
+2:06:082 hours, 6 minutes, 8 secondsOk.
+2:06:202 hours, 6 minutes, 20 secondsSì, quando si crea un nuovo file bisogna riavviare la conversazione perché effettivamente non non aggiorna le cartelle da solo.
+2:06:302 hours, 6 minutes, 30 secondsQuesto credo vale, forse non vale per VSCO perché VSCO li aggiorna da solo nel background,
+2:06:372 hours, 6 minutes, 37 secondsperò sul terminale sì. Ok.
+2:06:462 hours, 6 minutes, 46 secondsJa.
+2:07:052 hours, 7 minutes, 5 secondsOk, possiamo anche appunto fare un prom semplice. Discutiamo un attimo prima di passare alla implementazione.
+2:07:142 hours, 7 minutes, 14 secondsFammi delle domande o lei adesso andrà a leggersi,
+2:07:182 hours, 7 minutes, 18 secondsanzi un po' troppe robe, questo non è importante.
+2:07:262 hours, 7 minutes, 26 secondsAllora, mentre sta pensando, vi faccio vedere al volo un'altra interazione che avevamo fatto con la con l'altra classe,
+2:07:342 hours, 7 minutes, 34 secondsl'ultima lezione
+2:07:372 hours, 7 minutes, 37 seconds[schiarire la voce]
+2:07:422 hours, 7 minutes, 42 secondsc'era c'era appunto una studentesi che voleva cioè lavorare un po' con la geometria a parte questo corridoio che si restringe
+2:07:502 hours, 7 minutes, 50 secondsa voleva ribaltare le mure. Quindi abbiamo fatto questa cosa che che fa che fa E adesso posso
+2:08:002 hours, 8 minutesspiegarvi come funziona perché sono cioè una volta se che che si ha l'idea della della struttura poi si possono fare in
+2:08:092 hours, 8 minutes, 9 secondsmodo leggermente modulare queste cioè qualsiasi di queste interazioni.
+2:08:152 hours, 8 minutes, 15 secondsQuindi, [schiarire la voce] mentre lei sta pensando vi faccio vedere al volo questo, ah come [schiarire la voce] funziona questa interazione? Come vabbè,
+2:08:232 hours, 8 minutes, 23 secondscome potete intuire, qua c'è un trigger che in primo luogo lancia l'onda, no?
+2:08:282 hours, 8 minutes, 28 secondsEhm, in secondo luogo quello che controlla, diciamo, l'onda. In realtà è un semplicissimo
+2:08:362 hours, 8 minutes, 36 secondsah trovo qua, un semplicissimo controller che adesso vi passo se o comunque trovate
+2:08:442 hours, 8 minutes, 44 secondsnel progetto, ma vi passo su Blackboard che si chiama Ting, vabbè, l'avevo chiamato tilingion che l'unica cosa che fa è semplicemente gira questo elemento,
+2:08:532 hours, 8 minutes, 53 secondsno? Gira, prende questo tile e lo gira.
+2:08:562 hours, 8 minutes, 56 secondsOk? Semplicissimo e ovviamente lo può girare con un certo intervallo tempo che
+2:09:022 hours, 9 minutes, 2 secondsabbiamo, no, ricordiamoci sempre come la trasformazione possiamo farla in modo più carino usando, quindi c'è un
+2:09:112 hours, 9 minutes, 11 secondsprofilo, però visto che questi sia vabbè in questo pacchetto il il ceiling e and floor sono la stessa cosa.
+2:09:202 hours, 9 minutes, 20 secondsIn altri magi forse non lo saranno, però la logica può essere uguale. Visto che tutti questi sono un prefap in pratica,
+2:09:262 hours, 9 minutes, 26 secondsnon basta che noi applichi, selezioniamo uno di questi tile, applichiamo qua lo script e poi ehm
+2:09:362 hours, 9 minutes, 36 secondse poi appunto possiamo decidere in che modo controllare questa cosa o possiamo lasciarla da solo. Io credo che c'era una modalità in cui se non mi ricordo
+2:09:442 hours, 9 minutes, 44 secondsche randomizza, quindi per esempio se io Vediamo un attimo se si può fare qua.
+2:09:522 hours, 9 minutes, 52 secondsEccolo qua. Sì. Use timer, cioè che ogni tile si autoanima da solo, no? Quindi adesso se questo funziona dovrebbero
+2:10:002 hours, 10 minutesiniziare a girare a caso e io cado però perché allora ovviamente queste cose
+2:10:092 hours, 10 minutes, 9 secondsessendo dei tra l'altro anche questo è bello. Vabbè, adesso sparisce a un certo punto, ma essendo ovviamente contenendo dei colliders su cui camminiamo o
+2:10:182 hours, 10 minutes, 18 secondsdobbiamo fare un intero collider invisibile che diventa il pavimento o insomma dobbiamo trovare un modo che il
+2:10:252 hours, 10 minutes, 25 secondsgiocatore non spropondi. Ah, però il senso è che appunto questa logica modulare, se abbiamo un'idea di un
+2:10:332 hours, 10 minutes, 33 secondscomponente che si ripete e attacchiamo questo componente un un semplice script che lo ruota forse anche in modo
+2:10:412 hours, 10 minutes, 41 secondsselezionabile. Quindi qua io posso dire use timer.
+2:10:512 hours, 10 minutes, 51 secondsCerto, non pot si può applicare. Io qua per per velocità l'avevo applicato al prefab proprio generale, ma se noi vogliamo fare
+2:10:592 hours, 10 minutes, 59 secondsvogliamo applicarlo solo a qua al pavimento di questa stanza, ovviamente basta applicarlo a i tile di quella stanza e non sugli altri, no? Quindi
+2:11:072 hours, 11 minutes, 7 secondsfare forse un prefa variant oppure, anzi sì, probabilmente farei prenderei questo e lo sposterei qua chiamandolo
+2:11:162 hours, 11 minutes, 16 seconds[schiarire la voce] stanza uno tile e poi applicerei a solo a quello, cioè appunto solo a quelli tile. Queste cose
+2:11:232 hours, 11 minutes, 23 secondsche ruota. E [schiarire la voce] qual è il secondo componente? Quindi questo è se vogliamo farli ruotare appunto a a
+2:11:312 hours, 11 minutes, 31 secondsrandomicamente. Se invece vogliamo farli ruotare tutti insieme, serve un altro componente, c'è un manager o un
+2:11:382 hours, 11 minutes, 38 secondscontroller sovrastante che troverà tutti i tile dello stesso prefup e semplicemente lancerà la funzione ruota
+2:11:462 hours, 11 minutes, 46 secondsdi ogni di ogni time. E quindi in questo modo possiamo tenere la la
+2:11:542 hours, 11 minutes, 54 secondsl'onda specificatamente perché avevo inserito una un animazione staggered,
+2:11:592 hours, 11 minutes, 59 secondscioè che parte da una appunto da un lato e poi si propaga con una piccola con piccolo delay. Questo può anche essere spento. Per esempio, qua possiamo dire,
+2:12:102 hours, 12 minutes, 10 secondsok, no stagger e quindi teoricamente dovrebbe, vediamolo, dovrebbe farlo in in un botto, no? Quindi, però queste
+2:12:192 hours, 12 minutes, 19 secondssono appunto sono esempi di cose che possiamo fare in senso modulare. Quindi prendiamo il modulo, può si può fare
+2:12:262 hours, 12 minutes, 26 secondsanche con qua con un muro e adesso se ripasso. Ok. E possiamo farlo, per esempio,
+2:12:362 hours, 12 minutes, 36 secondspossiamo, boh, prendere un pezzo del muro e dire, non so, randomicamente sostituisci questo muro con o
+2:12:432 hours, 12 minutes, 43 secondssostituisci il materiale, quindi cambia il m la la la visuale, ci sembra di essere in un'altra stanza. Forse questo può essere una cosa da da avvinare con le porte. Ehm, insomma,
+2:12:552 hours, 12 minutes, 55 secondspensando in questo modo, diciamo, non fare un componente che fa tutto, ma fare un componente che fa un'azione che poi
+2:13:012 hours, 13 minutes, 1 secondpossiamo scegliere di orchestrare oppure di tenere in locale solo in quella stanza, oppure di fare per ehm insomma
+2:13:092 hours, 13 minutes, 9 secondsmoo fare tante cose senza troppo sforzo,
+2:13:142 hours, 13 minutes, 14 secondsecco, quindi ritorniamo, poi vi passo questo script se volete provare. Ritorniamo qua.
+2:13:242 hours, 13 minutes, 24 secondsOk.
+2:13:262 hours, 13 minutes, 26 seconds[schiarire la voce]
+2:13:402 hours, 13 minutes, 40 secondsOk, questa è una domanda di chiarimento importante perché chiede "Ok, vogliamo prima fare fate, poi teleportare e poi rivelare?"
+2:13:492 hours, 13 minutes, 49 secondsEhm, sì, può starci perché effettivamente non vogliamo. Ehm,
+2:13:572 hours, 13 minutes, 57 secondsok, globo. Ok, sì. E qua potrei rispondere a diming global.
+2:14:062 hours, 14 minutes, 6 secondsAdesso vi faccio vedere use light manager.
+2:14:102 hours, 14 minutes, 10 secondsEhm e vogliamo dire
+2:14:162 hours, 14 minutes, 16 seconds[schiarire la voce]
+2:14:172 hours, 14 minutes, 17 secondspain, teleport. Ehm,
+2:14:272 hours, 14 minutes, 27 secondsanzi può essere anche utile se lei non lo fa da solo. Possiamo anche dirgli tipo correggi lo spec o aggiungi le cose che abbiamo deciso allo spec, così se lo
+2:14:362 hours, 14 minutes, 36 secondsapriamo tra due settimane ci ricordiamo perché questa chat sarà persa, però lo spec resta. Ah!
+2:14:442 hours, 14 minutes, 44 seconds[schiarire la voce]
+2:14:462 hours, 14 minutes, 46 secondsOk, in implement e questo dovrebbe bastare.
+2:14:562 hours, 14 minutes, 56 secondsAdesso vediamo se comunque potrebbe non trovare il componente giusto. Vediamo un attimo questo. Ok. E un'altra cosa che volevo,
+2:15:082 hours, 15 minutes, 8 secondsintanto che stiamo aspettando questo che volevo farvi vedere oggi [schiarire la voce] è sempre pensando a questa logica modulare, no, delle
+2:15:162 hours, 15 minutes, 16 secondsinterazioni in cui per esempio prima avevamo fatto il dimmi, dov'era il dimmi, st un esimero, quando restiamo
+2:15:232 hours, 15 minutes, 23 secondsfermi tutto si spegne. Ora qua potrebbe esserci un problema quando vogliamo fare un'interazione uguale o simile in vari
+2:15:322 hours, 15 minutes, 32 secondsmomenti con qualche differenza. Per esempio, vogliamo che abbiamo i Steelness di Dimmer che quando il giocatore non si muove tutto diventa buio, però ad un certo punto possiamo
+2:15:412 hours, 15 minutes, 41 secondsforse voler spegnere questo e fare in modo che c'è un'altra, non so, un altro controller che oscila, non in base alla
+2:15:502 hours, 15 minutes, 50 secondsal giocatore, ma in base a un timer oscila tra bullie, oppure queste cose che abbiamo appena visto con che stiamo facendo adesso col teleport che deve
+2:15:582 hours, 15 minutes, 58 secondsspegnere per teleportare.
+2:16:012 hours, 16 minutes, 1 secondAh, perché sto dicendo questo? Perché quando abbiamo più o meno lo stesso cordi di di di interazioni, cioè di
+2:16:082 hours, 16 minutes, 8 secondsfeedback, possiamo astrarre questo core e non tenerlo in un singolo controller,
+2:16:142 hours, 16 minutes, 14 secondsma se appunto ci sono tre diversi controller che devono tutte e tre controllare ehm la luce, forse ha senso
+2:16:222 hours, 16 minutes, 22 secondsfare una cosa che controlla la luce e che tutti e tre controller poi chiamano,
+2:16:272 hours, 16 minutes, 27 secondsno? E quindi questo è, come dire, un minimo di, diciamo, di architettura,
+2:16:322 hours, 16 minutes, 32 secondscosì per dire, sempre per aiutare soprattutto a non creare conflitti eccetera, perché poi creeremo altre
+2:16:382 hours, 16 minutes, 38 secondsinterazioni che ehm e quindi se l'idea è quale? Se c'è più di una cosa, c'è più di un controller, più di un'interazione
+2:16:462 hours, 16 minutes, 46 secondsche fa più o meno la stessa cosa, forse ha senso creare un manager. Un manager che, per esempio, io qua l'avevo fatto in questa scena, un manager che gestisce la luce, gestisce,
+2:16:562 hours, 16 minutes, 56 secondsquesto lo sappiamo già, la luce in termini di eh ambienti intensif il il direction light e così via, no?
+2:17:052 hours, 17 minutes, 5 secondsQuindi tutto quello che c'entra con la luce, modo e poi anche il materiale emissivo del di queste lampade. Ah, e qual è il senso? che se questa luce
+2:17:132 hours, 17 minutes, 13 secondsviene controllata da un manager che da solo non fa niente, non non decide. Ah,
+2:17:182 hours, 17 minutes, 18 secondsperò se ho appunto tre diversi controller che devono accendere o spegnere la luce, anziché implementarlo loro stessi, forse in modi diversi o
+2:17:262 hours, 17 minutes, 26 secondsforse vanno in conflitto, semplicemente chiamano il light manager controlla il il cambio di luce e i controller chiamano i light manager per fare
+2:17:352 hours, 17 minutes, 35 secondsquesto. Questo è un po' questo pezzo che volevo aggiungere. Questo può funzionare anche per, non so, posting, no? Se ci sono più cose che nel post processing,
+2:17:452 hours, 17 minutes, 45 secondsanziché implementare la logica appunto 5 6 10 volte e la implementiamo in un manager e poi controller. Ah,
+2:17:542 hours, 17 minutes, 54 secondssemplicemente chiami il manager per ah e questo ha anche un per cambiare il post,
+2:17:592 hours, 17 minutes, 59 secondsquesto ha anche un altro vantaggio che il manager può salvare lo stato, cioè il manager, per esempio, quando ti teleporti un manager potrebbe essere
+2:18:072 hours, 18 minutes, 7 secondsdedicato a a salvare. Quante volte siamo passati da questa stanza, no? Quindi passiamo da questa stanza tre volte e la
+2:18:152 hours, 18 minutes, 15 secondsquarta volta la porta è chiusa e si apre un'altra porta, una cosa del genere. Quindi quando parliamo di stato parliamo
+2:18:232 hours, 18 minutes, 23 secondssemplicemente di ehm salvare appunto una o più variabili con cui abbiamo interagito eh in quella sessione di
+2:18:322 hours, 18 minutes, 32 secondsgioco. Ecco. Bene. Ehm vediamo un attimo.
+2:18:382 hours, 18 minutes, 38 secondsOk. Qua ha esteso significativamente il spec, forse anche dopo, però va bene.
+2:18:442 hours, 18 minutes, 44 secondsEhm Ok.
+2:18:562 hours, 18 minutes, 56 secondsAh, ecco, una cosa che ho dimenticato di diire qua è di usare i profili, cioè di usare la
+2:19:042 hours, 19 minutes, 4 secondsm per quando abbiamo feedback, quando abbiamo un'interazione, usiamo sempre gli script o object dove tendiamo la i dati, poi la configurazione. Allora,
+2:19:142 hours, 19 minutes, 14 secondsvediamo cosa ha fatto. Ha fatto il home location e ha fatto il teleport a script. Quindi andiamo a vedere,
+2:19:262 hours, 19 minutes, 26 secondsscusami.
+2:19:282 hours, 19 minutes, 28 secondsNo, gli script object sono semplicemente gli oggetti che contengono dei dati, in pratica, no? Questi queste cose blu qua,
+2:19:352 hours, 19 minutes, 35 secondsehm, dove possiamo immagazzinare delle variabili, no? Quindi non spesso non contengono metodi logica, non servono,
+2:19:442 hours, 19 minutes, 44 secondscioè a volte sì, però nel nostro caso servono solo per dire "Ok, per questa interazione io voglio che l'offset di 2
+2:19:522 hours, 19 minutes, 52 seconds1 e insomma, hai capito, no? Quindi facciamo una configurazione iniziale e poi anziché tenere queste variabili nel
+2:20:002 hours, 20 minutescontroller stesso come abbiamo fatto fino ad ora, quindi normalmente tu hai il controller della, non so,
+2:20:052 hours, 20 minutes, 5 secondsl'inversione dei tile e avresti tutte queste tutte queste variabili qua nell'ispectro, no? li vedremo qua perché
+2:20:132 hours, 20 minutes, 13 secondsè utile averli in un appunto in un scritto object separato semplicemente perché possiamo farne più profili come esattamente come facciamo col post
+2:20:212 hours, 20 minutes, 21 secondsprocessing, quindi possiamo testare diversi valori e se vogliamo anche cambiare eh anche durante il gioco,
+2:20:282 hours, 20 minutes, 28 secondsvolendo cambiare il field di quellina interazione, possiamo semplicemente swappare questi script object anziché
+2:20:362 hours, 20 minutes, 36 secondsdover andare qua e riconfigurare ogni volta, cioè anzi quasi impossibile.
+2:20:412 hours, 20 minutes, 41 secondsQuindi è per quello che a livello di proprio tecnico di implementazione le cose che vorrei che vi portaste a casa
+2:20:482 hours, 20 minutes, 48 secondscome proprio formamenti, se l'utilizzo del cioè separiamo i dati, la configurazione dal controller e a volte
+2:20:552 hours, 20 minutes, 55 secondsquello che abbiamo appena aggiunto è se più di una controller più di un'interazione utilizzano gli stessi feedback, cioè gli stessi output, forse
+2:21:042 hours, 21 minutes, 4 secondsfacciamo un manager che tiene quella logica e quindi tutti i controller chiamano. Questo adesso può sembrare un po' astratto, lo vediamo nella pratica.
+2:21:122 hours, 21 minutes, 12 secondsInfatti lo
+2:21:192 hours, 21 minutes, 19 secondsso. Sì, diciamo che lì quello che aiuta è un pochino appunto tenere a mente input output e quali sono le variabili,
+2:21:282 hours, 21 minutes, 28 secondsno? Quindi quale variabile per quello che c'è quest'altro modello, quale variabile sto cercando di mettere in connessione con quale altra variabile,
+2:21:352 hours, 21 minutes, 35 secondsno?
+2:21:402 hours, 21 minutes, 40 secondsVe li ve li ho avevo dimenticato di caricarli una volta perché qua ho già elencato un po' di cose. V per esempio questa cosa del teleport
+2:21:502 hours, 21 minutes, 50 secondssemplicemente in unity. Se provi a farlo con X y Z, vedi, oddio, forse non funziona, possiamo semplificare, ma perché non salviamo l'intero transform?
+2:22:012 hours, 22 minutes, 1 secondOk, proviamo così. Quindi, ovviamente, a volte serve iterare un pochino bene. Ah,
+2:22:072 hours, 22 minutes, 7 secondsquindi teleport home location, vediamoli qua.
+2:22:152 hours, 22 minutes, 15 secondsOk.
+2:22:372 hours, 22 minutes, 37 secondsQuindi implementiamo prima il teleport e quando implementiamo vediamo di cosa ha bisogno. Sensore della player light
+2:22:452 hours, 22 minutes, 45 secondsmanager per la luce perché avevo già implementato questa cosa. Ehm,
+2:22:512 hours, 22 minutes, 51 secondsDarkness. Ok, quindi gli serve sicuramente e questa cosa sarà il componente principale che andremo a ripetere, no? Quindi andremo a mettere
+2:22:582 hours, 22 minutes, 58 secondsqua. Adesso per comodità ehm toglierei le porte.
+2:23:042 hours, 23 minutes, 4 secondsAh, quindi e poi forse questo si può abbinare anche Veronica, con la con la tua ah vittoris
+2:23:122 hours, 23 minutes, 12 secondscon la con la tua idea della della prossimità che no, ti approcci la porta diventa ehm trasparente, puoi passare.
+2:23:222 hours, 23 minutes, 22 secondsEh, oddio. Quindi teleport. Qua dentro il teleport possiamo tenere il suo box collider ovvero il trigger sensor.
+2:23:332 hours, 23 minutes, 33 secondsScusate, adesso vi lascio andare. Ehm,
+2:23:402 hours, 23 minutes, 40 secondsil prossimo glider più o meno.
+2:23:532 hours, 23 minutes, 53 secondsDio Caesar. Questo è il giocatore. Ok.
+2:24:032 hours, 24 minutes, 3 secondsAh,
+2:24:052 hours, 24 minutes, 5 secondsqua servirebbe il giocatore e per le luci abbiamo il live manager. E l'altra cosa
+2:24:122 hours, 24 minutes, 12 secondsinvece sarebbe il home location che
+2:24:342 hours, 24 minutes, 34 secondsm Ok, qua fatto in modo sempre un po'
+2:24:372 hours, 24 minutes, 37 secondspiù troppo presto. Va bene. Comunque qua come location sarà uno script che salva, ma in realtà lo salva all'inizio del gioco, quindi in
+2:24:452 hours, 24 minutes, 45 secondsrealtà si può poteva usare anche solo un semplice oggetto. Va bene, quindi home location e gli diamo la location stessa.
+2:24:532 hours, 24 minutes, 53 secondsQuindi quando passiamo dalla porta vogliamo sempre rientrare in questa porta, direi. Ahm e niente, non vorremmo
+2:25:012 hours, 25 minutes, 1 secondesserci. passiamo questa location qua e vediamo se funziona. Anzi no, scusate.
+2:25:092 hours, 25 minutes, 9 secondsEhm,
+2:25:112 hours, 25 minutes, 11 secondsripetiamo questo un paio di volte e solo dall'ultimo possiamo effettivamente uscire.
+2:25:432 hours, 25 minutes, 43 secondsQuindi di Allora, non fa il fate o lo fa molto
+2:25:512 hours, 25 minutes, 51 secondsvelocemente, non riesco. No, non fa il fate. Va bene, questo lo dobbiamo gestire dal manager, però sì, diciamo
+2:25:582 hours, 25 minutes, 58 secondsche c'è il Se noi Vediamo un attimo se funziona. Se noi spostiamo il home location. Ah, no, eh, ok, è già salvato.
+2:26:062 hours, 26 minutes, 6 secondsQuesto volevo evitare, però beni. Ahm,
+2:26:092 hours, 26 minutes, 9 secondsperché in realtà la cosa un attimo migliore sarebbe avere un altro trigger che quando passi salva la tua posizione bassa, però e quindi ehm qua si potrebbe
+2:26:192 hours, 26 minutes, 19 secondssicuramente giocare un pochino con la rotazione, cioè quando ti quando ti teleporta ti teleporta forse girato al
+2:26:262 hours, 26 minutes, 26 secondsposto, non lo so. Eh, però queste sono aggiunte che oddio, forse un po' c'è c'è
+2:26:332 hours, 26 minutes, 33 secondsun delay che forse lui ha fatto per la per i manager, però oddio, non si può.
+2:26:392 hours, 26 minutes, 39 secondsVa bene, il feedback si può un pochino migliorare, no? Però allora, intanto vi carico questa questa cosa.
+2:26:492 hours, 26 minutes, 49 secondsAnzi, dovrei caricarvi il manager della luce, tile, quella cosa che gira il tile è la questa è l'ultima cosa. Adesso lo faccio. Intanto dovete andare, andate
+2:26:582 hours, 26 minutes, 58 secondspure i o per gli altri se volete fare un'altra mezz'ora, così facciamo qualche altra interazione e rafforziamo queste idee.
+2:27:092 hours, 27 minutes, 9 secondsEhm, forse [schiarire la voce] bene.
+2:27:192 hours, 27 minutes, 19 secondsForse Veronica, possiamo provare a fare la la tua idea con col sensore. tu intanto sei riuscita a fare
+2:27:292 hours, 27 minutes, 29 secondsmio
+2:28:082 hours, 28 minutes, 8 secondsNo.
+2:28:312 hours, 28 minutes, 31 secondsNo.
+2:28:402 hours, 28 minutes, 40 secondsuno dei buonicale ehm
+2:28:492 hours, 28 minutes, 49 secondsoppure un'alternativa può essere usare ility per dire che non serve più di quindi
+2:28:562 hours, 28 minutes, 56 secondsquanto più vicino sia quanto più storia pensato
+2:29:052 hours, 29 minutes, 5 secondsparare sì laione
+2:29:132 hours, 29 minutes, 13 secondsquindi noi senso proprio o one shot o dinaro
+2:29:202 hours, 29 minutes, 20 secondsperché fa solo, cioè fa un'operazione non può fare, però adesso
+2:29:332 hours, 29 minutes, 33 secondsvè adesso proviamo a a farlo. Comunque sì, diciamo che per so che adesso può essere un po' astrato, un po' complesso,
+2:29:402 hours, 29 minutes, 40 secondsperò diciamo il trucco è poi quando in qualche modo, cioè anche quando si passa un po' di tempo nella fase di progettazione e se non è molto chiaro
+2:29:492 hours, 29 minutes, 49 secondslei ha serve anche per spiegarlo, quindi potete chiederlo "Guarda che ma veramente dobbiamo fare il teleport con le coordinate o con quindi esploriamo un
+2:29:582 hours, 29 minutes, 58 secondspo' di alternative, quindi quasi si può passare più tempo volendo in quella prima fase che non nell'implementazione.
+2:30:052 hours, 30 minutes, 5 secondsVabbè! Comunque ci esercitiamo per la prossima volta se avete già o chi ha già delle idee, provate a vedere un po'
+2:30:122 hours, 30 minutes, 12 secondsquesti file che vi ho messo qua, che sono il il design e il production plan e se volete iniziare a buttare giù qualcosa rispetto ai vostri progetti,
+2:30:222 hours, 30 minutes, 22 secondsalle vostre idee, così possiamo iniziare a vederli. Ok? Scritture a vedere. No,
+2:30:292 hours, 30 minutes, 29 secondsadesso li metto qua, eh, forse finisco di fare feedback e li Sì, sì, assolutamente. Li li Sì,
+2:30:362 hours, 30 minutes, 36 secondssì, sì, li metto un po'. Grazie. Va bene, buona.
+2:30:392 hours, 30 minutes, 39 secondsEh, buona giornata a voi. Settimana prossima. Amen. Bene. E voi avete qualche idea,
+2:30:472 hours, 30 minutes, 47 secondsdiciamo, di queste fare?
+2:30:522 hours, 30 minutes, 52 secondsEsatto. Quindi scorso fare gli raccog squadre forse possiamo fare,
+2:31:142 hours, 31 minutes, 14 secondsquindi
+2:31:292 hours, 31 minutes, 29 secondsper no. Allora sicamente caso può fare caso
+2:31:422 hours, 31 minutes, 42 secondscrea un nuovo ed è poi
+2:31:492 hours, 31 minutes, 49 secondsgià a casa e però se sei fammi vedere dopo.
+2:32:012 hours, 32 minutes, 1 secondMi dispiace
+2:32:132 hours, 32 minutes, 13 secondsuna mezz'ora perché
+2:32:442 hours, 32 minutes, 44 secondsAllora,
+2:32:502 hours, 32 minutes, 50 secondsqua ehm questo poi vedrai che diventa utile quando quando progettiamo una interazione,
+2:32:592 hours, 32 minutes, 59 secondsquesta matrice, diciamo, di di quattro,
+2:33:022 hours, 33 minutes, 2 secondscioè della relazione, no? Quindi se per l'interazione, scusa, riparto, se per l'interazione tu hai più o meno già deciso che vorrei
+2:33:102 hours, 33 minutes, 10 secondsusare la la distanza o comunque il giocatore come input e come output il materiale della porta, eccetera
+2:33:172 hours, 33 minutes, 17 secondseccetera. Quindi la questione cosa succede qua in mezzo? No, due domande. In primo luogo, che tipo di relazione è?
+2:33:242 hours, 33 minutes, 24 secondsE per questa prima domanda abbiamo questa matrice. Che tipo di relazione può essere? Onehot, per esempio. Allora,
+2:33:302 hours, 33 minutes, 30 secondstrigger sensor fantastico. Può essere un one shot che fa partire un'animazione come in quel caso che vuol dire usiamo
+2:33:382 hours, 33 minutes, 38 secondsil trigger sensor, però il feedback è animato, cioè uso un dot win e quindi possiamo fare che tu passi da un da un
+2:33:452 hours, 33 minutes, 45 secondstrigger sensor, forse è anche quello che per te potrebbe bastare, passi da un trigger sensor e poi la porta gradualmente si schiarisce, no? Quindi
+2:33:542 hours, 33 minutes, 54 secondsha un comportamento, però questo comportamento non è non è bound, cioè non è legato a in modo diretto alla prossimità, no? E e va benissimo, no?
+2:34:042 hours, 34 minutes, 4 secondsQuindi abbiamo un one shot sia che sia diciamo statico che sia dinamico con un'animazione. Nel caso invece della del
+2:34:122 hours, 34 minutes, 12 secondstracking del bound della relazione dove la prossimità e il materiale l'alfa del materiale sono legati, quello che vedrai
+2:34:192 hours, 34 minutes, 19 secondsè che ok, io mi avvicino, questo diventa trasparente, io mi allontano, questo diventa di nuovo opaco, non trasparente,
+2:34:272 hours, 34 minutes, 27 secondsno? Perché c'è un dir c'è una diretta relazione tra tra le due variabili. nel caso del trigger sensor,
+2:34:352 hours, 34 minutes, 35 secondsappunto, sarà un un semplicemente un playback di un'animazione o comunque di una cosa che pre in qualche modo predeterminata. In questo caso dovremmo
+2:34:432 hours, 34 minutes, 43 secondsdefinire la seconda domanda che è quella del curve, no? Quindi in che tipo, con che
+2:34:502 hours, 34 minutes, 50 secondscurva, con che attacco, insomma varie altre proprietà gestiamo questa interazione, no? Ah, ecco, so, ripeto,
+2:34:582 hours, 34 minutes, 58 secondsso che non so se ti torna come idea semplicemente. Ok,
+2:35:072 hours, 35 minutes, 7 secondsok, ok,
+2:35:162 hours, 35 minutes, 16 secondscerto. Sì, no, assolutamente.
+2:35:202 hours, 35 minutes, 20 secondsAllora, in questo caso è corretto usare la perché io credo che il file che avevi tu era il file perché avevamo fatto due
+2:35:292 hours, 35 minutes, 29 secondsversioni della colonna, no? una versione era che quando entri nel la range della stare più in centro modo
+2:35:372 hours, 35 minutes, 37 secondsunazione la seconda versione era
+2:35:502 hours, 35 minutes, 50 secondsstanza fatte
+2:36:102 hours, 36 minutes, 10 secondsEsatto.
+2:36:112 hours, 36 minutes, 11 secondsGuarda, questo è come ho studiato io da non so se ancora so che insomma non
+2:36:182 hours, 36 minutes, 18 secondsnella mia esperienza cioè gli studenti come te sono, diciamo, più rari che che poi fanno,
+2:36:282 hours, 36 minutes, 28 secondsno? ci mancherebbe. Ehm, bene. No,
+2:36:312 hours, 36 minutes, 31 secondscomunque se vuoi provo provo allora a farlo intanto che siamo ancora qua un attimo in modo presato e poi voi dovete andare al mio Ok, va bene, andate via.
+2:36:422 hours, 36 minutes, 42 secondsIo volevo far vedere giusto 10 minuti il sensore del G che tanto sarà nel recording, se volete
+2:36:502 hours, 36 minutes, 50 secondsrivedere e poi intanto lo ripassiamo anche la volta prossima. Però volevo fare vedere queste cose che guardi una cosa e poi c'è un'interazione, quindi
+2:36:582 hours, 36 minutes, 58 secondsadesso 10 minuti, no? Ok, se volete fermarvi. Ok. E poi poi Veronica ritorniamo per chiudere con la con la tua interazione. Allora,
+2:37:082 hours, 37 minutes, 8 seconds[schiarire la voce]
+2:37:092 hours, 37 minutes, 9 secondsah io ho già qua messo gli script,
+2:37:112 hours, 37 minutes, 11 secondsvolevo solo appunto farvi vedere come funziona. Il gaze funziona in modo simile,
+2:37:192 hours, 37 minutes, 19 secondsdiciamo, il gaze interaction funziona in modo simile a quello che abbiamo fatto l'anno scorso con con l'interazione col viarno, quindi
+2:37:272 hours, 37 minutes, 27 secondsabbiamo il ray castor, quindi c'è un raggio che parte, identifica un oggetto e poi dopo decidiamo cosa fare con
+2:37:342 hours, 37 minutes, 34 secondsquesto oggetto, se vogliamo prenderlo o meno. Però il gaze alla fine in Unity non è un altro un'altra cosa che semplicemente l'orientamento è un è un
+2:37:432 hours, 37 minutes, 43 secondsun raggio che che appunto va a toccare un altro oggetto. Come si implementa?
+2:37:502 hours, 37 minutes, 50 secondsAh, lo implementiamo nella camera. In primo luogo useremo il Raycast Sensor,
+2:37:552 hours, 37 minutes, 55 secondsquindi useremo questo sensore che ah è sempre già dentro già da un po' di tempo e funziona come tutti gli altri sensori semplicemente.
+2:38:042 hours, 38 minutes, 4 secondsAhm ecco, possiamo vederlo qua perché lo attacco alla camera perché la camera ha il pieno, diciamo, range del del
+2:38:122 hours, 38 minutes, 12 secondsmovimento, no? Quindi seguirà la rotazione e e tutt'altro. Allora,
+2:38:192 hours, 38 minutes, 19 secondspossiamo filtrare i TAC come tutti gli altri sensori, però la cosa più importante per questo sensore è il
+2:38:262 hours, 38 minutes, 26 secondslayer. Quindi noi vogliamo focalizzare spesso, poi forse focalizziamo anche tutto, però per per non diciamo
+2:38:362 hours, 38 minutes, 36 secondspoter gestire milioni di oggetti, ci faremo un layer qua che sarebbe
+2:38:432 hours, 38 minutes, 43 secondsil layer focusable, cioè che saranno gli oggetti che su cui possiamo focalizzare focalizzare lo sguardo e con cui
+2:38:512 hours, 38 minutes, 51 secondspossiamo interagire. E quindi, per esempio, se io ho, facciamo che ho qua un cubo che vorrei ehm
+2:39:002 hours, 39 minutespoter focalizzare, no? Oppure facciamo
+2:39:072 hours, 39 minutes, 7 seconds[schiarire la voce]
+2:39:082 hours, 39 minutes, 8 secondsin modo un attimo più chiaro.
+2:39:292 hours, 39 minutes, 29 secondsFacciamo una sfera. Ah, facciamola un attimo più illuminata,
+2:39:342 hours, 39 minutes, 34 secondscosì si vedrà eventualmente nel buio e vogliamo poter focalizzare questa sfera, no?
+2:39:402 hours, 39 minutes, 40 secondsAh, quindi abbiamo il layer che abbiamo detto,
+2:39:452 hours, 39 minutes, 45 secondspossiamo assegnare tutti gli oggetti che su cui vogliamo poterci focalizzare appunto su questo layer. Se non abbiamo un layer, vabbè, potremmo focalizzare
+2:39:532 hours, 39 minutes, 53 secondstutto, però e poi sulla camera abbiamo messo il Rayastor che useremo per appunto poter
+2:40:012 hours, 40 minutes, 1 secondidentificare gli oggetti e poi un altro componente che metterei sul giocatore,
+2:40:072 hours, 40 minutes, 7 secondsdiciamo, un sistema un pochino più modulare che poi andremo a estendere per varie altre interazioni, però per ora
+2:40:142 hours, 40 minutes, 14 secondsrecast sensor sulla camera e player interactor sul giocatore, sul player,
+2:40:192 hours, 40 minutes, 19 secondsno? Questo è molto simile alla alla interaction grabber della della lezione del corso
+2:40:272 hours, 40 minutes, 27 secondsdell'anno scorso. Ah, bene. Quindi recensor qua e poi abbiamo fatto, diciamo, siamo a
+2:40:352 hours, 40 minutes, 35 secondsmetà strada perché abbiamo un modo per il giocatore per riconoscere un oggetto,
+2:40:412 hours, 40 minutes, 41 secondsabbiamo messo su ogoggetto, l'abbiamo filtrato su un layer e e l'ultima cosa da fare sarebbe rendere questo oggetto
+2:40:492 hours, 40 minutes, 49 secondsspecifico riconoscibile, non focalizzabile. Per fare questo in realtà abbiamo un componente generico che si chiama focus. Quindi questo componente
+2:40:582 hours, 40 minutes, 58 secondspossiamo metterlo su qualsiasi oggetto che effettivamente vogliamo poi ah focalizzare e focalizzando interagire in
+2:41:072 hours, 41 minutes, 7 secondsqualche modo, no? Quindi questa è la il setup del gase, cioè dell'interazione con lo
+2:41:162 hours, 41 minutes, 16 secondssguardo. Poi cosa esattamente andiamo a fare quando interagiamo con l'oggetto?
+2:41:212 hours, 41 minutes, 21 secondsQuesta è la seconda domanda e vi faccio un breve esempio, ma ehm un attimo solo così se selezioniamo la camera e effettivamente il questo array castor,
+2:41:342 hours, 41 minutes, 34 secondspossiamo vedere cosa stiamo in questo momento preciso. Oh, scusate, ho perso la selezione.
+2:41:442 hours, 41 minutes, 44 secondsCosa stiamo qua sotto in questo momento effettivamente focalizzando? Ah, ecco,
+2:41:482 hours, 41 minutes, 48 secondsquesto è un problema. Io ho messo la camera un pochino dietro il giocatore,
+2:41:532 hours, 41 minutes, 53 secondsno? Quindi adesso devo sistemare questo perché andremo sempre a focalizzare il giocatore perché le camere dietro non è
+2:42:012 hours, 42 minutes, 1 secondesattamente quelle che vogliamo. Quindi possiamo semplicemente, anzi, qua addirittura non mi serve questa capsula del giocatore.
+2:42:092 hours, 42 minutes, 9 secondsAhm, ecco, così dovrebbe andar bene. Ok.
+2:42:182 hours, 42 minutes, 18 secondsEh ah ma sì, giusto. E qua il masko, ho
+2:42:302 hours, 42 minutes, 30 secondsdimenticato di metterli e riproviamo. E così [schiarire la voce] dobbiamo riuscire a vedere da una parte sul sensore che stiamo effettivamente
+2:42:372 hours, 42 minutes, 37 secondsfocalizzando. Oh, eccoci qua. Stiamo effettivamente focalizzando la sfera. Ok,
+2:42:452 hours, 42 minutes, 45 secondsadesso non sono molto preciso, ma ok, adesso stiamo focalizzando la sfera.
+2:42:482 hours, 42 minutes, 48 secondsQuesto lo vediamo dal sensore oppure dalla sfera possiamo selezionandola vedere che effettivamente è focalizzata,
+2:42:562 hours, 42 minutes, 56 secondsnon vediamo questo freghino is focused,
+2:42:592 hours, 42 minutes, 59 secondsquindi da entrambe le parti abbiamo abbiamo comunicazione. Ora cosa possiamo fare con questa con questa interazione?
+2:43:072 hours, 43 minutes, 7 secondsEhm, una cosa che volevo fare io vedere,
+2:43:102 hours, 43 minutes, 10 secondsadesso la la faccio qua al volo, poi vi lascio andare, è che con cui non abbiamo giocato molto nello spazio chiuso è
+2:43:182 hours, 43 minutes, 18 secondsquesta, diciamo, utilizzare comunque la nebbia che secondo me in queste stanze fa anche un
+2:43:252 hours, 43 minutes, 25 secondseffetto bello bello forte, può inviare ancora di più. Quindi possiamo usare la il semplice slider della densità della
+2:43:322 hours, 43 minutes, 32 secondsnebbia per avere questo muro di di buio che che ti arriva, no? E quindi una possibilità può essere fare, anzi lo
+2:43:402 hours, 43 minutes, 40 secondsfacciamo adesso, skippo il passo della dello spec e così via. Sbagliato, non fatelo, ammazziamo di fretta.
+2:43:482 hours, 43 minutes, 48 secondsEh, farò così.
+2:44:352 hours, 44 minutes, 35 secondsE quindi facciamo questo, facciamo questo questo controller,
+2:44:452 hours, 44 minutes, 45 secondsquesta interazione semplice dove appunto quando dor mentre stiamo focalizzando questo oggetto ci sarà la nebbia che
+2:44:522 hours, 44 minutes, 52 secondsarriva oppure quando non focalizziamo l'oggetto, la nebbia si ritira. No, questo è un ehm un esempio.
+2:45:022 hours, 45 minutes, 2 secondsUna domanda può essere, secondo voi di che tipo è questo esempio? Questo questa è una una domanda perché poi anche l'esercizio, no? Vedere, cioè o pensare
+2:45:102 hours, 45 minutes, 10 secondsa un'interazione, poi chiedersi ma qual è la relazione in questa insomma in questa interazione, no? Come sono collegate le variabili? Quindi pensate
+2:45:192 hours, 45 minutes, 19 secondsun attimo se volete, mentre qua viene creato. Ok.
+2:45:262 hours, 45 minutes, 26 secondsAh, focus controller. E una volta che abbiamo questo componente possiamo
+2:45:392 hours, 45 minutes, 39 secondsmetterlo qua sulla sfera. Ok.
+2:45:502 hours, 45 minutes, 50 secondsE qua dobbiamo dire la densità finale.
+2:45:532 hours, 45 minutes, 53 secondsQual è la densità finale? In realtà per me va bene che arrivi anche proprio alla questo punto tre.
+2:46:092 hours, 46 minutes, 9 secondsMh. Ok. Sì, sì, sì, sì.
+2:46:162 hours, 46 minutes, 16 secondsAllora, però c'è c'è un scusami,
+2:46:212 hours, 46 minutes, 21 secondsno, allora c'è c'è un però qua perché Ah, questo è difficile che è un po' un trabucchetto perché il senso qua è che
+2:46:292 hours, 46 minutes, 29 secondsc'è un sensore, però questo sensore in un certo senso è quasi binario perché tu o focalizzi una cosa o non la focalizzi. È come se io o entro dalla porta o esco.
+2:46:382 hours, 46 minutes, 38 secondsQuindi in realtà non è veramente tracking perché non c'è una di di rete dinamica a relazione tra due variabili.
+2:46:452 hours, 46 minutes, 45 secondsSemplicemente se focalizzo una cosa animazione, se non la focalizzo animazione all'indietro, quindi in realtà sarebbe più eh switch perché è
+2:46:542 hours, 46 minutes, 54 secondsbinario, no? On and off. Però questo è difficile perché è un sensore composto che eh però comunque era un buon
+2:47:042 hours, 47 minutes, 4 secondscontativo. Allora e vediamo il risultato. Focus density. Focus duration please. Va bene, questa non ci se qua per esempio non abbiamo il non abbiamo
+2:47:132 hours, 47 minutes, 13 secondsil profilo. Dovremmo per farlo bene dovremmo fare scritto object, però facciamo la prossima volta. Quindi
+2:47:202 hours, 47 minutes, 20 secondsadesso se focalizziamo la se focalizziamo questa palla Oddio!
+2:47:262 hours, 47 minutes, 26 secondsLa la nebbia arriva, se non la focalizziamo si sposta. E questo, ripeto, è è switch,
+2:47:342 hours, 47 minutes, 34 secondsno? E poi, oddio, addirittura se non ci muoviamo diventa ancora peggios. Tra l'altro se non ci muoviamo, ok, comunque spegne anche quel minimo di riflesso del
+2:47:432 hours, 47 minutes, 43 secondsmateriale che c'era su. Eh, se invece possiamo fare anche il fog density ancora più forte,
+2:47:512 hours, 47 minutes, 51 secondsok? così proprio ci avvolge. E quindi questo è un modo,
+2:47:572 hours, 47 minutes, 57 secondsno, per ehm ripeto, sempre pensando in modo un attimo modulare, cioè c'è il sensore, c'è il la possibilità di
+2:48:042 hours, 48 minutes, 4 secondsfocalizzare un oggetto e poi cosa vogliamo fare con questa con queste interazioni del focus? Ok, lanciamo l'animazione della nebia della luce, no?
+2:48:152 hours, 48 minutes, 15 secondssempre stiamo girando attorno a questo a questa idea della, no, di progettare interazioni in modo un pochino anche
+2:48:232 hours, 48 minutes, 23 secondsmolto libero, no? Perché possiamo combinare qualsiasi input, qualsiasi output con qualsiasi relazione. Ecco,
+2:48:312 hours, 48 minutes, 31 secondsbene, prossima volta continua. Ok. Ehm, bene.
+2:48:402 hours, 48 minutes, 40 secondsAllora, Veronic come sta funzionando più no. Allora, se se si
+2:48:492 hours, 48 minutes, 49 secondsexpert se se loro
+2:49:102 hours, 49 minutes, 10 secondsSì, l'abbiamo finito. Bene.
+2:49:152 hours, 49 minutes, 15 secondse abbiamo perso un po' di tempo per sempre. Ok. Ciao.
+2:49:442 hours, 49 minutes, 44 secondsAh, no. Ok. Allora,
+2:49:482 hours, 49 minutes, 48 secondssì. No, questo dicevo un modo classicoare guardate qua. Qual è il problema che esiste volare?
+2:50:012 hours, 50 minutes, 1 secondCioè, puoi farla qua,
+2:50:042 hours, 50 minutes, 4 secondsquindi questi valori qualificare che si può
+2:50:122 hours, 50 minutes, 12 secondssui e può dare un esempio delle
+2:50:232 hours, 50 minutes, 23 secondsscritto questione
+2:50:432 hours, 50 minutes, 43 secondsComunque si x questo come
+2:50:552 hours, 50 minutes, 55 secondsSì, sì. Sì,
+2:51:082 hours, 51 minutes, 8 secondsper qua.
+2:51:192 hours, 51 minutes, 19 secondsNo,
+2:51:302 hours, 51 minutes, 30 secondse poi ciambiere Sì, sì,
+2:51:462 hours, 51 minutes, 46 secondsanche poi ci
+2:52:032 hours, 52 minutes, 3 secondsvuoi parlare un attimo?
+2:52:062 hours, 52 minutes, 6 secondsVieni pure qua, così fermo un attimo la reg la la streaming.
+
+Sync to video time

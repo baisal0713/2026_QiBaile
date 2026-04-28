@@ -1,0 +1,81 @@
+INTERACTION DESIGN 4 — LECTURE 4 CRITIQUE
+==========================================
+
+WHAT WORKED WELL
+----------------
+
+The biggest improvement is structural, and it's the one that matters most. For the first time in four lectures, the newest and most important content — the proximity sensor and spec-driven AI workflow — landed in the middle of the session, not crammed into the last 30 minutes. The ecosystem recap was kept to roughly 10 minutes, consciously closed ("poi passiamo al... andiamo avanti"), and the rest of the session belonged to the new material. This is a direct correction of the pattern flagged in every previous critique. If you did this deliberately, keep doing it. If it happened accidentally, make it deliberate.
+
+The inspirational references before implementation are becoming a signature strength. Roosegaarde's flowers, the Rain Room, the Yellowstone wolves video — these are not decoration. They give students a destination that is culturally serious before the technical work begins. The fact that you showed the Rain Room and then said "this is what we're building toward" means the cylinder-with-a-trigger-zone exercise feels like a step toward something real, not an isolated drill. This is excellent teaching instinct and it's consistent across lectures now.
+
+The conceptual escalation from binary to continuous interaction was the intellectual highlight. You named the limitation of the old approach explicitly — "abbastanza binaria, cioè on and off" — had students implement it anyway so they could feel it, and then upgraded to the proximity sensor. This contrast-then-upgrade structure is the same move that worked so well with the two replication strategies in Lecture 3, and it's becoming your most reliable pedagogical tool. It works because students experience the limitation before hearing the solution.
+
+The spec-driven development introduction was genuinely ambitious and mostly well-executed. You didn't just tell students to "ask the AI to write code." You introduced a disciplined workflow: write a spec document, reference it as context, constrain the AI with explicit guardrails, iterate by updating the spec. The justification was practical and honest — "potete perdere la conversazione" — and the live demo showed both the happy path and the need to rein in the AI when it adds unrequested features. This is a real professional skill, not a classroom gimmick. It also solves the problem flagged in Lecture 3 about the AI introduction being partially redundant: this time you advanced the workflow instead of repeating the setup.
+
+The homework was the most concrete you've given so far. "Add at least one new feedback variable using the spec-driven AI workflow. Bring headphones." That's a clear action with a clear method and a clear logistical instruction. It's still not as specific as it could be (see below), but it's a measurable improvement over "study the system and change the balancing."
+
+
+WHAT COULD IMPROVE
+-------------------
+
+### 1. The trigger zone section is explicitly last year's material and you spent 20+ minutes on it
+
+You told students outright: "Probabilmente siete stufi dei trigger zone" and "il paradigma dell'anno scorso." Then you spent a substantial chunk of the session having them set up trigger sensors with detected/lost events and material swaps — the same pattern they already know. The only new element was using two material color components (one for enter, one for exit) instead of a material swapper, which is a minor variation, not a new concept.
+
+You needed students to have a working trigger-based setup before upgrading to the proximity sensor. That's fair. But 20+ minutes of guided setup for something they've done before is too long. The contrast-then-upgrade only works if the "before" phase is brisk. When it drags, students lose the thread of why they're doing it again.
+
+**Suggestion:** Next time you need to rebuild a known pattern as a stepping stone, give students the recipe and let them do it independently in 5-7 minutes: "Set up a trigger sensor on the column with tag 'player'. Add two material color components — one for on-detected that goes bright, one for on-lost that goes dim. You've done this before. Go." Then reconvene, confirm it works, name the limitation, and move to the new thing. The explanation time should be proportional to the novelty of the content.
+
+### 2. The audio section was dead on arrival and you knew it
+
+Multiple computers had no speakers. Students couldn't hear the 3D spatial audio. You acknowledged this and said "vi faccio vedere, voi lo rifarete fidandovi che si può sentire." That's honest, but "trust me it sounds cool" is not a substitute for experiencing spatial audio yourself. Audio is a felt medium — if students can't hear the difference between spatial blend at 0 and spatial blend at 1, they haven't learned anything. They've watched you adjust sliders.
+
+You asked students to bring headphones for next time. Good. But that means the audio section in this lecture was essentially a preview, not a lesson. The time would have been better spent deepening the proximity sensor work or giving students a longer work period to get the spec-driven workflow running.
+
+**Suggestion:** Move audio to next lecture when students actually have headphones. In this lecture, use those 10-15 minutes for an extended work period on the proximity-driven column controller. Alternatively, if audio absolutely had to be introduced now, bring a single pair of headphones connected to your machine and do a brief demonstration via the projector's audio output, then assign the hands-on audio setup as part of the homework alongside the headphone reminder.
+
+### 3. The MCP server mention was a tease with no payoff
+
+You showed students that Unity MCP servers exist, mentioned that AI could potentially build scenes directly, and then moved on: "non può fare cose complesse ancora." This is the kind of tangent flagged in Lecture 1's critique — charming but cumulative. Except this one isn't even charming. It's a feature demo for a tool that doesn't work reliably yet, shown to students who are still learning to wire trigger sensors.
+
+**Suggestion:** Drop it entirely until you have a working, tested demonstration that students can actually use. When it's ready, it'll be a genuine "wow" moment. Right now it's noise. The Expedition 33 anecdote and the Yellowstone video were earned digressions — they connected to the lecture's themes. The MCP mention connected to nothing the students were doing that day.
+
+### 4. You still haven't demonstrated Git live
+
+Lecture 3's critique specifically called this out. You told students in Lecture 3 to use Git for safety before AI modifications. In Lecture 4, you introduced spec-driven development — a workflow that inherently involves iterative changes to generated code, exactly the context where version control matters most. The spec file itself is a document that evolves over time. This was the perfect moment to spend 60 seconds showing: save the spec, `git add`, `git commit -m "initial column controller spec"`, generate code, test, `git commit -m "working proximity feedback"`. One live demonstration.
+
+It didn't happen. This is now two lectures in a row where Git has been verbally recommended but never shown.
+
+**Suggestion:** In Lecture 5, before the first AI-assisted modification of the day, do it live. Narrate it. "Before I change anything, let me save this state." Terminal, `git add .`, `git commit`. Change code. Test. Commit again. If it breaks, `git checkout -- .` to revert. Total time: 90 seconds. Students will copy what they see you do, not what they hear you say.
+
+### 5. The VS Code vs Visual Studio confusion should have been preempted
+
+Multiple students had trouble accepting AI suggestions because they were using Visual Studio (where you press "keep" or a different shortcut) instead of VS Code (where you press Tab). You troubleshot this individually, which means you explained the same thing multiple times to different students. This is the same category of issue flagged in Lecture 2 — logistical friction consuming teaching time.
+
+You set up VS Code as the default editor in Unity preferences in a previous lecture. If students are still opening Visual Studio, the preference didn't stick for everyone, or they're opening scripts by double-clicking from Explorer rather than from Unity.
+
+**Suggestion:** At the start of the next lecture, spend 2 minutes on standardization: "Open Unity preferences, External Tools, confirm VS Code is your editor. If you see Visual Studio, change it now. From now on, always open scripts from Unity, not from your file browser." Then move on. This is a one-time fix that prevents recurring friction.
+
+### 6. The spec-driven workflow is powerful but you didn't show failure recovery
+
+You showed students how to write a spec, feed it to the AI, and get working code. You also mentioned that the AI sometimes adds unrequested features and that you should constrain it. But you didn't show what happens when the generated code is wrong — when it doesn't compile, when it references the wrong property, when it misunderstands the URP material system.
+
+Some students clearly hit these problems (you circulated and troubleshot individually). But the class as a whole didn't see a recovery workflow. This matters because the first time a student's AI-generated code fails and they don't know how to debug it, they'll either give up or start a new conversation from scratch — losing context, losing the spec, losing momentum.
+
+**Suggestion:** Deliberately provoke one failure in a future demo. Give the AI a slightly ambiguous spec, let it generate something that doesn't quite work, then show the correction loop: read the error, identify the mismatch between spec and output, either clarify the spec or give the AI the error message and ask for a fix. Model the iteration, not just the happy path.
+
+### 7. The homework is better but still lacks observable success criteria
+
+"Add at least one new feedback variable" — what counts? A particle effect? A scale change? An additional material property? And how will students know it's working correctly? "Using the spec-driven AI workflow" is a method constraint, which is good. But there's no defined target state.
+
+**Suggestion:** "Add one of the following to your column controller using the spec-driven workflow: (a) scale change based on proximity, (b) particle emission rate based on proximity, or (c) a fog or post-processing intensity change based on proximity. When you approach the column, the new effect should smoothly increase. Record a 10-second screen capture showing it working and bring it to class." Now there's a defined output, a set of options for different skill levels, and a deliverable.
+
+
+OVERALL ARC ASSESSMENT
+-----------------------
+
+This is the best-structured lecture so far, and the improvement is not marginal. The time management problem that plagued Lectures 1-3 — important content crammed at the end — is largely solved here. The ecosystem recap was concise, the new thematic block was introduced with cultural references before implementation, the conceptual escalation was well-paced, and the spec-driven AI workflow got the central position it deserved. The session had a clear four-act structure (closure, baseline, upgrade, extension) and each act served its purpose.
+
+The recurring issues are now smaller in scale. Infrastructure friction (audio hardware, VS Code confusion, disk space) is annoying but finite — most of it can be permanently solved with a 5-minute standardization at the start of Lecture 5 and a headphone requirement. The Git gap and the failure-recovery gap in the AI workflow are genuine pedagogical debts that need to be paid soon, before students develop habits without safety nets. The MCP tangent was a minor misstep, not a structural problem.
+
+The honest assessment: you listened to the feedback and the session is noticeably better for it. The pacing fix alone changes the experience fundamentally — students encountered the hardest material when they still had energy and time. The spec-driven workflow is a genuinely valuable professional skill that most university courses never teach, and you introduced it with appropriate rigor. The question going forward is not whether you can design a good session — you clearly can — but whether you can sustain this structure and close the remaining gaps (live Git, audio delivery, homework specificity, failure modeling) before they calcify into habits you stop noticing.

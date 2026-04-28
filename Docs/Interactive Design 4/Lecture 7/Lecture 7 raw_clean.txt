@@ -1,0 +1,263 @@
+## Logistics: Migrating Git Repositories
+
+Allora, adesso rivediamo un attimo i passi. Potete usare lo stesso account, non dovete cambiare niente.
+
+[Logistics: A student asks whether the lecture from the 14th appears on Blackboard; the instructor confirms it should, mentions Marica was on holiday and is back, says he'll arrange make-ups.]
+
+Per queste cose di Git basta loggarsi con l'account NABA, va benissimo qualsiasi account che volete. Per fare un repository, diciamo, personale, ci sono due cose che si possono fare. Potete fare un repository privato in modo che non si vede da nessuno su internet, oppure un repository pubblico. Qual è la differenza? L'unica differenza è che in quello privato dovete invitarmi a mano, però il vantaggio è che il vostro repository non è pubblico.
+
+Quindi cosa dobbiamo fare? Andare nel profilo, andare nella sezione repositories, premere sul tasto **New** e qua diamo il nome al repository. Consiglierei di usare comunque lo stesso nome del progetto: per me sarebbe MD426DF, così quando mi invitate riesco a riconoscerlo. E qua abbiamo le due scelte. Quello che usavamo nell'organizzazione prima era interno, una specie di privato solo per quel gruppo, adesso non possiamo più farlo. Il mio consiglio: se non volete condividere queste cose con altre persone facilmente, perché nel pubblico basta condividere il link e si apre, fatelo privato — basta solo invitarvi come membro.
+
+Quindi qua lo possiamo tenere privato. Il README non ci serve. Il `.gitignore` sappiamo che è importante, quindi mettiamo il `.gitignore` Unity, anche se in realtà dovrebbe già esserci uno nella cartella che andiamo a copiare. License non ci serve. Facciamo **Create repository**.
+
+Appena vediamo questa finestra **Code**, il procedimento è lo stesso. Open with GitHub Desktop, che a volte fa dei capricci e non si collega nonostante sia installato.
+
+[A student arrives late; the instructor briefly recaps that GitHub has run out of space, is restructuring, and is deleting all organizations, so they need to migrate.]
+
+Una volta che siamo qua, riproviamo questa cosa. **Open with Desktop** — io di solito non utilizzo questo sistema perché non funziona mai, utilizzo un'altra cosa che si chiama Fork che è un client Git un po' più evoluto. Allora, nel caso non si aprisse, usiamo per ora il GitHub client perché siamo abituati. Andiamo a copiare il link, lo copiamo, andiamo su GitHub Desktop, **File → Clone Repository**. In questa finestra premiamo URL e qua diamo il link.
+
+[Brief student exchange about which window to use.]
+
+Facciamo paste del link, **Choose Folder**, e qua dobbiamo creare una nuova cartella vuota. Cioè, quando cloniamo un repository sempre in una cartella vuota, sennò non funziona. Projects Unity. Io qua creerei una cartella che ha un nome simile, però `26`. Chiamo pure `new`, così mi ricordo che è quella. E facciamo Clone.
+
+Se vi dà un errore può essere che non siete loggati con l'account giusto — io qua ho due account anche su GitHub Desktop, bisogna essere loggati con l'account giusto. A volte può essere che vi sloggi.
+
+Una volta che l'abbiamo clonato, vediamo le cartelle vuote, basta solo copiare le cartelle del progetto dentro. Quello che farei qua: anzi, chiudiamo prima il progetto così non esplode niente. In modo più veloce, dall'Unity Hub facciamo tre punti, **Show in Explorer**. Questa è la cartella. Prendo l'intera cartella del progetto e la sposto dentro il repository.
+
+[Student question, instructor confirms it's the same procedure for them.]
+
+Solo che la differenza era che, quando crei un nuovo repository, il mio consiglio era di farlo privato, perché non abbiamo più l'opzione interno che esiste solo per le organizzazioni. Quindi non possiamo in modo facile tenerlo semi-privato. In quello pubblico basta inviare il link, io lo posso aprire. Nel privato dovete poi invitarmi.
+
+Poi controlliamo se il `.gitignore` è dentro la cartella dell'Unity Project. Torniamo su GitHub Desktop. Quando fate il repository, riclonate la cartella in una cartella vuota, poi dovete solo copiare la cartella del progetto dentro. E qua controlliamo al volo se non abbiamo la cartella `Library`. Questa è l'indicazione migliore che qualcosa non funziona col `.gitignore`. Quindi qua dentro questa lista non dobbiamo vedere la cartella `Library`. Poi committiamo. Visto che sono tanti file, io lo farei in un paio di commit, non farei tutto in una volta. Selezionando qua, prendo per esempio tutta la cartella delle lezioni. Faccio **Include selected files**. Prendo un paio di cartelle, **Include selected files** — non fate **Discard**, perché sennò li cancellate in modo quasi irrevocabile. Facciamo commit e push direttamente. Non accumuliamo commit.
+
+> **[Digression — perché non fare Discard]** Io ho avuto, l'altra sessione di esame, uno studente che doveva inviarmi il suo progetto. Stava facendo il repository Git quel giorno e ha fatto queste cose che vi stavo facendo vedere. Ha selezionato metà del progetto e fatto Discard, cancellando appunto metà del suo progetto. Poi mi ha detto: "Ma non ho più le scene, ma cosa hai fatto Fabio?" Comunque, per fortuna c'è sempre qualche modo per recuperare. Quando fai Discard, spesso vanno nel cestino, ma non sempre. Però, ecco, non fatelo se non — cioè, dico solo quando si fa un repository di nuovo. Poi quando il repository esiste e abbiamo fatto un po' di commit, se fai Discard puoi sempre ritornare al commit prima, allo stato prima.
+
+[Logistics: Several minutes spent waiting for repositories to clone and push. Instructor walks around to help individual students. Brief recap for late arrivals.]
+
+L'ultima cosa: come invitare ai repository. Scambiamoci i GitHub ID, che è semplicemente il nome che vedete qua. Uno dei due, credo che dovrebbero andare entrambi. Perché è necessario? Perché poi quando andiamo nel repository, **Settings → Collaborators** (la prima voce a sinistra), facciamo **Add people** e potete trovarmi con uno di questi nomi, oppure anche con l'email con cui avete fatto l'account. Se non mi trovate con un nome, provate con l'altro.
+
+Provo a invitarvi al mio repository: dentro il repository **Settings → Collaborators → Add people**. Poi dalla vostra email dovete accettare l'invito. Per tutti quelli che vogliono avere accesso a questo progetto, mandatemi il vostro ID e fatemi sapere se riuscite a invitarmi voi.
+
+---
+
+## AI Tools Without the NABA Subscription
+
+Vi faccio vedere una seconda cosa. Purtroppo, adesso che non abbiamo più il GitHub Enterprise, non abbiamo l'AI che era comoda. Però niente preoccupazione, perché ci sono vari altri AI gratuiti o semi-gratuiti che possiamo usare. Ve ne faccio vedere alcuni e vi faccio vedere anche un modo alternativo per usarli. Tanto comunque un AI di supporto ci serve sempre.
+
+[Student check — Copilot might still work, since it could be tied to the personal NABA student account rather than the organization. Instructor agrees, suggests testing it.]
+
+Intanto vi dico questo. Se a chi interessa, vuole esplorare un AI che ha una qualità abbastanza buona ed è abbastanza gratuito, si chiama **Mistral**. Questo è basato sul web, dovete loggarvi e potete chattare dentro come con ChatGPT o qualsiasi altro. Purtroppo non c'è un modo immediato per usarlo dentro il progetto, però copy-paste a volte funziona. Questo qua è abbastanza forte.
+
+Invece, se volete provare un altro AI da usare dentro il progetto, come abbiamo fatto con VS Code, ci sono due opzioni che vi mando. Tutti questi hanno ovviamente una versione pagata, però hanno per ora un'abbondante versione gratuita.
+
+Perché vi sto facendo vedere questi? Forse avete notato che io spesso utilizzo il **terminale**. Cos'è il terminale? In Windows si chiama Command Prompt, su Mac funziona in modo leggermente diverso ma simile. E come funziona? Questa cosa può essere aperta in qualsiasi cartella. Per esempio, io posso andare nella cartella del progetto, che per me è `nuovo repository`, eccola qua. E posso fare tasto destro su questa cartella, **Open in Terminal**, e qua parte un terminale. Posso usare vari comandi per fare cose dentro queste cartelle. Questo è uguale anche su Mac.
+
+Ah, vi sto dicendo questo perché questi AI che vi ho mandato possono essere installati in VS Code, però un modo molto più veloce è semplicemente andare su npm e copiare la riga di installazione nel terminale. Per esempio, facciamo che vogliamo usare questa cosa che si chiama **OpenCode**. Possiamo copiare questa riga dell'NPM. Sono diversi modi per installarlo nel terminale. Una volta che lo installiamo, dovrebbe funzionare anche su Mac uguale.
+
+Vi sto facendo vedere questo nel caso un domani non avete più, cioè avete raggiunto un limite e non si attiva, perché questi strumenti cambiano in continuazione. Quindi volevo darvi un po' di cose in più. Il modo di utilizzo è uguale, cambia un po' il modello che c'è dietro. Il bottom line: se voi prendete OpenCode oppure **Kilo**, è importante installing via VS Code, e può funzionare esattamente come GitHub Copilot. Però per me è un attimo più veloce usarlo dal cosiddetto CLI, dal command line. Funziona in questo modo: copiamo la riga, facciamo paste una volta che abbiamo aperto il command line, idealmente nella cartella del progetto, così ha un contesto mirato, lavora solo in quella cartella. **Open in Terminal**, installiamo, e poi se ho appena installato OpenCode posso semplicemente scrivere `opencode` e mi si apre l'AI dentro quelle cartelle, posso iniziare a chattare.
+
+[Logistics: Extended troubleshooting with one student whose Visual Studio won't start. Instructor suggests trying VS Code (the lighter editor) instead. Other students confirm Visual Studio is working for them.]
+
+---
+
+## Recap: The Interaction Atom
+
+Allora, ritorniamo sulle lezioni. Stiamo ancora un attimo nei Backrooms come contesto, semplicemente perché vorrei darvi due concetti nuovi che sono abbastanza importanti.
+
+La volta scorsa abbiamo visto un pochino meglio quello che era, diciamo, l'atomo dell'interazione, chiamiamolo. Abbiamo detto che per disegnare una qualsiasi interazione, anche se poi è multi-variata — contiene molti feedback eccetera — comunque ha sempre più o meno questa struttura. Decidiamo l'**input**, che può essere la prossimità, la distanza, la velocità di movimento. Tante variabili possiamo usare. Poi se usiamo touch, MIDI, eccetera, VR controller e così via, tutte queste variabili possono servire come punto di partenza per l'input. L'**output** lo conosciamo probabilmente ancora meglio in Unity: luce, nebbia, colori, tutte le proprietà dei componenti che possiamo manipolare, oppure possiamo crearci dei nostri componenti che fanno esattamente quello che vogliamo.
+
+E la cosa su cui ci siamo soffermati la volta scorsa era quello che succede in mezzo, la **trasformazione** — come effettivamente decidiamo la relazione tra l'input e l'output. Abbiamo detto che la relazione può essere, in modo un attimo più astratto: un segnale è una relazione tra almeno due variabili, oppure tra una e 100 variabili. Sia il segnale che questa relazione possono essere **discreti o continui**. Quindi c'è un continuo aggiornamento — la variabile prossimità mappa l'intensità della luce e viene continuamente aggiornata. Oppure abbiamo un segnale che è binario: entro nella stanza, si accende la luce; esco dalla stanza, si spegne. Però comunque ho messo in relazione queste due variabili. Oppure può essere anche **one-shot**, questo l'abbiamo visto molte volte.
+
+Un caso borderline è il **threshold**, dove abbiamo un limite. La relazione non è continuamente aggiornata — la prossimità non mappa l'intensità della luce come abbiamo fatto con le colonne, ma può essere che solo quando arrivo a 5 di prossimità allora inizia o succede qualcosa. È sempre una relazione, e si possono anche combinare queste modalità.
+
+Però la cosa più interessante per voi a livello estetico, esperienziale, è una volta che abbiamo definito l'interazione, la relazione tra le variabili, **cosa succede in mezzo** — come gestiamo questa trasformazione. Questo è un po' il pane dell'interaction design, perché noi possiamo avere la stessa interazione, però in base a come gestiamo la curva di relazione, l'attack, l'envelope (forse lo conoscete dal sound design — attack, duration, sustain, e un paio di altre variabili), l'esperienza può cambiare molto.
+
+E quindi la volta scorsa l'abbiamo visto aggiungendo in Unity, separando questa configurazione del cambiamento, in una cosa che si chiama **ScriptableObject**: un file di configurazione dove non decidiamo il valore della variabile nel componente come abbiamo fatto fino ad ora, ma lo decidiamo in un asset file, praticamente, che serve per contenere i dati all'esterno. Poi mettiamo questo asset file dentro la nostra interazione.
+
+Per esempio, avevamo fatto questo **stillness dimmer**: quando ti fermi, tutto diventa buio. Dimostriamolo un attimo. Abbiamo trasformato queste interazioni — le colonne, l'inizio con i suoni, le luci, l'intensità — l'abbiamo portate a questo utilizzo del profilo. ScriptableObject che contiene appunto la curva di cambiamento, i valori della sustain, vari dati che gestiscono la relazione. Abbiamo visto cosa succede se cambiamo questi profili, no? Possiamo avere un feel molto diverso dell'interazione: una graduale versus una più brusca. Vediamo un attimo quale profilo era questo. Ok. E se cambiamo invece con questo, era invertito, molto più graduale.
+
+Il senso era: possiamo decidere l'interazione, però se costruiamo profili diversi che gestiscono questa trasformazione tra come le variabili vengono mappate, il feel può cambiare drasticamente. Provate a vedere, se avete provato, e andiamo avanti.
+
+---
+
+## Distributing the Project Documents
+
+[Logistics: Long pause — students still finishing Git setup, one struggling with Visual Studio installation. Instructor decides to do a single big commit of his project so students can pull it.]
+
+Allora, cosa vorrei fare oggi? Oggi volevo introdurre due idee. La prima è uno **split tra controller e manager**, che adesso vi spiego al volo. L'altra è l'idea dello **stato**: cioè del fatto che quando facciamo interazioni a volte dobbiamo salvare il valore delle variabili, per fare in modo che entriamo in una stanza, facciamo delle azioni, queste vengono salvate e poi andiamo avanti.
+
+Però prima, mentre state aprendo: voi avevate provato a casa a fare qualche interazione usando l'AI, cioè quello che fino ad ora abbiamo visto come processo? [Students respond.] Ok, voi avete avuto il design. Va bene, ci sta.
+
+Allora, facciamo così. Prima di fare il manager eccetera, vorrei rafforzare un po' il workflow. Proviamo a fare un'interazione, e nel fare questo vi condivido due file. Sono due file che idealmente vorrei che anche voi iniziaste già a pensare al vostro progetto dell'esame. Anche se non abbiamo ancora visto, ci mancano tre concetti importanti per avere il quadro completo, però comunque la base dell'interaction design — l'approccio a creare i componenti, i controller usando l'AI — credo stia passando.
+
+Ovviamente per i vostri progetti non mi interessa che siano un technical demo, un demo di interazione — non è mai questo il senso, un po' come avete fatto voi all'esame scorso. Avevate fatto più una **esperienza**: avevate qualcosa da comunicare, avete trovato il modo, le giuste interazioni, le giuste sequenze per farlo.
+
+La cosa più semplice che emerge anche da questo esempio dei Backrooms: se non avete un'idea, non serve un'idea filosofica grandiosa, non dobbiamo fare niente di estremo. Possiamo partire anche da un'esperienza — per esempio, nei Backrooms è l'esperienza dell'**uncanny**, non dell'horror, ma più della stranezza del liminale. Immaginare una sequenza, immaginare anche un obiettivo (può esserci o meno, è in funzione di quello che si esprime). In questo caso, visto che il contesto già lo contiene: entri nei Backrooms a caso e devi uscire. È abbastanza autocontenuto come obiettivo. Ovviamente quello che succede in mezzo è la parte interessante.
+
+> **[Digression — esempio di un progetto passato]** Chi aveva fatto l'anno scorso, non era in questa classe, un progetto con delle foto: andavi in giro, raccoglievi delle foto e poi entravi nella foto e ti trasportavi nella tua stanza di infanzia, una cosa del genere. Ottimo. Cioè un progetto personale che prende dalla propria storia.
+
+Vi sto lanciando qualche direzione. Per i progetti finali, non mi interessa che ci sia per forza, però partire da un'esperienza, da qualcosa che si vuole comunicare, e usare gli strumenti che stiamo studiando per farlo.
+
+E quindi vi chiederei, man mano, non subito, non per la prossima volta per forza, di iniziare a buttare giù due documenti.
+
+Da una parte il **design document**, che semplicemente esprime: ok, l'idea dei Backrooms e creare questo senso di uncanny, e poi forse vorrei farlo usando questa interazione, questi momenti, questi incontri.
+
+L'altro documento, che a livello di produzione credo sia cruciale, è il **piano di produzione**. Di solito contiene due cose. Una **timeline** (per quello è utile iniziare il prima possibile — siamo non ancora a metà corso). Production Plan: una sequenza di quando, in che ordine vorrei provare a fare le cose. Questo non deve cambiare da settimana in settimana, ma avere un minimo di traccia. E l'**asset list**: cosa mi serve per quell'interazione — una texture del muro, materiali, forse uno shader. Mi sa che voi avevate già la lista la volta scorsa, era una buona cosa.
+
+Quindi: design document, production plan, asset list. Queste tre cose. Non è che non passate l'esame se non ce le avete, però per facilità mia — così riesco a visualizzare le vostre idee — e secondo me anche per facilità vostra. Questo è il minimo delle produzioni.
+
+Adesso vi condivido questi due file, sono una bozza veloce per questo progetto dei Backrooms, che ovviamente non è in uno stato completo. Forse per la prossima volta riesco a completarlo, così confrontiamo i documenti con lo stato finale. Per ora, usiamoli anche semplicemente come ispirazione per prendere qualche interazione, provare a farla.
+
+---
+
+## Building an Interaction: Workflow with Spec and AI
+
+Bene, proviamo a fare un'interazione usando l'approccio. Vi lancio qualche idea. Cosa stiamo facendo qua? Io nel frattempo, in questa scena lezione 7, avevo aggiunto un paio di cose anche con l'altra classe. Abbiamo fatto un'interazione — non mi ricordo più — c'era il corridoio che si restringe, le colonne che suonano, e c'è una cosa che ribalta la geometria.
+
+Provate a pensare, può essere anche un'interazione semplice. Stiamo usando principalmente la presenza e la prossimità, quindi il **trigger sensor**, il **proximity sensor**. Tra poco vi faccio vedere anche il **gaze**: guardiamo una cosa e questa cosa fa qualcosa, sempre usando il raycast.
+
+Come output potete usare il **post processing**. Per esempio, nel corridoio, la volta scorsa abbiamo fatto che si restringe ma cambia anche la saturazione, parte la vignette che restringe il campo visivo. Possiamo fare un paio di layer di feedback.
+
+Provate a pensare adesso un'interazione che vi assomiglia, che vi richiama questa sensazione — può essere una tappa nel viaggio di questo personaggio che sta cercando di uscire dai Backrooms, e tutto diventa progressivamente più caotico e disorientante. Proviamo a ripassare il workflow con l'AI, creando il profilo e il controller per quell'interazione. Prendetevi qualche minuto. Se non avete idee, vi do io qualcosa.
+
+Su questa cosa di riutilizzare qualche meccanica, qualche script: considerate che lei può vedere il contesto. Quindi potete dirgli: "guarda che vorrei usare il life cycle delle lezioni prima e adattarlo." Dovrebbe riuscire a farlo in senso integrativo.
+
+Per chi preferisce un approccio top-down, potete anche partire da: quale input, quale output, in che modo vorrei combinarli, che relazione, con che parametri.
+
+Vi ricordo l'approccio usando gli **spec**. Pensiamo prima, buttiamo giù due righe — non andiamo subito all'AI. Proviamo a buttare giù qualche riga in un file `.txt` normalissimo. Poi possiamo fare anche due pass: in OpenCode e Kilo hanno proprio queste due modalità, **Plan** e **Build**. Anche in altri AI è una buona pratica usare l'AI per pensare, decidere, e usare un'altra chat, un'altra istanza per implementare. Quindi potete fare il vostro spec del controller, buttare giù qualche riga, poi usare la funzione Plan per esplorare altre idee. Si decide e poi si implementa. Questa è la divisione che vi consiglio.
+
+Potete anche usare non solo la presenza, ma anche l'**assenza**. Qualcosa può succedere in uno spazio anche solo quando non siamo lì dentro.
+
+[Logistics: Instructor invites a struggling student over GitHub to download his project so they can work in it. Several minutes of cloning and re-importing.]
+
+[A student asks about feedback on their independent attempt. Instructor reviews their spec.]
+
+Idealmente, quando facciamo lo spec, dobbiamo cercare di dare il **contesto giusto**. Cioè, questo è un buon tentativo, però qual è il contesto giusto? Per esempio, se vogliamo fare una cosa dove il giocatore triggera una zona — non sempre, però nel tuo caso era importante dirgli: "guarda che io per il giocatore sto usando il First Person Controller." E poi anche scriverlo nello spec.
+
+Potete anche pensare: ma per fare questa interazione, abbiamo già qualche componente? Perché non è utile fare tutto da zero. L'altro componente utile può essere il **trigger zone**, il **trigger sensor**, che esiste già. Dandogli questo contesto, secondo me riesce a sistemare. Lui ha usato Rigid Body, che in questo caso non abbiamo — abbiamo il Character Controller. La logica era giusta, è solo il contesto. Poi, in un layer più potente, sarebbe andato a cercare e inferire se si usa una cosa più di un'altra. Questo l'ha fatto letteralmente, però ci sta — la logica è corretta. Tu salvi le coordinate iniziali, hai il trigger sensor che ti rimanda alla posizione iniziale, tranne una porta che è giusta. Buon esempio.
+
+Quello che farei nel vostro spec è scrivere: "provo a riutilizzare i componenti che ho — per il giocatore il First Person Controller, per il trigger zone il Trigger Sensor." Puoi scriverlo proprio così, in modo naturale, poi lei andrà a trovarli nella cartella.
+
+Volendo, fate anche un pass di "provo a rivedere questo spec, aggiungeresti qualcosa, fammi delle domande" — è un prompt sempre utile.
+
+[Several minutes of one-on-one help with Veronica, who wants a door that becomes transparent as the player approaches.]
+
+Cosa vorresti far diventare trasparente? La porta. Potresti usare un **materiale**. Vediamo. Però graduale. Allora, potresti usare un materiale **semitrasparente**. Vediamo: creiamo un materiale, lo assegno a una porta. Un normalissimo materiale standard lit, però non opaco ma **trasparente**. Mi serve abilitare **Alpha Clipping**.
+
+In realtà, scusa, non ti serve l'Alpha Clipping — ti serve solo se hai elementi che devono sempre essere trasparenti. In realtà tu vuoi rendere tutto trasparente, quindi rendilo solo trasparente. Del Base Color devi gestire l'alfa del materiale **gradualmente**. E poi, ovviamente, se vuoi anche poterci passare attraverso, ricordati di spegnere il **collider**. Quando diventa trasparente si spegne anche il collider e così puoi attraversare. È una buona idea.
+
+[Instructor brings up the project in his IDE.]
+
+Se aggiornate il progetto adesso, avrete la stessa scena ma con qualche interazione nuova. Vi lascio finire, poi vi faccio vedere altre cose. Se avete bisogno di una pausa possiamo anche adesso, vediamo come siamo con i tempi.
+
+---
+
+## Modular Interactions: The Tile Flipping Example
+
+Mentre lei sta pensando, vi faccio vedere al volo un'altra interazione che avevamo fatto con l'altra classe, l'ultima lezione. C'era una studentessa che voleva lavorare con la geometria, a parte questo corridoio che si restringe — voleva ribaltare i muri. Quindi abbiamo fatto questa cosa che fa **questo effetto**.
+
+Adesso posso spiegarvi come funziona, perché una volta che si ha l'idea della struttura, si possono fare in modo modulare qualsiasi di queste interazioni.
+
+Come funziona questa interazione? Come potete intuire, qua c'è un trigger che in primo luogo lancia l'onda. In secondo luogo, quello che controlla l'onda è un semplicissimo controller — ve lo passo su Blackboard — che si chiama `TileRotation` (l'avevo chiamato `tilingion`). L'unica cosa che fa è girare questo elemento. Prende questo tile e lo gira. Semplicissimo. E ovviamente lo può girare con un certo intervallo di tempo. Ricordiamoci sempre: la trasformazione possiamo farla in modo più carino usando un **profilo**. Visto che in questo pacchetto il ceiling tile e il floor tile sono la stessa cosa (in altri magari non lo saranno, però la logica può essere uguale)... visto che tutti questi sono un prefab, basta che noi selezioniamo uno di questi tile, applichiamo qua lo script, e poi possiamo decidere in che modo controllare questa cosa o lasciarla da sola.
+
+Io credo che c'era una modalità in cui se il tile si auto-anima da solo. Eccola qua: **Use Timer**. Cioè ogni tile si auto-anima da solo. Adesso, se questo funziona, dovrebbero iniziare a girare a caso e io cado. Comunque, questa logica modulare: se abbiamo un'idea di un componente che si ripete e attacchiamo a questo componente un semplice script che lo ruota, in modo selezionabile. Quindi qua io posso dire `useTimer`. Per velocità l'avevo applicato al prefab generale, ma se vogliamo applicarlo solo al pavimento di questa stanza, basta applicarlo ai tile di quella stanza e non agli altri. Quindi forse fare un **prefab variant**, oppure prenderei questo, lo sposterei e lo chiamerei `stanza_uno_tile` e lo applicherei solo a quei tile.
+
+Qual è il secondo componente? Questo è se vogliamo farli ruotare randomicamente. Se invece vogliamo farli ruotare tutti insieme, serve un altro componente — un **manager** o un controller sovrastante che troverà tutti i tile dello stesso prefab e lancerà la funzione "ruota" di ogni tile. In questo modo possiamo tenere l'onda specificatamente, perché avevo inserito un'animazione **staggered**, che parte da un lato e si propaga con un piccolo delay. Questo può anche essere spento. Per esempio, qua possiamo dire `noStagger`, e teoricamente dovrebbe farlo in un colpo solo.
+
+Questi sono esempi di cose che possiamo fare in senso modulare. Prendiamo il modulo, possiamo farlo anche con un muro: prendere un pezzo del muro e dire "randomicamente sostituisci questo muro" o "sostituisci il materiale," cambia la visuale, ci sembra di essere in un'altra stanza. Forse questo può essere una cosa da abbinare con le porte. Pensando in questo modo — non fare un componente che fa tutto, ma un componente che fa **un'azione**, che poi possiamo scegliere di orchestrare o di tenere in locale solo in quella stanza — possiamo fare tante cose senza troppo sforzo.
+
+---
+
+## Architecture: Manager vs Controller
+
+Sempre pensando a questa logica modulare delle interazioni: per esempio, prima avevamo fatto lo **stillness dimmer**, quando restiamo fermi tutto si spegne. Ora qua potrebbe esserci un problema quando vogliamo fare un'interazione uguale o simile in vari momenti con qualche differenza. Per esempio, vogliamo lo stillness dimmer (quando il giocatore non si muove tutto diventa buio), però a un certo punto possiamo voler spegnerlo e fare in modo che ci sia un altro controller che oscilla — non in base al giocatore, ma in base a un timer — tra buio e luce. Oppure queste cose che stiamo facendo adesso col **teleport**, che deve spegnere per teleportare.
+
+Perché sto dicendo questo? Perché quando abbiamo più o meno lo stesso core di interazioni, lo stesso core di feedback, possiamo **astrarre** questo core e non tenerlo in un singolo controller. Se ci sono tre diversi controller che devono tutti e tre controllare la luce, forse ha senso fare una cosa che controlla la luce, e tutti e tre i controller poi la chiamano. Questo è, come dire, un minimo di **architettura**, sempre per aiutare a non creare conflitti, perché poi creeremo altre interazioni.
+
+L'idea: se c'è più di una cosa, più di un controller, più di un'interazione che fa più o meno la stessa cosa, forse ha senso creare un **manager**. Per esempio, in questa scena io avevo fatto un manager che gestisce la luce: l'ambient intensity, il directional light, e anche il materiale emissivo delle lampade. Tutto quello che c'entra con la luce. Qual è il senso? Questa luce viene controllata da un manager che da solo non fa niente, non decide. Però se ho tre diversi controller che devono accendere o spegnere la luce, anziché implementarlo loro stessi (forse in modi diversi, forse vanno in conflitto), semplicemente chiamano il **light manager** e i controller chiamano il light manager per fare questo.
+
+Questo può funzionare anche per il post-processing. Anziché implementare la logica 5, 6, 10 volte, la implementiamo in un manager, e poi i controller chiamano il manager per cambiare il post-processing.
+
+Questo ha anche un altro vantaggio: il manager può salvare lo **stato**. Per esempio, quando ti teleporti, un manager potrebbe essere dedicato a salvare quante volte siamo passati da questa stanza. Passiamo da questa stanza tre volte, e la quarta volta la porta è chiusa e si apre un'altra porta, una cosa del genere. Quando parliamo di stato parliamo di salvare una o più variabili con cui abbiamo interagito in quella sessione di gioco.
+
+---
+
+## Live Build: The Teleport Interaction
+
+Adesso, cosa farei qua? Farei uno **spec**.
+
+> **[Aside — perché fare sempre uno spec]** Io lo faccio sempre. Nel senso, anche se scrivi a parte — non è inutile scrivere tutto a mano, sicuramente manca qualcosa, forse perdi qualche idea. Almeno che non sia molto di fretta e non abbia le idee molto chiare, faccio sempre almeno un breve pass di "ok, rivedi questo, sto perdendo qualcosa." Forse no, però a volte emergono cose.
+
+Chiamiamolo `teleport_spec`. C'è sicuramente un momento di **design iniziale**, perché la domanda qua è: ci serve un componente macro che è consapevole di tutte le stanze, di tutti i teleport? Forse no. Forse ci serve solo un componente locale che possiamo copiare, che ci riporta alla posizione iniziale. Quindi in realtà il "door loop" come lo voleva fare lui forse non è quello.
+
+Per questa cosa che stiamo facendo noi, i passi che consiglierei sono questi. Quando si fa lo spec si può fare un pass di pianificazione o di design **insieme all'AI**. Quindi qua diamogli sempre le istruzioni del defensive. Vogliamo, sto pensando, allora possiamo farlo che ti teleporta al punto iniziale. Ovviamente dobbiamo aggiungere qualcosa: forse come minimo che si **spengono le luci e si riaccendono**, sennò boh, si può fare in vari modi, però io farei così.
+
+E poi l'altra domanda: quando passiamo dal trigger, dobbiamo salvare la posizione del giocatore o ce l'abbiamo già salvata? Forse avremmo bisogno di **due componenti**: un trigger che salva la posizione (così possiamo iterare con diversi layout più volte), e un altro che lo riporta. Due componenti, può essere lo stesso sistema. `Use trigger sensor to teleport player location.` `We have a component for saving the home location and another one.`
+
+Va bene anche scrivere in modo più verboso. Adesso non vado avanti a scrivere variabili eccetera, semplicemente perché non mi viene altrimenti. Apro qua l'AI: `read teleport_spec`.
+
+[Note: when you create a new file, you have to restart the conversation because it doesn't refresh the folders by itself. This holds for the terminal — VS Code refreshes in the background.]
+
+Possiamo fare anche un prompt semplice: "discutiamo un attimo prima di passare alla implementazione, fammi delle domande." Adesso lei andrà a leggersi un po' troppe robe, questo non è importante.
+
+[Mentre l'AI lavora, l'instructor revisits the tile-rotation interaction, dynamic lighting integration with the manager pattern.]
+
+[Veronica returns with progress on her transparent door.]
+
+Ah, ecco, una cosa che ho dimenticato di dire: usare i **profili**. Cioè, usare ScriptableObjects per quando abbiamo feedback, per quando abbiamo un'interazione. Usiamo sempre gli ScriptableObjects dove teniamo i dati, la configurazione. Vediamo cosa ha fatto. Ha fatto `home_location` e ha fatto `teleport_a_script`.
+
+> **[Aside — cosa sono gli ScriptableObject]** Gli ScriptableObject sono semplicemente oggetti che contengono dei dati. Queste cose blu qua, dove possiamo immagazzinare delle variabili. Spesso non contengono metodi, non contengono logica, non servono — a volte sì, però nel nostro caso servono solo per dire: "ok, per questa interazione io voglio che l'offset sia 2, 1," e così via. Facciamo una configurazione iniziale, e poi anziché tenere queste variabili nel controller stesso (come abbiamo fatto fino ad ora — hai il controller con tutte queste variabili nell'inspector), è utile averle in uno ScriptableObject separato. Possiamo farne più profili, possiamo testare diversi valori, e se vogliamo cambiare il feel di quell'interazione anche durante il gioco, possiamo semplicemente swappare gli ScriptableObject anziché dover andare e riconfigurare ogni volta — quasi impossibile.
+
+Quindi, a livello tecnico, le cose che vorrei vi portaste a casa come fondamenti: l'utilizzo dello ScriptableObject, separiamo i dati e la configurazione dal controller. E quello che abbiamo appena aggiunto: se più di un controller, più di un'interazione, utilizzano gli stessi feedback, gli stessi output, forse facciamo un **manager** che tiene quella logica e i controller la chiamano. Adesso può sembrare un po' astratto, lo vediamo nella pratica.
+
+[Instructor demonstrates the teleport in practice — places the components on the door, sets the home_location, tests it. The fade is too fast, so it doesn't visually register. Instructor notes this as a follow-up to handle from the manager. Suggests a refinement: a separate trigger that saves the player's position when entering, before saving on Awake.]
+
+Implementiamo prima il teleport, e quando implementiamo vediamo di cosa ha bisogno: il sensore per il giocatore, il light manager per la luce (perché avevo già implementato questa cosa), il `Darkness`. Quindi gli serve sicuramente questo, e questa cosa sarà il componente principale che andremo a ripetere. Per comodità toglierei le porte. E poi forse questo si può abbinare con la tua idea della prossimità, Veronica — ti avvicini alla porta e diventa trasparente, puoi passare.
+
+Qua come location sarà uno script che salva, ma in realtà lo salva all'inizio del gioco, quindi si poteva usare anche solo un semplice oggetto. Va bene. `home_location` e gli diamo la location stessa. Quando passiamo dalla porta vogliamo sempre rientrare in questa porta. Passiamo questa location qua e vediamo se funziona. Ripetiamo questo un paio di volte e solo dall'ultimo possiamo effettivamente uscire.
+
+Non fa il fade, o lo fa molto velocemente, non riesco. Va bene, questo lo dobbiamo gestire dal manager. Questo volevo evitare, però bene. La cosa migliore sarebbe avere un altro trigger che, quando passi, salva la tua posizione. Si potrebbe giocare con la rotazione — quando ti teleporta, ti teleporta forse girato al posto. Il feedback si può migliorare. Intanto vi carico questa cosa. Dovrei caricarvi anche il manager della luce e quella cosa che gira il tile, è l'ultima cosa.
+
+---
+
+## Bonus: The Gaze Interaction
+
+[Logistics: Some students leave; Veronica and one or two others stay an extra ~30 minutes. Brief side discussion about the relationship matrix — one-shot vs tracking vs threshold — using Veronica's transparent-door interaction as a classification exercise.]
+
+In questo caso, nella tua interazione: se vogliamo prima fade, poi teleportare, poi rivelare. Ok, può starci. `Use Light Manager` per il fade, poi teleport. Anzi, può essere utile, se lei non lo fa da solo: "correggi lo spec o aggiungi le cose che abbiamo deciso allo spec, così se lo apriamo tra due settimane ci ricordiamo, perché questa chat sarà persa, ma lo spec resta."
+
+Adesso vi faccio vedere al volo il **gaze sensor**. Tanto sarà nel recording, se volete rivedere. La prossima volta lo ripassiamo.
+
+Il **gaze interaction** funziona in modo simile a quello che abbiamo fatto l'anno scorso con l'interazione: c'è il **raycaster**, c'è un raggio che parte, identifica un oggetto, e poi dopo decidiamo cosa fare con questo oggetto. Il gaze, alla fine, in Unity non è un'altra cosa che semplicemente l'orientamento — è un raggio che va a toccare un altro oggetto.
+
+Come si implementa? Lo implementiamo nella **camera**. In primo luogo useremo il **Raycast Sensor**, lo stesso sensore che è già dentro da un po' di tempo e funziona come tutti gli altri sensori. Lo attacco alla camera perché la camera ha il pieno range di movimento, seguirà la rotazione e tutto il resto. Possiamo filtrare i tag come tutti gli altri sensori, però la cosa più importante per questo sensore è il **layer**. Vogliamo focalizzare spesso un sottoinsieme — per non gestire milioni di oggetti, faremo un layer `focusable`, che saranno gli oggetti su cui possiamo focalizzare lo sguardo e con cui possiamo interagire.
+
+Per esempio, facciamo una **sfera**, un attimo più illuminata così si vedrà nel buio. Vogliamo poter focalizzare questa sfera. Quindi: layer `focusable`, possiamo assegnare tutti gli oggetti che vogliamo poter focalizzare a questo layer. Sulla camera abbiamo messo il Raycast Sensor, e poi un altro componente che metterei sul giocatore — un sistema un pochino più modulare che andremo a estendere per varie altre interazioni — il **Player Interactor**. Questo è molto simile all'**InteractionGrabber** della lezione del corso dell'anno scorso.
+
+Quindi: Raycast Sensor sulla camera e Player Interactor sul giocatore. Siamo a metà strada — abbiamo un modo per il giocatore di riconoscere un oggetto. L'ultima cosa è rendere questo oggetto specifico **focalizzabile**. Per fare questo abbiamo un componente generico che si chiama **Focus**. Possiamo metterlo su qualsiasi oggetto che vogliamo poter focalizzare e con cui interagire focalizzando.
+
+Cosa esattamente andiamo a fare quando interagiamo con l'oggetto? Questa è la seconda domanda. Se selezioniamo la camera ed il raycaster, possiamo vedere cosa stiamo focalizzando in questo momento preciso. Ho messo la camera un pochino dietro il giocatore — adesso devo sistemare questo, perché andremo sempre a focalizzare il giocatore, e le camere dietro non è esattamente quello che vogliamo. Qua addirittura non mi serve questa capsula del giocatore. Ho dimenticato di mettere il **mask**. Riproviamo.
+
+Eccoci qua. Stiamo focalizzando la sfera. Ok, adesso non sono molto preciso, ma stiamo focalizzando la sfera. Lo vediamo dal sensore, oppure dalla sfera selezionandola: vediamo questo flag `isFocused`. Quindi da entrambe le parti abbiamo comunicazione.
+
+Cosa possiamo fare con questa interazione? Una cosa che volevo far vedere — con cui non abbiamo giocato molto nello spazio chiuso — è utilizzare la **nebbia**. Secondo me in queste stanze fa un effetto bello forte, può inviare ancora di più. Possiamo usare il semplice slider della densità della nebbia per avere questo muro di buio che ti arriva. Una possibilità: facciamo (skippo il passo dello spec, fatelo voi, sbagliato, non fatelo, ammazziamo di fretta) — facciamo questo controller, questa interazione semplice dove, mentre stiamo focalizzando questo oggetto, ci sarà la nebbia che arriva, oppure quando non focalizziamo l'oggetto la nebbia si ritira.
+
+Una domanda: secondo voi, di che tipo è questo esempio? È l'esercizio: pensare a un'interazione, poi chiedersi qual è la **relazione**, come sono collegate le variabili. [Pausa per riflessione studenti.]
+
+`FocusController`. Una volta che abbiamo questo componente, possiamo metterlo sulla sfera. Qua dobbiamo dire la **densità finale**. Per me va bene che arrivi proprio a 3.
+
+Allora, c'è un però qua. Questa è difficile, è un po' un trabucchetto. Il senso qua è che c'è un sensore, ma questo sensore in un certo senso è quasi **binario**: tu o focalizzi una cosa o non la focalizzi. È come se entro dalla porta o ne esco. Quindi in realtà non è veramente tracking — non c'è una relazione dinamica diretta tra due variabili. Semplicemente: se focalizzo una cosa, animazione; se non la focalizzo, animazione all'indietro. In realtà sarebbe più **switch**, perché è binario: on and off. Però questo è difficile, perché è un sensore composto. Comunque era un buon tentativo.
+
+Vediamo il risultato. `focusDensity`, `focusDuration`. Va bene, qua per esempio non abbiamo il profilo — per farlo bene dovremmo fare uno ScriptableObject, ma facciamo la prossima volta.
+
+Adesso, se focalizziamo questa palla — la nebbia arriva. Se non la focalizziamo, si sposta. E questo, ripeto, è **switch**. Se non ci muoviamo diventa ancora peggio, addirittura. Tra l'altro se non ci muoviamo spegne anche il minimo riflesso del materiale che c'era. Possiamo fare anche `fogDensity` ancora più forte, così proprio ci avvolge.
+
+Questo è un modo, sempre pensando in modo modulare: c'è il sensore, c'è la possibilità di focalizzare un oggetto, e poi cosa vogliamo fare con questa interazione del focus? Lanciamo l'animazione della nebbia, della luce. Stiamo girando attorno a questa idea di progettare interazioni in modo libero, perché possiamo combinare qualsiasi input, qualsiasi output, con qualsiasi relazione.
+
+Bene, prossima volta continuiamo.
+
+---
+
+## Closing
+
+[A brief one-on-one with Veronica about her transparent-door interaction status, plus a final exchange off-stream. Recording ends.]

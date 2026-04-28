@@ -1,0 +1,915 @@
+1. Alignment check (your lab vs framework)
+Core structure — correct
+
+What you described maps cleanly to your formal model:
+
+Station = atomic system
+Input → Relationship → Output
+Inspector + UI = exposing the transformation layer
+FPS + world interaction = embodied input space
+
+This is exactly the transformation model:
+
+Interaction = Signal → Relationship → Output
+
+And the primitives doc already supports it:
+
+Inputs defined as continuous / binary signals
+Relationships = bound / unbound + curve + envelope
+Outputs = perceptual domains (light, material, sound, etc.)
+
+→ Conceptually, everything is consistent.
+
+Architecture — also consistent
+
+Your lab implicitly follows your Unity architecture:
+
+Data → parameters (curve, range, envelope)
+Logic → relationship controller (the “atom”)
+View → light/material/audio/etc.
+
+Which matches:
+
+Data / Simulation / Presentation separation
+
+Also:
+
+Inspector + SO = data-driven ✔
+Stations = reusable modules ✔
+Lab = composition of modules ✔
+Teaching model — perfectly aligned
+
+Your “palette/lab” idea is already formalized in your docs:
+
+“A walkable reference of interaction atoms”
+
+And:
+
+One station = one atom ✔
+Label = vocabulary ✔
+Comparison across stations ✔
+
+→ You are not inventing something new here — you’re converging your docs into a coherent artifact.
+
+2. Key conceptual clarity (important before building)
+
+There are 3 things to lock before implementation.
+
+(A) Signal vs Relationship vs Map
+
+You said:
+
+relationship has type + signal + conditions + shape
+
+Slight correction for precision:
+
+Correct decomposition
+Signal → comes from input (continuous / binary)
+Relationship type → bound vs unbound
+Map (student-facing) → continuous / on-off / one-shot
+Shape → curve + range + envelope
+Conditions → gating layer
+
+So the final model is:
+
+Input → Signal → Relationship (type)
+                     ↓
+                 Map type
+                     ↓
+          Curve + Range + Envelope
+                     ↓
+                  Output
+
+Important:
+👉 Signal is NOT part of the relationship — it feeds it.
+
+(B) Mono vs Binary vs Continuous
+
+Your intuition:
+
+on/off is still playback → discrete bound
+
+Correct.
+
+You’ve basically rediscovered this table:
+
+Signal	Relationship	Result
+Continuous	Bound	tracking
+Binary	Bound	on/off
+Any	Unbound	one-shot
+
+Which is exactly why v2 removed “3 types” and split dimensions.
+
+So your mental model is now consistent.
+
+(C) UI clarification (you corrected this)
+
+You said:
+
+UI is always world-space
+
+Good — this aligns with your philosophy:
+
+world-space, diegetic interaction
+
+So you have 3 input channels:
+
+Body (FPS / spatial)
+World interaction (colliders, sensors)
+World-space UI (raycast)
+
+→ This is clean and sufficient.
+
+3. What is NOT yet defined (important gap)
+
+Before building, you are missing ONE critical layer:
+
+→ The “Interaction Atom” implementation contract
+
+Right now you have:
+
+conceptual model ✔
+primitives ✔
+scene concept ✔
+
+But you don’t yet have:
+
+A standard atom component
+
+You need something like:
+
+InteractionAtom
+- InputSource (sensor or UI)
+- SignalType (auto)
+- RelationshipType (bound/unbound)
+- MapType (continuous / on-off / one-shot)
+
+- Curve (AnimationCurve)
+- InputRange
+- OutputRange
+- Envelope (attack/release/etc.)
+
+- OutputTarget (light/material/etc.)
+
+Without this, stations will become inconsistent.
+
+4. Scene structure — already implicitly defined
+
+From what you wrote + docs, your lab becomes:
+
+Layer 1 — Physical scene
+primitives (columns, tiles, panels)
+Layer 2 — Interaction atoms
+one per station
+Layer 3 — Debug + control
+inspector
+world-space UI panel
+Layer 4 — Navigation
+FPS controller + raycast
+5. Organization of stations (your open question)
+
+You listed:
+
+by relationship type
+by output domain
+by perceptual quality
+Recommendation (based on your model)
+
+Use:
+
+Primary: Relationship type
+Bound zone
+Unbound zone
+Secondary: Map type
+Continuous cluster
+On/Off cluster
+One-shot cluster
+Tertiary: Variation
+different outputs
+different curves/envelopes
+
+Reason:
+
+aligns with teaching progression
+aligns with transformation model
+aligns with perception (feel differences)
+
+1. Matrix (Phase 1 — no state, no feedback)
+
+Fix everything except the relationship.
+
+Fixed
+Output: Light.intensity
+Range: 0 → 1 (or 0 → 5 for visibility)
+Objects: identical lights (columns/panels)
+Input sources:
+UI (button)
+Player (trigger / presence)
+Variable
+Relationship type
+Envelope (attack/release)
+2. Station Set A — “Unbound / Triggered” (one-shot)
+Concept
+
+Input fires → system runs → finishes independently
+
+Matches:
+
+Binary signal
+Unbound relationship
+A1 — UI Button → Light Pulse
+Structure
+3–4 identical light objects
+One world-space button
+Each object = same mapping, different envelope
+Object	Envelope	Feel
+A	Instant → fast decay	“click / flash”
+B	Fast attack → slow decay	“afterglow”
+C	Slow attack → slow decay	“swell”
+D	Overshoot → settle	“elastic / alive”
+Important
+Same input
+Same output
+Only envelope changes
+
+👉 This isolates temporal shape
+
+A2 — Player Trigger → Light Pulse
+
+Same as A1, but input changes:
+
+Trigger zone (OnEnter)
+No button
+Purpose
+
+Compare:
+
+Intentional trigger (UI)
+Embodied trigger (space)
+3. Station Set B — “Bound / Binary” (presence)
+Concept
+
+System follows presence
+
+Binary signal
+Bound relationship
+B1 — Player Presence → Light On/Off
+Structure
+Enter zone → ON
+Exit zone → OFF
+Variations (multiple objects again)
+Object	Attack	Release	Feel
+A	instant	instant	mechanical
+B	fast	slow	lingering
+C	slow	fast	reluctant
+D	slow	slow	atmospheric
+
+👉 This isolates:
+
+asymmetry
+persistence
+memory (without real state)
+4. Station Design Pattern (important)
+
+Each station = cluster, not single object
+
+Layout
+[ Label Panel ]
+
+[ Input (Button / Zone) ]
+
+[ Object A ]  (variant 1)
+[ Object B ]  (variant 2)
+[ Object C ]  (variant 3)
+[ Object D ]  (variant 4)
+Why multiple objects?
+
+Because:
+
+comparison becomes immediate
+removes memory load
+makes “feel” legible
+5. Labeling (critical for teaching)
+
+Each station must explicitly state:
+
+Example (A1)
+INPUT: Button (binary event)
+RELATIONSHIP: Unbound
+MAP: One-shot
+OUTPUT: Light intensity
+
+QUESTION:
+How does duration and decay change the feeling of the same action?
+6. Minimal Implementation Spec (v1)
+Controller per object
+Input → Trigger()
+→ PlayEnvelope(time)
+→ Light.intensity = curve(time)
+Parameters (Inspector)
+duration
+AnimationCurve (time → intensity)
+maxIntensity
+7. Order of stations (important flow)
+A1 — UI Trigger
+A2 — Spatial Trigger
+B1 — Presence (binary bound)
+
+This creates progression:
+
+event → event in space → continuous presence
+8. Key teaching outcome
+
+From just these 3 stations, students will grasp:
+
+difference between trigger vs presence
+difference between independent vs dependent
+role of envelope
+that same output ≠ same experience
+
+2. Final structure for Continuous (Bound)
+Station C1 — “Tracking” (baseline)
+Purpose
+
+What does bound continuous mean?
+
+Setup
+Input: proximity
+Output: light intensity
+Mapping: linear
+Smoothing: medium
+Variants (multiple objects)
+Object	Smoothing	Feel
+A	none	raw / mechanical
+B	medium	natural
+C	high	heavy / lagging
+
+👉 isolates coupling / pliability
+
+Station C2 — “Curve” (mapping shape)
+Purpose
+
+Same tracking, different curve
+
+Setup
+Same as C1 but:
+Smoothing fixed (medium)
+Variants
+Object	Curve	Feel
+A	linear	direct
+B	ease-in	reluctant start
+C	ease-out	eager response
+D	inverse	presence suppresses
+
+👉 isolates mapping
+
+Station C3 — “Range” (sensitivity)
+Purpose
+
+How much input matters
+
+Setup
+Same mapping + smoothing
+Only range changes
+Variants
+Object	Input Range	Feel
+A	wide (0–10m)	subtle
+B	medium	balanced
+C	narrow (0–2m)	sensitive
+D	deadzone	threshold-like
+
+👉 isolates amplification vs subtlety
+
+3. Why this decomposition works
+
+Because each station answers a different question:
+
+C1 → How tightly does it follow me?
+C2 → How is my movement interpreted?
+C3 → How much does my movement matter?
+
+This maps cleanly to:
+
+envelope
+curve
+range
+4. Should you add a combined station?
+Yes — but later
+Station C4 — “Combined”
+free exploration
+sliders in world-space UI
+students manipulate:
+curve
+smoothing
+range
+
+👉 This is sandbox, not teaching
+
+5. Important design rule
+
+For all C stations:
+
+Same object type
+Same layout
+Same lighting conditions
+
+👉 Only one variable changes per station
+
+6. External / Arduino station (your second question)
+Yes — include ONE dedicated station
+
+But keep it minimal.
+
+Station X1 — “External Signal”
+Purpose
+
+Show:
+
+input is just a signal — source is irrelevant
+
+Setup
+Replace proximity with:
+slider (UI)
+OR simulated external value (sin wave / random)
+
+Optional real version:
+
+Arduino → serial → float value
+Output
+same light intensity
+Variants
+Source	Meaning
+Slider	manual control
+Time (sin)	autonomous system
+Arduino	real-world input
+
+Yes — there are genuinely different configurations inside the bound category, beyond just tweaking curve/smoothing/range.
+
+What you’re feeling is correct:
+there are qualitatively different behaviors, not just parameter variations.
+
+The key is this:
+
+Bound is one relationship type, but it has distinct interaction modes.
+
+1. The real decomposition of “bound”
+
+Within bound, you actually have 3 fundamentally different configurations:
+
+(A) Direct Tracking
+
+Output follows input continuously
+
+classic mapping
+“the system follows you”
+
+→ what you already planned (C1–C3)
+
+(B) Thresholded / Gated Tracking
+
+Tracking only happens in certain regions
+
+below threshold → nothing
+above threshold → tracking
+
+→ still bound, but conditional
+
+(C) Accumulative / Integrative Tracking
+
+Output depends on history of input, not just current value
+
+input drives accumulation over time
+still continuously coupled
+
+→ proto-state, but still feels “bound”
+
+👉 These are not just parameter changes
+They change the structure of the relationship
+
+2. Recommended station set (refined)
+
+Instead of only “curve/smoothing/range”, use:
+
+C1 — Direct Tracking (baseline)
+proximity → light
+linear mapping
+
+Variants:
+
+smoothing differences (as you defined)
+C2 — Shaped Tracking (curve)
+same input/output
+different curves
+
+Variants:
+
+linear / eased / inverse
+C3 — Thresholded Tracking (NEW — important)
+Behavior
+if input < threshold → output = 0
+else → output = mapped(input)
+Variants
+Object	Threshold	Feel
+A	low	responsive
+B	medium	requires commitment
+C	high	resistant
+D	soft threshold (smoothstep)	forgiving
+
+👉 This introduces:
+
+decision boundary
+commitment
+loss of pliability
+C4 — Accumulative Tracking (NEW — very important)
+Behavior
+output += input * speed * dt
+
+(or similar)
+
+Interpretation
+being near → increases light
+being far → decreases (or stops)
+Variants
+Object	Behavior	Feel
+A	charge only	build-up
+B	charge + decay	dynamic balance
+C	fast accumulation	reactive
+D	slow accumulation	heavy / inert
+
+👉 This introduces:
+
+time integration
+proto-feedback feel
+“effort over time”
+3. Why these matter (conceptually)
+
+You now have 4 distinct bound configurations:
+
+Type	Depends on	Feel
+Direct	current input	immediate
+Shaped	current input (non-linear)	expressive
+Thresholded	condition + input	commitment
+Accumulative	history of input	effort / inertia
+
+VERY EXTENDED VERSION
+
+Below is a final, consolidated scene design guide for your interaction lab.
+It integrates:
+
+the transformation model (Input → Relationship → Output)
+the interaction palette structure (stations as atoms)
+the expanded bound configurations you developed (threshold, accumulation, etc.)
+alignment with your course philosophy (living systems, architecture as design)
+INTERACTION LAB — FINAL SCENE GUIDE
+1. What this scene is
+
+A single explorable environment composed of stations.
+
+Each station isolates one:
+
+Input → Relationship → Output
+
+This is the atomic unit of interaction design.
+
+The scene is not a game.
+It is a perceptual laboratory.
+
+You walk
+You experience
+You compare
+You tweak
+2. Core structure
+2.1 The atom
+
+Each station implements:
+
+Input (signal)
+→ Relationship (type + shape + condition + time)
+→ Output (perceptual change)
+2.2 The relationship model (final)
+Two main types
+BOUND
+Output depends on input continuously
+“the system follows you”
+UNBOUND
+Output runs independently once triggered
+“the system continues on its own”
+2.3 Signal types
+Continuous → flowing values (distance, gaze, time)
+Binary → state/event (inside, press, trigger)
+2.4 Relationship parameters
+
+Every station exposes:
+
+Type → bound / unbound
+Signal → continuous / binary
+Condition → when active
+Curve → mapping shape
+Range → sensitivity / scaling
+Envelope → attack / release (time feel)
+
+This is the full transformation chain.
+
+3. Station organization (FINAL)
+
+The scene is organized by relationship type, not by input or output.
+
+CLUSTER A — BOUND RELATIONSHIPS
+
+Output is continuously coupled to input
+
+A1 — Direct Tracking
+
+Concept:
+Immediate proportional coupling
+
+Behavior:
+
+output = f(input)
+
+Variations:
+
+linear
+smoothed
+asymmetric (fast in / slow out)
+
+Feel:
+
+attentive
+pliable
+responsive
+A2 — Shaped Tracking
+
+Concept:
+Same coupling, different curve
+
+Behavior:
+
+output = curve(input)
+
+Variations:
+
+ease-in / ease-out
+exponential
+inverse
+
+Feel:
+
+expressive
+biased
+intentional
+A3 — Thresholded Tracking
+
+Concept:
+Coupling only exists in certain regions
+
+Behavior:
+
+if input > threshold → tracking
+else → no response
+
+Variations:
+
+hard threshold
+soft threshold (smoothstep)
+multi-threshold (stepped)
+
+Feel:
+
+commitment
+resistance
+boundary
+A4 — Accumulative Tracking
+
+Concept:
+Output depends on history of input
+
+Behavior:
+
+output += input * dt
+
+(or charge/decay)
+
+Variations:
+
+charge only
+charge + decay
+fast vs slow accumulation
+
+Feel:
+
+effort
+inertia
+buildup
+A5 — Binary Bound (On/Off)
+
+Concept:
+Discrete coupling
+
+Behavior:
+
+inside → ON
+outside → OFF
+
+Variations:
+
+snap
+fade
+asymmetric
+
+Feel:
+
+clear
+mechanical
+architectural
+CLUSTER B — UNBOUND RELATIONSHIPS
+
+Input triggers, system continues independently
+
+B1 — Burst
+instant peak, fast decay
+impact / collision
+B2 — Swell
+slow rise, slow fall
+organic / breathing
+B3 — Tail / Afterglow
+fast attack, long release
+memory / residue
+B4 — Timed Playback
+full custom curve over time
+designed temporal shape
+B5 — Overshoot / Elastic
+spike → settle
+dynamic / alive
+CLUSTER C — CONDITIONS & COMPOSITION
+
+Relationships are gated or combined
+
+C1 — Conditional Activation
+gaze + proximity
+variable-based activation
+C2 — Layered Relationships
+
+One object:
+
+continuous glow
+threshold burst
+toggle sound
+C3 — Multiple Inputs
+combine signals
+AND / OR logic
+C4 — External / Abstract Inputs
+time
+slider
+random
+
+→ demonstrates input independence
+
+CLUSTER D — STATEFUL EXTENSIONS
+
+Memory modifies interaction
+
+D1 — Accumulation (persistent)
+repeated interaction changes system
+D2 — Toggle State
+press once → persists
+D3 — Adaptive Mapping
+curve changes over time
+D4 — Feedback Loops
+output → affects input → affects output
+
+→ circular interaction
+
+4. Station anatomy
+
+Each station = prefab:
+
+[Object]
+[Sensor]
+[Controller]
+[Output components]
+[Label]
+Label contains:
+Input
+Relationship type
+Output
+Coupling question
+
+Example:
+
+Proximity → Thresholded Tracking → Light
+
+"Does this feel reluctant or responsive?"
+5. Scene design principles
+5.1 Minimal geometry
+cubes, columns, panels
+no decorative noise
+
+→ interaction is the content
+
+5.2 Perceptual clarity
+
+One station = one idea
+
+No mixing unless explicitly in composition cluster
+
+5.3 Immediate comparability
+
+Stations placed in parallel sets
+
+→ same input/output, different relationship
+
+5.4 Inspector visibility
+
+Every controller exposes:
+
+curve
+range
+envelope
+thresholds
+
+Students tweak live
+
+5.5 Dual control
+
+Some stations include:
+
+spatial input (movement)
+UI slider (direct signal)
+
+→ isolate mapping vs input
+
+6. The deeper model (what students learn)
+
+This scene teaches:
+
+6.1 Interaction = relationship
+
+Not:
+
+triggers
+effects
+
+But:
+
+coupling between input and output
+
+6.2 Design lives in the relationship
+
+Not in:
+
+assets
+visuals
+
+But in:
+
+curve
+envelope
+condition
+time
+6.3 Bound vs unbound is fundamental
+
+This is the first real distinction:
+
+continuous coupling (dialogue)
+triggered response (event)
+6.4 Temporal structure matters
+instant vs delayed
+sustained vs decaying
+
+→ envelope defines feel
+
+6.5 State is separate
+
+Stateless:
+
+same input → same output
+
+Stateful:
+
+history matters
+6.6 Composition creates complexity
+
+Atoms combine into:
+
+systems
+loops
+behaviors
+7. Final mental model (clean)
+
+Students should leave with:
+
+Interaction =
+Input (signal)
+→ Relationship
+    - type (bound / unbound)
+    - condition
+    - curve
+    - range
+    - envelope
+→ Output
+
+And understand:
+
+Design = shaping the relationship
+

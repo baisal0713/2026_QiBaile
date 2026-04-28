@@ -1,0 +1,170 @@
+classDiagram
+    direction LR
+
+    %% === DATA ===
+    class LifecycleData {
+        <<ScriptableObject>>
+        -float startingEnergy
+        -float maxEnergy
+        -float energyDecayRate
+        +StartingEnergy : float
+        +MaxEnergy : float
+        +EnergyDecayRate : float
+    }
+
+    %% === CORE ===
+    class Lifecycle {
+        <<MonoBehaviour>>
+        -LifecycleData lifecycleData
+        -float currentEnergy
+        +CurrentEnergy : float
+        +MaxEnergy : float
+        +EnergyRatio : float
+        +IsAlive : bool
+        +Action OnDied
+        +Action~float~ OnEnergyChanged
+        +Action~float~ OnEnergyReceived
+        +AddEnergy(float)
+        +ReceiveEnergy(float)
+        +RemoveEnergy(float)
+        -Decay()
+        -CheckDeath()
+    }
+
+    %% === SENSORS ===
+    class Signal {
+        <<struct>>
+        +GameObject Object
+        +float Distance
+    }
+
+    class Sensor {
+        <<abstract>>
+        -string[] requiredTags
+        -List~Signal~ signals
+        +Signals : IReadOnlyList~Signal~
+        +HasDetections : bool
+        +Action~Signal~ OnSignalAdded
+        +Action~Signal~ OnSignalLost
+        +TryGetNearest(out Signal) bool
+        +IsDetected(GameObject) bool
+        #PassesFilter(GameObject) bool
+        #AddDetection(Signal)
+        #RemoveDetection(GameObject)
+        #RefreshDistances()
+    }
+
+    class TriggerSensor {
+        <<MonoBehaviour>>
+        -OnTriggerEnter(Collider)
+        -OnTriggerExit(Collider)
+    }
+
+    %% === MOVEMENT ===
+    class NavMeshMotor {
+        <<MonoBehaviour>>
+        -NavMeshAgent _agent
+        +IsMoving : bool
+        +HasArrived : bool
+        +Speed : float
+        +MoveTo(Vector3)
+        +Stop()
+    }
+
+    class NavMeshWander {
+        <<MonoBehaviour>>
+        -float radius
+        -float pauseTime
+        -PickNewDestination()
+    }
+
+    %% === BEHAVIORS ===
+    class Consumer {
+        <<MonoBehaviour>>
+        -float consumeRadius
+        -float energyGain
+        +Action~GameObject~ OnConsumed
+    }
+
+    class EnergyProvider {
+        <<MonoBehaviour>>
+        -float energyPerSecond
+        -ProvideEnergy()
+    }
+
+    class Spawner {
+        <<MonoBehaviour>>
+        -GameObject prefab
+        -int count
+        -Vector3 areaSize
+        +Spawn()
+    }
+
+    %% === CONTROLLERS (Glue) ===
+    class FaunaController {
+        <<MonoBehaviour>>
+        -float fleeDistance
+        -float wanderRadius
+        -float replicationThreshold
+        -float replicationCost
+        -Flee()
+        -Seek()
+        -Wander()
+        -CheckReplication()
+    }
+
+    class FloraController {
+        <<MonoBehaviour>>
+        -float energyPerPlant
+        -float replicationEnergy
+        -CheckPlant(float)
+        -CheckReplication(float)
+    }
+
+    %% === VIEW ===
+    class LifecycleView {
+        <<MonoBehaviour>>
+        -Color emissionColor
+        -float maxEmissionIntensity
+        -float maxLightRange
+        -float pulseScale
+        -UpdateEmission()
+        -UpdateLight()
+        -Pulse()
+    }
+
+    class PlantGrow {
+        <<MonoBehaviour>>
+        -float targetScale
+        -float duration
+        -Grow()
+    }
+
+    %% === UTILITY ===
+    class ReadOnlyAttribute {
+        <<PropertyAttribute>>
+    }
+
+    %% === RELATIONSHIPS ===
+    Lifecycle --> LifecycleData : reads config
+    TriggerSensor --|> Sensor : extends
+    Sensor --> Signal : maintains list
+
+    NavMeshWander --> NavMeshMotor : drives
+
+    Consumer --> Lifecycle : adds energy
+    Consumer --> Sensor : queries nearest
+    EnergyProvider --> Lifecycle : adds energy
+
+    LifecycleView --> Lifecycle : observes events
+    PlantGrow ..> Lifecycle : visual only
+
+    FaunaController --> Lifecycle : monitors/costs
+    FaunaController --> NavMeshMotor : moves
+    FaunaController --> Sensor : foodSensor
+    FaunaController --> Sensor : threatSensor
+    FaunaController --> Spawner : replication
+
+    FloraController --> Lifecycle : monitors
+    FloraController --> Spawner : plantSpawner
+    FloraController --> Spawner : replicationSpawner

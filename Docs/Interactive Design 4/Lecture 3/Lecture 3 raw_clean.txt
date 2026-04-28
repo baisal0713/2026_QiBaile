@@ -1,0 +1,198 @@
+
+[Logistics: L'istruttore chiede agli studenti di andare su Blackboard, scaricare e importare il pacchetto aggiornato. Spiega che gli script sono stati aggiornati rispetto alla volta scorsa e che la cartella dovrebbe chiamarsi semplicemente "scripts" — il prefisso "Ludcore" non serve perché è già il namespace interno. Si distribuisce il link della lezione e si consegna a Veronica la lezione 1 richiesta in precedenza.]
+
+---
+
+## Ripasso: Dove siamo e cosa vogliamo fare
+
+Dove siamo e cosa vogliamo fare? Stavamo vedendo questi quattro componenti del ciclo di vita: comportamento, riproduzione e interazione. Abbiamo visto il ciclo di vita e lo spawner per riprodurre.
+
+[Una studentessa (Veronica) chiede dell'energia nel life cycle]
+
+Per rispondere alla tua domanda, Veronica: l'energia è una variabile che sta dentro lo script Life Cycle, che contiene un timer interno. Però anziché semplicemente determinare la morte in base al timer, il timer decresce la variabile energia — questa variabile possiamo anche farla crescere in altri modi. Tutte le altre cose come il Destroy on Death erano semplicemente modi per distruggere oppure per fare variazioni. Questo concetto di modularità: diverse azioni potrebbero stare in script diversi per poter essere riutilizzati.
+
+Abbiamo fatto due entità, la flora e la fauna. Abbiamo fatto la fauna muoversi con il NavMesh — ecco, questo è importante. Abbiamo visto anche un po' del comportamento.
+
+Ricordiamoci: l'energia può mediare, altre variabili possono mediare, però tutte queste variabili di base — come configurazione iniziale, cioè dei valori che vogliamo impostare all'inizio e non cambiare dopo — un ottimo strumento per questo scopo è utilizzare gli ScriptableObjects, che sono degli oggetti contenitori per delle variabili a cui poi diamo riferimento. Questo sarà diverso dal cosiddetto runtime state, che sarà invece il valore di una data variabile di un oggetto in un momento preciso della simulazione.
+
+Cosa vogliamo fare? Vogliamo completare questo ecosistema aggiungendo delle interazioni tra gli organismi, e forse aggiungendo anche un predatore, che negli ecosistemi serve come regolatore perché sennò c'è una proliferazione infinita.
+
+---
+
+## Reimplementazione della Flora con Life Cycle
+
+Vediamo prima dove siamo arrivati con la flora e la fauna. La flora era definita in base al timer. Adesso farei una reimplementazione della flora, forse anche due tipi, giusto per avere un po' di varietà.
+
+I passi che abbiamo fatto fino ad ora: creare un oggetto, assegnare un materiale per poterlo distinguere e assegnare una qualche visualizzazione che ci aiuta a distinguerlo. La visualizzazione può essere, per esempio, la scala. Nella cartella del runtime, quella che adesso avete aggiornato, ho aggiunto qualche modulo nuovo. I moduli base — quelli per fare rotazione, scala, movimento — sono un po' sempre quelli che abbiamo visto anche il semestre scorso, quindi possiamo dare già da subito un qualche comportamento.
+
+Su questo oggetto, per esempio, userei il componente Scale. Come funziona? Abbiamo un target scale, una durata, e ho aggiunto l'autoplay in modo da non doverlo triggerare dall'esterno. Quello che possiamo fare è che questo oggetto parte con scala zero, gli diamo un target scale 1 — per esempio 10 se vogliamo che cresca solo in altezza — una durata di qualche secondo e facciamo autoplay. Dovrebbe eseguire l'animazione per quella durata, per quella scala, in automatico.
+
+Poi ci manca il Life Cycle. Aggiungo un Life Cycle e un Life Cycle Data. Lud Core Life Cycle Data contiene tre variabili. Iniziamo con: energia iniziale 50, max energia 100, decay rate 10 energia al secondo — ciclo di vita totale sarà di 5 secondi.
+
+E per completare quello che abbiamo fatto la volta scorsa, ci manca la replicazione.
+
+> **[Digression]** C'è un piccolo problema perché la scala viene eseguita dal centro, dal pivot, e in questo caso vogliamo che cresca dal basso verso l'alto. La soluzione è mettere l'oggetto dentro un altro oggetto che avrà il pivot al centro — dovrebbe simulare l'effetto. Però adesso non vorrei perdermi con queste cose.
+
+[Gli studenti ricordano come funzionava la replicazione: ogni pianta usa un evento per chiamare uno spawner che crea copie]
+
+Esatto. Abbiamo usato l'evento. La volta scorsa abbiamo usato il timer, che è sempre un'opzione — ricordiamoci che quando implementiamo dei sistemi, ci interessa sempre implementare la soluzione minimale per quella cosa che ci serve. La volta scorsa abbiamo usato il timer, però adesso, visto che vogliamo usare l'energia — aggiungere, togliere e così via — non usiamo il timer che ci dava il completed event. Invece oggi useremo il Life Cycle che ha il die event, l'evento di morte finale.
+
+Quello che faremo è aggiungere un oggetto chiamato "replication spawner". Gli darò un'area, e farò in modo che, visto che abbiamo Destroy on Death, l'oggetto andrà a estinguersi in automatico. Sull'on die event possiamo chiamare replication spawner.spawn. Cosa vogliamo spawnare? L'oggetto stesso — quindi lo rendiamo prefab.
+
+Ripetiamo i passi: abbiamo la scala per avere un senso di crescita, il Life Cycle che definisce il ciclo di vita con i Life Cycle Data, un replication spawner dentro l'oggetto che a questo punto dobbiamo salvare come prefab. Dal prefab — non dalla copia nella scena, dal prefab — dobbiamo assegnare nello spawner il prefab stesso, quindi andrà a spawnare se stesso dopo la sua morte. Ricordiamoci infine di collegare questo spawner al die event. Questo è il modo più semplice.
+
+[L'istruttore chiede agli studenti di provare a farlo]
+
+Non spaventatevi se vediamo tanti spawner. Questa è l'idea del modulo: è un componente che possiamo riutilizzare a vari scopi. Possiamo avere uno spawner iniziale che genera un po' di piante in giro, ma le piante stesse potrebbero avere uno spawner per replicarsi e così via. L'operazione in Unity si chiama "istanziare", noi lo chiamiamo "spawn" in modo più generico. Noi continuiamo a usare queste forme un po' astratte, ma la stessa cosa si potrebbe applicare anche a dei modelli.
+
+---
+
+## Lo spawner iniziale e la proliferazione
+
+Possiamo usare lo spawner iniziale per spawnare le nostre piante. Ho un timer che ogni 5 secondi farà cinque di queste. Avremo effettivamente una cascata: cinque che poi ciascuno ne produce altri cinque — una progressione esponenziale.
+
+[Logistics: L'istruttore ricorda di usare sempre i componenti di Lud Core, non quelli della prima lezione. Gli studenti lavorano in autonomia per qualche minuto.]
+
+---
+
+## ProBuilder: spostare il pivot
+
+[L'istruttore mostra come usare ProBuilder per creare forme custom e spostare il pivot degli oggetti]
+
+Se avete il ProBuilder nel progetto, installatelo: Window, Package Manager, Unity Registry, ProBuilder. ProBuilder ci serve soprattutto se vogliamo creare o editare dei modelli — per esempio spostare il pivot.
+
+> **[Digression]** Hanno rovinato il ProBuilder perché prima aveva un'altra interfaccia, nelle versioni vecchie era molto più facile. Adesso hanno fatto questa cosa assurda che utilizza gli hotkey per accedere. Io non mi ricordo mai gli hotkey.
+
+Dovete tenere premuto su questo pulsante col mouse destro e potete scegliere una forma primitiva da creare. Per spostare il pivot: selezionate l'oggetto, andate in alto a sinistra dove vedete il cubo e selezionate la selezione ProBuilder anziché GameObject. Poi selezionate la faccia in basso, andate su Tools > ProBuilder > Geometry > Set Pivot to Selection. Possiamo anche selezionare un edge oppure un vertice se vogliamo il pivot in quell'angolo. Selezioniamo la faccia, poi Tools > ProBuilder > Geometry > Set Pivot to Selection. Poi torniamo su GameObject selection.
+
+Il senso è: il pivot è importante per animare in una certa direzione — se vuoi far crescere un oggetto dal basso verso l'alto, il pivot deve essere sotto.
+
+---
+
+## Flora 2: energia crescente e Energy Provider
+
+Cosa succede se vogliamo avere diversi organismi con una logica diversa di replicazione, che non sia necessariamente sulla morte? Per esempio, nella natura le piante assorbono dal sole energia, accumulano sotto forma di clorofilla. È una logica diversa dove c'è un accumulo di energia.
+
+Qua passiamo dal margine tra un componente modulare riutilizzabile e un componente ritagliato per quell'organismo specifico. Parliamo di moduli generali riutilizzabili e una cosa che li collega — una specie di "glue" che collega diversi moduli e variabili per quello specifico oggetto.
+
+Spesso questo glue lo vedrete nominato sotto forma di "controller" o "manager". Quando vedete manager o controller è una cosa specifica, raramente sarà riutilizzabile per altri oggetti.
+
+Manteniamo la Flora 1 col suo comportamento. Faccio una copia e la chiamo Flora 2. Duplico, faccio tasto destro > Prefab > Unpack — per toglierlo dal prefab e poterne cambiare il comportamento.
+
+In questa pianta vogliamo che accumuli energia, non che la perda soltanto. Per questo scopo aggiungiamo un componente che si chiama Energy Provider. Cosa fa? È relativamente semplice — aggiunge un tot di energia al ciclo di vita ogni secondo. Se l'energy per second è più grande del decay rate, l'energia crescerà.
+
+Creo un nuovo Life Cycle Data per la nuova pianta, con valori diversi: starting energy 50, ma max energy più alta per poter accumulare. Decay rate 5. Stesso componente, configurazione diversa — abbiamo un comportamento diverso. Questo è un modo semplice per separare i dati dalla logica.
+
+[L'istruttore chiede agli studenti di verificare che l'energia sta crescendo prima di proseguire]
+
+Ripeto quello che sto facendo: scala, Life Cycle — queste cose sono uguali. Ho semplicemente aggiunto il componente Energy Provider, gli ho dato il riferimento al Life Cycle. Il componente che stiamo aggiungendo ci chiede di inserire il Life Cycle di quella pianta perché andrà ad aggiungere un tot di energia. Se lanciamo il gioco dovremmo vedere il valore del current energy che sta crescendo.
+
+---
+
+## Flora Controller: replicazione basata sull'energia
+
+Possiamo finalmente aggiungere il Flora Controller. Dentro ha un replication spawner, una replication energy — per dire "quando arrivi a un tot di energia, genera copie di te stesso" — e uno spawner secondario che andrà a spawnare un'altra cosa a ogni incremento di energia. Per esempio, ogni cinque energie possiamo spawnare un'altra cosa.
+
+Questo è un modo alternativo. Fino ad ora abbiamo fatto un chain spawn: una pianta replica se stessa solo alla morte. Qua stiamo invertendo la logica — stiamo spawnando non sulla morte, ma sull'aver accumulato un tot di energia.
+
+Una differenza: prima abbiamo usato l'evento sul Life Cycle "quando muore, fai spawn". Adesso non ci serve più quell'evento perché il controller sta controllando lo spawner sulla base del valore di energia.
+
+Posso avere un secondo spawner che genera qualcos'altro — per esempio la prima pianta che abbiamo creato. Così avremo due cose. Per distinguerli cambio i materiali.
+
+Il senso qua è ragionare su azioni. Ogni spawner diverso sarà un'azione con valori diversi: area diversa, quantità diverse. Il Flora 2 quando replica se stesso può avere un'area molto più grande. Il plant spawner invece può avere un'area più ristretta e farne solo uno ogni cinque energia. Potete definire i valori. La Flora 1 avrà i suoi valori nel suo spawner.
+
+Giocando un po' con questi valori possiamo avere effetti molto diversi dalla stessa configurazione di base.
+
+Posso anche giocare con le energie di partenza: fare in modo che l'energia iniziale della Flora 2 sia minore per avere più tempo per crescere. Posso accorciare il tempo di vita con un max energy minore, oppure fare in modo che la replicazione avvenga a un'energia uguale al max o un po' meno — dipende da cosa vogliamo fare. Dovete studiare i valori e capire quale fa cosa.
+
+Con questa configurazione abbiamo una proliferazione più graduale.
+
+[L'istruttore chiede se la logica è chiara e offre aiuto agli studenti]
+
+[Break: pausa. L'istruttore esporta gli oggetti preconfigurati per gli studenti e prepara i passi successivi.]
+
+---
+
+## Life Cycle View: visualizzazione custom e uso dell'AI
+
+Chiudiamo la parte della flora con un ultimo passaggio. Tra l'utilizzo di moduli generici per la visualizzazione — come il modulo Scale, Rotate e altri — oppure possiamo crearci dei moduli custom.
+
+[L'istruttore chiede agli studenti se usano già strumenti AI. Alcuni hanno usato ChatGPT per generare codice o immagini, ma sempre esternamente.]
+
+Il vantaggio di aver collegato VS Code con GitHub Copilot la volta scorsa è che l'AI è già consapevole del progetto — può entrare nel progetto, leggere i file, e possiamo costruire una consapevolezza sul contesto molto più facilmente che usandola esternamente in modo one-shot.
+
+[Logistics: L'istruttore verifica che gli studenti abbiano VS Code configurato come external script editor nelle preferenze di Unity.]
+
+Possiamo costruirci dei componenti custom per una specifica cosa. Ho un esempio: il Life Cycle View, che ho sostituito al semplice Scale. A parte lo scaling, sta aumentando l'intensità del materiale — la pianta gradualmente aumenta di intensità — e poi, visto che stiamo lavorando con materiali emissivi (e i materiali emissivi non sono luci vere), ho inserito un point light per illuminare il terreno attorno. Il Life Cycle View sta aumentando gradualmente l'intensità e anche il range di questa luce come feedback della crescita.
+
+### Esempio pratico: aggiungere rotazione con l'AI
+
+Facciamo che vogliamo aggiungere una leggera rotazione. Apro lo script Life Cycle View e dico semplicemente all'AI di espandere la visualizzazione aggiungendo una leggera rotazione. Quello che ci propone: un asse di rotazione, una velocità, e nell'update ha aggiunto un transform.Rotate. Se vogliamo mantenere il cambio, facciamo "Keep" — il pulsante in VS Code quando l'AI propone il cambio. Rotation axis Y, 45 gradi al secondo.
+
+Un altro utilizzo molto utile: quando abbiamo degli errori, possiamo darglieli e farglielo investigare, oppure generare script nuovi.
+
+[L'istruttore chiede agli studenti di provare ad aggiungere il Life Cycle View a un oggetto e di pensare a una visualizzazione aggiuntiva da chiedere all'AI — cambio colore graduale, intensità della luce, ecc.]
+
+Il flusso è: aggiungere il componente all'oggetto, aprire lo script (anche premendo due volte sullo script in alto nel componente), e siccome l'AI ha già il contesto dello script aperto, possiamo dire "vorrei aggiungere una parte alla visualizzazione". Provate a pensare qualcosa.
+
+Siccome stiamo cambiando il range della luce, possiamo anche cambiare l'intensità. Si può giocare con il livello di intensità — per esempio, sotto il cinque non sembra emissivo a causa dei valori del post processing, quindi metterei la max emission sopra i cinque. Ma questo dipende dalla configurazione.
+
+[L'istruttore mostra come tornare indietro: Ctrl+Z oppure il pulsante "Restore to last checkpoint" nella chat dell'AI in VS Code]
+
+Questi agenti adesso sono molto più avanzati, possono modificare più script contemporaneamente. Però per ora eviterei: iniziamo con piccole modifiche oppure qualche script breve, poi man mano quando ci abituiamo a come collegare i dati con l'oggetto, il controller, possiamo creare anche un intero sistema nuovo. Basta capire la logica — questa è la parte più importante, non tanto il codice.
+
+---
+
+## Fauna e Predatore: il priority queue
+
+Sto impostando la fauna — l'oggetto che andrà a consumare le piante. La cosa nuova qua è il NavMesh: il Wonder e le altre abilità di movimento usano sempre lo stesso concetto, generano un waypoint e poi vanno avanti.
+
+Il Flora Controller che abbiamo usato fino ad ora fa solo replicazione con l'idea dell'energia crescente. Il Fauna Controller invece ha una cosa nuova: una priority queue, una coda di priorità di azioni. La fauna è un oggetto che deve andare a mangiare, trovare le piante, e forse scappare dai predatori.
+
+La struttura è questa: in primo luogo controlla se è vivo — se non è vivo, c'è un return, cioè non eseguire le cose che seguono, esci dal metodo. Poi controlla se può essere replicato. Poi le priorità per la sopravvivenza: primo, scappare dai predatori; poi cercare cibo; e se non ha nient'altro da fare, farà il wonder — andrà in giro finché non trova una di queste due cose. La stessa logica dell'esempio della prima lezione, ma definita come una priorità. Potete capire, con l'AI o a mano, che è molto semplice inserire altre azioni: andare a trovare dell'acqua versus del cibo, andare al sole o meno — basta aggiungere un altro if statement nella queue.
+
+I comportamenti di flee e seek vengono eseguiti con dei sensori. Il concetto è sempre simile al trigger zone dell'anno scorso: un collider trigger con un range, aggiungiamo il trigger sensor e gli diamo un tag — cosa deve riconoscere. Il food sensor deve riconoscere il tag "flora", il threat sensor il tag "predator". L'identificazione di alcuni trigger collider richiede sempre un rigid body, idealmente su tutti gli oggetti — cinematico, non stiamo usando le forze.
+
+### Il Predatore
+
+Il predatore: copio la fauna perché avrà una struttura simile, faccio Unpack. Al posto del Fauna Controller, avrò un Predator Controller separato — ancora più semplificato: fa solo seek (cerca la fauna per mangiarla) oppure wonder. Avrà un food sensor ma non un threat sensor perché non ha paura di niente. Gli do una forma diversa e un altro materiale per riconoscerlo.
+
+La parte importante dei sensori è l'identificazione basata su tag: cos'è il food per il predatore? Sarà la fauna, non le piante. Controlliamo i tag corretti: Flora → flora, Fauna → fauna, Predator → predator.
+
+---
+
+## Configurazione finale dell'ecosistema
+
+Anziché avere gli oggetti già nella scena, aggiungo tre macro spawner — ciascuno andrà a spawnare con diverse tempistiche o quantità. Questa è la parte più divertente una volta che tutto è definito: trovare i valori per avere un sistema bilanciato.
+
+Flora: 10, Fauna: 5, Predatori: 2.
+
+La configurazione è interessante. La fauna, come abbiamo visto, scappa prima di cercare cibo, quindi forse i predatori devono essere meno numerosi inizialmente. Questa è una sfida di bilanciamento del sistema. Una volta definiti i comportamenti, bisogna chiedersi: quali sono i valori delle entità singole? Come vengono spawnati? I predatori vengono spawnati sui bordi? Hanno un ciclo di vita diverso?
+
+Ho messo un ciclo di vita molto ridotto per la fauna e per i predatori che durano molto poco — se non riescono a trovare cibo si spengono. Può essere che la soluzione sia semplicemente aggiungere molte più piante.
+
+[Logistics: L'istruttore esporta il pacchetto e lo passa agli studenti da importare e testare.]
+
+---
+
+## Esercizio e consigli finali
+
+Come esercizio per la prossima volta: studiare il sistema, rivedere i componenti e cambiare il bilanciamento. Potete partire dalla scena fornita, ricostruire, o cambiare gli organismi stessi.
+
+Per far partire la simulazione: primo, rigenerate la NavMesh nella scena. Secondo, nella console controllate che il pulsante "Error Pause" non sia attivo — sennò anche un errore non importante vi bloccherà il gioco. Fate queste due cose e la simulazione dovrebbe partire.
+
+Ripercorrendo i diversi componenti: potete cambiare i valori per ottenere un ecosistema bilanciato. Su cosa potete agire? Sicuramente sugli spawner generali — quante piante, quanta fauna, quanti carnivori generiamo a ogni tick. Il tick nel nostro caso è 5 secondi, può essere anche meno. Quanti ne generiamo? E poi le proprietà dei singoli organismi: quanto dura la loro vita, quanta energia assumono quando consumano un'altra pianta, vengono replicati o meno. La flora dovrebbe ancora replicarsi.
+
+Se giocate con i dati — sia degli spawner generali sia delle entità singole, sia con le quantità di energia — dovreste riuscire a creare un sistema che non va in sovrabbondanza ma non va neanche a estinguersi.
+
+Giusto per darvi quest'ultima immagine: il Game of Life — erano automi cellulari che possono avere una loro vita, replicarsi, vivere o bloccarsi a seconda di come impostiamo la configurazione.
+
+### Salvare con Git
+
+[Uno studente chiede come gestire le modifiche quando si rompono le cose]
+
+Questa è una buona osservazione. Lì diventa importante Git. Quello che io nel mio lavoro cerco di fare sempre: non fare troppe modifiche contemporaneamente. Fare una modifica alla volta: salvare il progetto in Git, poi fare la modifica, testarla — forse mi piace, forse la modifico un po' — poi risalvarla. Se nel caso non dovesse andare bene, si rompe qualcosa, posso sempre tornare da Git perché ha già salvato il progetto.
+
+Il mio consiglio: provate a salvare su Git a piccoli passi prima di fare modifiche con l'AI. Salvate, fate la modifica, testatela. Se non vi piace, potete fare revert dall'AI al checkpoint prima. Però se avete fatto troppe modifiche e tutto è andato a male, venite su Git e fate checkout del commit precedente — siete al punto di prima.
+
+[Logistics: L'istruttore nota che lo stream ha registrato l'audio ma non il video. Si impegna a registrare un breve tutorial di 10 minuti a casa per spiegare i concetti. Saluti e chiusura della lezione.]

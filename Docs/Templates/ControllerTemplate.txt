@@ -1,0 +1,109 @@
+============================================================
+[YourSystem]Controller — TEMPLATE
+(standalone: this is the default)
+============================================================
+
+Role
+----
+Implements ONE interaction atom:
+
+      Input (Signal)  →  Relationship  →  Output
+
+A standalone Controller owns all three:
+  - Input  — reads from a sensor / signal source
+  - Relationship — curve, range, envelope (lives on a Profile)
+  - Output — drives one thing in the world DIRECTLY
+             (a Light, Material, AudioSource, ParticleSystem,
+              Transform, RenderSetting, …)
+
+This is the DEFAULT shape. Most interactions are one
+controller, one output, one script. A Controller does NOT
+need a Manager. Reach for a Manager only when multiple
+Controllers need to drive the SAME output and would
+otherwise fight over it (see ManagerTemplate.txt).
+
+Fields
+------
+Scene References — INPUT:
+- sensor / target / input source
+  (see Interaction Model/primitives.md for the catalog)
+
+Scene References — OUTPUT:
+- the thing this Controller drives directly
+
+Profile:
+- profile — relationship tuning (curve / range / envelope)
+            and target values
+
+Debug:
+- isActive  [ReadOnly]  — current detected state
+
+Update logic
+------------
+Bound (output follows input while input is present):
+  1. Sample signal each frame.
+  2. On first frame, sync internal state and return.
+  3. If signal unchanged, return.
+  4. Tween output toward target using profile.attack /
+     profile.release.
+
+Unbound (input event triggers a self-running response):
+  1. Detect the trigger.
+  2. Fire a one-shot sequence (DOTween / coroutine) shaped
+     by profile.curve over profile.duration.
+  3. Optional cooldown before next trigger.
+
+Inputs + outputs catalog
+------------------------
+See: Docs/Interactive Design 4/Interaction Model/primitives.md
+     Docs/Interactive Design 4/Interaction Model/transformation-model-v2.md
+
+Live examples in this project
+-----------------------------
+- StillnessDimController.cs   bound + binary  (standalone, owns lighting outputs directly)
+- GazeDrainController.cs       bound + continuous
+- Room1EntryController.cs      unbound        (fires a designed sequence)
+
+Conventions every Controller follows
+------------------------------------
+1. CONTEXT MENU on parameterless test verbs.
+   Mark editor-callable test methods with [ContextMenu("Name")]
+   so the verb appears in the component's right-click menu and
+   can be triggered without entering Play mode wiring:
+
+       [ContextMenu("Activate")]
+       public void Activate() { ... }
+
+2. READONLY DEBUG FIELDS for runtime state that mutates AND
+   is not otherwise observable in the inspector. Use
+   [ReadOnly, SerializeField] so students can see internal
+   state during Play mode without it being editable.
+   Don't duplicate values that are already visible elsewhere
+   (a Light's intensity, a Material's color — those show up
+   on their own components).
+
+       [Header("Debug")]
+       [ReadOnly, SerializeField] private bool isActive;
+
+3. EVENTS — both flavors, used selectively.
+
+   UnityEvent (inspector wiring) — designer-facing. Use when
+   you want students to drag responses in the inspector
+   without writing code. Visible, no recompile needed.
+
+       [Header("Events")]
+       [SerializeField] private UnityEvent onActivated;
+       [SerializeField] private UnityEvent onDeactivated;
+       ...
+       onActivated?.Invoke();
+
+   C# event (code wiring) — for other scripts that want to
+   subscribe in code. Add only when something genuinely
+   needs to listen programmatically.
+
+       public event System.Action<bool> ActiveChanged;
+       ...
+       ActiveChanged?.Invoke(isActive);
+
+   Either, neither, or both — pick what the interaction
+   actually needs. Don't add events that no one listens to.

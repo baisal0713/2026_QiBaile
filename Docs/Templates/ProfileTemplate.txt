@@ -1,0 +1,64 @@
+============================================================
+[YourSystem]Profile — TEMPLATE
+============================================================
+
+Role
+----
+Pure tuning data — the RELATIONSHIP of one interaction atom
+expressed as a ScriptableObject asset.
+
+  Holds: curve, range, envelope, target values.
+  Holds NO runtime state. Nothing on this asset mutates
+  during play.
+
+A Profile pairs with either:
+  - a standalone Controller (ControllerTemplate.txt), OR
+  - a Manager (ManagerTemplate.txt) — and a Controller can
+    pass its own Profile to the Manager as an override.
+
+Multiple instances are encouraged: "Default", "Combat",
+"Cutscene", "Teleport Blackout" — same script, different
+feels.
+
+Rule of thumb
+-------------
+If a value MUTATES at runtime, it does NOT belong on the
+Profile. Put it on the Controller or Manager.
+The Profile is the recipe; the script is the cook.
+
+Shape
+-----
+[CreateAssetMenu(menuName = "Ludocore/[YourSystem] Profile")]
+public class [YourSystem]Profile : ScriptableObject
+{
+    Header: "<StateA → StateB Transition>"  (the envelope)
+      - delay     [Min 0]                   attack-delay
+      - duration  [Min 0.01]                attack/release time
+      - curve     AnimationCurve            shape
+
+    Header: "<StateB → StateA Transition>"
+      same three; durations may differ
+      (asymmetry — fast-in/slow-out etc. — is expressive)
+
+    Header: "<Values per channel>"          (the target/range)
+      one pair per thing the script drives:
+        - <channel><StateA value>
+        - <channel><StateB value>
+}
+
+Mapping to the Interaction Model
+--------------------------------
+- curve     →  the shape of the relationship
+               (input→output for bound; time→output for unbound)
+- duration  →  envelope attack / release
+- delay     →  envelope attack-delay
+- value pairs → output range (min / max the output reaches)
+
+See: Docs/Interactive Design 4/Interaction Model/transformation-model-v2.md
+     §"Curve, Range, Envelope"
+
+Live example in this project
+----------------------------
+- LightManagerProfile.cs
+- StillnessDimProfile.cs
+- GazeDrainProfile.cs

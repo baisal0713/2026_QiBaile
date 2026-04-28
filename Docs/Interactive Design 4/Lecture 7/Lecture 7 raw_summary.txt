@@ -1,0 +1,67 @@
+Teacher Summary -- Interactive Design 4, Lecture 7
+
+TEACHING OBJECTIVES
+
+This session had two declared technical goals — introducing the controller/manager split, and introducing the concept of state — but its underlying intention was broader: to push students from "I can build one interaction" toward "I can architect a system of interactions." The instructor wanted students to notice that when several interactions reach for the same outputs (lights, fog, post-processing), they shouldn't each implement the same logic — that's where a manager belongs. He also wanted to plant the idea that interactions can have memory: a room remembers how many times you've entered it, a door behaves differently the fourth time. Beneath both, a third goal surfaced clearly: to begin shifting students into production mode by distributing the design document, production plan, and asset list templates and asking them to start treating their final exam project as a real production rather than a future homework.
+
+The unstated goal — the one the lecture had to absorb whether the instructor wanted it or not — was crisis management. NABA's GitHub Enterprise was suddenly gone. Copilot might or might not still work. Roughly the first half-hour was given over to migration logistics. The instructor handled this with his usual composure but the cost was real: the conceptual content of the lecture had to be compressed into the second half.
+
+PEDAGOGICAL APPROACHES
+
+The session leaned heavily on the now-established workflow loop: small spec, AI plan/build, iterative adjustment. What's new is that the instructor introduced the spec workflow not just as method but as a tool with two distinct modes — Plan and Build — and showed students that AI tools like OpenCode and Kilo expose this distinction explicitly. He framed the spec-first habit not as "what I happen to do" but as a transferable practice with a why ("anche se scrivi a parte non è inutile... a volte emergono cose").
+
+A new pedagogical thread: introducing architecture (manager/controller) without traditional software-engineering vocabulary. The instructor avoided saying "OOP," "design pattern," or "separation of concerns." Instead he led with use cases ("if three controllers all want to control the light...") and let the abstraction emerge from the friction. This is an inviting on-ramp for design students, though it leaves the abstraction slightly under-specified — "manager" and "controller" both end up as terms students must absorb mostly by example.
+
+The tile-rotation demonstration served as a sandbox for the modular logic principle: "don't build a component that does everything, build a component that does one action, then orchestrate." This was taught through a working demo rather than slides — a single TileRotation script that can be configured for self-animation (per-tile timer) or for orchestrated waves (a manager finds all tiles and triggers them with staggered delay). The same script, two architectural personalities. That's a powerful teaching artifact and the instructor used it well.
+
+The teleport interaction was the day's main live build. Unlike the compacting corridor in Lecture 6, where the build was the conceptual centerpiece, here the build served the manager/controller theme: the interaction was deliberately split across a HomeLocation script (saves a transform), a TeleportTrigger (consumes the saved transform), and a LightManager (handles the fade). The build also exposed a real failure: the fade-on-teleport didn't visually register, and the instructor named this honestly as "questo lo dobbiamo gestire dal manager" rather than smoothing it over. Productive imperfection again.
+
+The Veronica side-thread (transparent door on approach) was used as a teaching opportunity twice. First, as a concrete answer to a student's design idea — material alpha, alpha clipping vs transparent shader, collider toggle as a hidden requirement. Second, much later, as a classification exercise: is this tracking or one-shot? The instructor used the door interaction (and also his own gaze-fog example) to revisit the 2x2 matrix from Lecture 6 in a substantive way: "this looks like tracking but it's actually a switch — the sensor is composite but the relationship is binary." That's the matrix actually doing thinking work, not just sitting on a slide.
+
+DESIGN PHILOSOPHY AND PRINCIPLES
+
+Several principles got named explicitly. "Don't build a component that does everything; build a component that does one action and orchestrate it" is now the central architectural principle. "If more than one controller does the same thing, that thing belongs in a manager" is the rule-of-thumb version of that principle. Both were stated multiple times, in slightly different framings, throughout the second half.
+
+The instructor also reinforced the data-vs-logic separation he established last session: ScriptableObjects hold configuration; controllers consume it. This is now repeated across three lectures and is becoming a course-level conviction rather than a passing tip.
+
+A newer thread: state as a first-class design concern, not an implementation detail. "When we talk about state, we're talking about saving one or more variables we've interacted with in this game session." The example given — "you pass through this room three times, the fourth time the door is closed and another opens" — is a designer's example, not a programmer's. It frames state as a narrative tool.
+
+Two production-side principles also surfaced: the spec is a permanent artifact ("the chat will be lost, the spec stays") and AI-driven design rewards giving the model the right context ("tell it you're using First Person Controller, tell it which existing components to reuse"). Both are practical wisdom rather than theory and both landed cleanly.
+
+KEY IDEAS AND CONCEPTS INTRODUCED
+
+The manager/controller split is the conceptual centerpiece. A controller owns one interaction and decides when to fire it; a manager owns a shared output (lights, fog, post-processing) and exposes operations on it. Multiple controllers route their effects through the same manager, which prevents conflicts and centralizes the logic.
+
+State is the second concept, lighter in treatment than the manager idea. The instructor introduced it through the natural extension of the manager — once you have a manager, it's the sensible place to keep persistent variables. The example was passage counting (third visit vs fourth visit triggers different behavior). State wasn't fully built in code today; it was named and motivated, with implementation deferred.
+
+The gaze sensor / focus interaction was introduced at the end. Architecturally it parallels the proximity sensor: a Raycast Sensor on the camera, a layer (focusable) on the objects we want to look at, a Focus component on the specific object, and a controller that responds when the focus state changes. The Focus controller plus fog density was the live example. Crucially, the instructor used this example to teach a classification subtlety: gaze looks like a continuous tracking interaction but is actually a binary switch (you either focus the object or you don't). That distinction was the most precise application of the 2x2 matrix in any lecture so far.
+
+The two AI tools — OpenCode and Kilo — were introduced as alternatives to Copilot, with terminal-based usage as a more lightweight option than VS Code integration. Mistral was mentioned as a web-based alternative. The introduction was practical, not enthusiastic; the tone was "let's keep our options open."
+
+Documents distributed: a draft design document and production plan for the Backrooms project, plus the asset list expectation. These were positioned as production scaffolding, not as exam requirements ("non è che non passate l'esame se non ce le avete"), but with a clear nudge that students should start filling them in for their own projects.
+
+DIGRESSIONS AND ANECDOTES WORTH PRESERVING
+
+The Discard cautionary tale — an exam student last semester who selected half their project in GitHub Desktop and clicked Discard, deleting most of their work — is a vivid micro-lesson about destructive Git operations. The instructor used it to advise against Discard when first creating a repository while noting that, once commits exist, the same operation is recoverable. This is the rare moment where Git appeared in concrete form, even if not as a live demonstration of safe workflow.
+
+The mention of last year's student project (collecting photos in a level, entering them, being transported to one's childhood bedroom) was used to encourage personal-experience-driven exam projects. It's a nice grounding example because it's not a technical demo — it's an emotional concept that happens to use the tools the course teaches.
+
+The teleport-fade failure was a small unscripted moment that turned out useful. The fact that the fade didn't register because the LightManager hadn't been wired into the teleport sequence demonstrated, without saying so, why the manager pattern matters: the controller and the manager need to coordinate, and that coordination is itself a design decision.
+
+STUDENT LANDSCAPE
+
+The class today was small — maybe four or five students — and one (Veronica) drove much of the second-half attention with a sustained interaction-design effort (the transparent door). She also stayed past the official end of the session for an extra half-hour, which is an unusually strong engagement signal in a course where between-session practice has been thin. One other student had clearly attempted homework using the spec workflow, producing work that was conceptually sound but missed contextual cues (used Rigid Body where the project uses Character Controller). At least one student arrived late and at least one struggled with a non-functioning Visual Studio install during the migration crunch.
+
+The aesthetic-conversation thread that started in Lecture 6 (preferring more abrupt interaction responses) hasn't yet surfaced as systematic student vocabulary, but Veronica's transparent-door idea — "the door becomes transparent as you approach, and then you can pass through" — is the kind of self-generated interaction that suggests at least some students are starting to think in terms of shaping experience rather than wiring outputs.
+
+SESSION ARC
+
+The session had a deliberately compressed two-act structure forced by external circumstance. Act one (roughly 0:00 to 0:50) was almost entirely logistics and recovery: GitHub migration, repository creation, collaborator invites, alternative AI tool setup, terminal basics, and a brief return to the interaction atom recap from Lecture 6. Act two (roughly 0:50 to 2:50) was the conceptual content: distributing the production templates, helping students start an interaction with the spec workflow (Veronica's transparent door, another student's teleport-spec attempt), the tile-rotation modular interaction demonstration, the manager/controller architecture introduction with the LightManager example, the live teleport build, the gaze-and-fog interaction, and the brief matrix-classification exercise embedded in the gaze example. The session ran roughly thirty minutes past its scheduled end, with a small group of committed students staying for the bonus content.
+
+The arc is uneven but coherent: the first half is unavoidable maintenance; the second half delivers the day's teaching. The instructor named the cost out loud ("abbiamo perso un sacco di tempo con il Git") and accepted that the hands-on portion would have to absorb the architectural concepts and the production setup at the same time.
+
+FORWARD THREADS
+
+Several things were teed up explicitly for future sessions. State: introduced today but not yet implemented in code — the next session needs to land this with a concrete example (passage counting, conditional door behavior). The manager pattern: the LightManager exists, but there's room for at least one more (post-processing is the obvious next candidate, or audio). The gaze interaction: introduced at the end but rushed — the instructor explicitly said "prossima volta continua." The production documents: students were asked to start filling in design document, production plan, and asset list, with a soft expectation that some version will be reviewable next session. Three concepts away from the full picture, by the instructor's own count.
+
+Smaller threads: the rotation issue on teleport ("ti teleporta forse girato al posto") was flagged but unfixed; the better trigger pattern for saving home location ("un altro trigger che quando passi salva la tua posizione") was sketched verbally but not built. Both are cleanup items the instructor will likely return to whether or not students notice.
