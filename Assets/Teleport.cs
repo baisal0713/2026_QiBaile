@@ -25,6 +25,9 @@ namespace Ludocore
         [Tooltip("Light manager to drive. Falls back to LightManager.Instance if empty.")]
         [SerializeField] private LightManager lightManager;
 
+        [Tooltip("Optional counter incremented by 1 each time a teleport completes.")]
+        [SerializeField] private IntVariable teleportCount;
+
         [Tooltip("Optional profile that overrides the LightManager's default for THIS teleport's blackout. " +
                  "Useful for a fast dim/brighten that doesn't disturb the slower global lighting tuning. " +
                  "Leave empty to use the LightManager's default profile.")]
@@ -91,6 +94,8 @@ namespace Ludocore
 
             _cooldownUntil = Time.time + reEnableCooldown;
             isTeleporting = false;
+
+            if (teleportCount) teleportCount.Increment();
         }
 
         private void Warp(Transform t)

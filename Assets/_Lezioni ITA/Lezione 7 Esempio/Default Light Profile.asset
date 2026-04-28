@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Light Profile
   m_EditorClassIdentifier: Assembly-CSharp::Ludocore.LightManagerProfile
   dimDelay: 1
-  dimDuration: 3
+  dimDuration: 4
   dimCurve:
     serializedVersion: 2
     m_Curve:
