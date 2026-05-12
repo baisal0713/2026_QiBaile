@@ -16,12 +16,32 @@ using UnityEngine;
 namespace Ludocore
 {
     /// <summary>The transform that grabbed objects follow. Pose (position + rotation)
-    /// of this transform drives the carried rigidbody.</summary>
+    /// of this transform drives the carried rigidbody. Also tracks the currently
+    /// held Grabbable so other systems (PlayerAttack, UI prompts) can ask
+    /// "what is the player holding right now?".</summary>
     public class GrabAnchor : MonoBehaviour
     {
         /// <summary>Currently active anchor in the scene. Null if none enabled.</summary>
         public static GrabAnchor Current { get; private set; }
 
+        //==================== STATE =====================
+        [Header("Debug")]
+        [ReadOnly, SerializeField] private Grabbable held;
+
+        /// <summary>The Grabbable currently attached to this anchor, or null.</summary>
+        public Grabbable Held => held;
+
+        //==================== INPUTS =====================
+        /// <summary>Called by Grabbable when it picks up.</summary>
+        public void Attach(Grabbable grabbable) => held = grabbable;
+
+        /// <summary>Called by Grabbable when it releases. No-op if it wasn't the one held.</summary>
+        public void Detach(Grabbable grabbable)
+        {
+            if (held == grabbable) held = null;
+        }
+
+        //==================== LIFECYCLE =====================
         private void OnEnable()
         {
             if (Current && Current != this)

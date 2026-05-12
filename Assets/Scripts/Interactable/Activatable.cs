@@ -1,5 +1,5 @@
 // ============================================================================
-// Activatable — Logic / verb layer (IInteractable)
+// Activatable — Logic / verb layer (IInteractable, tap)
 //
 // One-shot or repeatable "do something in the world" verb. On each interact
 // key-down, fires its OnActivate UnityEvent — designers wire the event in the
@@ -21,7 +21,7 @@ using UnityEngine.Events;
 
 namespace Ludocore
 {
-    /// <summary>Fire-and-forget IInteractable. Press the interact key to invoke
+    /// <summary>Fire-and-forget IInteractable. Tap the interact key to invoke
     /// OnActivate. Set oneShot to disable further activations after the first.</summary>
     public class Activatable : MonoBehaviour, IInteractable
     {
@@ -52,6 +52,7 @@ namespace Ludocore
         //==================== PUBLIC API =====================
         /// <summary>Re-arm a consumed one-shot Activatable so it can fire again.
         /// Call from another script (e.g. UnityEvent wiring) at runtime.</summary>
+        [ContextMenu("Rearm")]
         public void Rearm() => consumed = false;
     }
 }

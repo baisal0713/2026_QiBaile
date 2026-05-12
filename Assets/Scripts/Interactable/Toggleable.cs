@@ -1,5 +1,5 @@
 // ============================================================================
-// Toggleable — Logic / verb layer (IInteractable)
+// Toggleable — Logic / verb layer (IInteractable, tap)
 //
 // Two-state "press to flip" verb. Each interact key-down flips an internal
 // bool and fires the corresponding UnityEvent (OnToggleOn / OnToggleOff) —
@@ -18,7 +18,7 @@ using UnityEngine.Events;
 
 namespace Ludocore
 {
-    /// <summary>Two-way IInteractable. Each press flips IsOn and fires the
+    /// <summary>Two-way IInteractable. Each tap flips IsOn and fires the
     /// corresponding UnityEvent.</summary>
     public class Toggleable : MonoBehaviour, IInteractable
     {
