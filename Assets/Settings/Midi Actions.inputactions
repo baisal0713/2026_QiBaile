@@ -1,0 +1,75 @@
+{
+    "version": 1,
+    "name": "Midi Actions",
+    "maps": [
+        {
+            "name": "MIdi Kyeboard",
+            "id": "583f9a3d-ceac-484c-b217-a4beb9f38d2d",
+            "actions": [
+                {
+                    "name": "Any Input",
+                    "type": "Button",
+                    "id": "e112ac3f-6854-4be7-aa32-c8dbbe0fc6ef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Last Knob",
+                    "type": "Button",
+                    "id": "798b5f8b-9dba-44fa-a194-902af6f0f072",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "C4",
+                    "type": "Button",
+                    "id": "8ec991f7-7a83-486e-b377-64f2a981272b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4c06f8d3-1d4b-4c22-9077-571263feef4f",
+                    "path": "<MidiDevice>/anyNoteVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4887932-5643-4c1d-8d9f-340ce47eb86f",
+                    "path": "<MidiDevice>/note055",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Last Knob",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10c9c22c-bc12-4dee-9877-c16de69d1f36",
+                    "path": "<MidiDevice>/note060",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "C4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
